@@ -56,14 +56,23 @@ class LBCustomerCell: UITableViewCell {
         subTitle.textColor = COLOR_999999
         subTitle.numberOfLines = 0
 
+    titleLabel.snp.makeConstraints { (make) in
+        make.left.snEqualTo(40)
+        make.top.snEqualTo(30)
         
-        contentView.addConstraint(BXLayoutConstraintMake(titleLabel, .left, .equal,contentView,.left,20))
-        contentView.addConstraint(BXLayoutConstraintMake(titleLabel, .top, .equal,contentView,.top,20))
-        contentView.addConstraint(BXLayoutConstraintMake(titleLabel, .height, .equal,nil,.height,20))
-        
-        contentView.addConstraint(BXLayoutConstraintMake(subTitle, .top, .equal,titleLabel,.bottom,14))
-        contentView.addConstraint(BXLayoutConstraintMake(subTitle, .left, .equal,contentView,.left,20))
-        contentView.addConstraint(BXLayoutConstraintMake(subTitle, .right, .equal,contentView,.right,-20))
+    }
+    subTitle.snp.makeConstraints { (make) in
+        make.left.snEqualTo(40)
+        make.right.snEqualToSuperview().snOffset(-40)
+         make.top.snEqualTo(titleLabel.snp.bottom).snOffset(20)
+    }
+//        contentView.addConstraint(BXLayoutConstraintMake(titleLabel, .left, .equal,contentView,.left,20))
+//        contentView.addConstraint(BXLayoutConstraintMake(titleLabel, .top, .equal,contentView,.top,20))
+//        contentView.addConstraint(BXLayoutConstraintMake(titleLabel, .height, .equal,nil,.height,20))
+//
+//        contentView.addConstraint(BXLayoutConstraintMake(subTitle, .top, .equal,titleLabel,.bottom,14))
+//        contentView.addConstraint(BXLayoutConstraintMake(subTitle, .left, .equal,contentView,.left,20))
+//        contentView.addConstraint(BXLayoutConstraintMake(subTitle, .right, .equal,contentView,.right,-20))
   
         
     }

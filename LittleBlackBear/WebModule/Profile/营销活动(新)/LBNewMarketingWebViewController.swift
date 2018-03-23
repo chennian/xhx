@@ -61,6 +61,7 @@ class LBNewMarketingWebViewController: UIViewController {
     }
     func bindEvent(){
         heade.btnClickPub.subscribe(onNext: { (type) in
+<<<<<<< HEAD
             switch type{
             case .pin:
                 self.loadData("123")
@@ -73,6 +74,17 @@ class LBNewMarketingWebViewController: UIViewController {
                 break
                 
             }
+=======
+//            break
+//            switch type{
+//            case .pin:
+//                break
+//            case .tuan:
+//                break:
+//            case .game:
+//
+//            }
+>>>>>>> 1c599d3423722358341d4039606450a83ee3737c
         }).disposed(by: dispoisBag)
     }
     let dispoisBag = DisposeBag()

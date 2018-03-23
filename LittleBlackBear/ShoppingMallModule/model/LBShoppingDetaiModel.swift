@@ -59,14 +59,14 @@ struct LBHomeMerchantModel:ResponeData{
         lat = json["lat"].doubleValue
         favouriteStatus = json["favouriteStatus"].intValue
        
-        let size = CGSize(width:KSCREEN_WIDTH-48, height: CGFloat(MAXFLOAT))
+//        let size = CGSize(width:KSCREEN_WIDTH-48, height: CGFloat(MAXFLOAT))
 //        let h1 = merExplain.boundingRect(with: size,
 //                                         options: .usesLineFragmentOrigin,
 //                                         attributes: [NSFontAttributeName: FONT_26PX],
 //                                         context: nil).size.height+5
         
-        explanH = countWidth(text: merExplain, size: CGSize.init(width: fit(710), height: CGFloat.greatestFiniteMagnitude), font: Font(28)).height
-        noticeH = countWidth(text: merNotice, size: CGSize.init(width: fit(710), height: CGFloat.greatestFiniteMagnitude), font: Font(28)).height
+        explanH = countWidth(text: merExplain, size: CGSize.init(width: fit(670), height: CGFloat.greatestFiniteMagnitude), font: FONT_28PX).height
+        noticeH = countWidth(text: merNotice, size: CGSize.init(width: fit(670), height: CGFloat.greatestFiniteMagnitude), font: FONT_28PX).height
 //        let h2 = merNotice.boundingRect(with: size,
 //                                        options: .usesLineFragmentOrigin,
 //                                        attributes: [NSFontAttributeName: FONT_26PX],
