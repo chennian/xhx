@@ -29,60 +29,61 @@ class LBDistanceCell: UITableViewCell {
     }
     var model:LBHomeMerchantModel?{
         didSet{
-            guard let item = model else {return}
-            button.setTitle(item.address, for: .normal)
-            label.text = "距离您" + item.distance
+//            guard let item = model else {return}
+//            button.setTitle(item.address, for: .normal)
+//            label.text = "距离您" + item.distance
+            addressLab.text = model!.address
+            distanceLab.text = "距离您" + model!.distance
             setupUI()
         }
     }
     
-   private let button = UIButton()
-   private let label = UILabel()
-   private let accessoryBtn = UIButton()
+    let loacIcon = UIImageView(image: UIImage(named :"headline_address"))
+    let addressLab = UILabel().then({
+        $0.textColor = COLOR_999999
+        $0.font = FONT_30PX
+        $0.numberOfLines = 0
+    })
+    private let distanceLab = UILabel().then({
+        $0.font = FONT_28PX
+        $0.textColor = COLOR_999999
+    })
+    let tipLab = UILabel().then({
+        $0.text = "查看地图"
+        $0.textColor = COLOR_999999
+        $0.font = FONT_28PX
+        
+    })
+    let arrowImg = UIImageView(image: UIImage(named :"rightAccessoryIcon"))
     
    private func setupUI(){
-        
-        contentView.addSubview(button)
-        contentView.addSubview(label)
-        contentView.addSubview(accessoryBtn)
-        
-        button.translatesAutoresizingMaskIntoConstraints = false
-        label.translatesAutoresizingMaskIntoConstraints = false
-        accessoryBtn.translatesAutoresizingMaskIntoConstraints = false
-        
-        button.titleLabel?.font = FONT_30PX
-        button.titleEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 0)
-        button.setImage(UIImage(named:"locationMark"), for: .normal)
-        button.setTitleColor(COLOR_999999, for: .normal)
-        button.titleLabel?.numberOfLines = 0
-        button.isUserInteractionEnabled = false 
-        
-        label.font = FONT_28PX
-        label.textColor = COLOR_999999
-
-        accessoryBtn.backgroundColor = UIColor.white
-        accessoryBtn.titleLabel?.font = FONT_28PX
-        accessoryBtn.setTitleColor(COLOR_999999, for: .normal)
-        accessoryBtn.setImage(UIImage(named:"blackrightAccessoryIcon"), for: .normal)
-        accessoryBtn.setTitle("查看地图", for: .normal)
-
-        
-        let imgW = accessoryBtn.imageView?.image?.size.width
-        let lbW  = accessoryBtn.titleLabel?.text?.getSize(15).width
-        accessoryBtn.titleEdgeInsets = UIEdgeInsetsMake(0, -imgW!, 0, imgW!)
-        accessoryBtn.imageEdgeInsets = UIEdgeInsetsMake(0, lbW!, 0, -lbW!-20)
-        
-        contentView.addConstraint(BXLayoutConstraintMake(button, .left, .equal,contentView,.left,20))
-        contentView.addConstraint(BXLayoutConstraintMake(button, .top, .equal,contentView,.top,20))
-        contentView.addConstraint(BXLayoutConstraintMake(button, .right, .equal,accessoryBtn,.left))
-        
-        contentView.addConstraint(BXLayoutConstraintMake(label, .bottom, .equal,contentView,.bottom,-10))
-        contentView.addConstraint(BXLayoutConstraintMake(label, .left, .equal,button,.left))
-        
-        contentView.addConstraint(BXLayoutConstraintMake(accessoryBtn, .right, .equal,contentView,.right,-20))
-        contentView.addConstraint(BXLayoutConstraintMake(accessoryBtn, .centerY, .equal,contentView,.centerY))
-        contentView.addConstraint(BXLayoutConstraintMake(accessoryBtn, .width, .equal,nil,.width,100))
+        contentView.addSubview(addressLab)
+        contentView.addSubview(loacIcon)
+        contentView.addSubview(distanceLab)
+        contentView.addSubview(arrowImg)
+        contentView.addSubview(tipLab)
     
+        loacIcon.snp.makeConstraints { (make) in
+            make.left.snEqualTo(30)
+            make.top.snEqualTo(30)
+        }
+        addressLab.snp.makeConstraints { (make) in
+            make.left.snEqualTo(loacIcon.snp.right).snOffset(10)
+            make.right.equalTo(tipLab.snp.left).snOffset(-10)
+            make.top.equalTo(loacIcon)
+        }
+    distanceLab.snp.makeConstraints { (make) in
+        make.left.snEqualTo(loacIcon)
+        make.bottom.snEqualToSuperview().snOffset(-30)
+    }
+    tipLab.snp.makeConstraints { (make) in
+        make.centerY.equalToSuperview()
+        make.right.equalTo(arrowImg.snp.left).snOffset(-10)
+    }
+    arrowImg.snp.makeConstraints { (make) in
+        make.centerY.equalToSuperview()
+        make.right.equalToSuperview().snOffset(-30)
+    }
     }
 
 }

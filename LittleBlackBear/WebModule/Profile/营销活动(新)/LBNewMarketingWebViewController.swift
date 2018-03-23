@@ -58,7 +58,7 @@ class LBNewMarketingWebViewController: UIViewController {
 //            case .tuan:
 //                break:
 //            case .game:
-//                
+//
 //            }
         }).disposed(by: dispoisBag)
     }
