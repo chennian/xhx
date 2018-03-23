@@ -1,6 +1,0 @@
-framework module Pods_LittleBlackBearTests {
-  umbrella header "Pods-LittleBlackBearTests-umbrella.h"
-
-  export *
-  module * { export * }
-}
