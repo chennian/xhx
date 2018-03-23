@@ -17,12 +17,15 @@ class LBNewMarketingWebViewController: UIViewController {
         $0.register(ZJSpaceCell.self)
         $0.separatorStyle = .none
     }
+    
+    var cellModel:[ZJActicityBtnClickType] = []
 
     let heade = LBNewMarketHead()
     override func viewDidLoad() {
         super.viewDidLoad()
 //        loadData()
         setupUI()
+        bindEvent()
         view.backgroundColor = color_bg_gray_f5
     }
 
@@ -49,17 +52,27 @@ class LBNewMarketingWebViewController: UIViewController {
         }
     }
     
+    func loadData(_ string:String){
+        
+        SNRequest(requestType:API.getTuanTuanList(mercId: "", size: 6, page: 0), modelType: ZJHomeGroupModel.self).subscribe(onNext: { (result) in
+       print(result)
+        }).disposed(by: dispoisBag)
+        
+    }
     func bindEvent(){
         heade.btnClickPub.subscribe(onNext: { (type) in
-//            break
-//            switch type{
-//            case .pin:
-//                break
-//            case .tuan:
-//                break:
-//            case .game:
-//                
-//            }
+            switch type{
+            case .pin:
+                self.loadData("123")
+                break
+            case .tuan:
+                self.loadData("12")
+                break
+            case .game:
+                
+                break
+                
+            }
         }).disposed(by: dispoisBag)
     }
     let dispoisBag = DisposeBag()
@@ -81,15 +94,6 @@ class LBNewMarketingWebViewController: UIViewController {
     func showMnue(sender:Any){
         self.showXYMenu(sender: sender, type: .XYMenuRightNormal, isNav: false)
 
-    }
-    func  loadData(){
-        let paramert:[String:String] = ["":"","":""]
-        LBHttpService.LB_Request(.activity, method: .post, parameters: lb_md5Parameter(parameter: paramert), headers: nil, success: {[weak self] (json) in
-
-            print(json)
-            }, failure: { (failItem) in
-        }) { (error) in
-        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
