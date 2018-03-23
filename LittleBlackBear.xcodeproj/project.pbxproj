@@ -208,6 +208,7 @@
 		6F40489D205EAA3300609231 /* Single+Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F404899205EAA3300609231 /* Single+Response.swift */; };
 		6F40489E205EAA3300609231 /* RxMoyaAvailability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F40489A205EAA3300609231 /* RxMoyaAvailability.swift */; };
 		6F6898542064BC8200108B54 /* JPUSHService.h in Sources */ = {isa = PBXBuildFile; fileRef = 1810D956200F5BCE00CA6895 /* JPUSHService.h */; };
+		6F6898612064EE2400108B54 /* ZJSinglePhotoPreviewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6898602064EE2400108B54 /* ZJSinglePhotoPreviewVC.swift */; };
 		6F7E4B252052F38600FBB68B /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F7E4B242052F38600FBB68B /* Common.swift */; };
 		6F7E4B272052F69400FBB68B /* SnapKit_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F7E4B262052F69400FBB68B /* SnapKit_Extension.swift */; };
 		6F7E4B3E2052FA0F00FBB68B /* SNStoreSectoiniModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F7E4B2A2052FA0F00FBB68B /* SNStoreSectoiniModel.swift */; };
@@ -266,7 +267,6 @@
 		8E47985E205D22D90018F6B4 /* LBAddSeckillController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E47985D205D22D90018F6B4 /* LBAddSeckillController.swift */; };
 		8E5217C92064C6DF0083B304 /* ZJHeadTopicDetailReplayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E5217C82064C6DF0083B304 /* ZJHeadTopicDetailReplayModel.swift */; };
 		8E5217CC2064C75B0083B304 /* ZJHeadTopicToolHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E5217CB2064C75B0083B304 /* ZJHeadTopicToolHeader.swift */; };
-		8E5217CE2064C7710083B304 /* ZJSinglePhotoPreviewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E5217CD2064C7710083B304 /* ZJSinglePhotoPreviewVC.swift */; };
 		8E5217D12064C7AA0083B304 /* SZHUDTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E5217D02064C7AA0083B304 /* SZHUDTool.swift */; };
 		8E607608206367EC00399A2A /* SLTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E607607206367EC00399A2A /* SLTextView.swift */; };
 		8E6F24B9205B838E009A4505 /* LBMyNewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6F24B8205B838E009A4505 /* LBMyNewsViewController.swift */; };
@@ -628,6 +628,7 @@
 		6F404898205EAA3300609231 /* MoyaProvider+Rx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MoyaProvider+Rx.swift"; sourceTree = "<group>"; };
 		6F404899205EAA3300609231 /* Single+Response.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Single+Response.swift"; sourceTree = "<group>"; };
 		6F40489A205EAA3300609231 /* RxMoyaAvailability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RxMoyaAvailability.swift; sourceTree = "<group>"; };
+		6F6898602064EE2400108B54 /* ZJSinglePhotoPreviewVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZJSinglePhotoPreviewVC.swift; sourceTree = "<group>"; };
 		6F7E4B242052F38600FBB68B /* Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 		6F7E4B262052F69400FBB68B /* SnapKit_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapKit_Extension.swift; sourceTree = "<group>"; };
 		6F7E4B2A2052FA0F00FBB68B /* SNStoreSectoiniModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SNStoreSectoiniModel.swift; sourceTree = "<group>"; };
@@ -688,7 +689,6 @@
 		8E47985D205D22D90018F6B4 /* LBAddSeckillController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBAddSeckillController.swift; sourceTree = "<group>"; };
 		8E5217C82064C6DF0083B304 /* ZJHeadTopicDetailReplayModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZJHeadTopicDetailReplayModel.swift; path = LittleBlackBear/NewModule/HeadTopic/share/ZJHeadTopicDetailReplayModel.swift; sourceTree = SOURCE_ROOT; };
 		8E5217CB2064C75B0083B304 /* ZJHeadTopicToolHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZJHeadTopicToolHeader.swift; sourceTree = "<group>"; };
-		8E5217CD2064C7710083B304 /* ZJSinglePhotoPreviewVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ZJSinglePhotoPreviewVC.swift; path = "../../../../../../../Desktop/未命名文件夹/ZJSinglePhotoPreviewVC.swift"; sourceTree = "<group>"; };
 		8E5217D02064C7AA0083B304 /* SZHUDTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SZHUDTool.swift; sourceTree = "<group>"; };
 		8E607607206367EC00399A2A /* SLTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SLTextView.swift; sourceTree = "<group>"; };
 		8E6F24B8205B838E009A4505 /* LBMyNewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBMyNewsViewController.swift; sourceTree = "<group>"; };
@@ -1753,7 +1753,7 @@
 		6FAC498A205E3C21009A9587 /* controller */ = {
 			isa = PBXGroup;
 			children = (
-				8E5217CD2064C7710083B304 /* ZJSinglePhotoPreviewVC.swift */,
+				6F6898602064EE2400108B54 /* ZJSinglePhotoPreviewVC.swift */,
 				6FAC498E205E3C66009A9587 /* ZJHeadTopicDetailVC.swift */,
 			);
 			path = controller;
@@ -2892,7 +2892,7 @@
 				8E47985E205D22D90018F6B4 /* LBAddSeckillController.swift in Sources */,
 				18745B321FBD6D000002EE66 /* LBMerchantApplyTableViewCell.swift in Sources */,
 				18EAAB371FE0D4F100C2EE01 /* LBMerchantIntroduceCell.swift in Sources */,
-				8E5217CE2064C7710083B304 /* ZJSinglePhotoPreviewVC.swift in Sources */,
+				6F6898612064EE2400108B54 /* ZJSinglePhotoPreviewVC.swift in Sources */,
 				8ED696B02057B23A00682BC8 /* DDZUploadBtn.swift in Sources */,
 				6FAC4995205E3ED8009A9587 /* ZJHeadTopicShareCell.swift in Sources */,
 				18EAAB3D1FE108C700C2EE01 /* LBMerchantIfonDetailCellFactory.swift in Sources */,

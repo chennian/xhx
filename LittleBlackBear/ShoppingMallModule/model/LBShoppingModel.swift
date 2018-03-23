@@ -593,7 +593,7 @@ extension LBShoppingHttpServer where Self:LBShoppingMallViewController{
                 tempCellItem.removeAll()
                 //                strongSelf.cellItem.append(.button("查看更多",model.belongPlateName))
             }
-            strongSelf.cellItem.append(.space(cellHight : fit(20) ,color : Color(0xe2e2e2)))
+            strongSelf.cellItem.append(.space(cellHight : fit(20) ,color : Color(0xf5f5f5)))
             LBLoadingView.loading.dissmiss()
             compeletionHandler(model)
             

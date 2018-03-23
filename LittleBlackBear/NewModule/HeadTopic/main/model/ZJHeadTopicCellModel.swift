@@ -114,7 +114,7 @@ class ZJHeadTopicCellModel: SNSwiftyJSONAble {
             height = (height + fit(228) + fit(228) + fit(12)) + fit(28)
         }else if lineNums == 3{
             height = (height + fit(228) + fit(228) + fit(12) + fit(228) + fit(12)) + fit(28)
-        }else{
+        }else if lineNums == 1{
             height = CGFloat(lineNums) * fit(228) + height + fit(28)
         }
         
@@ -122,7 +122,7 @@ class ZJHeadTopicCellModel: SNSwiftyJSONAble {
         
     }
     func anayliseImgs(imgs : String) -> [String]{
-        
+        if imgs == "" {return []}
         
         var imgStr : [String] = []
         

@@ -7,21 +7,23 @@
 //
 
 import UIKit
-
+import RxSwift
 class LBNewMarketingWebViewController: UIViewController {
     
     fileprivate let tableView:UITableView = UITableView().then{
         $0.backgroundColor = color_bg_gray_f5
-        $0.register(LBNewMarketHead.self)
+//        $0.register(LBNewMarketHead.self)
         $0.register(LBNewMarketCellTableViewCell.self)
         $0.register(ZJSpaceCell.self)
         $0.separatorStyle = .none
     }
 
+    let heade = LBNewMarketHead()
     override func viewDidLoad() {
         super.viewDidLoad()
 //        loadData()
         setupUI()
+        view.backgroundColor = color_bg_gray_f5
     }
 
 
@@ -30,16 +32,37 @@ class LBNewMarketingWebViewController: UIViewController {
     
         self.title = "营销活动"
         self.view.backgroundColor = UIColor.white
+        self.view.addSubview(heade)
+        heade.snp.makeConstraints { (make) in
+            make.left.right.equalToSuperview()
+            make.top.equalToSuperview()
+            make.height.snEqualTo(90)
+        }
         self.view.addSubview(tableView)
         tableView.delegate = self
         tableView.dataSource = self
         tableView.snp.makeConstraints { (make) in
             make.left.equalToSuperview()
-            make.top.equalToSuperview()
+            make.top.snEqualTo(heade.snp.bottom).snOffset(20)//.top.equalToSuperview()
             make.bottom.equalToSuperview()
             make.right.equalToSuperview()
         }
     }
+    
+    func bindEvent(){
+        heade.btnClickPub.subscribe(onNext: { (type) in
+//            break
+//            switch type{
+//            case .pin:
+//                break
+//            case .tuan:
+//                break:
+//            case .game:
+//                
+//            }
+        }).disposed(by: dispoisBag)
+    }
+    let dispoisBag = DisposeBag()
     func setNavigaytionBar() {
         
         let button = UIButton(frame:CGRect(x:0, y:0, width:50, height:30))
@@ -89,32 +112,32 @@ extension LBNewMarketingWebViewController:UITableViewDelegate,UITableViewDataSou
         return 3
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row == 0{
-            let cell : LBNewMarketHead = tableView.dequeueReusableCell(forIndexPath: indexPath)
-            return cell
-        }else if indexPath.row == 1{
-            let cell : ZJSpaceCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
-            return cell
-        }else{
+//        if indexPath.row == 0{
+//            let cell : LBNewMarketHead = tableView.dequeueReusableCell(forIndexPath: indexPath)
+//            return cell
+//        }else if indexPath.row == 1{
+//            let cell : ZJSpaceCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
+//            return cell
+//        }else{
             let cell : LBNewMarketCellTableViewCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
             return cell
-        }
+//        }
         
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         //判断类型 heard 100  内容500
-        
-        if indexPath.row == 0{
-            return fit(100)
-
-        }else if indexPath.row == 1{
-            return fit(16)
-
-        }else{
-            return fit(500)
-
-        }
+        return fit(500)
+//        if indexPath.row == 0{
+//            return fit(100)
+//
+//        }else if indexPath.row == 1{
+//            return fit(16)
+//
+//        }else{
+//            
+//
+//        }
     }
     
 }

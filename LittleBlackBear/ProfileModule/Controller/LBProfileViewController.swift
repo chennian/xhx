@@ -362,9 +362,9 @@ extension LBProfileViewController:LBProfileTableViewCellDelegate{
             return
         }
         
-        if data[indexPath.section][indexPath.row] == "营销" {
-            return
-        }
+//        if data[indexPath.section][indexPath.row] == "营销" {
+//            return
+//        }
         
         
         

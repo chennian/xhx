@@ -20,16 +20,21 @@ class ZJHeadTopicViewController: SNBaseViewController {
         $0.register(ZJHeadTopicCell.self)
         $0.backgroundColor = Color(0xf5f5f5)
     }
-    let rightButton = UIButton().then{
-        $0.setImage(UIImage(named : "headline_release"), for: .normal)
-    }
+//    let rightButton = UIButton().then{
+//        $0.setImage(UIImage(named : "headline_release"), for: .normal)
+//    }
     override func viewAppear(_ animated: Bool) {
         super.viewAppear(animated)
-        viewModel.getData()
+//        viewModel.getData()
+    }
+    func rightItemClick(){
+        let vc = ViewController()//ZJHeadTopicPostViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     let viewModel = ZJHeadTopicViewModel()
     override func setupView() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightButton)
+        let righrItem = UIBarButtonItem(image: UIImage(named : "headline_release"), style: .done, target: self, action: #selector(rightItemClick))
+        navigationItem.rightBarButtonItem = righrItem//UIBarButtonItem(customView: rightButton)
         
         title = "头条"
         view.addSubview(tableview)
@@ -40,14 +45,19 @@ class ZJHeadTopicViewController: SNBaseViewController {
             make.size.equalToSuperview()
             make.center.equalToSuperview()
         }
+        
+        
+        tableview.addPullRefresh {[unowned self ] in
+            self.viewModel.getData()
+        }
     }
 
 
     override func bindEvent() {
-        rightButton.rx.controlEvent(UIControlEvents.touchUpInside).subscribe(onNext: { () in
-            let vc = ViewController()//ZJHeadTopicPostViewController()
-            self.navigationController?.pushViewController(vc, animated: true)
-        }).disposed(by: disposeBag)
+//        rightButton.rx.controlEvent(UIControlEvents.touchUpInside).subscribe(onNext: { () in
+//            let vc = ViewController()//ZJHeadTopicPostViewController()
+//            self.navigationController?.pushViewController(vc, animated: true)
+//        }).disposed(by: disposeBag)
         viewModel.jumpSubject.subscribe(onNext: { (type) in
             switch type{
             case .push(let vc,let  anmi):

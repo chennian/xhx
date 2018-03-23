@@ -9,7 +9,16 @@
 import UIKit
 import RxSwift
 
-class LBNewMarketHead: SNBaseTableViewCell {
+enum ZJActicityBtnClickType : Int {
+    case pin = 1
+    case tuan
+    case game
+}
+
+class LBNewMarketHead: SNBaseView {
+    
+    let btnClickPub = PublishSubject<ZJActicityBtnClickType>()
+//    let
 
     var redLine = UILabel().then{
         $0.backgroundColor = UIColor.red
@@ -35,13 +44,54 @@ class LBNewMarketHead: SNBaseTableViewCell {
         $0.setTitleColor(UIColor.black, for: UIControlState.normal)
         
     }
+    
+    override func bindEvent() {
+        button1.rx.controlEvent(UIControlEvents.touchUpInside).subscribe(onNext: { () in
+            if self.button1.isSelected {return}
+            self.button2.isSelected = false
+            self.button3.isSelected = false
+            self.button1.isSelected = true
+            self.updateLineConstraints(btn : self.button1)
+            self.btnClickPub.onNext(ZJActicityBtnClickType.pin)
+        }).disposed(by: disposeBag)
+        button2.rx.controlEvent(UIControlEvents.touchUpInside).subscribe(onNext: { () in
+            if self.button2.isSelected {return}
+            self.button1.isSelected = false
+            self.button3.isSelected = false
+            self.button2.isSelected = true
+            self.updateLineConstraints(btn : self.button2)
+            self.btnClickPub.onNext(ZJActicityBtnClickType.tuan)
+        }).disposed(by: disposeBag)
+        button3.rx.controlEvent(UIControlEvents.touchUpInside).subscribe(onNext: { () in
+            self.btnClickPub.onNext(ZJActicityBtnClickType.game)
+            if self.button3.isSelected {return}
+            self.button1.isSelected = false
+            self.button2.isSelected = false
+            self.button3.isSelected = true
+            self.updateLineConstraints(btn : self.button3)
+        }).disposed(by: disposeBag)
+    }
+    
+    func updateLineConstraints(btn : UIButton) {
+        redLine.snp.remakeConstraints { (make) in
+            make.centerX.equalTo(btn)
+            make.bottom.equalToSuperview()
+            make.height.snEqualTo(3)
+            make.width.snEqualTo(160)
+            self.needsUpdateConstraints()
+            // 调用此方法告诉self.view检测是否需要更新约束，若需要则更新，下面添加动画效果才起作用
+            self.updateConstraintsIfNeeded()
+            
+            self.layoutIfNeeded()
+        }
+    }
 
     override func setupView() {
         
-        contentView.addSubview(button1)
-        contentView.addSubview(button2)
-        contentView.addSubview(button3)
-        contentView.addSubview(redLine)
+        addSubview(button1)
+        addSubview(button2)
+        addSubview(button3)
+        addSubview(redLine)
 
 
         button1.snp.makeConstraints { (make) in
