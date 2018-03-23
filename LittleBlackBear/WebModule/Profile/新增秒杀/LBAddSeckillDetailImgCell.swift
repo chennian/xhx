@@ -21,17 +21,17 @@ class LBAddSeckillDetailImgCell: SNBaseTableViewCell {
     var showImge1 = DDZUploadBtn().then{
         $0.setImage(UIImage(named:"new_addition"),for:.normal)
         $0.fuName = "img1"
-
+        $0.imageView?.contentMode = .scaleAspectFill
     }
     var showImge2 = DDZUploadBtn().then{
         $0.setImage(UIImage(named:"new_addition"),for:.normal)
         $0.fuName = "img2"
-
+        $0.imageView?.contentMode = .scaleAspectFill
     }
     var showImge3 = DDZUploadBtn().then{
         $0.setImage(UIImage(named:"new_addition"),for:.normal)
         $0.fuName = "img3"
-
+        $0.imageView?.contentMode = .scaleAspectFill
     }
     
     func bindEvent(){

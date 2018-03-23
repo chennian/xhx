@@ -21,8 +21,8 @@ class LBAddSeckillActivityCell: SNBaseTableViewCell {
     
     var activityImge = DDZUploadBtn().then{
         $0.setImage(UIImage(named:"new_addition1"),for:.normal)
-        $0.fuName = "img4"
-
+        $0.fuName = "img5"
+        $0.imageView?.contentMode = .scaleAspectFill
     }
     
     func bindEvent(){

@@ -18,7 +18,10 @@ class LBNewMarketingWebViewController: UIViewController {
         $0.separatorStyle = .none
     }
     
-    var cellModel:[ZJActicityBtnClickType] = []
+    var cellModelMiao:[ZJHomeMiaoMiaoModel] = []
+    var cellModelGroup:[ZJHomeGroupModel] = []
+    
+    var recordNumber:Int = 0
 
     let heade = LBNewMarketHead()
     override func viewDidLoad() {
@@ -26,6 +29,7 @@ class LBNewMarketingWebViewController: UIViewController {
 //        loadData()
         setupUI()
         bindEvent()
+        loadDataGroup()
         view.backgroundColor = color_bg_gray_f5
     }
 
@@ -52,39 +56,64 @@ class LBNewMarketingWebViewController: UIViewController {
         }
     }
     
-    func loadData(_ string:String){
+    func loadDataGroup(){
         
-        SNRequest(requestType:API.getTuanTuanList(mercId: "", size: 6, page: 0), modelType: ZJHomeGroupModel.self).subscribe(onNext: { (result) in
-       print(result)
+        SNRequest(requestType:API.getTuanTuanList(mercId: LBKeychain.get(CURRENT_MERC_ID), size: 6, page: 0), modelType: [ZJHomeGroupModel.self]).subscribe(onNext: { (result) in
+            //       print(result)
+            switch result{
+            case .success(let models):
+                self.cellModelGroup = models
+                print(self.cellModelGroup)
+                self.tableView.reloadData()
+            case .fail(_,let msg):
+                ZJLog(messagr: msg)
+            default:
+                break
+            }
+        }).disposed(by: dispoisBag)
+        
+    }
+    
+    func loadDataMiao(){
+        
+        SNRequest(requestType:API.getMiaoMiaoList(mercId: LBKeychain.get(CURRENT_MERC_ID), size: 6, page: 0), modelType: [ZJHomeMiaoMiaoModel.self]).subscribe(onNext: { (result) in
+//       print(result)
+            switch result{
+            case .success(let models):
+                self.cellModelMiao = models
+                print(self.cellModelMiao)
+                self.tableView.reloadData()
+            case .fail(_,let msg):
+                ZJLog(messagr: msg)
+            default:
+                break
+            }
         }).disposed(by: dispoisBag)
         
     }
     func bindEvent(){
         heade.btnClickPub.subscribe(onNext: { (type) in
-<<<<<<< HEAD
             switch type{
             case .pin:
-                self.loadData("123")
+                self.recordNumber = 0
+                self.loadDataGroup()
                 break
             case .tuan:
-                self.loadData("12")
+                self.recordNumber = 1
+
+                self.loadDataMiao()
                 break
             case .game:
+                self.recordNumber = 2
+
+                self.cellModelMiao.removeAll()
+                self.cellModelGroup.removeAll()
+                self.tableView.reloadData()
                 
                 break
                 
             }
-=======
-//            break
-//            switch type{
-//            case .pin:
-//                break
-//            case .tuan:
-//                break:
-//            case .game:
-//
-//            }
->>>>>>> 1c599d3423722358341d4039606450a83ee3737c
+
         }).disposed(by: dispoisBag)
     }
     let dispoisBag = DisposeBag()
@@ -125,19 +154,25 @@ extension LBNewMarketingWebViewController:UITableViewDelegate,UITableViewDataSou
         return 1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        
+        if recordNumber == 0{
+            return self.cellModelGroup.count
+        }else if recordNumber == 1{
+            return self.cellModelMiao.count
+        }else{
+            return 0
+        }
+
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        if indexPath.row == 0{
-//            let cell : LBNewMarketHead = tableView.dequeueReusableCell(forIndexPath: indexPath)
-//            return cell
-//        }else if indexPath.row == 1{
-//            let cell : ZJSpaceCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
-//            return cell
-//        }else{
-            let cell : LBNewMarketCellTableViewCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
-            return cell
-//        }
+        let cell : LBNewMarketCellTableViewCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
+        if recordNumber == 0{
+            cell.groupModel = self.cellModelGroup
+        }else{
+            cell.miaomiaoModel = self.cellModelMiao
+            
+        }
+        return cell
         
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

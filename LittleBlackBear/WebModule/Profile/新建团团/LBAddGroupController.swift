@@ -104,7 +104,7 @@ class LBAddGroupController: UIViewController {
             showMessage(title: "提示", message: "请上传展示图片")
             return
         }
-        guard detailImg.count == 3 else {
+        guard !detailImg.isEmpty else {
             showMessage(title: "提示", message: "请上传详情展示图")
             return
         }
@@ -112,6 +112,8 @@ class LBAddGroupController: UIViewController {
             showMessage(title: "提示", message: "请输入卡卷描述")
             return
         }
+        
+        print(detailImg)
         
         
         let paramert:[String:String] = ["name":name,
@@ -122,11 +124,17 @@ class LBAddGroupController: UIViewController {
                                         "description":goodDescription,
                                         "mercId":mercId]
         
-        LBHttpService.LB_Request(.publishHead, method: .post, parameters: lb_md5Parameter(parameter: paramert), headers: nil, success: {[weak self] (json) in
-            
-            print(json)
-            }, failure: { (failItem) in
-        }) { (error) in
+        SZHUD("正在上传中...", type: .loading, callBack: nil)
+        let time: TimeInterval = 1.5
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + time) {
+            //code
+            LBHttpService.LB_Request2(.newUpdateGroup, method: .post, parameters:lb_md5Parameter(parameter: paramert), headers: nil, success: {[weak self] (json) in
+                SZHUD("上传成功", type: .info, callBack: nil)
+                }, failure: { (failItem) in
+                SZHUD("上传失败", type: .error, callBack: nil)
+            }) { (error) in
+                SZHUD("请求错误", type: .error, callBack: nil)
+            }
         }
     }
 }
@@ -287,7 +295,7 @@ extension LBAddGroupController : UIImagePickerControllerDelegate,UINavigationCon
             cropVC.customAspectRatio = CGSize(width:1,height:1)
 
         }else{
-            cropVC.customAspectRatio = CGSize(width:270,height:158)
+            cropVC.customAspectRatio = CGSize(width:487,height:158)
         }
         
         

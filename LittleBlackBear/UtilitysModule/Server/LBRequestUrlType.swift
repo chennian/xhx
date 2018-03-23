@@ -40,9 +40,9 @@ struct H5_product:LBURL {
 enum LBRequestUrlType:String{
     
     //新增团团
-    case newUpdateGroup = "api.xiaoheixiong.net/activity/addCoupon"
+    case newUpdateGroup = "activity/addCoupon"
     //新增秒秒
-    case newUpdateSeckill = "api.xiaoheixiong.net/activity/addKill"
+    case newUpdateSeckill = "activity/addKill"
     
     
 

@@ -25,21 +25,21 @@ class LBNewMarketHead: SNBaseView {
     }
     
     var button1 = UIButton().then {
-        $0.setTitle("拼图卷", for: UIControlState.normal)
+        $0.setTitle("拼团券", for: UIControlState.normal)
         $0.setTitleColor(UIColor.red, for: UIControlState.selected)
         $0.setTitleColor(UIColor.black, for: UIControlState.normal)
         $0.isSelected = true
     }
     var button2 = UIButton().then{
 
-        $0.setTitle("秒杀卷", for: UIControlState.normal)
+        $0.setTitle("秒杀券", for: UIControlState.normal)
         $0.setTitleColor(UIColor.red, for: UIControlState.selected)
         $0.setTitleColor(UIColor.black, for: UIControlState.normal)
 
     }
     
     var button3 = UIButton().then{
-        $0.setTitle("游戏卷", for: UIControlState.normal)
+        $0.setTitle("游戏券", for: UIControlState.normal)
         $0.setTitleColor(UIColor.red, for: UIControlState.selected)
         $0.setTitleColor(UIColor.black, for: UIControlState.normal)
         

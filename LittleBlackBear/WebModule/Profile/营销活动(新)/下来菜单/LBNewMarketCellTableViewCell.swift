@@ -10,6 +10,40 @@ import UIKit
 
 class LBNewMarketCellTableViewCell: SNBaseTableViewCell {
     
+    var miaomiaoModel : [ZJHomeMiaoMiaoModel] = [] {
+        didSet{
+            for model in miaomiaoModel{
+                //            let model = groupCouponModel
+                imgLogo.kf.setImage(with: URL(string: model.mainImg))
+                //            if model.mainImgUrl.count > 0,model.mainImgUrl.isURLFormate() {
+                //            }
+                label1.text = model.name
+                //            subCouponTitleLabel.text = model!.markSubhead
+                //            calculationCurrentTime(model!.validEndDate + " " + "23:59:59")
+                label2.text = "¥\(model.price)"
+                totol.text = "总量:\(model.cardNum)"
+            }
+           
+        }
+    }
+    
+    var groupModel : [ZJHomeGroupModel] = [] {
+        didSet{
+            for model in groupModel{
+                //            let model = groupCouponModel
+                imgLogo.kf.setImage(with: URL(string: model.mainImg))
+                //            if model.mainImgUrl.count > 0,model.mainImgUrl.isURLFormate() {
+                //            }
+                label1.text = model.name
+                //            subCouponTitleLabel.text = model!.markSubhead
+                //            calculationCurrentTime(model!.validEndDate + " " + "23:59:59")
+                label2.text = "¥\(model.price)"
+                totol.text = "拼团人数:\(model.enterNum)"
+            }
+            
+        }
+    }
+    
     var imgLogo = UIImageView().then{
 //        $0.kf.setImage(with:URL(string:"123"))
         $0.image = UIImage(named:"home_merchant")

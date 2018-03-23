@@ -133,7 +133,7 @@ class LBAddSeckillController: UIViewController {
             showMessage(title: "提示", message: "请上传展示图片")
             return
         }
-        guard detailImg.count == 3 else {
+        guard !detailImg.isEmpty else {
             showMessage(title: "提示", message: "请上传详情展示图")
             return
         }
@@ -153,13 +153,19 @@ class LBAddSeckillController: UIViewController {
                                         "desc":desc,
                                         "mercId":LBKeychain.get(CURRENT_MERC_ID)]
         
-        LBHttpService.LB_Request(.publishHead, method: .post, parameters: lb_md5Parameter(parameter: paramert), headers: nil, success: {[weak self] (json) in
-        
-            print(json)
-            }, failure: { (failItem) in
-        }) { (error) in
+        SZHUD("正在上传中...", type: .loading, callBack: nil)
+        let time: TimeInterval = 1.5
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + time) {
+            LBHttpService.LB_Request2(.newUpdateSeckill, method: .post, parameters: lb_md5Parameter(parameter: paramert), headers: nil, success: {[weak self] (json) in
+                SZHUD("上传成功", type: .info, callBack: nil)
+
+                }, failure: { (failItem) in
+                    SZHUD("上传失败", type: .error, callBack: nil)
+            }) { (error) in
+                SZHUD("请求错误", type: .error, callBack: nil)
+            }
         }
-    }
+        }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -323,7 +329,13 @@ extension LBAddSeckillController : UIImagePickerControllerDelegate,UINavigationC
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         let img = info[UIImagePickerControllerOriginalImage] as! UIImage
         let cropVC = TOCropViewController(croppingStyle: .default, image: img)
-        cropVC.customAspectRatio = CGSize(width:1,height:1)
+        if self.fullName == "img1" || self.fullName == "img2" || self.fullName == "img3"  {
+            cropVC.customAspectRatio = CGSize(width:1,height:1)
+            
+        }else{
+            cropVC.customAspectRatio = CGSize(width:270,height:158)
+        }
+
         cropVC.delegate = self
         picker.dismiss(animated: true) {
             self.present(cropVC, animated: true, completion: nil)
