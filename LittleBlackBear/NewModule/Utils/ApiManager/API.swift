@@ -53,7 +53,7 @@ extension API: JSONMappableTargetType {
             ]
         default:
             return [
-                "Content-Type": "application/x-www-form-urlencoded"
+                "Content-Type": "application/x-www-form-urlencoded;charset=utf-8"
             ]
         }
         
