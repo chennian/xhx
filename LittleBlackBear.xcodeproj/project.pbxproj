@@ -1747,7 +1747,6 @@
 		6FAC4989205E3C08009A9587 /* detail */ = {
 			isa = PBXGroup;
 			children = (
-				6FAC498C205E3C29009A9587 /* service */,
 				8E5217CA2064C6FF0083B304 /* model */,
 				6FAC498B205E3C25009A9587 /* view */,
 				6FAC498A205E3C21009A9587 /* controller */,
@@ -1775,13 +1774,6 @@
 				6FAC499A205E4BFC009A9587 /* ZJHeadTopicInputBar.swift */,
 			);
 			path = view;
-			sourceTree = "<group>";
-		};
-		6FAC498C205E3C29009A9587 /* service */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = service;
 			sourceTree = "<group>";
 		};
 		6FAC91E9206784AB003B98D8 /* manage */ = {

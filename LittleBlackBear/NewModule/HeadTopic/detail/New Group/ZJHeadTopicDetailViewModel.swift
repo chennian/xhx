@@ -12,12 +12,12 @@ import SwiftyJSON
 enum ZJHeadTopicDetailCellModelType {
     case deatail(model : ZJHeadTopicCellModel)
     case share
-    case like
+    case like(model : ZJHeadTopicDetailPraiseModel)//
     case common(model : ZJHeadTopicDetailReplayModel)
     case spcae(height : CGFloat,color : UIColor)
 }
 
-class ZJHeadTopicCommonModel  {//SNSwiftyJSONAble
+//class ZJHeadTopicCommonModel  {//SNSwiftyJSONAble
 //    var headIcon : String
 //    var name : String
 //    var content : String
@@ -27,7 +27,7 @@ class ZJHeadTopicCommonModel  {//SNSwiftyJSONAble
 //        name = jsonData["name"].stringValue
 //        content = jsonData["content"].stringValue
 //    }
-}
+//}
 
 class ZJHeadTopicDetailCellModel {
     var type : ZJHeadTopicDetailCellModelType = .spcae(height : 0.0,color : .white){
@@ -64,35 +64,73 @@ class ZJHeadTopicDetailViewModel: SNBaseViewModel {
             
             models[0] = [mainModel,spaceModel]
    
-            self.reloadPublish.onNext(([0],1))
-            getData()
+            self.reloadPublish.onNext(([0,1],1))
+//            getData()
+        }
+    }
+    var model : ZJHeadTopicDetailInfoModel?
+    
+    //展示类型
+    var type :  ZJHeadTopicToolBarButtonType = .common{
+        didSet{
+            if model == nil{
+                return
+            }
+            switch type {
+            case .common:
+                models[1] = model!.headlineReplyPOList.map({ (model) -> ZJHeadTopicDetailCellModel in
+                    let mod = ZJHeadTopicDetailCellModel()
+                    mod.type = .common(model: model)
+                    return mod
+                })
+            case .like:
+                ZJLog(messagr: model!.headlineInfoPraiseBOList.count)
+                models[1] = model!.headlineInfoPraiseBOList.map({ (model) -> ZJHeadTopicDetailCellModel in
+                    let mod = ZJHeadTopicDetailCellModel()
+                    mod.type = .like(model: model)
+                    return mod
+                })
+            default:
+                models[1] = []
+            }
+            reloadPublish.onNext(([1],models[1].count))
         }
     }
     
-    var commonModels : [ZJHeadTopicDetailReplayModel] = []
-    func getData() {
+//    var commonModels : [ZJHeadTopicDetailReplayModel] = []
+    func getData(id : String) {
         
-//        let commonModel = ZJHeadTopicCommonModel()
-//        let model = ZJHeadTopicDetailCellModel();model.type = .common(model : commonModel)
-//        models[1] = [model,model,model,model,model,model,model]
-
-//        reloadPublish.onNext((section: 1, count: 4))
         
 //
         
-        SNRequest(requestType: API.getReplatyList(id: topicModel!.id, size: 10, page: 0), modelType: [ZJHeadTopicDetailReplayModel.self]).subscribe(onNext: { (result) in
+        
+        SNRequest(requestType: API.headTopicInfo(id: id, checkPraiseId: LBKeychain.get(CURRENT_MERC_ID)), modelType: ZJHeadTopicDetailInfoModel.self).subscribe(onNext: { (result) in
             switch result{
-            case .success(let models):
-                self.models[1] = models.map({ (mod) -> ZJHeadTopicDetailCellModel in
-                    let model = ZJHeadTopicDetailCellModel()
-                    model.type = .common(model : mod)
-                    return model
-                    })
-                self.reloadPublish.onNext((section: [1], count: models.count))
+            case .success(let model):
+                self.model = model
+                
+                self.topicModel = model.headLineInfo
+                self.type = .common
+            case .fail(_,let msg):
+                SZHUD(msg ?? "获取头条详情失败", type: .error, callBack: nil)
             default:
                 break
             }
         }).disposed(by: disposeBag)
+        
+//        SNRequest(requestType: API.getReplatyList(id: topicModel!.id, size: 10, page: 0), modelType: [ZJHeadTopicDetailReplayModel.self]).subscribe(onNext: { (result) in
+//            switch result{
+//            case .success(let models):
+//                self.models[1] = models.map({ (mod) -> ZJHeadTopicDetailCellModel in
+//                    let model = ZJHeadTopicDetailCellModel()
+//                    model.type = .common(model : mod)
+//                    return model
+//                    })
+//                self.reloadPublish.onNext((section: [1], count: models.count))
+//            default:
+//                break
+//            }
+//        }).disposed(by: disposeBag)
     }
     func setLike(id : String,btn : UIButton){
         
@@ -115,7 +153,7 @@ class ZJHeadTopicDetailViewModel: SNBaseViewModel {
             case .fail(let code , let msg):
                 btn.isSelected = !btn.isSelected
                 ZJLog(messagr: code)
-                SZHUD("请求失败", type: .error, callBack: nil)
+                SZHUD(msg ?? "请求失败", type: .error, callBack: nil)
             default:
                 break
             }
@@ -128,11 +166,11 @@ class ZJHeadTopicDetailViewModel: SNBaseViewModel {
             switch result{
             case .bool(_):
 //            c    break
-                
+
                 let commonCount = (self.topicModel!.replyNum as NSString).intValue + 1
                 self.topicModel!.replyNum = "\(commonCount)"
                 self.reloadPublish.onNext((section: [0], count: 0))
-                self.getData()
+//                self.getData()
                 SZHUD("评论成功", type: .info, callBack: nil)
             default:
                 SZHUD("请求错误", type: .error, callBack: nil)
@@ -167,10 +205,14 @@ extension ZJHeadTopicDetailViewModel : UITableViewDelegate,UITableViewDataSource
                 self.jumpSubject.onNext(SNJumpType.show(vc: preview, anmi: true))
             }).disposed(by: cell.disposeBag)
             return cell
-            return cell
+//            return cell
         case .common(let model):
             let cell : ZJHeadTopicCommonCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
-            cell.model = model
+            cell.model = model//model!.headlineReplyPOList[indexPath.row]
+            return cell
+        case .like(let model):
+            let cell : ZJHeadTopicShareCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
+            cell.model = model//model!.headlineInfoPraiseBOList[indexPath.row]
             return cell
         default :
             let cell  = tableView.dequeueReusableCell(forIndexPath: indexPath)
@@ -191,7 +233,16 @@ extension ZJHeadTopicDetailViewModel : UITableViewDelegate,UITableViewDataSource
             return UIView()
         }
         let header = ZJHeadTopicToolHeader()
-        header.setContent(share: topicModel!.forwardNum, commom: topicModel!.replyNum, like: topicModel!.real_praise)
+        if model != nil{
+            header.setContent(share: "0", commom: "\(model!.headlineReplyPOList.count)", like: "\(model!.headlineInfoPraiseBOList.count)")
+            header.showType = self.type
+        }
+        header.btnClick.subscribe(onNext: {[unowned self] (type) in
+//            switch type{
+//                case .common
+//            }
+            self.type = type
+        }).disposed(by: disposeBag)
         return header//models[section].count
     }
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {

@@ -12,7 +12,7 @@ class ZJHeadTopicDetailVC: SNBaseViewController {
     
     var model : ZJHeadTopicCellModel?{
         didSet{
-            viewModel.topicModel = model!
+            viewModel.getData(id: model!.id)//.topicModel = model!
             
 //            toolBar.set(share: model!.forwardNum, like: model!.real_praise)
         }
@@ -70,6 +70,7 @@ class ZJHeadTopicDetailVC: SNBaseViewController {
         
         toolBar.replayClick.subscribe(onNext: { (content) in
             self.viewModel.replay(content: content)
+//            self.viewModel.getData(id: self.model!.id)
         }).disposed(by: disposeBag)
         
         viewModel.jumpSubject.subscribe(onNext: { (type) in

@@ -38,7 +38,7 @@ enum API {
     case setLike(mercId : String ,headlineId : String,state : String)
     
     
-//    case 
+    case headTopicInfo(id : String , checkPraiseId : String)
     
    
 }
@@ -91,6 +91,8 @@ extension API: JSONMappableTargetType {
             return "/headline/pushHeadlineReply"
         case .setLike:
             return "/headline/updatePraise"
+        case .headTopicInfo:
+            return "/headline/healineInfo"
 //        default:
 //            return ""
         }
@@ -173,6 +175,12 @@ extension API: JSONMappableTargetType {
                 "size": size,
                 "page" : page,
                 "checkPraiseId" : checkPraiseId
+                ] as [String : Any]
+            return .requestParameters(parameters: para, encoding: URLEncoding.default)
+        case .headTopicInfo(let id,let checkPraiseId):
+            let para = [
+                "id" : id,
+                "checkPraiseId": checkPraiseId
                 ] as [String : Any]
             return .requestParameters(parameters: para, encoding: URLEncoding.default)
         default:

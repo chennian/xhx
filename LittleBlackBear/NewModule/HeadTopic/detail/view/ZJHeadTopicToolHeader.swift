@@ -15,8 +15,30 @@ enum ZJHeadTopicToolBarButtonType {
 }
 class ZJHeadTopicToolHeader: SNBaseView {
     let btnClick = PublishSubject<ZJHeadTopicToolBarButtonType>()
+    
+    var showType : ZJHeadTopicToolBarButtonType = .common{
+        didSet{
+            switch showType {
+            case .common:
+                self.shareBtn.isSelected = false
+                self.likeBtn.isSelected = false
+                self.commomBtn.isSelected = true
+                self.anmiLine(btn: self.commomBtn)
+            case .like:
+                self.commomBtn.isSelected = false
+                self.shareBtn.isSelected = false
+                self.likeBtn.isSelected = true
+                self.anmiLine(btn: self.likeBtn)
+            case .share:
+                self.commomBtn.isSelected = false
+                self.likeBtn.isSelected = false
+                self.shareBtn.isSelected = true
+                self.anmiLine(btn: self.shareBtn)
+            }
+        }
+    }
     func setContent(share : String , commom : String ,like : String){
-        commomBtn.isSelected = true
+//        commomBtn.isSelected = true
         shareBtn.setTitle("转发 " + share, for: .normal)
         commomBtn.setTitle("评论 " + commom, for: .normal)
         likeBtn.setTitle("点赞 " + like, for: .normal)
@@ -28,7 +50,7 @@ class ZJHeadTopicToolHeader: SNBaseView {
             self.likeBtn.isSelected = false
             self.shareBtn.isSelected = true
             self.btnClick.onNext(ZJHeadTopicToolBarButtonType.share)
-            self.anmiLine(btn: self.shareBtn)
+//            self.anmiLine(btn: self.shareBtn)
         }).disposed(by: disposeBag)
         commomBtn.rx.controlEvent(UIControlEvents.touchUpInside).subscribe(onNext: {[unowned self] () in
             if self.commomBtn.isSelected {return}
@@ -36,7 +58,7 @@ class ZJHeadTopicToolHeader: SNBaseView {
             self.likeBtn.isSelected = false
             self.commomBtn.isSelected = true
             self.btnClick.onNext(ZJHeadTopicToolBarButtonType.common)
-            self.anmiLine(btn: self.commomBtn)
+//            self.anmiLine(btn: self.commomBtn)
         }).disposed(by: disposeBag)
         likeBtn.rx.controlEvent(UIControlEvents.touchUpInside).subscribe(onNext: {[unowned self] () in
             if self.likeBtn.isSelected {return}
@@ -44,7 +66,7 @@ class ZJHeadTopicToolHeader: SNBaseView {
             self.shareBtn.isSelected = false
             self.likeBtn.isSelected = true
             self.btnClick.onNext(ZJHeadTopicToolBarButtonType.like)
-            self.anmiLine(btn: self.likeBtn)
+//            self.anmiLine(btn: self.likeBtn)
         }).disposed(by: disposeBag)
     }
 

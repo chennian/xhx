@@ -10,6 +10,17 @@ import UIKit
 
 class ZJHeadTopicShareCell: SNBaseTableViewCell {
 
+    var model : ZJHeadTopicDetailPraiseModel?{
+        didSet{
+            /*
+             "id": 40,
+             "headlineId": 308,
+             "nickName": "139****4786"
+             */
+            nameLab.text = model!.nickName
+            headIcon.kf.setImage(with: URL(string : model!.headImg))
+        }
+    }
     let headIcon = UIImageView().then{
         $0.layer.cornerRadius = fit(27)
         $0.clipsToBounds = true
