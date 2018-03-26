@@ -197,7 +197,7 @@ class LBProfileViewController: UITableViewController {
                             NSStringFromClass(LBMyAttentionWebViewController.self),
                             
                             NSStringFromClass(LBShareRQCodeViewController.self),
-                            NSStringFromClass(ZJHeadTopicViewController.self),
+                            NSStringFromClass(ZJHeadTopicManageVC.self),
                             NSStringFromClass(LBMyCouponWebViewController.self),
                             
                             ]]

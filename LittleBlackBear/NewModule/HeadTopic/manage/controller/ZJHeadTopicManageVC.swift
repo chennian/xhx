@@ -1,21 +1,22 @@
 //
-//  ZJHeadTopicViewController.swift
+//  ZJHeadTopicManageVC.swift
 //  LittleBlackBear
 //
-//  Created by MichaelChan on 18/3/18.
+//  Created by MichaelChan on 25/3/18.
 //  Copyright © 2018年 蘇崢. All rights reserved.
 //
 
 import UIKit
 
-class ZJHeadTopicViewController: SNBaseViewController {
+class ZJHeadTopicManageVC: SNBaseViewController {
 
+   
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
-
+    
     let tableview = SNBaseTableView().then{
         $0.register(ZJHeadTopicCell.self)
         $0.backgroundColor = Color(0xf5f5f5)
@@ -31,20 +32,20 @@ class ZJHeadTopicViewController: SNBaseViewController {
             firstReload = false
         }
     }
-    func rightItemClick(){
-        let vc = ViewController()//ZJHeadTopicPostViewController()
-        vc.popPublic.subscribe(onNext: {[unowned self] (refres) in
-            self.firstReload = true
-            self.tableview.scrollToRow(at: IndexPath.init(row: 0, section: 0), at: UITableViewScrollPosition.top, animated: false)
-        }).disposed(by: disposeBag)
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
-    let viewModel = ZJHeadTopicViewModel()
+//    func rightItemClick(){
+//        let vc = ViewController()//ZJHeadTopicPostViewController()
+//        vc.popPublic.subscribe(onNext: {[unowned self] (refres) in
+//            self.firstReload = true
+//            self.tableview.scrollToRow(at: IndexPath.init(row: 0, section: 0), at: UITableViewScrollPosition.top, animated: false)
+//        }).disposed(by: disposeBag)
+//        self.navigationController?.pushViewController(vc, animated: true)
+//    }
+    let viewModel = ZJHeadTopicManageViewModel()
     override func setupView() {
-        let righrItem = UIBarButtonItem(image: UIImage(named : "headline_release"), style: .done, target: self, action: #selector(rightItemClick))
-        navigationItem.rightBarButtonItem = righrItem//UIBarButtonItem(customView: rightButton)
+//        let righrItem = UIBarButtonItem(image: UIImage(named : "headline_release"), style: .done, target: self, action: #selector(rightItemClick))
+//        navigationItem.rightBarButtonItem = righrItem//UIBarButtonItem(customView: rightButton)
         
-        title = "头条"
+        title = "我的头条"
         view.addSubview(tableview)
         tableview.delegate = viewModel
         tableview.dataSource = viewModel
@@ -63,13 +64,13 @@ class ZJHeadTopicViewController: SNBaseViewController {
             self.viewModel.getMoreData()
         }
     }
-
-
+    
+    
     override func bindEvent() {
-//        rightButton.rx.controlEvent(UIControlEvents.touchUpInside).subscribe(onNext: { () in
-//            let vc = ViewController()//ZJHeadTopicPostViewController()
-//            self.navigationController?.pushViewController(vc, animated: true)
-//        }).disposed(by: disposeBag)
+        //        rightButton.rx.controlEvent(UIControlEvents.touchUpInside).subscribe(onNext: { () in
+        //            let vc = ViewController()//ZJHeadTopicPostViewController()
+        //            self.navigationController?.pushViewController(vc, animated: true)
+        //        }).disposed(by: disposeBag)
         viewModel.jumpSubject.subscribe(onNext: { (type) in
             switch type{
             case .push(let vc,let  anmi):
@@ -88,7 +89,6 @@ class ZJHeadTopicViewController: SNBaseViewController {
                     self.tableview.removePushRefresh()//.stopPushRefreshEver(<#T##ever: Bool##Bool#>)
                 }
             }else{
-                
                 self.tableview.stopPullRefreshEver()
             }
             self.tableview.zj_reloadData(count: count)
@@ -97,5 +97,3 @@ class ZJHeadTopicViewController: SNBaseViewController {
     }
 
 }
-//extension
-

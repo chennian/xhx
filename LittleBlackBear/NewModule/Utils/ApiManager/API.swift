@@ -29,7 +29,7 @@ enum API {
     case getReplatyList(id : String , size : Int ,page : Int)
     
     //查询头条
-    case getHeadTopicList(size : String , page : String)
+    case getHeadTopicList(mercId : String ,size : String , page : String)
     
     //评论头条
     case replayHeadTopic(headline_id : String,mer_id : String ,comments : String,reply_id : String)
@@ -163,6 +163,13 @@ extension API: JSONMappableTargetType {
                 ] as [String : Any]
             
             
+            return .requestParameters(parameters: para, encoding: URLEncoding.default)
+        case .getHeadTopicList(let mercId,let size,let page):
+            let para = [
+                "mercId" : mercId,
+                "size": size,
+                "page" : page
+                ] as [String : Any]
             return .requestParameters(parameters: para, encoding: URLEncoding.default)
         default:
             return Task.requestPlain

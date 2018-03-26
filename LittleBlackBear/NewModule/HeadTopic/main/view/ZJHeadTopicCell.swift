@@ -246,8 +246,10 @@ class ZJHeadTopicImageMutilyImageView : SNBaseView{
             let lineNum = 3
             for i in 0..<count{
                 let imgBtn = UIButton()
+                imgBtn.setImage(createImageBy(color: Color(0xf1f1f1)), for: .normal)
                 imgBtn.kf.setImage(with: URL(string:imgStrs[i]), for: .normal)
                 addSubview(imgBtn)
+                
                 imgBtn.imageView?.contentMode = .scaleAspectFill
                 let left = CGFloat(i % lineNum) * (fit(228) + marginW) + fit(20)
                 let top = CGFloat(i / lineNum) * (fit(228) + marginH)

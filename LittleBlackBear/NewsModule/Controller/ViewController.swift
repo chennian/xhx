@@ -8,10 +8,13 @@
 
 import UIKit
 import Photos
+import RxSwift
 import MobileCoreServices
 import TZImagePickerController
 class ViewController: UIViewController,PhotoPickerControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate,UITextViewDelegate {
     
+    
+    let popPublic = PublishSubject<Bool>()
     var selectModel = [PhotoImageModel]()
     var containerView = UIView()
     var publishText = UITextView()
@@ -242,6 +245,7 @@ class ViewController: UIViewController,PhotoPickerControllerDelegate, UIImagePic
         
     }
     
+    
     private func uploadData(){
     
         
@@ -253,6 +257,7 @@ class ViewController: UIViewController,PhotoPickerControllerDelegate, UIImagePic
             SZHUDDismiss()
             let alertView = UIAlertView(title: nil, message: "发布成功", delegate: nil, cancelButtonTitle:"确定" )
             alertView.show()
+            self?.popPublic.onNext(true)
             self?.navigationController?.popViewController(animated: true)
             print(json)
             }, failure: { (failItem) in

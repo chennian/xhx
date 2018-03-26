@@ -1,34 +1,50 @@
 //
-//  ZJHeadTopicViewModel.swift
+//  ZJHeadTopicManageViewModel.swift
 //  LittleBlackBear
 //
-//  Created by MichaelChan on 18/3/18.
+//  Created by MichaelChan on 25/3/18.
 //  Copyright © 2018年 蘇崢. All rights reserved.
 //
 
 import UIKit
+
 import RxSwift
-class ZJHeadTopicViewModel: SNBaseViewModel {
+
+
+enum ZJViewModelReloadataType{
+    case reget(count : Int)
+    case getMore(hasData : Bool,getNum : Int)
+}
+
+class ZJHeadTopicManageViewModel: SNBaseViewModel {
     
     var models : [ZJHeadTopicCellModel] = []
     
     let reloadPublish = PublishSubject<(Int,Bool)>()
- 
+    
     var page : Int = 0
-
+    
+    var noMore : Bool = false
+    
     func getMoreData(){
         page += 1
-        if page >= maxPage {
+        
+        if noMore{
             page -= 1
-            
+
             SZHUD("没有更多数据了", type: .info, callBack: nil)
             self.reloadPublish.onNext((1,true))
             return
-            
+
         }
-        SNRequest(requestType: API.getHeadTopicList(mercId : "" ,size: "10", page: "\(page)"), modelType: ZJHeadTopicModel.self).subscribe(onNext: { (result) in
+        SNRequest(requestType: API.getHeadTopicList(mercId : LBKeychain.get(CURRENT_MERC_ID),size: "10", page: "\(page)"), modelType: ZJHeadTopicModel.self).subscribe(onNext: { (result) in
             switch result{
             case .success(let models):
+                
+//                if models.currentPage
+                if models.lists.count == 0{
+                    self.noMore = true
+                }
                 self.models.append(contentsOf: models.lists)//.append(models.lists)// = models.lists
                 self.reloadPublish.onNext((models.lists.count,true))
             case .fail(_, let msg):
@@ -42,7 +58,7 @@ class ZJHeadTopicViewModel: SNBaseViewModel {
     var maxPage : Int = 0
     func getData(){
         page = 0
-        SNRequest(requestType: API.getHeadTopicList(mercId : "" ,size: "10", page: "\(page)"), modelType: ZJHeadTopicModel.self).subscribe(onNext: { (result) in
+        SNRequest(requestType: API.getHeadTopicList(mercId : LBKeychain.get(CURRENT_MERC_ID),size: "10", page: "\(page)"), modelType: ZJHeadTopicModel.self).subscribe(onNext: { (result) in
             switch result{
             case .success(let models):
                 self.models = models.lists
@@ -60,7 +76,7 @@ class ZJHeadTopicViewModel: SNBaseViewModel {
         
         ZJLog(messagr: id)
         ZJLog(messagr: LBKeychain.get(CURRENT_MERC_ID))
-//        if btn.isSelected =
+        //        if btn.isSelected =
         ZJLog(messagr: btn.isSelected ? "1" : "0")
         SNRequestBool(requestType: API.setLike(mercId: LBKeychain.get(CURRENT_MERC_ID), headlineId: id, state: btn.isSelected ? "1" : "0")).subscribe(onNext: { (reseult) in
             switch reseult{
@@ -72,7 +88,7 @@ class ZJHeadTopicViewModel: SNBaseViewModel {
                     Count = (btn.currentTitle! as NSString).integerValue - 1
                 }
                 btn.setTitle(String(format: "%2d", Count), for: .normal)
-//                break
+            //                break
             case .fail(let code , let msg):
                 btn.isSelected = !btn.isSelected
                 ZJLog(messagr: code)
@@ -83,9 +99,9 @@ class ZJHeadTopicViewModel: SNBaseViewModel {
         }).disposed(by: disposeBag)
         
     }
-
+    
 }
-extension ZJHeadTopicViewModel : UITableViewDelegate,UITableViewDataSource{
+extension ZJHeadTopicManageViewModel : UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell : ZJHeadTopicCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
         cell.model = models[indexPath.row]
@@ -108,9 +124,9 @@ extension ZJHeadTopicViewModel : UITableViewDelegate,UITableViewDataSource{
             let preview = ZJSinglePhotoPreviewVC()
             
             preview.selectImages = imgs
-//            preview.sourceDelegate = self
+            //            preview.sourceDelegate = self
             preview.currentPage = index
-//
+            //
             self.jumpSubject.onNext(SNJumpType.show(vc: preview, anmi: true))
         }).disposed(by: cell.disposeBag)
         return cell
@@ -120,7 +136,7 @@ extension ZJHeadTopicViewModel : UITableViewDelegate,UITableViewDataSource{
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-    
+        
         return models[indexPath.row].height
     }
     
