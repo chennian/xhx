@@ -37,7 +37,7 @@ class ZJHeadTopicManageViewModel: SNBaseViewModel {
             return
 
         }
-        SNRequest(requestType: API.getHeadTopicList(mercId : LBKeychain.get(CURRENT_MERC_ID),size: "10", page: "\(page)"), modelType: ZJHeadTopicModel.self).subscribe(onNext: { (result) in
+        SNRequest(requestType: API.getHeadTopicList(checkPraiseId : LBKeychain.get(CURRENT_MERC_ID),mercId : LBKeychain.get(CURRENT_MERC_ID),size: "10", page: "\(page)"), modelType: ZJHeadTopicModel.self).subscribe(onNext: { (result) in
             switch result{
             case .success(let models):
                 
@@ -58,7 +58,7 @@ class ZJHeadTopicManageViewModel: SNBaseViewModel {
     var maxPage : Int = 0
     func getData(){
         page = 0
-        SNRequest(requestType: API.getHeadTopicList(mercId : LBKeychain.get(CURRENT_MERC_ID),size: "10", page: "\(page)"), modelType: ZJHeadTopicModel.self).subscribe(onNext: { (result) in
+        SNRequest(requestType: API.getHeadTopicList(checkPraiseId : LBKeychain.get(CURRENT_MERC_ID),mercId : LBKeychain.get(CURRENT_MERC_ID),size: "10", page: "\(page)"), modelType: ZJHeadTopicModel.self).subscribe(onNext: { (result) in
             switch result{
             case .success(let models):
                 self.models = models.lists
