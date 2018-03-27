@@ -21,3 +21,15 @@ extension UIView {
     }
     
 }
+
+
+extension UIButton{
+    //设置图片与文字的间距
+    func setTextImageInsert(margin : CGFloat){
+        titleEdgeInsets = UIEdgeInsetsMake(0, margin / 2, 0, -margin / 2)
+        imageEdgeInsets = UIEdgeInsetsMake(0, -margin / 2, 0, margin / 2)
+    }
+    
+    
+    
+}

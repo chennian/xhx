@@ -132,6 +132,20 @@ public extension Response {
         return SNMoyaResult.success(model)
     }
     
+    public func mapToString() throws -> SNMoyaResult<Bool> {
+        let jsonData = JSON(data: self.data)
+        
+        guard let model = SNNetModel(jsonData: jsonData) else {
+            throw MoyaError.jsonMapping(self)
+        }
+        ZJLog(messagr: jsonData)
+        guard model.code == "000000" else {
+            ZJLog(messagr: model.code)
+            return SNMoyaResult.fail(code: model.code, msg: model.msg)
+        }
+        return SNMoyaResult.bool(msg: model.data!.stringValue)
+    }
+    
     public func mapToBool() throws -> SNMoyaResult<Bool> {
         let jsonData = JSON(data: self.data)
         

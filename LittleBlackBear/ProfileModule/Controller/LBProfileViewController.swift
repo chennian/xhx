@@ -225,7 +225,7 @@ class LBProfileViewController: UITableViewController {
             
             listControllers.insert([
                 
-                NSStringFromClass(LBPayQRCodeViewController.self),
+                NSStringFromClass(ZJPyErcodeVC.self),
                 NSStringFromClass(LBMyAcountBookWebViewController.self),
                 NSStringFromClass(LBMarketingWebViewController.self),
                 NSStringFromClass(LBFansWebViewController.self),
@@ -252,7 +252,7 @@ class LBProfileViewController: UITableViewController {
             
             listControllers.insert([
                 
-                NSStringFromClass(LBPayQRCodeViewController.self),
+                NSStringFromClass(ZJPyErcodeVC.self),
                 NSStringFromClass(LBMyAcountBookWebViewController.self),
                 NSStringFromClass(LBNewMarketingWebViewController.self),
                 NSStringFromClass(LBFansWebViewController.self),

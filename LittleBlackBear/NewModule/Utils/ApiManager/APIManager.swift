@@ -31,6 +31,10 @@ func ZJRequest<T : SNSwiftyJSONAble>(requestType: API, modelType: [T.Type],avail
 
 
 
+func SNRequestString(requestType: API) -> Observable<SNMoyaResult<Bool>> {
+    return BMProvider.request(requestType).asObservable().mapToString()
+}
+
 
 func SNRequest<T : SNSwiftyJSONAble>(requestType: API, modelType: [T.Type],availableCode : [String] = [
     "000000"]) -> Observable<SNMoyaResult<[T]>> {

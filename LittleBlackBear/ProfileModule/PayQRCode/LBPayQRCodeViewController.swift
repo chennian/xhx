@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import RxSwift
 
 class LBPayQRCodeViewController: UIViewController {
     
@@ -98,8 +98,20 @@ class LBPayQRCodeViewController: UIViewController {
             guard let `self` = self else{return}
             self.showAlertView(RESPONSE_FAIL_MSG, "确定", nil)
         }
+        
+//        SNRequestString(requestType: API.checkMerchantExit(mer_id: mercId)).subscribe(onNext: { (result) in
+//            switch  result{
+//            case .bool(let msg):
+//                //
+//                break
+//            case .fail(_ ,let  msg):
+//                SZHUD(msg ?? "查询商家失败", type: .error, callBack: nil)
+//            default:
+//                break
+//            }
+//        }).disposed(by: disposBag)
     }
-    
+    let disposBag = DisposeBag()
     func longPressAction() {
         guard let image = imageView.image,image.size.height > 0 else { return }
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle:.actionSheet)

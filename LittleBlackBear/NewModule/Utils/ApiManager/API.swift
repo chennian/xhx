@@ -37,9 +37,14 @@ enum API {
     //点赞
     case setLike(mercId : String ,headlineId : String,state : String)
     
-    
+    ///头条详情
     case headTopicInfo(id : String , checkPraiseId : String)
     
+    /*
+     http://pay.xiaoheixiong.net/public/merInfo?mer_id=M00000062，查询商户是否存在
+     */
+    /// 查询商家是否存在
+    case checkMerchantExit(mer_id : String)
    
 }
 
@@ -47,10 +52,10 @@ enum API {
 extension API: JSONMappableTargetType {
     var headers: [String : String]? {
         switch self {
-        case .getTuanTuanList,.getMiaoMiaoList:
-            return [
-                "Content-Type": "application/x-www-form-urlencoded"
-            ]
+//        case .getTuanTuanList,.getMiaoMiaoList:
+//            return [
+//                "Content-Type": "application/x-www-form-urlencoded"
+//            ]
         default:
             return [
                 "Content-Type": "application/x-www-form-urlencoded;charset=utf-8"
@@ -69,10 +74,10 @@ extension API: JSONMappableTargetType {
     
     var baseURL: URL {
         switch self {
-//        case .setLike:
-//            return URL(string: "http://www.xiaoheixiong.net")!
+        case .checkMerchantExit:
+            return URL(string: "http://pay.xiaoheixiong.net/public/merInfo")!
         default:
-            return URL(string: "http://api.xiaoheixiong.net")!
+            return URL(string: "http://api.xiaoheixiong.net/")!
         }
         
          }
@@ -93,8 +98,10 @@ extension API: JSONMappableTargetType {
             return "/headline/updatePraise"
         case .headTopicInfo:
             return "/headline/healineInfo"
-//        default:
-//            return ""
+//        case .checkMerchantExit:
+//            return "/public/merInfo"
+        default:
+            return ""
         }
         
         
@@ -107,8 +114,8 @@ extension API: JSONMappableTargetType {
     
     var method: Moya.Method {
         switch self {
-//        case .setLike:
-//            return .get
+        case .checkMerchantExit:
+            return .get
         default:
             return .post
         }
@@ -183,6 +190,12 @@ extension API: JSONMappableTargetType {
                 "checkPraiseId": checkPraiseId
                 ] as [String : Any]
             return .requestParameters(parameters: para, encoding: URLEncoding.default)
+        case .checkMerchantExit(let mer_id):
+            let para = [
+                "mer_id" : mer_id
+                ] as [String : Any]
+            return .requestParameters(parameters: para, encoding: URLEncoding.default)
+        
         default:
             return Task.requestPlain
         }

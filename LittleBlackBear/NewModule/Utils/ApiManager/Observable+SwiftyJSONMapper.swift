@@ -61,4 +61,10 @@ public extension ObservableType where E == Response {
             return Observable.just(try response.mapToBool())
         })
     }
+    
+    public func mapToString() -> Observable<SNMoyaResult<Bool>> {
+        return flatMap({ response -> Observable<SNMoyaResult<Bool>> in
+            return Observable.just(try response.mapToString())
+        })
+    }
 }
