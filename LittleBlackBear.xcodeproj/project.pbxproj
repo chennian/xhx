@@ -211,6 +211,17 @@
 		6F5F58A0206A0EFC0025E6EA /* ZJPayErcodeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5F589F206A0EFC0025E6EA /* ZJPayErcodeViewModel.swift */; };
 		6F5F58A3206A10730025E6EA /* ZJPayErCodeContetnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5F58A2206A10730025E6EA /* ZJPayErCodeContetnView.swift */; };
 		6F5F58A5206A11640025E6EA /* ErCodeTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5F58A4206A11640025E6EA /* ErCodeTool.swift */; };
+		6F5F58AB206BB1E00025E6EA /* ZJMerchantAccountBookVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5F58AA206BB1E00025E6EA /* ZJMerchantAccountBookVC.swift */; };
+		6F5F58B1206BB34C0025E6EA /* ZJMerchantAccountBookCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5F58B0206BB34C0025E6EA /* ZJMerchantAccountBookCell.swift */; };
+		6F5F58B4206BDC460025E6EA /* ZJMerchantAccountBookHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5F58B3206BDC460025E6EA /* ZJMerchantAccountBookHeadView.swift */; };
+		6F5F58B7206BE3E60025E6EA /* ZJMerchantAccoutBookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5F58B6206BE3E60025E6EA /* ZJMerchantAccoutBookViewModel.swift */; };
+		6F5F58BA206BE7E00025E6EA /* ZJMerchantAccoutBookModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5F58B9206BE7E00025E6EA /* ZJMerchantAccoutBookModel.swift */; };
+		6F5F58BE206C1A3D0025E6EA /* ZJMyMemberVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5F58BD206C1A3D0025E6EA /* ZJMyMemberVC.swift */; };
+		6F5F58C1206C1A610025E6EA /* ZJMyMemberViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5F58C0206C1A610025E6EA /* ZJMyMemberViewModel.swift */; };
+		6F5F58C4206C1A830025E6EA /* ZJMyMemberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5F58C3206C1A830025E6EA /* ZJMyMemberCell.swift */; };
+		6F5F58C6206C227D0025E6EA /* ZJAccoutBookServiceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5F58C5206C227D0025E6EA /* ZJAccoutBookServiceVC.swift */; };
+		6F5F58C9206C246F0025E6EA /* ZJServiceAccountBookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5F58C8206C246F0025E6EA /* ZJServiceAccountBookViewModel.swift */; };
+		6F5F58CC206C2A8C0025E6EA /* ZJServiceAccountHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5F58CB206C2A8C0025E6EA /* ZJServiceAccountHeaderView.swift */; };
 		6F6898542064BC8200108B54 /* JPUSHService.h in Sources */ = {isa = PBXBuildFile; fileRef = 1810D956200F5BCE00CA6895 /* JPUSHService.h */; };
 		6F6898612064EE2400108B54 /* ZJSinglePhotoPreviewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6898602064EE2400108B54 /* ZJSinglePhotoPreviewVC.swift */; };
 		6F7E4B252052F38600FBB68B /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F7E4B242052F38600FBB68B /* Common.swift */; };
@@ -638,6 +649,17 @@
 		6F5F589F206A0EFC0025E6EA /* ZJPayErcodeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZJPayErcodeViewModel.swift; sourceTree = "<group>"; };
 		6F5F58A2206A10730025E6EA /* ZJPayErCodeContetnView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZJPayErCodeContetnView.swift; sourceTree = "<group>"; };
 		6F5F58A4206A11640025E6EA /* ErCodeTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErCodeTool.swift; sourceTree = "<group>"; };
+		6F5F58AA206BB1E00025E6EA /* ZJMerchantAccountBookVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZJMerchantAccountBookVC.swift; sourceTree = "<group>"; };
+		6F5F58B0206BB34C0025E6EA /* ZJMerchantAccountBookCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZJMerchantAccountBookCell.swift; sourceTree = "<group>"; };
+		6F5F58B3206BDC460025E6EA /* ZJMerchantAccountBookHeadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZJMerchantAccountBookHeadView.swift; sourceTree = "<group>"; };
+		6F5F58B6206BE3E60025E6EA /* ZJMerchantAccoutBookViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZJMerchantAccoutBookViewModel.swift; sourceTree = "<group>"; };
+		6F5F58B9206BE7E00025E6EA /* ZJMerchantAccoutBookModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZJMerchantAccoutBookModel.swift; sourceTree = "<group>"; };
+		6F5F58BD206C1A3D0025E6EA /* ZJMyMemberVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZJMyMemberVC.swift; sourceTree = "<group>"; };
+		6F5F58C0206C1A610025E6EA /* ZJMyMemberViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZJMyMemberViewModel.swift; sourceTree = "<group>"; };
+		6F5F58C3206C1A830025E6EA /* ZJMyMemberCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZJMyMemberCell.swift; sourceTree = "<group>"; };
+		6F5F58C5206C227D0025E6EA /* ZJAccoutBookServiceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZJAccoutBookServiceVC.swift; sourceTree = "<group>"; };
+		6F5F58C8206C246F0025E6EA /* ZJServiceAccountBookViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZJServiceAccountBookViewModel.swift; sourceTree = "<group>"; };
+		6F5F58CB206C2A8C0025E6EA /* ZJServiceAccountHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZJServiceAccountHeaderView.swift; sourceTree = "<group>"; };
 		6F6898602064EE2400108B54 /* ZJSinglePhotoPreviewVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZJSinglePhotoPreviewVC.swift; sourceTree = "<group>"; };
 		6F7E4B242052F38600FBB68B /* Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 		6F7E4B262052F69400FBB68B /* SnapKit_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapKit_Extension.swift; sourceTree = "<group>"; };
@@ -1522,6 +1544,8 @@
 		6F5F5899206A0E590025E6EA /* Mine */ = {
 			isa = PBXGroup;
 			children = (
+				6F5F58BB206C0D880025E6EA /* MyMember */,
+				6F5F58A6206BB1560025E6EA /* AccountBook */,
 				6F5F589A206A0E5F0025E6EA /* PayCode */,
 			);
 			path = Mine;
@@ -1558,6 +1582,143 @@
 			children = (
 				6F5F58A4206A11640025E6EA /* ErCodeTool.swift */,
 				6F5F58A2206A10730025E6EA /* ZJPayErCodeContetnView.swift */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		6F5F58A6206BB1560025E6EA /* AccountBook */ = {
+			isa = PBXGroup;
+			children = (
+				6F5F58A9206BB1870025E6EA /* serviceProvider */,
+				6F5F58A8206BB1820025E6EA /* merchant */,
+				6F5F58A7206BB17C0025E6EA /* consumer */,
+			);
+			path = AccountBook;
+			sourceTree = "<group>";
+		};
+		6F5F58A7206BB17C0025E6EA /* consumer */ = {
+			isa = PBXGroup;
+			children = (
+				6F5F58AE206BB1ED0025E6EA /* controller */,
+			);
+			path = consumer;
+			sourceTree = "<group>";
+		};
+		6F5F58A8206BB1820025E6EA /* merchant */ = {
+			isa = PBXGroup;
+			children = (
+				6F5F58B8206BE7BB0025E6EA /* model */,
+				6F5F58B5206BE3BF0025E6EA /* service */,
+				6F5F58AF206BB2EC0025E6EA /* view */,
+				6F5F58AC206BB1E20025E6EA /* controller */,
+			);
+			path = merchant;
+			sourceTree = "<group>";
+		};
+		6F5F58A9206BB1870025E6EA /* serviceProvider */ = {
+			isa = PBXGroup;
+			children = (
+				6F5F58CA206C2A2D0025E6EA /* view */,
+				6F5F58C7206C244A0025E6EA /* service */,
+				6F5F58AD206BB1E80025E6EA /* controller */,
+			);
+			path = serviceProvider;
+			sourceTree = "<group>";
+		};
+		6F5F58AC206BB1E20025E6EA /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				6F5F58AA206BB1E00025E6EA /* ZJMerchantAccountBookVC.swift */,
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
+		6F5F58AD206BB1E80025E6EA /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				6F5F58C5206C227D0025E6EA /* ZJAccoutBookServiceVC.swift */,
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
+		6F5F58AE206BB1ED0025E6EA /* controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
+		6F5F58AF206BB2EC0025E6EA /* view */ = {
+			isa = PBXGroup;
+			children = (
+				6F5F58B0206BB34C0025E6EA /* ZJMerchantAccountBookCell.swift */,
+				6F5F58B3206BDC460025E6EA /* ZJMerchantAccountBookHeadView.swift */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		6F5F58B5206BE3BF0025E6EA /* service */ = {
+			isa = PBXGroup;
+			children = (
+				6F5F58B6206BE3E60025E6EA /* ZJMerchantAccoutBookViewModel.swift */,
+			);
+			path = service;
+			sourceTree = "<group>";
+		};
+		6F5F58B8206BE7BB0025E6EA /* model */ = {
+			isa = PBXGroup;
+			children = (
+				6F5F58B9206BE7E00025E6EA /* ZJMerchantAccoutBookModel.swift */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		6F5F58BB206C0D880025E6EA /* MyMember */ = {
+			isa = PBXGroup;
+			children = (
+				6F5F58C2206C1A640025E6EA /* view */,
+				6F5F58BF206C1A430025E6EA /* service */,
+				6F5F58BC206C0D900025E6EA /* controller */,
+			);
+			path = MyMember;
+			sourceTree = "<group>";
+		};
+		6F5F58BC206C0D900025E6EA /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				6F5F58BD206C1A3D0025E6EA /* ZJMyMemberVC.swift */,
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
+		6F5F58BF206C1A430025E6EA /* service */ = {
+			isa = PBXGroup;
+			children = (
+				6F5F58C0206C1A610025E6EA /* ZJMyMemberViewModel.swift */,
+			);
+			path = service;
+			sourceTree = "<group>";
+		};
+		6F5F58C2206C1A640025E6EA /* view */ = {
+			isa = PBXGroup;
+			children = (
+				6F5F58C3206C1A830025E6EA /* ZJMyMemberCell.swift */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		6F5F58C7206C244A0025E6EA /* service */ = {
+			isa = PBXGroup;
+			children = (
+				6F5F58C8206C246F0025E6EA /* ZJServiceAccountBookViewModel.swift */,
+			);
+			path = service;
+			sourceTree = "<group>";
+		};
+		6F5F58CA206C2A2D0025E6EA /* view */ = {
+			isa = PBXGroup;
+			children = (
+				6F5F58CB206C2A8C0025E6EA /* ZJServiceAccountHeaderView.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -2868,6 +3029,7 @@
 				6F5F58A5206A11640025E6EA /* ErCodeTool.swift in Sources */,
 				ACDE388A1FA02D420084B362 /* LBTabbarViewController.swift in Sources */,
 				ACF5768D1FDEDA3100DE38F5 /* LBShoppingLabelCell.swift in Sources */,
+				6F5F58C9206C246F0025E6EA /* ZJServiceAccountBookViewModel.swift in Sources */,
 				6F7E4B502052FC9900FBB68B /* Extension_Then.swift in Sources */,
 				6F7E4B5F205300FA00FBB68B /* ZJHomeSeckillCell.swift in Sources */,
 				18C522C91FF4BB6300C1CBA1 /* LBCommentListPresent.swift in Sources */,
@@ -2951,6 +3113,7 @@
 				6F7E4B9420533CF600FBB68B /* XHStarRateView.m in Sources */,
 				188821C6200E054A00FB2D8C /* LBShoppingDetaillCollectionViewCell.swift in Sources */,
 				8E6F24D9205BA19A009A4505 /* PhotoPreviewCell.swift in Sources */,
+				6F5F58C6206C227D0025E6EA /* ZJAccoutBookServiceVC.swift in Sources */,
 				AC1228FF1FBECA5A009FCDB7 /* LBHttpService.swift in Sources */,
 				18020DC61FD51EB9006A445A /* LBShoppingModel.swift in Sources */,
 				8E6F24E2205BA19A009A4505 /* PhotoFetchOptions.swift in Sources */,
@@ -2997,6 +3160,7 @@
 				8EAA4FC9205D52AE0037F592 /* LBAddGroupController.swift in Sources */,
 				ACDE38951FA02F890084B362 /* UIViewExtension.swift in Sources */,
 				8E607608206367EC00399A2A /* SLTextView.swift in Sources */,
+				6F5F58C1206C1A610025E6EA /* ZJMyMemberViewModel.swift in Sources */,
 				18CC8AB91FE8ACC600784346 /* LBPayCodeWebViewController.swift in Sources */,
 				18CC8AB71FE8AC9F00784346 /* LBMyStoreManagemetWebViewController.swift in Sources */,
 				182416452008420A00F5124C /* LBPayQRCodeViewController.swift in Sources */,
@@ -3013,6 +3177,7 @@
 				18A746EF1FE8DCC200FE336B /* LBShoppingWebViewController.swift in Sources */,
 				8E6F24DF205BA19A009A4505 /* PhotoPickerConfig.swift in Sources */,
 				6F7E4B5B205300AA00FBB68B /* ZJHomeTitleCell.swift in Sources */,
+				6F5F58B1206BB34C0025E6EA /* ZJMerchantAccountBookCell.swift in Sources */,
 				AC96DE881FA1DB6800B4BA50 /* LBShoppingHeaderView.swift in Sources */,
 				ACDE38881FA02D030084B362 /* LBNavigationController.swift in Sources */,
 				AC08085F1FE9692F00677147 /* LBCommentViewController.swift in Sources */,
@@ -3031,6 +3196,7 @@
 				6FAC4991205E3D1C009A9587 /* ZJHeadTopicMainContentCell.swift in Sources */,
 				18A746DA1FE8B1A100FE336B /* LBPriofileFooterView.swift in Sources */,
 				6F7E4B572053007000FBB68B /* ZJHomeBannerCell.swift in Sources */,
+				6F5F58C4206C1A830025E6EA /* ZJMyMemberCell.swift in Sources */,
 				18BE75081FC6E93700A9F93B /* LBRegsitLoginBaseTableView.swift in Sources */,
 				8E6F24FA205BCAAB009A4505 /* PhotoImageModel.swift in Sources */,
 				6FAC91F120678564003B98D8 /* ZJHeadTopicManageViewModel.swift in Sources */,
@@ -3059,6 +3225,7 @@
 				6F7E4B73205301D100FBB68B /* UIButton_Extension.swift in Sources */,
 				18131A7E1FFF676A001A24F3 /* LBModifyLoginPassword.swift in Sources */,
 				6F404891205EA8C200609231 /* SNSwiftyJSONAble.swift in Sources */,
+				6F5F58B7206BE3E60025E6EA /* ZJMerchantAccoutBookViewModel.swift in Sources */,
 				8EAA4FED205DBD180037F592 /* LBShopGroupEmptyCell.swift in Sources */,
 				18C522C71FF4B65400C1CBA1 /* LBCommentListModel.swift in Sources */,
 				6F40488F205EA8C200609231 /* APIManager.swift in Sources */,
@@ -3087,6 +3254,7 @@
 				18D310E91FBD63060027E3CB /* ApplyHeadView.swift in Sources */,
 				6F7E4B77205301D100FBB68B /* UIImage_Extension.swift in Sources */,
 				6F7E4B412052FA0F00FBB68B /* DDZBasicTableVC.swift in Sources */,
+				6F5F58CC206C2A8C0025E6EA /* ZJServiceAccountHeaderView.swift in Sources */,
 				6F7E4B592053009A00FBB68B /* ZJHomeClassCell.swift in Sources */,
 				6F404894205EA8C200609231 /* SNMoya_ResponseMapper.swift in Sources */,
 				18A746F11FE8DD0100FE336B /* LBshoppingCouponsWebViewController.swift in Sources */,
@@ -3099,6 +3267,7 @@
 				AC0808631FE969DE00677147 /* LBCommentFooterView.swift in Sources */,
 				AC13AC281FC449F700366766 /* NSDictionary+Log.m in Sources */,
 				188821C8200E154C00FB2D8C /* LBGoodsPresenter.swift in Sources */,
+				6F5F58B4206BDC460025E6EA /* ZJMerchantAccountBookHeadView.swift in Sources */,
 				AC10A1B31FB408EB00542BD4 /* LBShoppingContentCollectionViewCell.swift in Sources */,
 				AC16D1301FE27E7800C46491 /* LBNewsModel.swift in Sources */,
 				18EAAB391FE0D64D00C2EE01 /* LBCustomerCell.swift in Sources */,
@@ -3117,7 +3286,9 @@
 				ACDE38A31FA1B4EE0084B362 /* LBNewsViewController.swift in Sources */,
 				6F40489E205EAA3300609231 /* RxMoyaAvailability.swift in Sources */,
 				ACDE38931FA02EF30084B362 /* UIImageExtension.swift in Sources */,
+				6F5F58BE206C1A3D0025E6EA /* ZJMyMemberVC.swift in Sources */,
 				8E6F24D4205BA19A009A4505 /* PhotoCollectionViewController.swift in Sources */,
+				6F5F58AB206BB1E00025E6EA /* ZJMerchantAccountBookVC.swift in Sources */,
 				AC4CBAB3200CFA7500740235 /* LBMapNavigationBar.swift in Sources */,
 				6F7E4B472052FA0F00FBB68B /* SNBaseTableView.swift in Sources */,
 				6F7E4B452052FA0F00FBB68B /* SNTimerButton.swift in Sources */,
@@ -3146,6 +3317,7 @@
 				18D310E21FBD450B0027E3CB /* SegmentedHeadView.swift in Sources */,
 				182FE5882024446600600728 /* PhotoBrowserProgressView.swift in Sources */,
 				18CC8AAF1FE8ABE100784346 /* LBMyFootMarkWebViewController.swift in Sources */,
+				6F5F58BA206BE7E00025E6EA /* ZJMerchantAccoutBookModel.swift in Sources */,
 				18745B341FBD6D4A0002EE66 /* LBMerchantApplyTableViewCellFactory.swift in Sources */,
 				6F7E4B70205301D100FBB68B /* CGRect_Extension.swift in Sources */,
 				182FE5832024446600600728 /* PhotoBrowser.swift in Sources */,

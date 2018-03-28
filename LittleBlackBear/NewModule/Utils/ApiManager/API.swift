@@ -45,6 +45,15 @@ enum API {
      */
     /// 查询商家是否存在
     case checkMerchantExit(mer_id : String)
+    
+    /// 商家账本
+    case merchantAccountBook(mer_id : String , type : String)
+    
+    /// 会员列表
+    case getMemberList(mer_id : String)
+    
+    ///代理商账本
+    case serviceAccountBook(mer_id : String)
    
 }
 
@@ -76,6 +85,8 @@ extension API: JSONMappableTargetType {
         switch self {
         case .checkMerchantExit:
             return URL(string: "http://pay.xiaoheixiong.net/public/merInfo")!
+        case .merchantAccountBook,.getMemberList,.serviceAccountBook:
+            return URL(string: "http://transaction.xiaoheixiong.net")!
         default:
             return URL(string: "http://api.xiaoheixiong.net/")!
         }
@@ -98,6 +109,13 @@ extension API: JSONMappableTargetType {
             return "/headline/updatePraise"
         case .headTopicInfo:
             return "/headline/healineInfo"
+        case .merchantAccountBook:
+            return "/api/getMyMerchantWalletList"
+        case .getMemberList:
+            return "api/getFlowList"
+        case .serviceAccountBook:
+            return "api/getMyWalletList"
+        
 //        case .checkMerchantExit:
 //            return "/public/merInfo"
         default:
@@ -195,7 +213,22 @@ extension API: JSONMappableTargetType {
                 "mer_id" : mer_id
                 ] as [String : Any]
             return .requestParameters(parameters: para, encoding: URLEncoding.default)
-        
+        case .merchantAccountBook(let mer_id,let type):
+            let para = [
+                "mer_id" : mer_id,
+                "type"  : type
+                ] as [String : Any]
+            return .requestParameters(parameters: para, encoding: URLEncoding.default)
+        case .getMemberList(let mer_id):
+            let para = [
+                "mer_id" : mer_id
+                ] as [String : Any]
+            return .requestParameters(parameters: para, encoding: URLEncoding.default)
+        case .serviceAccountBook(let mer_id):
+            let para = [
+                "mer_id" : mer_id
+                ] as [String : Any]
+            return .requestParameters(parameters: para, encoding: URLEncoding.default)
         default:
             return Task.requestPlain
         }

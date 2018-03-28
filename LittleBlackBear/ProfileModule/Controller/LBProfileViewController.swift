@@ -206,35 +206,36 @@ class LBProfileViewController: UITableViewController {
         
         if isAgent == TRUE, isMerc == TRUE {
             
-            data.insert(["我的商家","我的代理","交易管理"], at: 0)
-            images.insert( ["my_merchant","my_agent","changeManger"], at: 0)
+            data.insert(["我的商家","我的代理","交易管理","我的收益",], at: 0)
+            images.insert( ["my_merchant","my_agent","changeManger",
+                            "my_icome",], at: 0)
             titltes.insert("运营中心", at: 0)
-            
+            //ZJAccoutBookServiceVC
             listControllers.insert( [NSStringFromClass(LBMyMerchantWebViewController.self),
                                      NSStringFromClass(LBMyAngencyWebViewController.self),
-                                     NSStringFromClass(LBExchangeWebViewController.self)],at: 0)
-            
+                                     NSStringFromClass(LBExchangeWebViewController.self),
+                NSStringFromClass(ZJAccoutBookServiceVC.self)],at: 0)
+        
             data.insert(["收款码","我的账本","营销","流量管理",
-                         "店铺管理","我的商品","店铺卡券","店铺红包","我的收益",], at: 1)
+                         "店铺管理","我的商品","店铺卡券","店铺红包"], at: 1)
             titltes.insert("商户中心", at: 1)
             
             images.insert([
                 "money_code","my_account_book","marketing","my_fans",
-                "shop_manage","my_shopping","shop_card","shop_redPacket",
-                "my_icome",], at: 1)
+                "shop_manage","my_shopping","shop_card","shop_redPacket"], at: 1)
             
             listControllers.insert([
-                
+                //ZJMerchantAccountBookVC。 LBMyAcountBookWebViewController
                 NSStringFromClass(ZJPyErcodeVC.self),
-                NSStringFromClass(LBMyAcountBookWebViewController.self),
+                NSStringFromClass(ZJMerchantAccountBookVC.self),
                 NSStringFromClass(LBMarketingWebViewController.self),
-                NSStringFromClass(LBFansWebViewController.self),
+                NSStringFromClass(ZJMyMemberVC.self),//ZJMyMemberVC。LBFansWebViewController
                 
                 NSStringFromClass(LBMyStoreManagemetWebViewController.self),
                 NSStringFromClass(LBShoppingWebViewController.self),
                 NSStringFromClass(LBshoppingCouponsWebViewController.self),
                 NSStringFromClass(LBShopRedPacketWebViewController.self),
-                NSStringFromClass(LBMyIcomeWebViewController.self),
+//                NSStringFromClass(LBMyIcomeWebViewController.self),
                 
                 ], at: 1)
         }
@@ -242,7 +243,7 @@ class LBProfileViewController: UITableViewController {
         if isMerc == TRUE,isAgent == FALSE {
             
             data.insert(["收款码","我的账本","营销","流量管理",
-                         "店铺管理","我的商品","店铺卡券","店铺红包","我的收益",], at: 0)
+                         "店铺管理","我的商品","店铺卡券","店铺红包"], at: 0)
             titltes.insert("商户中心", at: 0)
             
             images.insert([
@@ -253,15 +254,15 @@ class LBProfileViewController: UITableViewController {
             listControllers.insert([
                 
                 NSStringFromClass(ZJPyErcodeVC.self),
-                NSStringFromClass(LBMyAcountBookWebViewController.self),
+                NSStringFromClass(ZJMerchantAccountBookVC.self),
                 NSStringFromClass(LBNewMarketingWebViewController.self),
-                NSStringFromClass(LBFansWebViewController.self),
+                NSStringFromClass(ZJMyMemberVC.self),
                 
                 NSStringFromClass(LBMyStoreManagemetWebViewController.self),
                 NSStringFromClass(LBShoppingWebViewController.self),
                 NSStringFromClass(LBshoppingCouponsWebViewController.self),
                 NSStringFromClass(LBShopRedPacketWebViewController.self),
-                NSStringFromClass(LBMyIcomeWebViewController.self),
+//                NSStringFromClass(LBMyIcomeWebViewController.self),
 
                 ], at: 0)
             
