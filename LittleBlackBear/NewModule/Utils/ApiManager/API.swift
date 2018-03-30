@@ -20,7 +20,7 @@ let BMProvider = RxMoyaProvider<API>()
 enum API {
     
     
-    
+    case insertMerchant(paremeter:[String:Any])
    //fabutou
     case getTuanTuanList(mercId : String,size : Int,page : Int)
     
@@ -85,7 +85,7 @@ extension API: JSONMappableTargetType {
         switch self {
         case .checkMerchantExit:
             return URL(string: "http://pay.xiaoheixiong.net/public/merInfo")!
-        case .merchantAccountBook,.getMemberList,.serviceAccountBook:
+        case .merchantAccountBook,.getMemberList,.serviceAccountBook,.insertMerchant:
             return URL(string: "http://transaction.xiaoheixiong.net")!
         default:
             return URL(string: "http://api.xiaoheixiong.net/")!
@@ -95,6 +95,8 @@ extension API: JSONMappableTargetType {
     
     var path: String {
         switch self {
+        case .insertMerchant:
+            return "/api/merchantAdd"
         case .getTuanTuanList:
             return "/activity/queryCoupon"
         case .getMiaoMiaoList:
@@ -156,6 +158,10 @@ extension API: JSONMappableTargetType {
     var task: Task {
         
         switch self {
+            
+        case .insertMerchant(let paremeter):
+            return .requestParameters(parameters:paremeter,encoding: URLEncoding.default)
+            
         case .getTuanTuanList(let mercId,let size,let page):
             let para = [
                 "mercId" : mercId,

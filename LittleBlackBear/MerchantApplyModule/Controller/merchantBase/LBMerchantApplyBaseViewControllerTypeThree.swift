@@ -6,8 +6,11 @@
 //  Copyright © 2017年 蘇崢. All rights reserved.
 //
 import UIKit
+import RxSwift
 
 class LBMerchantApplyBaseViewControllerTypeThree: LBMerchantApplyBaseViewController {
+    
+    fileprivate let disposeBag = DisposeBag()
     
     fileprivate let bankTotalPickView = LBBankTotalPickView(frame: CGRect(x: 0, y: 0, width: KSCREEN_WIDTH, height: 216))
     fileprivate let bankBranchPickView = LBBankBranchPickerView(frame: CGRect(x: 0, y: 0, width: KSCREEN_WIDTH, height: 216))
@@ -482,38 +485,38 @@ extension LBMerchantApplyBaseViewControllerTypeThree:LBMerchantUploadInfoServer{
         
         var parameters:[String:Any] = [
             
-            "mercid":"001",                               //会员号
-            "enterpriseInf.name" :name,                   // 负责人姓名
+            "mer_id":LBKeychain.get(CURRENT_MERC_ID),  //会员号
+            "name" :name,                   // 负责人姓名
             "phone":account,                              // 负责人手机号
-            "enterpriseInf.idcardType":idcardType,            //身份证类型
-            "enterpriseInf.idcard":IDNumber,              //负责人身份证号
+            "idcardType":idcardType,            //身份证类型
+            "idcard":IDNumber,              //负责人身份证号
             "email":email,                                //邮箱
-            "enterpriseInf.validterm":validterm,          //身份证有效期
-            "enterpriseInf.idcardone" :firstImagePath,    //正面身份证
-            "enterpriseInf.idcardtwo":secondImagePath,    //反面身份证
-            "enterpriseInf.handidcardpic" :"123",//手持身份证
+            "validterm":validterm,          //身份证有效期
+            "idcardone" :firstImagePath,    //正面身份证
+            "idcardtwo":secondImagePath,    //反面身份证
+//            "enterpriseInf.handidcardpic" :"123",//手持身份证
             
-            "enterpriseInf.gatepic" :shopFrontPhotoImagePath,   //店铺门头照
-            "enterpriseInf.busregimg":businessLicenseImagePath, //营业执照
-            "enterpriseInf.storePic":storePicImagePath,         //店内照
-            "enterpriseInf.checkStandPic":checkStandPicImagePath, //收营台  前台
+            "gatepic" :shopFrontPhotoImagePath,   //店铺门头照
+            "busregimg":businessLicenseImagePath, //营业执照
+            "storePic":storePicImagePath,         //店内照
+            "checkStandPic":checkStandPicImagePath, //收营台  前台
             
-            "enterpriseInf.entabb":merchantAbbreviation,        // 商户简称
-            "enterpriseInf.entname":enterpriseName,             //企业名称
+            "entabb":merchantAbbreviation,        // 商户简称
+            "entname":enterpriseName,             //企业名称
             
-            "enterpriseInf.busregnum"  :businessLicenseNum,     //统一社会信用代码
-            "enterpriseInf.enterpraiseLicenseTerm"  :enterpraiseLicenseTerm,     //营业执照有效期
-            "enterpriseInf.orgcode" :organizationCodeNum,
-            "entAddress.province":companyProvince,              //公司所在省
-            "entAddress.city":companyCity,                      //公司所在市
-            "entAddress.details":companAddressDetails,          //公司详细地址
-            "typeId":companyType,//行业类别
+            "busregnum"  :businessLicenseNum,     //统一社会信用代码
+            "enterpraiseLicenseTerm"  :enterpraiseLicenseTerm,     //营业执照有效期
+//            "orgcode" :organizationCodeNum,
+            "province":companyProvince,              //公司所在省
+            "city":companyCity,                      //公司所在市
+            "details":companAddressDetails,          //公司详细地址
+            "industryid":companyType,//行业类别
             
             
         ]
         // 瞎传值，无意义 （后台暂无更新按就的进件）
-        parameters["enterpriseInf.openlicense"] = "enterpriseInf.orgcodeimg"
-        parameters["enterpriseInf.orgcodeimg"] = "enterpriseInf.orgcodeimg"
+//        parameters["enterpriseInf.openlicense"] = "enterpriseInf.orgcodeimg"
+//        parameters["enterpriseInf.orgcodeimg"] = "enterpriseInf.orgcodeimg"
         
         // 第三步资料
         let stepThirItem = ApplyModel.shareApplyModel.applySelfModel.stepThree
@@ -529,21 +532,21 @@ extension LBMerchantApplyBaseViewControllerTypeThree:LBMerchantUploadInfoServer{
             let branchBank = stepThirItem.priv.branchBank
             let bankUserName  = stepThirItem.priv.bankName
             
-            parameters["enterpriseInf.balancecardone"] = bankFirstImgPath   //银行卡正面
-            parameters["enterpriseInf.balancecardtwo"] = bankSecondImgPath  //银行卡反面
+            parameters["balancecardone"] = bankFirstImgPath   //银行卡正面
+            parameters["balancecardtwo"] = bankSecondImgPath  //银行卡反面
             
             // 后台没分个体与企业校验 暂时瞎传
-            parameters["enterpriseInf.openlicense"]  = "licenseImagePath"
+//            parameters["enterpriseInf.openlicense"]  = "licenseImagePath"
             
-            parameters["entbankInf.priaccount"] = bankCard          //对私银行账号
-            parameters["entbankInf.opnbank"] = bankCardID           //开户行
+            parameters["priaccount"] = bankCard          //对私银行账号
+            parameters["opnbank"] = bankCardID           //开户行
             parameters["banktotalid"] = banktotalid                 //开户行id
-            parameters["entbankInf.ponaccname"] = branchBank        //开户支行
-            parameters["entbankInf.province"] = entbankInfProvince  //开户银行所在省
-            parameters["entbankInf.city"] = entbankInfCity          //开户银行所在市
-            parameters["entbankInf.cardphone"] = bankPhone          //银行预留手机号码
-            parameters["entbankInf.cardtype"] = "\(1)"              //银行卡类型
-            parameters["entbankInf.name"] = bankUserName            //持卡人姓名
+            parameters["ponaccname"] = branchBank        //开户支行
+            parameters["bankProvince"] = entbankInfProvince  //开户银行所在省
+            parameters["bankCity"] = entbankInfCity          //开户银行所在市
+            parameters["cardphone"] = bankPhone          //银行预留手机号码
+            parameters["cardtype"] = "\(1)"              //银行卡类型
+            parameters["accountName"] = bankUserName            //持卡人姓名
             
             
         case .company:
@@ -556,44 +559,58 @@ extension LBMerchantApplyBaseViewControllerTypeThree:LBMerchantUploadInfoServer{
             let branchBank = stepThirItem.company.branchBank
             
             // 后台没分个体与企业校验 暂时瞎传
-            parameters["enterpriseInf.balancecardone"] = "bankFirstImgPath"
-            parameters["enterpriseInf.balancecardtwo"] = "bankSecondImgPath"
+            parameters["balancecardone"] = "bankFirstImgPath"
+            parameters["balancecardtwo"] = "bankSecondImgPath"
             
-            parameters["enterpriseInf.openlicense"]  = licenseImagePath  //开户许可证正面照片
-            parameters["entbankInf.comaccnum"] = bankCard                //对公银行账号
-            parameters["entbankInf.opnbank"] = bankCardID               //开户行
-            parameters["entbankInf.name"] = bankUserName                 //持卡人姓名
+            parameters["openlicense"]  = licenseImagePath  //开户许可证正面照片
+            parameters["comaccnum"] = bankCard                //对公银行账号
+            parameters["opnbank"] = bankCardID               //开户行
+            parameters["accountName"] = bankUserName                 //持卡人姓名
             parameters["banktotalid"] = banktotalid                      //开户行id
-            parameters["entbankInf.ponaccname"] = branchBank             //开户支行
-            parameters["entbankInf.province"] = entbankInfProvince       //银行卡所在省
-            parameters["entbankInf.city"] = entbankInfCity               //银行卡所在市
-            parameters["entbankInf.cardphone"] = bankPhone               //银行预留手机号
-            parameters["entbankInf.cardtype"] = "\(0)"                   //银行卡类型
+            parameters["ponaccname"] = branchBank             //开户支行
+            parameters["bankProvince"] = entbankInfProvince       //银行卡所在省
+            parameters["bankCity"] = entbankInfCity               //银行卡所在市
+            parameters["cardphone"] = bankPhone               //银行预留手机号
+            parameters["cardtype"] = "\(0)"                   //银行卡类型
             
         }
         button.isEnabled = false
-        print(parameters["enterpriseInf.openlicense"]!)
-        uploadMerchantData(parameters: lb_md5Parameter(parameter: parameters), success: {[weak self](_)in
-            Print(lb_md5Parameter(parameter: parameters))
-            guard let strongSelf = self else{return}
-            let viewController = LBMerchantApplyFinishViewController()
-            strongSelf.navigationController?.pushViewController(viewController, animated: true)
-            button.isEnabled = true
-            ApplyModelTool.removeModel()
-            
-            
-        }) {[weak self] (msg) in
-            guard let strongSelf = self else{return}
-            strongSelf.showAlertView(message: msg, actionTitles: ["退出","修改"], handler: { (action) in
-                if action.title == "退出"{
-                    strongSelf.navigationController?.popToRootViewController(animated: true)
-                }
-                
-            })
-            
-            button.isEnabled = true
-            
-        }
+        print(parameters);
+        
+        SNRequestBool(requestType: API.insertMerchant(paremeter: parameters)).subscribe(onNext: {[unowned self] (result) in
+            switch result{
+            case .bool(_):
+                let viewController = LBMerchantApplyFinishViewController()
+                self.navigationController?.pushViewController(viewController, animated: true)
+                button.isEnabled = true
+                ApplyModelTool.removeModel()
+                SZHUD("上次成功", type: .info, callBack: nil)
+            default:
+                SZHUD("请求错误", type: .error, callBack: nil)
+                self.navigationController?.popToRootViewController(animated: true)
+
+                button.isEnabled = true
+
+            }
+        }).disposed(by: disposeBag)
+        
+//        uploadMerchantData(parameters:parameters, success: {[weak self](_)in
+//            Print(parameters)
+//
+//
+//
+//        }) {[weak self] (msg) in
+//            guard let strongSelf = self else{return}
+//            strongSelf.showAlertView(message: msg, actionTitles: ["退出","修改"], handler: { (action) in
+//                if action.title == "退出"{
+//                    strongSelf.navigationController?.popToRootViewController(animated: true)
+//                }
+//
+//            })
+//
+//            button.isEnabled = true
+//
+//        }
         
     }
 }

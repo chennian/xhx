@@ -28,6 +28,10 @@ struct product1:LBURL {
 struct product2:LBURL {
     static var baseUrl: String = "http://api.xiaoheixiong.net/"
 }
+struct product3:LBURL {
+    static var baseUrl: String = "http://transaction.xiaoheixiong.net/"
+}
+
 /// H5
 struct H5Develope:LBURL {
 	static var baseUrl: String = "http://www.beixiang123.com/"
@@ -44,7 +48,8 @@ enum LBRequestUrlType:String{
     //新增秒秒
     case newUpdateSeckill = "activity/addKill"
     
-    
+    case newMerchantInsert = "api/merchantAdd"
+
 
 	/// 手机号注册
 	case mobileRegister = "xhx/register/mobileRegister"

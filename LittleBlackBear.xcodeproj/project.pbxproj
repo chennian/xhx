@@ -222,7 +222,6 @@
 		6F5F58C6206C227D0025E6EA /* ZJAccoutBookServiceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5F58C5206C227D0025E6EA /* ZJAccoutBookServiceVC.swift */; };
 		6F5F58C9206C246F0025E6EA /* ZJServiceAccountBookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5F58C8206C246F0025E6EA /* ZJServiceAccountBookViewModel.swift */; };
 		6F5F58CC206C2A8C0025E6EA /* ZJServiceAccountHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5F58CB206C2A8C0025E6EA /* ZJServiceAccountHeaderView.swift */; };
-		6F6898542064BC8200108B54 /* JPUSHService.h in Sources */ = {isa = PBXBuildFile; fileRef = 1810D956200F5BCE00CA6895 /* JPUSHService.h */; };
 		6F6898612064EE2400108B54 /* ZJSinglePhotoPreviewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6898602064EE2400108B54 /* ZJSinglePhotoPreviewVC.swift */; };
 		6F7E4B252052F38600FBB68B /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F7E4B242052F38600FBB68B /* Common.swift */; };
 		6F7E4B272052F69400FBB68B /* SnapKit_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F7E4B262052F69400FBB68B /* SnapKit_Extension.swift */; };
@@ -454,7 +453,6 @@
 		1810D951200F58E800CA6895 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libcrypto.a; sourceTree = "<group>"; };
 		1810D952200F58E800CA6895 /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libssl.a; sourceTree = "<group>"; };
 		1810D955200F5BCD00CA6895 /* jpush-ios-3.0.2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "jpush-ios-3.0.2.a"; sourceTree = "<group>"; };
-		1810D956200F5BCE00CA6895 /* JPUSHService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPUSHService.h; sourceTree = "<group>"; };
 		1810D957200F5BCF00CA6895 /* jcore-ios-1.1.1.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "jcore-ios-1.1.1.a"; sourceTree = "<group>"; };
 		18131A781FFF176D001A24F3 /* LBBindAcoountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBBindAcoountViewController.swift; sourceTree = "<group>"; };
 		18131A7B1FFF1867001A24F3 /* LBBindAccountTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBBindAccountTableViewCell.swift; sourceTree = "<group>"; };
@@ -725,6 +723,7 @@
 		8E5217CB2064C75B0083B304 /* ZJHeadTopicToolHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZJHeadTopicToolHeader.swift; sourceTree = "<group>"; };
 		8E5217D02064C7AA0083B304 /* SZHUDTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SZHUDTool.swift; sourceTree = "<group>"; };
 		8E607607206367EC00399A2A /* SLTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SLTextView.swift; sourceTree = "<group>"; };
+		8E6E6C50206C743200452C08 /* JPUSHService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPUSHService.h; sourceTree = "<group>"; };
 		8E6F24B8205B838E009A4505 /* LBMyNewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBMyNewsViewController.swift; sourceTree = "<group>"; };
 		8E6F24BD205BA199009A4505 /* photoCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = photoCollectionViewCell.xib; sourceTree = "<group>"; };
 		8E6F24BE205BA199009A4505 /* PhotoPickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoPickerController.swift; sourceTree = "<group>"; };
@@ -946,9 +945,9 @@
 		1810D939200F52B300CA6895 /* jpushLib */ = {
 			isa = PBXGroup;
 			children = (
+				8E6E6C50206C743200452C08 /* JPUSHService.h */,
 				1810D957200F5BCF00CA6895 /* jcore-ios-1.1.1.a */,
 				1810D955200F5BCD00CA6895 /* jpush-ios-3.0.2.a */,
-				1810D956200F5BCE00CA6895 /* JPUSHService.h */,
 			);
 			path = jpushLib;
 			sourceTree = "<group>";
@@ -2972,7 +2971,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6F6898542064BC8200108B54 /* JPUSHService.h in Sources */,
 				ACDE38911FA02E540084B362 /* LBColor.swift in Sources */,
 				ACD1A2381FC72C65002E6793 /* LBForgotPasswordViewController.swift in Sources */,
 				AC4CBAB6200CFA7500740235 /* LBMapPulseLayer.swift in Sources */,
