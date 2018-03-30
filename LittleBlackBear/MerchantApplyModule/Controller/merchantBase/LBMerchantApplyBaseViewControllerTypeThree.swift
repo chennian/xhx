@@ -594,24 +594,6 @@ extension LBMerchantApplyBaseViewControllerTypeThree:LBMerchantUploadInfoServer{
             }
         }).disposed(by: disposeBag)
         
-//        uploadMerchantData(parameters:parameters, success: {[weak self](_)in
-//            Print(parameters)
-//
-//
-//
-//        }) {[weak self] (msg) in
-//            guard let strongSelf = self else{return}
-//            strongSelf.showAlertView(message: msg, actionTitles: ["退出","修改"], handler: { (action) in
-//                if action.title == "退出"{
-//                    strongSelf.navigationController?.popToRootViewController(animated: true)
-//                }
-//
-//            })
-//
-//            button.isEnabled = true
-//
-//        }
-        
     }
 }
 
