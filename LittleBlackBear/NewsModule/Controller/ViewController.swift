@@ -24,9 +24,9 @@ class ViewController: UIViewController,PhotoPickerControllerDelegate, UIImagePic
     var imagePathString:String = ""
     var locationSwitch = UISwitch()
     
-    fileprivate var  city = "深圳市"
-    fileprivate var  lng =  "114.047870066526"
-    fileprivate var  lat =  "22.6008299566074"
+    fileprivate var  city = LBKeychain.get(LOCATION_CITY_KEY)  + LBKeychain.get(locationSubLocalKey) + LBKeychain.get(locationAareKey)
+    fileprivate var  lng =  LBKeychain.get(longiduteKey)
+    fileprivate var  lat =  LBKeychain.get(latitudeKey)
 
     fileprivate let mainView = UIView()
     
@@ -38,14 +38,12 @@ class ViewController: UIViewController,PhotoPickerControllerDelegate, UIImagePic
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(city)
         setUpRightBar()
-        
         setNickView()
         setUpPublishText()
-        
         self.view.addSubview(self.containerView)
         setLoctionView()
-
         self.checkNeedAddButton()
         self.renderView()
     }
@@ -94,33 +92,7 @@ class ViewController: UIViewController,PhotoPickerControllerDelegate, UIImagePic
             make.left.equalTo(locationImg.snp.right).snOffset(15)
             make.centerY.equalTo(locationImg.snp.centerY)
         }
-        
-//        let locationSwitch = UISwitch()
-//        locationView.addSubview(locationSwitch)
-//        locationSwitch.addTarget(self, action: #selector(switchDidChange), for:.valueChanged)
-//        locationSwitch.isOn = false
-//
-//        locationSwitch.snp.makeConstraints { (make) in
-//            make.right.equalToSuperview().snOffset(-30)
-//            make.centerY.equalToSuperview()
-//        }
     }
-    
-//    func switchDidChange(){
-//        if locationSwitch.isOn {
-//            self.city = LBKeychain.get(LOCATION_CITY_KEY)
-//            self.lng  = LBKeychain.get(longiduteKey)
-//            self.lat  = LBKeychain.get(latitudeKey)
-//            self.locationLable.text = self.city
-//
-//        }else{
-//            self.city = ""
-//            self.lng  = ""
-//            self.lat  = ""
-//            self.locationLable.text = self.city
-//
-//        }
-//    }
     
     func setNickView(){
         self.view.backgroundColor = ColorRGB(red: 234, green: 234, blue: 234)
@@ -188,26 +160,10 @@ class ViewController: UIViewController,PhotoPickerControllerDelegate, UIImagePic
         
         self.navigationItem.rightBarButtonItem=item
     }
-    
-    func submit(){
-        
-        if nikeTextField.text == ""{
-            let alertView = UIAlertView(title: "温馨提示", message: "请输入昵称", delegate: nil, cancelButtonTitle:"确定" )
-            alertView.show()
-        }
-        
-        if publishText.text == ""{
-            let alertView = UIAlertView(title: "温馨提示", message: "请输入文字", delegate: nil, cancelButtonTitle:"确定" )
-            alertView.show()
-        }
-        
-//        if selectModel.count <= 1 {
-//            let alertView = UIAlertView(title: "温馨提示", message: "请选择图片", delegate: nil, cancelButtonTitle:"确定" )
-//            alertView.show()
-//        }
+    func submitImages(){
         
         let manager = DDZOssManager()
-                
+
         if !imageArray.isEmpty {
             
             for i in 0..<imageArray.count {
@@ -222,20 +178,39 @@ class ViewController: UIViewController,PhotoPickerControllerDelegate, UIImagePic
                 let path = frontUrl + objecKey
                 print(path)
                 self.imagePathArray.append(path)
-                manager.uploadImg(objectKey: objecKey, image: self.imageArray[i],imageName:"",bucketName: BucketName, endPoint: EndPoint,path:path){[weak self] (success) in
+
+                manager.uploadImg(objectKey: objecKey, image: self.imageArray[i],imageName:"",bucketName: BucketName, endPoint: EndPoint,path:path){[unowned self] (success) in
                     if success{
                         print("上传阿里云成功")
+
                     }else{
-                        print("上传阿里云失败")
+                        self.imagePathArray.removeAll()
                     }
                 }
             }
         }
+    }
+    
+    func submit(){
         
-//        print(imagePathArray)
-//        if !imagePathArray.isEmpty{
+        if nikeTextField.text == ""{
+            let alertView = UIAlertView(title: "温馨提示", message: "请输入昵称", delegate: nil, cancelButtonTitle:"确定" )
+            alertView.show()
+            return
+        }
         
-//        }
+        if publishText.text == ""{
+            let alertView = UIAlertView(title: "温馨提示", message: "请输入文字", delegate: nil, cancelButtonTitle:"确定" )
+            alertView.show()
+            return
+        }
+        if self.imagePathArray.isEmpty {
+            SZHUD("图片上传失败", type: .error, callBack: nil)
+            return
+        }
+        
+        self.submitImages()
+
         let time: TimeInterval = 4.0
         SZHUD("正在发送中...", type: .loading, callBack: nil)
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + time) {
@@ -393,6 +368,7 @@ class ViewController: UIViewController,PhotoPickerControllerDelegate, UIImagePic
 //            make.height.snEqualTo(containerHeight)
 //        }
         self.containerView.frame = CGRect(x:0, y:fit(410), width:totalWidth,  height:containerHeight)
+
     }
     
     private func renderItemView(itemX:CGFloat,itemY:CGFloat,itemWidth:CGFloat,index:Int){
@@ -596,6 +572,7 @@ class ViewController: UIViewController,PhotoPickerControllerDelegate, UIImagePic
             }
         }
         self.renderView()
+
     }
     
     private func getModelExceptButton()->[PhotoImageModel]{

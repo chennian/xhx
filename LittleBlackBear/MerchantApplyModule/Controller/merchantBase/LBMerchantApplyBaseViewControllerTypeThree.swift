@@ -319,8 +319,8 @@ class LBMerchantApplyBaseViewControllerTypeThree: LBMerchantApplyBaseViewControl
                         self?.applyStepModelCompany?.licenseImage = ApplyImage(image: image, path: path)
                         print(path)
                     }else{
-                        print("上传失败")
-                    }
+                        SZHUD("图片上传失败", type: .error, callBack: nil)
+                        return                    }
                 }
             }else if self?.applyType == .priv {
                 let imgNames:[String] = ["bankFirstImg","bankSecondImg"]
@@ -336,8 +336,8 @@ class LBMerchantApplyBaseViewControllerTypeThree: LBMerchantApplyBaseViewControl
                         default:break
                         }
                     }else{
-                        print("上传失败")
-                    }
+                        SZHUD("图片上传失败", type: .error, callBack: nil)
+                        return                    }
                 }
             }
         }

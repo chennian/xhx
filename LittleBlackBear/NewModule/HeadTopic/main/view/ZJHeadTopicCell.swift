@@ -88,7 +88,7 @@ class ZJHeadTopicCell: SNBaseTableViewCell {
         }
     }
 
-    let headIcon = UIImageView().then{
+   public  let headIcon = UIImageView().then{
         $0.layer.cornerRadius = fit(40)
         $0.clipsToBounds = true
     }

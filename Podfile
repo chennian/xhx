@@ -28,7 +28,7 @@ target 'LittleBlackBear' do
   pod 'TZImagePickerController'
   pod 'APJTextPickerView'
   pod 'TabPageViewController'
-
+  pod 'PagingMenuController'
   target 'LittleBlackBearTests' do
     inherit! :search_paths
     # Pods for testing

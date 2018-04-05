@@ -273,16 +273,16 @@ class LBMerchantApplyBaseViewControllerTypeOne: LBMerchantApplyBaseViewControlle
                         strongSelf.applyStepModel?.firstImage = ApplyImage(image: image, path: path)
                         case 1:
                         strongSelf.applyStepModel?.secondImage = ApplyImage(image: image, path: path)
-                        
                         default:break
-                                    }
+                        
+                    }
                     print(path)
                 }else{
-                    print("上传失败")
+                    SZHUD("图片上传失败", type: .error, callBack: nil)
+                    return
                 }
             
             }
-            
         }
     }
     

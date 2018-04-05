@@ -14,6 +14,8 @@ public let latitudeKey:String = "LittleBlackBear_latitude"
 
 public let LOCATION_CITY_KEY:String = "locationCityKey"
 public let locationAareKey:String = "locationAareKey"
+public let locationSubLocalKey:String = "locationSubLocalKey"
+
 
 public let PHONE_NUMBER = "userPhone"
 public let USER_NAME = "userName"

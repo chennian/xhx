@@ -75,7 +75,7 @@ class PhotoPreviewViewController: UIViewController,UICollectionViewDataSource,UI
         
         // fullscreen controller
         self.navigationController?.isNavigationBarHidden = true
-        UIApplication.shared.setStatusBarHidden(true, with: .none)
+//        UIApplication.shared.setStatusBarHidden(true, with: .none)
         
         self.collectionView?.setContentOffset(CGPoint(x: CGFloat(self.currentPage) * self.view.bounds.width, y: 0), animated: false)
         

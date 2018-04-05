@@ -56,6 +56,7 @@ extension SZLocationManager:CLLocationManagerDelegate{
 			guard ((placemar?.count) != nil) else {return}
 			let placemark:CLPlacemark = (placemar?.first)!
 			var city = placemark.locality
+            let subLocality = placemark.subLocality
 			let are  = placemark.thoroughfare
 			if city == nil {
 				city = placemark.administrativeArea
@@ -69,7 +70,9 @@ extension SZLocationManager:CLLocationManagerDelegate{
 			Print("\(String(describing: city))-\(String(describing: are))")
 			guard are != nil  else {return}
 			LBKeychain.set(are!, key: locationAareKey)
-			
+            guard subLocality != nil else {return}
+            LBKeychain.set(subLocality!, key: locationSubLocalKey)
+
 		}
 		
 	}

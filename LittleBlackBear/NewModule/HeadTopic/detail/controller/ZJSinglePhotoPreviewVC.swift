@@ -119,7 +119,7 @@ class ZJSinglePhotoPreviewVC: UIViewController,UICollectionViewDataSource,UIColl
     // MARK: -  Photo Preview Cell Delegate
     func onImageSingleTap() {
         let status = !UIApplication.shared.isStatusBarHidden
-        UIApplication.shared.setStatusBarHidden(status, with: .slide)
+//        UIApplication.shared.setStatusBarHidden(status, with: .slide)
         self.navigationController?.setNavigationBarHidden(status, animated: true)
     }
     

@@ -129,9 +129,9 @@ class LBProfileViewController: UITableViewController {
                             strongSelf.showAlertView(RESPONSE_FAIL_MSG, "确定", nil)
                         })
                     }else{
-                        strongSelf.showAlertView("上传失败!", "确定", nil)
+                        SZHUD("图片上传失败", type: .error, callBack: nil)
+                        return
                     }
-                    
                 }
             })
             
@@ -228,7 +228,7 @@ class LBProfileViewController: UITableViewController {
                 //ZJMerchantAccountBookVC。 LBMyAcountBookWebViewController
                 NSStringFromClass(ZJPyErcodeVC.self),
                 NSStringFromClass(ZJMerchantAccountBookVC.self),
-                NSStringFromClass(LBMarketingWebViewController.self),
+                NSStringFromClass(LBNewMarketingWebViewController.self),
                 NSStringFromClass(ZJMyMemberVC.self),//ZJMyMemberVC。LBFansWebViewController
                 
                 NSStringFromClass(LBMyStoreManagemetWebViewController.self),

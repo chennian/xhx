@@ -65,7 +65,7 @@ class PhotoCollectionViewController: UICollectionViewController, PHPhotoLibraryC
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		self.navigationController?.isNavigationBarHidden = false
-        UIApplication.shared.setStatusBarHidden(false, with: .none)
+//        UIApplication.shared.setStatusBarHidden(false, with: .none)
         
         self.tabBarController?.tabBar.isHidden = false
         

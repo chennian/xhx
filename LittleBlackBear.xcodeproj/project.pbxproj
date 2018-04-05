@@ -278,6 +278,7 @@
 		6FE25D63205F720200F8954C /* ZJHeadTopicImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FE25D62205F720200F8954C /* ZJHeadTopicImageCell.swift */; };
 		8BBB99650F999309BDE1B090 /* Pods_LittleBlackBearTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9028C7DFF812405594EA0177 /* Pods_LittleBlackBearTests.framework */; };
 		8E2CD0762063A26B00F7298C /* LBNewMarketCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E2CD0752063A26B00F7298C /* LBNewMarketCellTableViewCell.swift */; };
+		8E3BA960207490AC002F067B /* LBMerchantAppleFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3BA95F207490AC002F067B /* LBMerchantAppleFieldCell.swift */; };
 		8E479855205D07EC0018F6B4 /* LBNewMarketingWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E479854205D07EC0018F6B4 /* LBNewMarketingWebViewController.swift */; };
 		8E479859205D0D170018F6B4 /* LBNewMarketHead.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E479858205D0D170018F6B4 /* LBNewMarketHead.swift */; };
 		8E47985E205D22D90018F6B4 /* LBAddSeckillController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E47985D205D22D90018F6B4 /* LBAddSeckillController.swift */; };
@@ -332,6 +333,13 @@
 		8EAA5018205FEC570037F592 /* LBAddGroupActivityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EAA5017205FEC570037F592 /* LBAddGroupActivityCell.swift */; };
 		8ED696B02057B23A00682BC8 /* DDZUploadBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED696AD2057B23A00682BC8 /* DDZUploadBtn.swift */; };
 		8ED696B22057B23A00682BC8 /* DDZOssManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED696AF2057B23A00682BC8 /* DDZOssManager.swift */; };
+		8EDF01B72073AD0F00AFDD62 /* LBMerchantManagerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EDF01B62073AD0F00AFDD62 /* LBMerchantManagerController.swift */; };
+		8EDF01B92073C15E00AFDD62 /* LBMerchantTextFileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EDF01B82073C15E00AFDD62 /* LBMerchantTextFileCell.swift */; };
+		8EDF01BB20746D8D00AFDD62 /* LBMerchantMainImgCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EDF01BA20746D8D00AFDD62 /* LBMerchantMainImgCellTableViewCell.swift */; };
+		8EDF01BD207472C800AFDD62 /* LBMerchantDetailImgCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EDF01BC207472C800AFDD62 /* LBMerchantDetailImgCell.swift */; };
+		8EDF01BF2074741300AFDD62 /* LBMerchantAddressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EDF01BE2074741300AFDD62 /* LBMerchantAddressCell.swift */; };
+		8EDF01C220747B8F00AFDD62 /* LBMerchantApplyInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EDF01C120747B8F00AFDD62 /* LBMerchantApplyInfoController.swift */; };
+		8EDF01C420747BE600AFDD62 /* LBMerchantMainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EDF01C320747BE600AFDD62 /* LBMerchantMainController.swift */; };
 		AC0077EF1FC657F700BE0153 /* LBMercApplyAlterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0077EE1FC657F700BE0153 /* LBMercApplyAlterView.swift */; };
 		AC0077F31FC69EEA00BE0153 /* LBLogoHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0077F21FC69EEA00BE0153 /* LBLogoHeaderView.swift */; };
 		AC0077F51FC6AD0700BE0153 /* LBRegistLoginCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0077F41FC6AD0700BE0153 /* LBRegistLoginCell.swift */; };
@@ -716,6 +724,7 @@
 		8AA425E9A808EC13F931C9F7 /* Pods-LittleBlackBear.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LittleBlackBear.release.xcconfig"; path = "Pods/Target Support Files/Pods-LittleBlackBear/Pods-LittleBlackBear.release.xcconfig"; sourceTree = "<group>"; };
 		8B156BFF4F800E21CBACF400 /* Pods-LittleBlackBear.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LittleBlackBear.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LittleBlackBear/Pods-LittleBlackBear.debug.xcconfig"; sourceTree = "<group>"; };
 		8E2CD0752063A26B00F7298C /* LBNewMarketCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LBNewMarketCellTableViewCell.swift; path = "下来菜单/LBNewMarketCellTableViewCell.swift"; sourceTree = "<group>"; };
+		8E3BA95F207490AC002F067B /* LBMerchantAppleFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBMerchantAppleFieldCell.swift; sourceTree = "<group>"; };
 		8E479854205D07EC0018F6B4 /* LBNewMarketingWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LBNewMarketingWebViewController.swift; sourceTree = "<group>"; };
 		8E479858205D0D170018F6B4 /* LBNewMarketHead.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBNewMarketHead.swift; sourceTree = "<group>"; };
 		8E47985D205D22D90018F6B4 /* LBAddSeckillController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBAddSeckillController.swift; sourceTree = "<group>"; };
@@ -771,6 +780,13 @@
 		8EAA5017205FEC570037F592 /* LBAddGroupActivityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBAddGroupActivityCell.swift; sourceTree = "<group>"; };
 		8ED696AD2057B23A00682BC8 /* DDZUploadBtn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DDZUploadBtn.swift; sourceTree = "<group>"; };
 		8ED696AF2057B23A00682BC8 /* DDZOssManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DDZOssManager.swift; sourceTree = "<group>"; };
+		8EDF01B62073AD0F00AFDD62 /* LBMerchantManagerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBMerchantManagerController.swift; sourceTree = "<group>"; };
+		8EDF01B82073C15E00AFDD62 /* LBMerchantTextFileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBMerchantTextFileCell.swift; sourceTree = "<group>"; };
+		8EDF01BA20746D8D00AFDD62 /* LBMerchantMainImgCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBMerchantMainImgCellTableViewCell.swift; sourceTree = "<group>"; };
+		8EDF01BC207472C800AFDD62 /* LBMerchantDetailImgCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBMerchantDetailImgCell.swift; sourceTree = "<group>"; };
+		8EDF01BE2074741300AFDD62 /* LBMerchantAddressCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBMerchantAddressCell.swift; sourceTree = "<group>"; };
+		8EDF01C120747B8F00AFDD62 /* LBMerchantApplyInfoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBMerchantApplyInfoController.swift; sourceTree = "<group>"; };
+		8EDF01C320747BE600AFDD62 /* LBMerchantMainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBMerchantMainController.swift; sourceTree = "<group>"; };
 		9028C7DFF812405594EA0177 /* Pods_LittleBlackBearTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LittleBlackBearTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC0077EE1FC657F700BE0153 /* LBMercApplyAlterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBMercApplyAlterView.swift; sourceTree = "<group>"; };
 		AC0077F21FC69EEA00BE0153 /* LBLogoHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBLogoHeaderView.swift; sourceTree = "<group>"; };
@@ -1216,6 +1232,9 @@
 		18A746E11FE8C71400FE336B /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				8EDF01C520747BF700AFDD62 /* 店铺管理 */,
+				8EDF01C02074788300AFDD62 /* 店铺管理(进件资料) */,
+				8EDF01B52073ACA900AFDD62 /* 店铺管理(基本资料) */,
 				8EAA4FC7205D52710037F592 /* 新建团团 */,
 				8E47985C205D224A0018F6B4 /* 新增秒杀 */,
 				8E479853205D07BB0018F6B4 /* 营销活动(新) */,
@@ -2213,6 +2232,35 @@
 			path = ALIOSS;
 			sourceTree = "<group>";
 		};
+		8EDF01B52073ACA900AFDD62 /* 店铺管理(基本资料) */ = {
+			isa = PBXGroup;
+			children = (
+				8EDF01B62073AD0F00AFDD62 /* LBMerchantManagerController.swift */,
+				8EDF01B82073C15E00AFDD62 /* LBMerchantTextFileCell.swift */,
+				8EDF01BA20746D8D00AFDD62 /* LBMerchantMainImgCellTableViewCell.swift */,
+				8EDF01BC207472C800AFDD62 /* LBMerchantDetailImgCell.swift */,
+				8EDF01BE2074741300AFDD62 /* LBMerchantAddressCell.swift */,
+			);
+			path = "店铺管理(基本资料)";
+			sourceTree = "<group>";
+		};
+		8EDF01C02074788300AFDD62 /* 店铺管理(进件资料) */ = {
+			isa = PBXGroup;
+			children = (
+				8EDF01C120747B8F00AFDD62 /* LBMerchantApplyInfoController.swift */,
+				8E3BA95F207490AC002F067B /* LBMerchantAppleFieldCell.swift */,
+			);
+			path = "店铺管理(进件资料)";
+			sourceTree = "<group>";
+		};
+		8EDF01C520747BF700AFDD62 /* 店铺管理 */ = {
+			isa = PBXGroup;
+			children = (
+				8EDF01C320747BE600AFDD62 /* LBMerchantMainController.swift */,
+			);
+			path = "店铺管理";
+			sourceTree = "<group>";
+		};
 		AC0077F01FC6742B00BE0153 /* RegisterAndLoginModule */ = {
 			isa = PBXGroup;
 			children = (
@@ -2882,7 +2930,7 @@
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mapapi.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -2921,6 +2969,7 @@
 				"${BUILT_PRODUCTS_DIR}/KeychainAccess/KeychainAccess.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
+				"${BUILT_PRODUCTS_DIR}/PagingMenuController/PagingMenuController.framework",
 				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxDataSources/RxDataSources.framework",
@@ -2946,6 +2995,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainAccess.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PagingMenuController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxDataSources.framework",
@@ -2986,6 +3036,7 @@
 				6F7E4B462052FA0F00FBB68B /* SNBaseView.swift in Sources */,
 				ACDE38A11FA1B4770084B362 /* LBShoppingMallViewController.swift in Sources */,
 				8E6F24DD205BA19A009A4505 /* UICollectionView+Extension.swift in Sources */,
+				8EDF01BD207472C800AFDD62 /* LBMerchantDetailImgCell.swift in Sources */,
 				1818EC301FD786B4006E5D8C /* LBSearchBarView.swift in Sources */,
 				AC10A1AD1FB3F91200542BD4 /* LBShoppingHeaderCollectionViewCell.swift in Sources */,
 				1813BCA01FFE035F0049146A /* LBWXBindPhonePresenter.swift in Sources */,
@@ -3036,6 +3087,7 @@
 				182416472008576200F5124C /* LBBXLoadingHUD.swift in Sources */,
 				8E6F24D6205BA19A009A4505 /* PhotoImage.swift in Sources */,
 				AC66B28B1FF330DD00B50309 /* WXManager.swift in Sources */,
+				8EDF01B72073AD0F00AFDD62 /* LBMerchantManagerController.swift in Sources */,
 				8E2CD0762063A26B00F7298C /* LBNewMarketCellTableViewCell.swift in Sources */,
 				18D310B31FBD39BF0027E3CB /* LBMerchantApplyTypeViewController.swift in Sources */,
 				AC4CBAB4200CFA7500740235 /* LBMapNavigationViewController.swift in Sources */,
@@ -3172,6 +3224,8 @@
 				182FE5892024446600600728 /* ScaleAnimator.swift in Sources */,
 				6F404877205E8EE200609231 /* ZJHeadTopicShareController.swift in Sources */,
 				18B3E3971FF60AB9004646EF /* LBSettingPayPasswordViewController.swift in Sources */,
+				8EDF01BB20746D8D00AFDD62 /* LBMerchantMainImgCellTableViewCell.swift in Sources */,
+				8EDF01C420747BE600AFDD62 /* LBMerchantMainController.swift in Sources */,
 				18A746EF1FE8DCC200FE336B /* LBShoppingWebViewController.swift in Sources */,
 				8E6F24DF205BA19A009A4505 /* PhotoPickerConfig.swift in Sources */,
 				6F7E4B5B205300AA00FBB68B /* ZJHomeTitleCell.swift in Sources */,
@@ -3224,6 +3278,7 @@
 				18131A7E1FFF676A001A24F3 /* LBModifyLoginPassword.swift in Sources */,
 				6F404891205EA8C200609231 /* SNSwiftyJSONAble.swift in Sources */,
 				6F5F58B7206BE3E60025E6EA /* ZJMerchantAccoutBookViewModel.swift in Sources */,
+				8EDF01BF2074741300AFDD62 /* LBMerchantAddressCell.swift in Sources */,
 				8EAA4FED205DBD180037F592 /* LBShopGroupEmptyCell.swift in Sources */,
 				18C522C71FF4B65400C1CBA1 /* LBCommentListModel.swift in Sources */,
 				6F40488F205EA8C200609231 /* APIManager.swift in Sources */,
@@ -3276,6 +3331,7 @@
 				1817D845201035C2001241E4 /* LBStoreRightTableViewCell.swift in Sources */,
 				6FAC4999205E425D009A9587 /* ZJHeadTopicToolBar.swift in Sources */,
 				AC0E69C31FC487D800408F12 /* LBMerchantApplyFinishViewController.swift in Sources */,
+				8EDF01C220747B8F00AFDD62 /* LBMerchantApplyInfoController.swift in Sources */,
 				1818EC1D1FD62852006E5D8C /* LBProfileTableViewCell.swift in Sources */,
 				18131A801FFF71CB001A24F3 /* LBSettingPresenter.swift in Sources */,
 				AC0077F31FC69EEA00BE0153 /* LBLogoHeaderView.swift in Sources */,
@@ -3302,6 +3358,7 @@
 				ACDE389E1FA072D70084B362 /* LBPrint.swift in Sources */,
 				18EAAB2D1FE0B95700C2EE01 /* LBShoppingNextViewController.swift in Sources */,
 				1818F80E2006F1B100837501 /* LBMoreCouponModel.swift in Sources */,
+				8E3BA960207490AC002F067B /* LBMerchantAppleFieldCell.swift in Sources */,
 				181327FF20059E87003833B3 /* LBSecondCouponTableViewCell.swift in Sources */,
 				AC10A1B11FB400F400542BD4 /* LBFont.swift in Sources */,
 				6F40488D205EA8C200609231 /* Observable+SwiftyJSONMapper.swift in Sources */,
@@ -3346,6 +3403,7 @@
 				6FAC4985205E34C8009A9587 /* ZJHeadTopicCell.swift in Sources */,
 				18318EFA1FD14EA4006459B5 /* LBCityListTableViewCell.swift in Sources */,
 				6F7E4B72205301D100FBB68B /* GestureRecognizer_Extension.swift in Sources */,
+				8EDF01B92073C15E00AFDD62 /* LBMerchantTextFileCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
