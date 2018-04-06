@@ -19,6 +19,8 @@
     NSData *uniData = [uniStr dataUsingEncoding:NSNonLossyASCIIStringEncoding];
     NSString *goodStr = [[NSString alloc] initWithData:uniData encoding:NSUTF8StringEncoding] ;
 //    NSLog(goodStr);
+    
+    
     return goodStr;
 }
 + (NSString*)stringToEmoji:(NSString *)string{
