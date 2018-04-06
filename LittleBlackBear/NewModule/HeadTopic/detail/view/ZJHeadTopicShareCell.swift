@@ -17,13 +17,14 @@ class ZJHeadTopicShareCell: SNBaseTableViewCell {
              "headlineId": 308,
              "nickName": "139****4786"
              */
-            nameLab.text = model!.nickName
-            headIcon.kf.setImage(with: URL(string : model!.headImg))
+            nameLab.text = model!.nickName == "" ? "用户xxx" : model!.nickName
+            headIcon.kf.setImage(with: URL(string : model!.headImg), placeholder: UIImage(named:"LBlogoIconHead"))//.setImage(with: URL(string : model!.headImg))
         }
     }
     let headIcon = UIImageView().then{
         $0.layer.cornerRadius = fit(27)
         $0.clipsToBounds = true
+        $0.image = UIImage(named:"LBlogoIconHead")
     }
     let nameLab = UILabel().then{
         $0.textColor = Color(0x313131)

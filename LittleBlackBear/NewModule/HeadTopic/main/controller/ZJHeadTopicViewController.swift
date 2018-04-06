@@ -14,6 +14,11 @@ class ZJHeadTopicViewController: SNBaseViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+//        let test = "我{d83d}安德森"
+        
+//        let s = test.
+//        ZJLog(messagr: s)
     }
 
     let tableview = SNBaseTableView().then{

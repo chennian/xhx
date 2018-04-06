@@ -35,7 +35,7 @@ class PhotoPreviewToolbarView: UIView {
         self.backgroundColor = UIColor(red: 40/255, green: 40/255, blue: 40/255, alpha: 1)
         
         // back arrow buttton
-        let backArrow = UIButton(frame: CGRect(x: 5, y: 5, width: 40, height: 40))
+        let backArrow = UIButton(frame: CGRect(x: 5, y: 5 + LL_StatusBarExtraHeight, width: 40, height: 40))
         let backArrowImage = UIImage(named: "arrow_back")
         backArrow.setImage(backArrowImage, for: UIControlState.normal)
         backArrow.addTarget(self, action: #selector(PhotoPreviewToolbarView.eventBackArrow), for: .touchUpInside)
@@ -46,7 +46,7 @@ class PhotoPreviewToolbarView: UIView {
         let checkboxWidth: CGFloat = 30
         let checkboxHeight = checkboxWidth
         let checkboxPositionX = self.bounds.width - checkboxWidth - padding
-        let checkboxPositionY = (self.bounds.height - checkboxHeight) / 2
+        let checkboxPositionY = (self.bounds.height + LL_StatusBarExtraHeight - checkboxHeight) / 2
         
         self.checkbox = UIButton(type: .custom)
         checkbox!.frame = CGRect(x:checkboxPositionX,y: checkboxPositionY,width: checkboxWidth,height: checkboxHeight)
@@ -88,7 +88,7 @@ class PhotoPreviewToolbarView: UIView {
             }
         } else {
             if let _ = self.sourceDelegate {
-                if PhotoImage.instance.selectedImage.count >= PhotoPickerController.imageMaxSelectedNum - PhotoPickerController.alreadySelectedImageNum {
+                if PhotoImage.instance.selectedImage.count >= PhotoPickerController.imageMaxSelectedNum {
                     return self.showSelectErrorDialog()
                 }
             }
@@ -107,7 +107,7 @@ class PhotoPreviewToolbarView: UIView {
     
     private func showSelectErrorDialog() {
         if self.sourceDelegate != nil {
-            let less = PhotoPickerController.imageMaxSelectedNum - PhotoPickerController.alreadySelectedImageNum
+            let less = PhotoPickerController.imageMaxSelectedNum// - PhotoPickerController.alreadySelectedImageNum
             
             
             let range = PhotoPickerConfig.ErrorImageMaxSelect.range(of:"#")

@@ -47,6 +47,8 @@ class ZJHeadTopicDetailReplayModel: SNSwiftyJSONAble {
      "headlineReplyVO": null
      */
     
+    
+    
     var id : String
     var headline_id : String
     var mer_id : String
@@ -60,12 +62,24 @@ class ZJHeadTopicDetailReplayModel: SNSwiftyJSONAble {
         self.id = jsonData["id"].stringValue
         self.headline_id = jsonData["headline_id"].stringValue
         self.mer_id = jsonData["mer_id"].stringValue
-        self.comments = jsonData["comments"].stringValue
+        self.comments = jsonData["comments"].stringValue.pregReplace(pattern: "[{a-zA-Z0-9}]", with: "")
         self.add_time = jsonData["add_time"].stringValue
         self.reply_id = jsonData["reply_id"].stringValue
         self.headImg = jsonData["headImg"].stringValue
         self.headlineReplyVO = jsonData["headlineReplyVO"].stringValue
         self.nickName = jsonData["nickName"].stringValue
+    }
+    
+    init() {
+        self.id = ""
+        self.headline_id = ""
+        self.mer_id = ""
+        self.comments = ""
+        self.add_time = ""
+        self.reply_id = ""
+        self.headImg = ""
+        self.headlineReplyVO = ""
+        self.nickName = ""
     }
 
 }

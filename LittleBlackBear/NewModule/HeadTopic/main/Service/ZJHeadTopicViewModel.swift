@@ -64,7 +64,7 @@ class ZJHeadTopicViewModel: SNBaseViewModel {
         ZJLog(messagr: LBKeychain.get(CURRENT_MERC_ID))
 //        if btn.isSelected =
         ZJLog(messagr: btn.isSelected ? "1" : "0")
-        SNRequestBool(requestType: API.setLike(mercId: LBKeychain.get(CURRENT_MERC_ID), headlineId: id, state: btn.isSelected ? "1" : "0")).subscribe(onNext: { (reseult) in
+        SNRequestBool(requestType: API.setLike(mercId: LBKeychain.get(CURRENT_MERC_ID), headlineId: id, state: btn.isSelected ? "0" : "1")).subscribe(onNext: { (reseult) in
             switch reseult{
             case .bool(_):
                 var Count : Int
@@ -85,6 +85,8 @@ class ZJHeadTopicViewModel: SNBaseViewModel {
         }).disposed(by: disposeBag)
         
     }
+    
+    
 
 }
 extension ZJHeadTopicViewModel : UITableViewDelegate,UITableViewDataSource{
@@ -103,6 +105,8 @@ extension ZJHeadTopicViewModel : UITableViewDelegate,UITableViewDataSource{
                 self.jumpSubject.onNext(SNJumpType.push(vc: vc, anmi: true))
             case .like(let id ,let btn):
                 self.setLike(id: id, btn: btn)
+            default:
+                break
             }
         }).disposed(by: cell.disposeBag)
         

@@ -13,6 +13,7 @@ enum ZJHeadTopicButtonType {
     case share(model : ZJHeadTopicCellModel)
     case common(model : ZJHeadTopicCellModel)
     case like(id : String ,btn : UIButton)
+    case delete(id : String)
 }
 class ZJHeadTopicCell: SNBaseTableViewCell {
     
@@ -20,6 +21,9 @@ class ZJHeadTopicCell: SNBaseTableViewCell {
     let clickPub = PublishSubject<(index : Int ,imgs : [String])>()
     var model : ZJHeadTopicCellModel?{
         didSet{
+            previewLab.isHidden = false
+            arrowImg.isHidden = false
+            deleteBtn.isHidden = true
             shareButton.rx.controlEvent(UIControlEvents.touchUpInside).subscribe(onNext: {[unowned self] () in
                 self.buttonClick.onNext(ZJHeadTopicButtonType.share(model : self.model!))
             }).disposed(by: disposeBag)
@@ -30,7 +34,9 @@ class ZJHeadTopicCell: SNBaseTableViewCell {
             likeButton.rx.controlEvent(UIControlEvents.touchUpInside).subscribe(onNext: { () in
                 self.buttonClick.onNext(ZJHeadTopicButtonType.like(id : self.model!.id,btn : self.likeButton))
                 self.likeButton.isSelected =  !self.likeButton.isSelected
+                self.model!.praise = self.likeButton.isSelected
             }).disposed(by: disposeBag)
+            
             
 
             
@@ -47,6 +53,7 @@ class ZJHeadTopicCell: SNBaseTableViewCell {
                 imgViewheight = 0.0
             }
 
+            likeButton.isSelected = model!.praise
             
             imgsView.snp.remakeConstraints { (make) in
                 make.left.equalToSuperview()
@@ -86,6 +93,15 @@ class ZJHeadTopicCell: SNBaseTableViewCell {
                 self.clickPub.onNext((index: index, imgs: imgs))
             }).disposed(by: disposeBag)
         }
+    }
+    
+    func manage(){
+        previewLab.isHidden = true
+        arrowImg.isHidden = true
+        deleteBtn.isHidden = false
+        deleteBtn.rx.controlEvent(UIControlEvents.touchUpInside).subscribe(onNext: { () in
+            self.buttonClick.onNext(ZJHeadTopicButtonType.delete(id: self.model!.id))
+        }).disposed(by: disposeBag)
     }
 
    public  let headIcon = UIImageView().then{
@@ -138,6 +154,13 @@ class ZJHeadTopicCell: SNBaseTableViewCell {
         $0.setImage(UIImage(named : "headline_praise1"), for: .selected)
     }
     
+    
+    let deleteBtn = UIButton().then({
+        $0.setTitleColor(Color(0x74787e), for: .normal)
+        $0.titleLabel?.font = Font(28)
+        $0.setTitle("删除", for: .normal)
+    })
+    
     /*
      let preview = SinglePhotoPreviewViewController()
      let data = self.getModelExceptButton()
@@ -177,6 +200,7 @@ class ZJHeadTopicCell: SNBaseTableViewCell {
         contentView.addSubview(likeButton)
         contentView.addSubview(previewLab)
         contentView.addSubview(arrowImg)
+        contentView.addSubview(deleteBtn)
         headIcon.snp.makeConstraints { (make) in
             make.left.snEqualTo(20)
             make.top.snEqualTo(24)
@@ -226,6 +250,10 @@ class ZJHeadTopicCell: SNBaseTableViewCell {
             make.size.equalTo(shareButton)
             make.bottom.equalTo(shareButton)
             make.right.equalToSuperview()
+        }
+        deleteBtn.snp.makeConstraints { (make) in
+            make.centerY.equalTo(arrowImg)
+            make.right.equalTo(arrowImg.snp.left).snOffset(-10)
         }
     }
 }

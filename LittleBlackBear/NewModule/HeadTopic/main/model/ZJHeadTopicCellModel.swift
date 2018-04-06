@@ -63,6 +63,8 @@ class ZJHeadTopicCellModel: SNSwiftyJSONAble {
      var forwardNum : String
     
      var nickName : String
+    
+    var praise : Bool
  
     required init?(jsonData: JSON) {
         id = jsonData["id"].stringValue
@@ -72,7 +74,7 @@ class ZJHeadTopicCellModel: SNSwiftyJSONAble {
         del_flag = jsonData["del_flag"].stringValue
         merc_id = jsonData["merc_id"].stringValue
         merc_name = jsonData["merc_name"].stringValue
-        description = jsonData["description"].stringValue
+        description = jsonData["description"].stringValue.pregReplace(pattern: "[{a-zA-Z0-9}]", with: "")
         images = []
         base_praise = jsonData["base_praise"].stringValue
         real_praise = jsonData["real_praise"].stringValue
@@ -85,6 +87,8 @@ class ZJHeadTopicCellModel: SNSwiftyJSONAble {
         headImg = jsonData["headImg"].stringValue
         forwardNum = jsonData["forwardNum"].stringValue
         nickName = jsonData["nickName"].stringValue
+        
+        praise = jsonData["praise"].stringValue == "true"
         
         images = self.anayliseImgs(imgs: jsonData["images"].stringValue)
         
@@ -145,4 +149,21 @@ class ZJHeadTopicCellModel: SNSwiftyJSONAble {
     
     var height : CGFloat = 0.0
 
+}
+
+extension String {
+    //返回字数
+    var count: Int {
+        let string_NS = self as NSString
+        return string_NS.length
+    }
+    
+    //使用正则表达式替换
+    func pregReplace(pattern: String, with: String,
+                     options: NSRegularExpression.Options = []) -> String {
+        let regex = try! NSRegularExpression(pattern: pattern, options: options)
+        return regex.stringByReplacingMatches(in: self, options: [],
+                                              range: NSMakeRange(0, self.count),
+                                              withTemplate: with)
+    }
 }

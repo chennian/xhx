@@ -30,6 +30,8 @@ enum ZJHeadTopicDetailCellModelType {
 //}
 
 class ZJHeadTopicDetailCellModel {
+    
+    
     var type : ZJHeadTopicDetailCellModelType = .spcae(height : 0.0,color : .white){
         
         didSet{
@@ -50,6 +52,8 @@ class ZJHeadTopicDetailCellModel {
     
 }
 class ZJHeadTopicDetailViewModel: SNBaseViewModel {
+    
+    var id : String = ""
     
     let reloadPublish = PublishSubject<(section : [Int],count : Int)>()
 
@@ -98,9 +102,9 @@ class ZJHeadTopicDetailViewModel: SNBaseViewModel {
     }
     
 //    var commonModels : [ZJHeadTopicDetailReplayModel] = []
-    func getData(id : String) {
+    func getData(id : String,type : ZJHeadTopicToolBarButtonType = .common) {
         
-        
+        self.id = id
 //
         
         
@@ -110,7 +114,7 @@ class ZJHeadTopicDetailViewModel: SNBaseViewModel {
                 self.model = model
                 
                 self.topicModel = model.headLineInfo
-                self.type = .common
+                self.type = type
             case .fail(_,let msg):
                 SZHUD(msg ?? "获取头条详情失败", type: .error, callBack: nil)
             default:
@@ -140,15 +144,18 @@ class ZJHeadTopicDetailViewModel: SNBaseViewModel {
             switch reseult{
             case .bool(_):
 //                break\
-                if btn.isSelected{
-                    
-                    let count = (self.topicModel!.real_praise as NSString).integerValue + 1
-                    self.topicModel?.real_praise = "\(count)"
-                }else{
-                    let count = (self.topicModel!.real_praise as NSString).integerValue - 1
-                    self.topicModel?.real_praise = "\(count)"
-                }
-                self.reloadPublish.onNext((section: [0,1], count: 0))
+                self.getData(id: self.id,type : .like)
+//                if btn.isSelected{
+//
+//                    let count = (self.topicModel!.real_praise as NSString).integerValue + 1
+//                    self.topicModel?.real_praise = "\(count)"
+//                }else{
+//                    let count = (self.topicModel!.real_praise as NSString).integerValue - 1
+//                    self.topicModel?.real_praise = "\(count)"
+////                    self.model?.headlineInfoPraiseBOList
+//                }
+////                self.type = .common
+//                self.reloadPublish.onNext((section: [0,1], count: 0))
 //                btn.setTitle(String(format: "%2d", (btn.currentTitle! as NSString).intValue + 1), for: .normal)
             case .fail(let code , let msg):
                 btn.isSelected = !btn.isSelected
@@ -162,16 +169,29 @@ class ZJHeadTopicDetailViewModel: SNBaseViewModel {
     }
     
     func replay(content : String){
+        
+//        let s = NSString.addingPercentEncoding(<#T##NSString#>)//stringByAddingPercentEncodingWithAllowedCharac//NSString.stringContainsEmoji(content)
+        
+//        let vc = (content as NSString).addingPercentEncoding(withAllowedCharacters:  NSCharacterSet.urlQueryAllowed)//.stringByAddingPercentEscapesUsingEncodin
+//        let ste = content.utf8CString
+//        let ste = NSString(utf8String: content.utf8CString)
+//        NSString.stringContainsEmoji(content)
         SNRequestBool(requestType: API.replayHeadTopic(headline_id: topicModel!.id, mer_id: topicModel!.merc_id, comments: content, reply_id: "")).subscribe(onNext: { (result) in
             switch result{
             case .bool(_):
 //            c    break
 
-                let commonCount = (self.topicModel!.replyNum as NSString).intValue + 1
-                self.topicModel!.replyNum = "\(commonCount)"
-                self.reloadPublish.onNext((section: [0], count: 0))
-//                self.getData()
+//                let commonCount = (self.topicModel!.replyNum as NSString).intValue + 1
+//                self.topicModel!.replyNum = "\(commonCount)"
+//                self.reloadPublish.onNext((section: [0,1], count: 0))
+                let model = ZJHeadTopicDetailReplayModel()
+                model.comments = content
+                self.model!.headlineReplyPOList.append(model)
+                self.type = .common
+                self.reloadPublish.onNext((section: [0,1], count: 0))
+//                self.getData(id: <#T##String#>)
                 SZHUD("评论成功", type: .info, callBack: nil)
+                
             default:
                 SZHUD("请求错误", type: .error, callBack: nil)
 //                ZJLog(messagr: "回复失败")

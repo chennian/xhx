@@ -26,7 +26,7 @@ class ZJMerchantAccountBookCell: SNBaseTableViewCell {
             tipLab.text = "消费：" + model!.payTotal
             moneyLab.text = model!.merchant_money
             timeLab.text = model!.add_time
-            headIcon.image = UIImage(named : "LBlogoIcon")
+            headIcon.image = UIImage(named : "LBlogoIconHead")
         }
     }
 

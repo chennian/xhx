@@ -204,7 +204,7 @@ class ViewController: UIViewController,PhotoPickerControllerDelegate, UIImagePic
             alertView.show()
             return
         }
-        if self.imagePathArray.isEmpty {
+        if self.imageArray.isEmpty {
             SZHUD("图片上传失败", type: .error, callBack: nil)
             return
         }
@@ -238,6 +238,7 @@ class ViewController: UIViewController,PhotoPickerControllerDelegate, UIImagePic
             }, failure: { (failItem) in
                 SZHUDDismiss()
         }) { (error) in
+            SZHUD("发送失败", type: .error, callBack: nil)
         }
         
     }
@@ -304,9 +305,15 @@ class ViewController: UIViewController,PhotoPickerControllerDelegate, UIImagePic
      */
     func removeElement(element: PhotoImageModel?){
         if let current = element {
+            if let index = selectModel.index(of: current){
+                
+                self.imageArray.remove(at: index)
+            }
+            
             self.selectModel = self.selectModel.filter({$0 != current})
             self.triggerRefresh = true // 删除数据事出发重绘界面逻辑
         }
+        
     }
     
     
@@ -538,6 +545,7 @@ class ViewController: UIViewController,PhotoPickerControllerDelegate, UIImagePic
         PhotoPickerController.imageMaxSelectedNum = 9 // 允许选择的最大图片张数
         let realModel = self.getModelExceptButton() // 获取已经选择过的图片
         PhotoPickerController.alreadySelectedImageNum = realModel.count
+        PhotoImage.instance.selectedImage = realModel.map(({return $0.data!}))
         debugPrint(realModel.count)
         self.show(picker, sender: nil)
     }
@@ -547,6 +555,11 @@ class ViewController: UIViewController,PhotoPickerControllerDelegate, UIImagePic
     }
     
     private func renderSelectImages(images: [PHAsset]){
+        self.imageArray.removeAll()
+//        self.selectModel = [self.selectModel.last!]
+        
+        let model = self.selectModel.last!
+        self.selectModel.removeAll()
         for item in images {
             
            //PHAsset转image
@@ -559,8 +572,9 @@ class ViewController: UIViewController,PhotoPickerControllerDelegate, UIImagePic
             })
             
             
-            self.selectModel.insert(PhotoImageModel(type: ModelType.Image, data: item), at: 0)
+            self.selectModel.append(PhotoImageModel(type: ModelType.Image, data: item))//.insert(PhotoImageModel(type: ModelType.Image, data: item), at: 0)
         }
+        self.selectModel.append(model)
         
         let total = self.selectModel.count;
         if total > PhotoPickerController.imageMaxSelectedNum {

@@ -12,9 +12,10 @@ class ZJHeadTopicDetailVC: SNBaseViewController {
     
     var model : ZJHeadTopicCellModel?{
         didSet{
-            viewModel.getData(id: model!.id)//.topicModel = model!
+            viewModel.getData(id: model!.id,type : .common)//.topicModel = model!
             
-//            toolBar.set(share: model!.forwardNum, like: model!.real_praise)
+//            toolBar.likeButton.isSelected = model!.praise//.set(share: model!.forwardNum, like: model!.real_praise)
+            self.toolBar.likeButton.setSelect(selected: model!.praise, img: "headline_praise")
         }
     }
     

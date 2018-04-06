@@ -469,32 +469,20 @@ extension LBShoppingMallViewController:LBShoppingHttpServer{
                 if self.zjPostItem.count != 0 {
                     self.oldGetData()
                 }
-                if models.count == 0 {
-                    self.zjPostItem.append(.space(cellHight : fit(0) ,color : Color(0xf5f5f5)))
-                    return
-                    
-                }
-                //                var index = 0
-                self.zjPostItem.append(.space(cellHight : fit(20) ,color : Color(0xf5f5f5)))
-                //                index += 1
-                self.zjPostItem.append(.title("团团",""))
-                //                index += 1
-                self.zjPostItem.append(.space(cellHight : fit(30) ,color : .white))
-                //                index += 1
-                for model in models{
-                    self.zjPostItem.append(.newGropuCoupons(model))
-                    //                    index += 1
-                    self.zjPostItem.append(.space(cellHight : fit(20) ,color : .white))
-                    //                    index += 1
-                }
-                self.zjPostItem.append(.space(cellHight : fit(10) ,color : .white))
-                //                index += 1
-                //                let tuantuanArray = models.map({return shoppingCellTye.newGropuCoupons($0)})
-                //                self.zjPostItem.append(contentsOf: tuantuanArray)
-                //                ZJLog(messagr: self.zjPostItem.count)
-                //                if self.zjPostItem.count > index{
-                //                    self.oldGetData()
-            //                }
+//                if models.count == 0 {
+//                    self.zjPostItem.append(.space(cellHight : fit(0) ,color : Color(0xf5f5f5)))
+//                    return
+//                    
+//                }
+//                self.zjPostItem.append(.space(cellHight : fit(20) ,color : Color(0xf5f5f5)))
+//                self.zjPostItem.append(.title("团团",""))
+//                self.zjPostItem.append(.space(cellHight : fit(30) ,color : .white))
+//                for model in models{
+//                    self.zjPostItem.append(.newGropuCoupons(model))
+//                    self.zjPostItem.append(.space(cellHight : fit(20) ,color : .white))
+//                }
+//                self.zjPostItem.append(.space(cellHight : fit(10) ,color : .white))
+
             case .fail(let code,let msg):
 //                ZJLog(messagr: msg)
                 self.oldGetData()

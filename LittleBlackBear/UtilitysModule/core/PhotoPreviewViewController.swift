@@ -31,10 +31,10 @@ class PhotoPreviewViewController: UIViewController,UICollectionViewDataSource,UI
     }
     
     private func configToolbar(){
-        self.toolbar = PhotoPreviewToolbarView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: 50))
+        self.toolbar = PhotoPreviewToolbarView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: 50 + LL_StatusBarExtraHeight))
         self.toolbar?.delegate = self
         self.toolbar?.sourceDelegate = self
-        let positionY = self.view.bounds.height - 50
+        let positionY = self.view.bounds.height - 50 - LL_StatusBarExtraHeight
         self.bottomBar = PhotoPreviewBottomBarView(frame: CGRect(x: 0,y: positionY,width: self.view.bounds.width,height: 50))
         self.bottomBar?.delegate = self
         self.bottomBar?.changeNumber(number: PhotoImage.instance.selectedImage.count, animation: false)

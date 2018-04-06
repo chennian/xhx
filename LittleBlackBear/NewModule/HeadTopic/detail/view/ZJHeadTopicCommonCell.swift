@@ -11,9 +11,9 @@ import UIKit
 class ZJHeadTopicCommonCell: SNBaseTableViewCell {
     var model : ZJHeadTopicDetailReplayModel?{
         didSet{
-            headIcon.kf.setImage(with: URL(string : model!.headImg))
+            headIcon.kf.setImage(with: URL(string : model!.headImg), placeholder: UIImage(named:"LBlogoIconHead"))//.kf.setImage(with: URL(string : model!.headImg))
             nameLab.text = model!.nickName
-            contentLab.text = model!.comments
+            contentLab.text = model!.comments == "" ? "赞" : model!.comments
         }
     }
 

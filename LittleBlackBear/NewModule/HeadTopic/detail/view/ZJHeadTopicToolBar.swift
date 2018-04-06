@@ -19,6 +19,8 @@ class ZJHeadTopicToolBar: SNBaseView {
 //        shareButton.content.text = share
 //
 //    }
+    
+    
     let replayClick = PublishSubject<String>()
     
     let line = UIView().then{

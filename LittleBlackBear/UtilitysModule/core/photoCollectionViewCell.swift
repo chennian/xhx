@@ -59,7 +59,7 @@ class photoCollectionViewCell: UICollectionViewCell {
 		} else {
 			
 			if delegate != nil {
-				if PhotoImage.instance.selectedImage.count >= PhotoPickerController.imageMaxSelectedNum - PhotoPickerController.alreadySelectedImageNum {
+				if PhotoImage.instance.selectedImage.count >= PhotoPickerController.imageMaxSelectedNum  {
 					self.showSelectErrorDialog() ;
 					return;
 				} else {
@@ -83,7 +83,7 @@ class photoCollectionViewCell: UICollectionViewCell {
 	
 	private func showSelectErrorDialog() {
 		if self.delegate != nil {
-            let less = PhotoPickerController.imageMaxSelectedNum - PhotoPickerController.alreadySelectedImageNum
+            let less = PhotoPickerController.imageMaxSelectedNum// - PhotoPickerController.alreadySelectedImageNum
             
             let range = PhotoPickerConfig.ErrorImageMaxSelect.range(of:"#")
             var error = PhotoPickerConfig.ErrorImageMaxSelect

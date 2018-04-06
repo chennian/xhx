@@ -15,7 +15,7 @@ class ZJMyMemberCell: SNBaseTableViewCell {
             nameLab.text = model!.username
             tipLab.text = model!.detail
             timeLab.text = model!.create_time
-            headIcon.image = UIImage(named : "LBlogoIcon")
+            headIcon.image = UIImage(named : "LBlogoIconHead")
         }
     }
     let headIcon = UIImageView().then({

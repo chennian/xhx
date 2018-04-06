@@ -16,7 +16,7 @@
 
 #import <BaiduMapAPI_Radar/BMKRadarComponent.h>//引入周边雷达功能所有的头文件
 
-
+#import "NSObject+Emoji.h"
 #import <sqlite3.h>
 #import "WXApi.h"
 #import "WXApiObject.h"

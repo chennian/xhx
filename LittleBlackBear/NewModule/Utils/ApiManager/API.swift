@@ -40,6 +40,9 @@ enum API {
     ///头条详情
     case headTopicInfo(id : String , checkPraiseId : String)
     
+
+    case deleteHeadTopic(id : String)
+    
     /*
      http://pay.xiaoheixiong.net/public/merInfo?mer_id=M00000062，查询商户是否存在
      */
@@ -117,6 +120,8 @@ extension API: JSONMappableTargetType {
             return "api/getFlowList"
         case .serviceAccountBook:
             return "api/getMyWalletList"
+        case .deleteHeadTopic:
+            return "/headline/delHeadLine"
         
 //        case .checkMerchantExit:
 //            return "/public/merInfo"
@@ -233,6 +238,11 @@ extension API: JSONMappableTargetType {
         case .serviceAccountBook(let mer_id):
             let para = [
                 "mer_id" : mer_id
+                ] as [String : Any]
+            return .requestParameters(parameters: para, encoding: URLEncoding.default)
+        case .deleteHeadTopic(let id):
+            let para = [
+                "id" : id
                 ] as [String : Any]
             return .requestParameters(parameters: para, encoding: URLEncoding.default)
         default:

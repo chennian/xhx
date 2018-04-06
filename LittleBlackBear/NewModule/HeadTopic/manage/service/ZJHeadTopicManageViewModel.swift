@@ -99,12 +99,24 @@ class ZJHeadTopicManageViewModel: SNBaseViewModel {
         }).disposed(by: disposeBag)
         
     }
+    func deleteHeadTopic(id : String){
+        SNRequestBool(requestType: API.deleteHeadTopic(id: id)).subscribe(onNext: { (resutl) in
+            switch resutl{
+            case.bool(_):
+               SZHUD("删除头条成功", type: .info, callBack: nil)
+                self.getData()
+            default:
+                SZHUD("删除头条失败", type: .error, callBack: nil)
+            }
+        }).disposed(by: disposeBag)
+    }
     
 }
 extension ZJHeadTopicManageViewModel : UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell : ZJHeadTopicCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
         cell.model = models[indexPath.row]
+        cell.manage()
         cell.buttonClick.subscribe(onNext: { (type) in
             switch type{
             case .share(let model):
@@ -117,7 +129,10 @@ extension ZJHeadTopicManageViewModel : UITableViewDelegate,UITableViewDataSource
                 self.jumpSubject.onNext(SNJumpType.push(vc: vc, anmi: true))
             case .like(let id ,let btn):
                 self.setLike(id: id, btn: btn)
+            case .delete(let id):
+                self.deleteHeadTopic(id: id)
             }
+        
         }).disposed(by: cell.disposeBag)
         
         cell.clickPub.subscribe(onNext: { (index,imgs) in
