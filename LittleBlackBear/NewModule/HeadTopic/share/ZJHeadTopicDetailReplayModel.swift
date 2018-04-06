@@ -62,7 +62,15 @@ class ZJHeadTopicDetailReplayModel: SNSwiftyJSONAble {
         self.id = jsonData["id"].stringValue
         self.headline_id = jsonData["headline_id"].stringValue
         self.mer_id = jsonData["mer_id"].stringValue
-        self.comments = jsonData["comments"].stringValue.pregReplace(pattern: "[{a-zA-Z0-9}]", with: "")
+//        self.comments = jsonData["comments"].stringValue.pregReplace(pattern: "[{a-zA-Z0-9}]", with: "")
+        
+        if NSString.hasEmoji(jsonData["comments"].stringValue){
+            
+            self.comments = NSString.string(toEmoji: jsonData["comments"].stringValue)
+        }else{
+//            self.comments = NSString.string(toEmoji: jsonData["comments"].stringValue)
+            self.comments = jsonData["comments"].stringValue
+        }
         self.add_time = jsonData["add_time"].stringValue
         self.reply_id = jsonData["reply_id"].stringValue
         self.headImg = jsonData["headImg"].stringValue

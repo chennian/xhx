@@ -9,5 +9,11 @@
 #import <Foundation/Foundation.h>
 
 @interface NSObject (Emoji)
-+ (BOOL)stringContainsEmoji:(NSString *)string;
+
+//
++ (NSString*)EmojiToUniCode:(NSString *)string;
++ (NSString*)stringToEmoji:(NSString *)string;
+
+
++ (BOOL)hasEmoji:(NSString *)string;
 @end

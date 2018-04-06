@@ -9,21 +9,37 @@
 #import "NSObject+Emoji.h"
 
 @implementation NSObject (Emoji)
-+ (BOOL)stringContainsEmoji:(NSString *)string
++ (NSString*)EmojiToUniCode:(NSString *)string
 {
 //    NSString* s = @"323";
     
-    //NSStringEncoding
-    NSString * s = [string stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSString *uniStr = [NSString stringWithUTF8String:[string UTF8String]];
     
-    NSLog(s);
     
-    NSString* ss = [string stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]  ];
+    NSData *uniData = [uniStr dataUsingEncoding:NSNonLossyASCIIStringEncoding];
+    NSString *goodStr = [[NSString alloc] initWithData:uniData encoding:NSUTF8StringEncoding] ;
+//    NSLog(goodStr);
+    return goodStr;
+}
++ (NSString*)stringToEmoji:(NSString *)string{
+    const char *jsonString = [string UTF8String];// goodStr 服务器返回的 json
+    NSData *jsonData = [NSData dataWithBytes:jsonString length:strlen(jsonString)];
     
-    NSLog(ss);
+    if ([[NSString alloc] initWithData:jsonData encoding:NSNonLossyASCIIStringEncoding] == NULL){
+        return @"";
+    }
+//    NSString *goodMsg1 = ;
+
     
-    return YES;
+//    [NSString alloc]ini
+    return [[NSString alloc] initWithData:jsonData encoding:NSNonLossyASCIIStringEncoding];//goodMsg1;
 }
 
-
++ (BOOL)hasEmoji:(NSString *)string{
+    if ([string containsString:@"\\u"]){
+        return YES;
+    }
+    return NO;
+    
+}
 @end

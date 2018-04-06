@@ -74,8 +74,14 @@ class ZJHeadTopicCellModel: SNSwiftyJSONAble {
         del_flag = jsonData["del_flag"].stringValue
         merc_id = jsonData["merc_id"].stringValue
         merc_name = jsonData["merc_name"].stringValue
-        description = jsonData["description"].stringValue.pregReplace(pattern: "[{a-zA-Z0-9}]", with: "")
+//        description = jsonData["description"].stringValue//.pregReplace(pattern: "[{a-zA-Z0-9}]", with: "")
         images = []
+        if NSString.hasEmoji(jsonData["description"].stringValue){
+            let str = jsonData["description"].stringValue
+            description = NSString.string(toEmoji: str )
+        }else{
+            description = jsonData["description"].stringValue
+        }
         base_praise = jsonData["base_praise"].stringValue
         real_praise = jsonData["real_praise"].stringValue
         status = jsonData["status"].stringValue

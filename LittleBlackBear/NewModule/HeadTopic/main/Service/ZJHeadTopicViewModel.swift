@@ -14,6 +14,8 @@ class ZJHeadTopicViewModel: SNBaseViewModel {
     
     let reloadPublish = PublishSubject<(Int,Bool)>()
  
+    
+    let reloadOneRow = PublishSubject<[IndexPath]>()
     var page : Int = 0
 
     func getMoreData(){
@@ -43,6 +45,9 @@ class ZJHeadTopicViewModel: SNBaseViewModel {
     
     var maxPage : Int = 0
     func getData(){
+        
+        let ss = NSString.string(toEmoji: "123")//.emoji(toUniCode: "134")
+        ZJLog(messagr: ss)
         page = 0
         SNRequest(requestType: API.getHeadTopicList(checkPraiseId : LBKeychain.get(CURRENT_MERC_ID),mercId : "" ,size: "10", page: "\(page)"), modelType: ZJHeadTopicModel.self).subscribe(onNext: { (result) in
             switch result{
@@ -133,6 +138,7 @@ extension ZJHeadTopicViewModel : UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = ZJHeadTopicDetailVC()
         vc.model = models[indexPath.row]
+        self.reloadOneRow.onNext([indexPath])
         self.jumpSubject.onNext(SNJumpType.push(vc: vc, anmi: true))
     }
 }

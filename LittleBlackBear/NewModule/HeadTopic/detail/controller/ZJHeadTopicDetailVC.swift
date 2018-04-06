@@ -12,7 +12,7 @@ class ZJHeadTopicDetailVC: SNBaseViewController {
     
     var model : ZJHeadTopicCellModel?{
         didSet{
-            viewModel.getData(id: model!.id,type : .common)//.topicModel = model!
+            viewModel.orignModel = model//getData(id: model!.id,type : .common)//.topicModel = model!
             
 //            toolBar.likeButton.isSelected = model!.praise//.set(share: model!.forwardNum, like: model!.real_praise)
             self.toolBar.likeButton.setSelect(selected: model!.praise, img: "headline_praise")
@@ -87,6 +87,7 @@ class ZJHeadTopicDetailVC: SNBaseViewController {
         toolBar.likeButton.rx.controlEvent(UIControlEvents.touchUpInside).subscribe(onNext: {[unowned self] () in
             self.toolBar.likeButton.setSelect(selected: !self.toolBar.likeButton.isSelected, img: "headline_praise")//.isSelected = !self.toolBar.likeButton.isSelected
             self.viewModel.setLike(id: self.model!.id, btn: self.toolBar.likeButton)
+            self.model!.praise = self.toolBar.likeButton.isSelected
         }).disposed(by: disposeBag)
     }
 

@@ -53,6 +53,13 @@ class ZJHeadTopicDetailCellModel {
 }
 class ZJHeadTopicDetailViewModel: SNBaseViewModel {
     
+    var orignModel : ZJHeadTopicCellModel?{
+        didSet{
+//            getData(id: model!.id)
+            getData(id: orignModel!.id,type : .common)
+        }
+    }
+    
     var id : String = ""
     
     let reloadPublish = PublishSubject<(section : [Int],count : Int)>()
@@ -144,17 +151,22 @@ class ZJHeadTopicDetailViewModel: SNBaseViewModel {
             switch reseult{
             case .bool(_):
 //                break\
+                
+                
+//                self
+                if btn.isSelected{
+
+                    let count = (self.topicModel!.real_praise as NSString).integerValue + 1
+//                    self.topicModel?.real_praise = "\(count)"
+                    self.orignModel!.real_praise = "\(count)"
+                }else{
+                    let count = (self.topicModel!.real_praise as NSString).integerValue - 1
+//                    self.topicModel?.real_praise = "\(count)"
+                    self.orignModel!.real_praise = "\(count)"
+//                    self.model?.headlineInfoPraiseBOList
+                }
                 self.getData(id: self.id,type : .like)
-//                if btn.isSelected{
-//
-//                    let count = (self.topicModel!.real_praise as NSString).integerValue + 1
-//                    self.topicModel?.real_praise = "\(count)"
-//                }else{
-//                    let count = (self.topicModel!.real_praise as NSString).integerValue - 1
-//                    self.topicModel?.real_praise = "\(count)"
-////                    self.model?.headlineInfoPraiseBOList
-//                }
-////                self.type = .common
+//                self.type = .common
 //                self.reloadPublish.onNext((section: [0,1], count: 0))
 //                btn.setTitle(String(format: "%2d", (btn.currentTitle! as NSString).intValue + 1), for: .normal)
             case .fail(let code , let msg):
@@ -169,14 +181,18 @@ class ZJHeadTopicDetailViewModel: SNBaseViewModel {
     }
     
     func replay(content : String){
+ 
         
-//        let s = NSString.addingPercentEncoding(<#T##NSString#>)//stringByAddingPercentEncodingWithAllowedCharac//NSString.stringContainsEmoji(content)
         
-//        let vc = (content as NSString).addingPercentEncoding(withAllowedCharacters:  NSCharacterSet.urlQueryAllowed)//.stringByAddingPercentEscapesUsingEncodin
-//        let ste = content.utf8CString
-//        let ste = NSString(utf8String: content.utf8CString)
-//        NSString.stringContainsEmoji(content)
-        SNRequestBool(requestType: API.replayHeadTopic(headline_id: topicModel!.id, mer_id: topicModel!.merc_id, comments: content, reply_id: "")).subscribe(onNext: { (result) in
+        
+//        ZJLog(messagr: NSString.emoji(toUniCode: content))
+        //label.text = "\(emojiStr)"
+//        label.text = String(emojiStr)
+//        label.textAlignment = NSTextAlignment.center
+ 
+        
+        
+        SNRequestBool(requestType: API.replayHeadTopic(headline_id: topicModel!.id, mer_id: topicModel!.merc_id, comments: NSString.emoji(toUniCode: content), reply_id: "")).subscribe(onNext: { (result) in
             switch result{
             case .bool(_):
 //            c    break
@@ -186,9 +202,10 @@ class ZJHeadTopicDetailViewModel: SNBaseViewModel {
 //                self.reloadPublish.onNext((section: [0,1], count: 0))
                 let model = ZJHeadTopicDetailReplayModel()
                 model.comments = content
-                self.model!.headlineReplyPOList.append(model)
+                self.model!.headlineReplyPOList.insert(model, at: 0)//.append(model)
                 self.type = .common
                 self.reloadPublish.onNext((section: [0,1], count: 0))
+                self.orignModel!.replyNum = "\(self.model!.headlineReplyPOList.count)"
 //                self.getData(id: <#T##String#>)
                 SZHUD("评论成功", type: .info, callBack: nil)
                 

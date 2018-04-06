@@ -198,16 +198,20 @@ class ViewController: UIViewController,PhotoPickerControllerDelegate, UIImagePic
             alertView.show()
             return
         }
+//        if NSString.hasEmoji(NSString.emoji(toUniCode: self.nikeTextField.text!)){
+//            SZHUD("昵称不能包含表情", type: .error, callBack: nil)
+//            return
+//        }
         
         if publishText.text == ""{
             let alertView = UIAlertView(title: "温馨提示", message: "请输入文字", delegate: nil, cancelButtonTitle:"确定" )
             alertView.show()
             return
         }
-        if self.imageArray.isEmpty {
-            SZHUD("图片上传失败", type: .error, callBack: nil)
-            return
-        }
+//        if self.imageArray.isEmpty {
+//            SZHUD("图片上传失败", type: .error, callBack: nil)
+//            return
+//        }
         
         self.submitImages()
 
@@ -227,7 +231,12 @@ class ViewController: UIViewController,PhotoPickerControllerDelegate, UIImagePic
         print(self.imagePathArray)
        self.imagePathString = self.imagePathArray.joined(separator: "|")
         print(self.imagePathString)
-        let paramert:[String:String] = ["merc_id":LBKeychain.get(CURRENT_MERC_ID),"description":publishText.text,"images":self.imagePathString,"location_desc":self.city,"lng":self.lng,"lat":self.lat,"nickName":self.nikeTextField.text!]
+        var content : String = publishText.text
+        if NSString.hasEmoji(publishText.text){
+            content = NSString.emoji(toUniCode: publishText.text)
+        }
+        
+        let paramert:[String:String] = ["merc_id":LBKeychain.get(CURRENT_MERC_ID),"description":content,"images":self.imagePathString,"location_desc":self.city,"lng":self.lng,"lat":self.lat,"nickName":self.nikeTextField.text!]
         LBHttpService.LB_Request2(.publishHead, method: .post, parameters: lb_md5Parameter(parameter: paramert), headers: nil, success: {[weak self] (json) in
             SZHUDDismiss()
             let alertView = UIAlertView(title: nil, message: "发布成功", delegate: nil, cancelButtonTitle:"确定" )
@@ -238,7 +247,7 @@ class ViewController: UIViewController,PhotoPickerControllerDelegate, UIImagePic
             }, failure: { (failItem) in
                 SZHUDDismiss()
         }) { (error) in
-            SZHUD("发送失败", type: .error, callBack: nil)
+            SZHUD("发送失败,昵称不能包含表情", type: .error, callBack: nil)
         }
         
     }

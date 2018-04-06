@@ -30,10 +30,19 @@ class ZJHeadTopicViewController: SNBaseViewController {
     var firstReload : Bool = true
     override func viewAppear(_ animated: Bool) {
         super.viewAppear(animated)
+        
         if firstReload{
             
             viewModel.getData()
             firstReload = false
+        }
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if reloadRows.count != 0{
+            
+            tableview.reloadItemsAtIndexPaths(reloadRows, animationStyle: UITableViewRowAnimation.none)//.reloadRows(at: reloadRows, with: UITableViewRowAnimation.top)
+            reloadRows = []
         }
     }
     func rightItemClick(){
@@ -99,7 +108,13 @@ class ZJHeadTopicViewController: SNBaseViewController {
             self.tableview.zj_reloadData(count: count)
         }).disposed(by: disposeBag)
         
+        viewModel.reloadOneRow.subscribe(onNext: {[unowned self] (array) in
+            self.reloadRows = array
+        }).disposed(by: disposeBag)
+        
     }
+    
+    var reloadRows : [IndexPath] = []
 
 }
 //extension

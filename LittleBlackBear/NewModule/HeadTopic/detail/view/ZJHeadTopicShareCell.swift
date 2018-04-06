@@ -17,7 +17,7 @@ class ZJHeadTopicShareCell: SNBaseTableViewCell {
              "headlineId": 308,
              "nickName": "139****4786"
              */
-            nameLab.text = model!.nickName == "" ? "用户xxx" : model!.nickName
+            nameLab.text = model!.nickName == "" ? "" : model!.nickName
             headIcon.kf.setImage(with: URL(string : model!.headImg), placeholder: UIImage(named:"LBlogoIconHead"))//.setImage(with: URL(string : model!.headImg))
         }
     }

@@ -70,7 +70,7 @@ class ZJHeadTopicCell: SNBaseTableViewCell {
                 make.left.equalTo(loaclIcon.snp.right).snOffset(8)
             }
             
-            headIcon.kf.setImage(with: URL(string:model!.headImg))
+            headIcon.kf.setImage(with: URL(string:model!.headImg), placeholder: UIImage(named:"LBlogoIconHead"))
             nameLab.text = model!.nickName == "" ? "暂无昵称" : model!.nickName
             
             //timeLab
