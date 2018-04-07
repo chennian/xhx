@@ -60,6 +60,7 @@ class LBProfileViewController: UITableViewController {
                                                                    NSFontAttributeName:UIFont.boldSystemFont(ofSize: 16*default_scale)]
         
         UIApplication.shared.setStatusBarStyle(.default, animated: true)
+        closeAction()
     }
     
     override func didReceiveMemoryWarning() {

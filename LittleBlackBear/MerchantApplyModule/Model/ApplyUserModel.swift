@@ -270,7 +270,7 @@ class StepOne: NSObject, ApplyTypeOneProtocol, NSCoding {
     var email: String?
     var firstImage: ApplyImage?
     var secondImage: ApplyImage?
-    //    var threeImage: ApplyImage?
+    //    var threeImage: ApplyImage?z
     
     override init() {
         super.init()

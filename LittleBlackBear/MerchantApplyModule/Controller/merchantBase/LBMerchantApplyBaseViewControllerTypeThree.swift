@@ -577,6 +577,14 @@ extension LBMerchantApplyBaseViewControllerTypeThree:LBMerchantUploadInfoServer{
         button.isEnabled = false
         print(parameters);
         
+        func showMessage(title: String, message: String) {
+            UIAlertView(title: title,
+                        message:message,
+                        delegate: nil,
+                        cancelButtonTitle: nil,
+                        otherButtonTitles: "确定").show()
+        }
+        
         SNRequestBool(requestType: API.insertMerchant(paremeter: parameters)).subscribe(onNext: {[unowned self] (result) in
             switch result{
             case .bool(_):
@@ -585,12 +593,13 @@ extension LBMerchantApplyBaseViewControllerTypeThree:LBMerchantUploadInfoServer{
                 button.isEnabled = true
                 ApplyModelTool.removeModel()
                 SZHUD("上次成功", type: .info, callBack: nil)
-            default:
-                SZHUD("请求错误", type: .error, callBack: nil)
-                self.navigationController?.popToRootViewController(animated: true)
-
+            case .fail(let res):
+                showMessage(title:"温馨提示" , message: res.msg!)
                 button.isEnabled = true
-
+            default:
+                showMessage(title:"温馨提示" , message: "请求错误")
+                self.navigationController?.popToRootViewController(animated: true)
+                button.isEnabled = true
             }
         }).disposed(by: disposeBag)
         
