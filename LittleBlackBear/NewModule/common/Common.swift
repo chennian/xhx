@@ -63,7 +63,7 @@ let IS_IPONE = UIDevice.current.model == "iPhone"
 fileprivate func adjustSize(attribute: CGFloat) -> CGFloat {
     
     
-    precondition(IS_IPONE, "this is not iphone,adjust method can not be used")
+//    precondition(IS_IPONE, "this is not iphone,adjust method can not be used")
     
     var result : CGFloat = 0.0
     switch ScreenW {

@@ -321,7 +321,7 @@ LBPresentLoginViewControllerProtocol{
         switch cellItem[indexPath.row] {
             
         case .mixCell(_):
-            return fit(312)
+            return adjustSizeWithUiDesign(attribute: 695, UiDesignWidth: 1080)//fit(312)
         case .title(_):
             return fit(90)
         case  .image(_):
