@@ -304,10 +304,13 @@ class LBMerchantApplyBaseViewControllerTypeTwo: LBMerchantApplyBaseViewControlle
                             strongSelf.applyStepModel?.checkStandPic = ApplyImage(image: image, path: path)
                         default:break
                         }}
-                    print(path)
+                    SZHUDDismiss()
+
                 }else{
                     SZHUD("图片上传失败", type: .error, callBack: nil)
-                    return                }
+                    return
+                    
+                }
                 
             }
             

@@ -100,7 +100,7 @@ class LBMerchantApplyBaseViewControllerTypeThree: LBMerchantApplyBaseViewControl
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        saveData()
+//        saveData()
     }
     
     func saveData(){
@@ -458,7 +458,8 @@ extension LBMerchantApplyBaseViewControllerTypeThree:LBMerchantUploadInfoServer{
         
         // 获取第一步资料
         let stepOneItem = ApplyModel.shareApplyModel.applySelfModel.stepOne
-        
+        let applyPhone =  stepOneItem.applyPhone ?? ""
+        let applyName = stepOneItem.applyName ?? ""
         let name: String = stepOneItem.name ?? ""
         let account: String = stepOneItem.account ?? ""
         let idcardType: String = stepOneItem.idcardType ?? ""  //证件类型
@@ -492,11 +493,13 @@ extension LBMerchantApplyBaseViewControllerTypeThree:LBMerchantUploadInfoServer{
         var parameters:[String:Any] = [
             
             "mer_id":LBKeychain.get(CURRENT_MERC_ID),  //会员号
+            "applyPhone":applyPhone,        //推荐人手机号
+            "applyName":applyName,          //推荐人姓名
             "name" :name,                   // 负责人姓名
-            "phone":account,                              // 负责人手机号
-            "idcardType":idcardType,            //身份证类型
+            "phone":account,                // 负责人手机号
+            "idcardType":idcardType,        //身份证类型
             "idcard":IDNumber,              //负责人身份证号
-            "email":email,                                //邮箱
+            "email":email,                  //邮箱
             "validterm":validterm,          //身份证有效期
             "idcardone" :firstImagePath,    //正面身份证
             "idcardtwo":secondImagePath,    //反面身份证

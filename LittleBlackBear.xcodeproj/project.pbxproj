@@ -2763,7 +2763,7 @@
 					};
 					ACE720B41F9DDA7000C22465 = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = 94ADJ4ZKQL;
+						DevelopmentTeam = GS5MNVJVED;
 						ProvisioningStyle = Automatic;
 						TestTargetID = ACE720951F9DDA7000C22465;
 					};
@@ -3671,7 +3671,7 @@
 			baseConfigurationReference = D24E077B68BD960F9D528351 /* Pods-LittleBlackBearUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				DEVELOPMENT_TEAM = 94ADJ4ZKQL;
+				DEVELOPMENT_TEAM = GS5MNVJVED;
 				INFOPLIST_FILE = LittleBlackBearUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.YoungBlackBear.systems.LittleBlackBearUITests;
@@ -3686,7 +3686,7 @@
 			baseConfigurationReference = 38D3069020C157AF282EDB3B /* Pods-LittleBlackBearUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				DEVELOPMENT_TEAM = 94ADJ4ZKQL;
+				DEVELOPMENT_TEAM = GS5MNVJVED;
 				INFOPLIST_FILE = LittleBlackBearUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.YoungBlackBear.systems.LittleBlackBearUITests;

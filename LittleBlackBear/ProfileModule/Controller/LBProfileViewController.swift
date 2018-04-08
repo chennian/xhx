@@ -155,14 +155,15 @@ class LBProfileViewController: UITableViewController {
                 return
             }
             
-            if LBKeychain.get(ISMERC) == TRUE{
-                let viewController = LBMerchantApplyTypeViewController()
-                viewController.isOtherApply = .otherApply
-                strongSelf.navigationController?.pushViewController(viewController, animated: true)
-            }else{
-                strongSelf.view.addSubview(strongSelf.mercAlertView)
-                strongSelf.mercAlertView.delegate = strongSelf
-            }
+//            if LBKeychain.get(ISMERC) == TRUE{
+            let viewController = LBMerchantApplyTypeViewController()
+            viewController.isOtherApply = .otherApply
+            strongSelf.navigationController?.pushViewController(viewController, animated: true)
+            
+//            }else{
+//                strongSelf.view.addSubview(strongSelf.mercAlertView)
+//                strongSelf.mercAlertView.delegate = strongSelf
+//            }
         }
         
     }
@@ -269,7 +270,7 @@ class LBProfileViewController: UITableViewController {
             
         }
         
-        footerView.buttonTitle = isMerc == TRUE ?"帮人申请成为商家":"申请成为商家"
+        footerView.buttonTitle = "帮人申请成为商家"
     }
     
 }

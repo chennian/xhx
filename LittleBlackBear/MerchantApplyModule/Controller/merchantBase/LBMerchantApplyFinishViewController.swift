@@ -12,11 +12,17 @@ class LBMerchantApplyFinishViewController: LBMerchantApplyBaseViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
+        ApplyModelTool.removeModel()
+
 		navigationItem.title = "提交成功"
 		headViewStyle = .none(topImage: "merchantsApply4")
 		configSubView()
 	}
 	
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        ApplyModelTool.removeModel()
+    }
 }
 extension LBMerchantApplyFinishViewController{
 	

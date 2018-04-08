@@ -134,51 +134,61 @@ class ApplyModelTool {
         }
         do {
             
-            try FileManager.default.removeItem(atPath: path!)
+//            try FileManager.default.removeItem(atPath: path!)
             
-            //            let stepOneItem = ApplyModel.shareApplyModel.applySelfModel.stepOne
-            //
-            //            stepOneItem.name = ""
-            //            stepOneItem.account = ""
-            //            stepOneItem.IDNumber = ""
-            //            stepOneItem.validterm = ""
-            //            stepOneItem.email = ""
-            //            stepOneItem.firstImage?.path = ""
-            //            stepOneItem.secondImage?.path = ""
-            //            stepOneItem.threeImage?.path = ""
-            //
-            //            let stepSecondeItem = ApplyModel.shareApplyModel.applySelfModel.stepTwo
-            //
-            //            stepSecondeItem.shopFrontPhotoImage?.path = ""
-            //            stepSecondeItem.businessLicenseImage?.path = ""
-            //
-            //            stepSecondeItem.merchantAbbreviation = ""
-            //            stepSecondeItem.businessLicenseNum = ""
-            //            stepSecondeItem.organizationCodeNum = ""
-            //
-            //            stepSecondeItem.enterpriseName = ""
-            //            stepSecondeItem.companyProvince = ""
-            //            stepSecondeItem.companyCity = ""
-            //            stepSecondeItem.companyAddressDetails = ""
-            //            stepSecondeItem.companyType = ""
-            //
-            //            let stepThirItem = ApplyModel.shareApplyModel.applySelfModel.stepThree
-            //
-            //            stepThirItem.company.licenseImage?.path = ""
-            //            stepThirItem.company.bankCard = ""
-            //            stepThirItem.company.bankCardID = ""
-            //            stepThirItem.company.bankName = ""
-            //            stepThirItem.company.bankPhone = ""
-            //            stepThirItem.company.branchBank = ""
-            //
-            //            stepThirItem.priv.licenseImage?.path = ""
-            //            stepThirItem.priv.bankCard = ""
-            //            stepThirItem.priv.bankCardID = ""
-            //            stepThirItem.priv.bankName = ""
-            //            stepThirItem.priv.bankPhone = ""
-            //            stepThirItem.priv.branchBank = ""
-            //
-            //            save(model: ApplyModel.shareApplyModel)
+            let stepOneItem = ApplyModel.shareApplyModel.applySelfModel.stepOne
+            stepOneItem.idcardType = nil
+            stepOneItem.applyPhone = nil
+            stepOneItem.applyName  = nil
+            stepOneItem.name = nil
+            stepOneItem.account = nil
+            stepOneItem.IDNumber = nil
+            stepOneItem.validterm = nil
+            stepOneItem.email = nil
+            stepOneItem.firstImage = nil
+            stepOneItem.secondImage = nil
+           
+            let stepSecondeItem = ApplyModel.shareApplyModel.applySelfModel.stepTwo
+            
+            stepSecondeItem.companyFirstLevel = nil
+            stepSecondeItem.companySecondLevel = nil
+            stepSecondeItem.companyAddressDetails = nil
+            stepSecondeItem.shopFrontPhotoImage = nil
+            stepSecondeItem.businessLicenseImage = nil
+            stepSecondeItem.checkStandPic = nil
+            stepSecondeItem.storePic = nil
+            stepSecondeItem.merchantAbbreviation = nil
+            stepSecondeItem.businessLicenseNum = nil
+            stepSecondeItem.organizationCodeNum = nil
+            stepSecondeItem.enterpraiseLicenseTerm = nil   //新增    营业执照有效期
+            stepSecondeItem.companyName = nil
+            stepSecondeItem.enterpriseName = nil
+            stepSecondeItem.companyAddress = nil
+            stepSecondeItem.companyProvince = nil
+            stepSecondeItem.companyCity = nil
+            stepSecondeItem.companyType = nil
+            
+            let stepThirItem = ApplyModel.shareApplyModel.applySelfModel.stepThree
+            
+            stepThirItem.company.bankAddress = nil
+            stepThirItem.company.bankCard = nil
+            stepThirItem.company.bankName = nil
+            stepThirItem.company.bankCardID = nil
+            stepThirItem.company.bankPhone = nil
+            stepThirItem.company.branchBank = nil
+            stepThirItem.company.image = nil
+            stepThirItem.company.licenseImage = nil
+          
+            stepThirItem.priv.bankAddress = nil
+            stepThirItem.priv.bankCard = nil
+            stepThirItem.priv.branchBank = nil
+            stepThirItem.priv.bankCardID = nil
+            stepThirItem.priv.bankName = nil
+            stepThirItem.priv.bankPhone = nil
+            stepThirItem.priv.bankSecondImg = nil
+            stepThirItem.priv.bankSecondImg = nil
+            
+            save(model: ApplyModel.shareApplyModel)
             
             
         } catch let error {
@@ -316,24 +326,16 @@ class StepOne: NSObject, ApplyTypeOneProtocol, NSCoding {
 class StepTwo: NSObject, NSCoding, ApplyTypeTwoProtocol {
     
     var companyFirstLevel: String?
-    
     var companySecondLevel: String?
-    
     var companyAddressDetails: String?
-    
-    
     var shopFrontPhotoImage: ApplyImage?
     var businessLicenseImage: ApplyImage?
     var checkStandPic: ApplyImage?
     var storePic: ApplyImage?
-    
-    
     var merchantAbbreviation: String?
     var businessLicenseNum: String?
     var organizationCodeNum: String?
     var enterpraiseLicenseTerm: String?   //新增    营业执照有效期
-    
-    
     var companyName: String?
     var enterpriseName: String?
     var companyAddress: String?
