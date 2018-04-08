@@ -62,28 +62,22 @@ extension UIImage {
      *
      *  return 压缩后图片的二进制 传到阿里云的图
      */
-    func compressImage(image: UIImage, maxLength: Int = 1024 * 200) -> UIImage? {
+    func compressImage(image: UIImage, maxLength: Int = 1024 * 200) -> Data? {
         
-        //let newSize = self.scaleImage(image: image, imageLength: 800)
         let newImage = UIImage.resizeImage(image: image, newSize: image.size)
         
-        
-        
-        var compress : CGFloat =  0.8
+        var compress : CGFloat =  0.5
         var data = UIImageJPEGRepresentation(newImage, compress)
 //        compress = data!.count > 3000000 ? 0.18 : 0.8
-//        print(data!.count)
-        ZJLog(messagr: Date())
         ZJLog(messagr: data!.count)
-        while (data?.count)! > maxLength && compress > 0.01 {
-            compress -= 0.02
+        while (data?.count)! > maxLength && compress > 0.01{
+            compress -= 0.01
             data = UIImageJPEGRepresentation(newImage, compress)
         }
-//        print(data!.count)
         ZJLog(messagr: compress)
         ZJLog(messagr: data!.count)
         
-        return UIImage(data:data!)
+        return data
     }
     
     

@@ -19,7 +19,7 @@ class ViewController: UIViewController,PhotoPickerControllerDelegate, UIImagePic
     var containerView = UIView()
     var publishText = UITextView()
     var placeholderLabel = UILabel()
-    var imageArray:[UIImage] = []
+    var imageArray:[Data] = []
     var imagePathArray:[String] = []
     var imagePathString:String = ""
     var locationSwitch = UISwitch()

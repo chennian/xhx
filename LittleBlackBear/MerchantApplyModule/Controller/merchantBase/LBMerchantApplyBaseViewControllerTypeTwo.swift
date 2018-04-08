@@ -274,8 +274,10 @@ class LBMerchantApplyBaseViewControllerTypeTwo: LBMerchantApplyBaseViewControlle
             let path = frontUrl + objecKey
             
             let manager = DDZOssManager()
-            
-            manager.uploadImg(objectKey: objecKey, image: image.compressImage(image: image)!,imageName:imgNames[tag],bucketName: BucketName, endPoint: EndPoint,path:path){[weak self] (success) in
+            SZHUD("正在上传中", type: .loading, callBack: nil)
+            let newImage = image.compressImage(image: image)
+
+            manager.uploadImg(objectKey: objecKey, image:newImage!,imageName:imgNames[tag],bucketName: BucketName, endPoint: EndPoint,path:path){[weak self] (success) in
                 if success{
                     if UserDefaults.standard.object(forKey: "LBMerchantApplyTypeStyle") as! String == LBMerchantApplyTypeStyle.priv.rawValue {
                         switch tag {
@@ -289,7 +291,10 @@ class LBMerchantApplyBaseViewControllerTypeTwo: LBMerchantApplyBaseViewControlle
                             strongSelf.applyStepModel?.storePic = ApplyImage(image: image, path: path)
                         default:break
                             
-                        }}else{
+                        }
+                        SZHUDDismiss()
+
+                    }else{
                         switch tag {
                         case 0:
                             strongSelf.applyStepModel?.shopFrontPhotoImage = ApplyImage(image: image, path: path)

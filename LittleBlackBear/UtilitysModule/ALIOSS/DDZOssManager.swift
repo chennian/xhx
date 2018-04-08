@@ -31,7 +31,7 @@ class DDZOssManager: NSObject {
     static let manager = DDZOssManager()
     
     ///上传图片-data上传
-    func uploadImg(objectKey : String,image : UIImage ,imageName:String,bucketName : String,endPoint : String,path:String,result : @escaping (Bool)->()){
+    func uploadImg(objectKey : String,image : Data ,imageName:String,bucketName : String,endPoint : String,path:String,result : @escaping (Bool)->()){
         let client = OSSClient(endpoint: endPoint, credentialProvider: credential)
         
         
@@ -40,7 +40,7 @@ class DDZOssManager: NSObject {
         put.bucketName = bucketName
         put.objectKey = objectKey
         
-        put.uploadingData = UIImagePNGRepresentation(image)!
+        put.uploadingData = image
         
         let putTask = client.putObject(put)
         let _ = putTask.continue({ (task) -> Any? in

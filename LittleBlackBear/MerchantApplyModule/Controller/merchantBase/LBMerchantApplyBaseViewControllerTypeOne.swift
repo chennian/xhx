@@ -238,20 +238,7 @@ class LBMerchantApplyBaseViewControllerTypeOne: LBMerchantApplyBaseViewControlle
                 phone = (strongSelf.cellContentDict[IndexPath(row: 5, section: 1)] as? String ?? "")!
 
             }
-//            strongSelf.uploadmerchantImageInfo(image: image, imgName: imgNames[tag], parameters: ["mobile": phone], success: { path in
-//                guard path.count > 0 else{return}
-//                strongSelf.cellContentDict[indexPath] = imageCell.images
-//                switch tag {
-//                case 0:
-//                    strongSelf.applyStepModel?.firstImage = ApplyImage(image: image, path: path)
-//                case 1:
-//                    strongSelf.applyStepModel?.secondImage = ApplyImage(image: image, path: path)
-////                case 2:
-////                    strongSelf.applyStepModel?.threeImage = ApplyImage(image: image, path: path)
-//                default:break
-//                }
-//
-//            })
+
             let date = NSDate()
             let dateFormatter = DateFormatter()
             let timestamp = Int(round(date.timeIntervalSince1970))
@@ -263,8 +250,9 @@ class LBMerchantApplyBaseViewControllerTypeOne: LBMerchantApplyBaseViewControlle
             let path = frontUrl + objecKey
             
             let manager = DDZOssManager()
-            
-            manager.uploadImg(objectKey: objecKey, image: image.compressImage(image: image)!,imageName:imgNames[tag],bucketName: BucketName, endPoint: EndPoint,path:path){[weak self] (success) in
+            SZHUD("正在上传中", type: .loading, callBack: nil)
+            let newImage = image.compressImage(image: image)
+            manager.uploadImg(objectKey: objecKey, image:newImage!,imageName:imgNames[tag],bucketName: BucketName, endPoint: EndPoint,path:path){[weak self] (success) in
                 if success{
                     guard path.count > 0 else{return}
                     strongSelf.cellContentDict[indexPath] = imageCell.images
@@ -276,6 +264,7 @@ class LBMerchantApplyBaseViewControllerTypeOne: LBMerchantApplyBaseViewControlle
                         default:break
                         
                     }
+                    SZHUDDismiss()
                     print(path)
                 }else{
                     SZHUD("图片上传失败", type: .error, callBack: nil)

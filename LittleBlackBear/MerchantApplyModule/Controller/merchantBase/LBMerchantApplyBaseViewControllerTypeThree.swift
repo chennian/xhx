@@ -310,14 +310,17 @@ class LBMerchantApplyBaseViewControllerTypeThree: LBMerchantApplyBaseViewControl
             let path = frontUrl + objecKey
             
             let manager = DDZOssManager()
-            
+            SZHUD("正在上传中", type: .loading, callBack: nil)
+            let newImage = image.compressImage(image: image)
             if self?.applyType == .company {
                 
-                manager.uploadImg(objectKey: objecKey, image: image.compressImage(image: image)!,imageName:"licenseImage",bucketName: BucketName, endPoint: EndPoint,path:path){[weak self] (success) in
+                manager.uploadImg(objectKey: objecKey, image:newImage!,imageName:"licenseImage",bucketName: BucketName, endPoint: EndPoint,path:path){[weak self] (success) in
                     if success{
                         guard path.count > 0 else{return}
                         self?.applyStepModelCompany?.licenseImage = ApplyImage(image: image, path: path)
                         print(path)
+                        SZHUDDismiss()
+
                     }else{
                         SZHUD("图片上传失败", type: .error, callBack: nil)
                         return                    }
@@ -325,7 +328,7 @@ class LBMerchantApplyBaseViewControllerTypeThree: LBMerchantApplyBaseViewControl
             }else if self?.applyType == .priv {
                 let imgNames:[String] = ["bankFirstImg","bankSecondImg"]
                 
-                manager.uploadImg(objectKey: objecKey, image: image.compressImage(image: image)!,imageName:imgNames[tag],bucketName: BucketName, endPoint: EndPoint,path:path){[weak self] (success) in
+                manager.uploadImg(objectKey: objecKey, image:newImage!,imageName:imgNames[tag],bucketName: BucketName, endPoint: EndPoint,path:path){[weak self] (success) in
                     if success{
                         guard path.count > 0 else{return}
                         switch tag {
@@ -334,7 +337,10 @@ class LBMerchantApplyBaseViewControllerTypeThree: LBMerchantApplyBaseViewControl
                         case 1:
                             strongSelf.applyStepModelPriv?.bankSecondImg = ApplyImage(image: image, path: path)
                         default:break
+                            
                         }
+                        SZHUDDismiss()
+
                     }else{
                         SZHUD("图片上传失败", type: .error, callBack: nil)
                         return                    }
