@@ -102,11 +102,13 @@ extension ZJHeadTopicViewModel : UITableViewDelegate,UITableViewDataSource{
             switch type{
             case .share(let model):
                 let vc = ZJHeadTopicShareController()
+                self.reloadOneRow.onNext([indexPath])
                 self.jumpSubject.onNext(SNJumpType.push(vc: vc, anmi: true))
             case .common(let model):
                 let vc = ZJHeadTopicDetailVC()
                 vc.model = model
                 vc.beginEdit = true
+                self.reloadOneRow.onNext([indexPath])
                 self.jumpSubject.onNext(SNJumpType.push(vc: vc, anmi: true))
             case .like(let id ,let btn):
                 self.setLike(id: id, btn: btn)

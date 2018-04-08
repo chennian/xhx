@@ -36,6 +36,7 @@ class LBShoppingMallViewController: UIViewController {
         $0.register(ZJHomeSeckillCell.self)
         $0.register(ZJHomeClassCell.self)
         $0.register(ZJHomeGroupCell.self)
+        $0.register(ZJHomeMerchantCell.self)
         //ZJHomeSeckillCell
         $0.separatorStyle = .none
     }
@@ -259,7 +260,7 @@ LBPresentLoginViewControllerProtocol{
             cell.cellType = .image(list)
             return cell
         case let .mixCell(type):
-            let cell : LBShoppingMixedCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
+            let cell : ZJHomeMerchantCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
             cell.model = type
             return cell
         case .newMiaomiaoCoupons(let models ):
@@ -320,7 +321,7 @@ LBPresentLoginViewControllerProtocol{
         switch cellItem[indexPath.row] {
             
         case .mixCell(_):
-            return fit(235)
+            return fit(312)
         case .title(_):
             return fit(90)
         case  .image(_):
