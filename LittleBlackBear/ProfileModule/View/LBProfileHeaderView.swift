@@ -16,9 +16,9 @@ class LBProfileHeaderView: UIView {
         didSet{
             
             guard isRefreshData == true else {return}
-            ismerc = LBKeychain.get(ISMERC)
-            isAgent = LBKeychain.get(ISAGENT)
-            userName  = LBKeychain.get(CURRENT_USER_NAME)
+            ismerc = LBKeychain.get(isMer)
+            isAgent = LBKeychain.get(IsAgent)
+            userName  = LBKeychain.get(nickName)
             headerUrl = LBKeychain.get(USER_ICON_URL)
             level = LBKeychain.get(AGENT_LEVEL)
             setupUI()
@@ -83,13 +83,13 @@ class LBProfileHeaderView: UIView {
         addConstraint(BXLayoutConstraintMake(levelLabel, .left, .equal,nameLabel,.right,10))
         addConstraint(BXLayoutConstraintMake(levelLabel, .centerY, .equal,nameLabel,.centerY))
         
-        guard ismerc == TRUE else {return}
+        guard ismerc == "1" else {return}
         
         var levels = ["alipay","WeChat"]
-        if ismerc == TRUE,isAgent == FALSE {
+        if ismerc == "1",isAgent == "0" {
             levels.append("merchantIcon")
         }
-        if ismerc == TRUE,isAgent == TRUE {
+        if ismerc == "1",isAgent != "0" {
             levels.append("merchantIcon")
             levels.append("standForIcon")
         }
@@ -127,22 +127,22 @@ class LBProfileHeaderView: UIView {
         
         nameLabel.text = userName
         
-        if ismerc == FALSE{
+        if ismerc == "0"{
             levelLabel.text = " 普通用户 "
         }
         
-        if ismerc == TRUE,isAgent == FALSE {
+        if ismerc == "1",isAgent == "0" {
             levelLabel.text = " 商户 "
         }
         
-        if  ismerc == TRUE,isAgent == TRUE {
-            switch level {
+        if  ismerc == "1",isAgent != "0" {
+            switch isAgent {
             case "1":
-                levelLabel.text = " 代理 "
+                levelLabel.text = " 服务商 "
             case "2":
-                levelLabel.text = " 分公司 "
+                levelLabel.text = " 运营商 "
             case "3":
-                levelLabel.text = " 市代理 "
+                levelLabel.text = " 子公司 "
             default:
                 break
             }

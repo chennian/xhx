@@ -57,7 +57,7 @@ class LBCommentListViewController: UITableViewController {
     
     func clickCommentAction() {
         
-        guard LBKeychain.get(ISLOGIN) == LOGIN_TRUE else {
+        guard LBKeychain.get(TOKEN) != "" else {
             
             showAlertView(message: "请先登录",actionTitles: ["取消","确定"],handler: {[weak self] (action ) in
                 

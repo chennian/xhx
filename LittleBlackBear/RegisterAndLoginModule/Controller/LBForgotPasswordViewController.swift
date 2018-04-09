@@ -7,9 +7,11 @@
 //
 
 import UIKit
+import RxSwift
 
 class LBForgotPasswordViewController: LBRegistLoginBaseViewController {
-    
+    fileprivate let disposeBag = DisposeBag()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "找回密码"
@@ -114,14 +116,31 @@ class LBForgotPasswordViewController: LBRegistLoginBaseViewController {
             "newLoginPwd":password,
             "appType":"2" // 1安卓  2iOS
         ]
-        LBHttpService.LB_Request(.findLoginPwdCommit, method: .post, parameters:lb_md5Parameter(parameter: parameters), headers: nil, success: {[weak self] (json) in
-            guard let strongSelf = self else{return}
-            strongSelf.navigationController?.popViewController(animated: true)
-        }, failure: { (failItem) in
-            
-        }) { (error) in
-            
-        }
+        
+        SNRequestBool(requestType: API.forgetPass(mobile:phone, code:msgCode , password: password)).subscribe(onNext: {[unowned self] (result) in
+            switch result{
+            case .bool(let msg):
+                SZHUD(msg, type: .success, callBack: nil)
+                self.navigationController?.popViewController(animated: true)
+
+            case .fail(let code,let msg):
+                SZHUD(msg!, type: .error, callBack: nil)
+
+            default:
+                break
+            }
+        }).disposed(by: disposeBag)
+
+        
+        //旧忘记密码
+//        LBHttpService.LB_Request(.findLoginPwdCommit, method: .post, parameters:lb_md5Parameter(parameter: parameters), headers: nil, success: {[weak self] (json) in
+//            guard let strongSelf = self else{return}
+//            strongSelf.navigationController?.popViewController(animated: true)
+//        }, failure: { (failItem) in
+//
+//        }) { (error) in
+//
+//        }
     }
     
 }

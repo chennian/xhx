@@ -20,6 +20,16 @@ public let locationSubLocalKey:String = "locationSubLocalKey"
 public let PHONE_NUMBER = "userPhone"
 public let USER_NAME = "userName"
 
+public let PHONE = "phone"
+public let nickName = "nickName"
+public let isMer = "isMer"
+public let IsAgent = "isAgent"
+public let MERCID = "mercId"
+public let TOKEN = "token"
+
+
+public let is_merc = "is_merc"
+
 public let ISATHUENICATION = "STS"// 是否已经进行实名认证
 public let USER_ICON_URL = "headImgUrl"//用户头像
 public let ISLOGIN = "user_login_status" // 用户登录状态  0 已登录 1 未登录

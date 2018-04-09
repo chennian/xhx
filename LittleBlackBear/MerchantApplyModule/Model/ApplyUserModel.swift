@@ -104,6 +104,7 @@ class ApplyModelTool {
             return NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first?.appending("/").appending(ApplyModelTool.component)
         }
     }
+
     
     static func save(model: ApplyModel) {
         guard let path = path else {
@@ -132,6 +133,7 @@ class ApplyModelTool {
         guard path != nil , FileManager.default.fileExists(atPath: path!) else {
             return
         }
+        print(path!)
         do {
             
 //            try FileManager.default.removeItem(atPath: path!)
@@ -310,7 +312,7 @@ class StepOne: NSObject, ApplyTypeOneProtocol, NSCoding {
         
         aCoder.encode(name, forKey: "name")
         aCoder.encode(account, forKey: "account")
-        aCoder.encode(account, forKey: "idcardType")
+        aCoder.encode(idcardType, forKey: "idcardType")
         aCoder.encode(IDNumber, forKey: "IDNumber")
         aCoder.encode(validterm, forKey: "validterm")
         aCoder.encode(email, forKey: "email")

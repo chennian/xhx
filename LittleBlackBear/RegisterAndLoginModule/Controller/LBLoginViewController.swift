@@ -7,11 +7,13 @@
 //
 
 import UIKit
+import RxSwift
 
 class LBLoginViewController: LBRegistLoginBaseViewController {
     
     var loginSuccessHanlder:(()->Void)?
-    
+    fileprivate let disposeBag = DisposeBag()
+
     fileprivate var textField_text_lenght = 0
     
     override func viewDidLoad() {
@@ -116,16 +118,57 @@ class LBLoginViewController: LBRegistLoginBaseViewController {
         LBKeychain.set(phone, key: PHONE_NUMBER)
         LBLoadingView.loading.show(false)
         let phoneNum = phone.replacingOccurrences(of: " ", with: "")
-        phoneLoginRequire(phoneNum: phoneNum, password: password, success: {[weak self] (loginItem) in
-            LBKeychain.set(LOGIN_TRUE, key: ISLOGIN)
-            guard let strongSelf = self else {return}
-            guard let action = strongSelf.loginSuccessHanlder else{return}
-            action()
-            LBLoadingView.loading.dissmiss()
-        }) { (errorMsg) in
-            LBLoadingView.loading.dissmiss()
-            UIAlertView(title: "提示", message: errorMsg, delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
-        }
+        
+        //新登录
+        SNRequest(requestType: API.login(phone:phoneNum, password:password)).subscribe(onNext: {[unowned self] (result) in
+            switch result{
+            case .success(let token):
+                LBKeychain.set(token, key: TOKEN)
+                LBKeychain.set(LOGIN_TRUE, key: ISLOGIN)
+                self.getUserInfo()
+                LBLoadingView.loading.dissmiss()
+            case .fail(_,let msg):
+                LBLoadingView.loading.dissmiss()
+                UIAlertView(title: "提示", message: msg!, delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
+            default:
+                break
+            }
+        }).disposed(by: disposeBag)
+        
+        
+        //久登录
+//        phoneLoginRequire(phoneNum: phoneNum, password: password, success: {[weak self] (loginItem) in
+//            LBKeychain.set(LOGIN_TRUE, key: ISLOGIN)
+//            guard let strongSelf = self else {return}
+//            guard let action = strongSelf.loginSuccessHanlder else{return}
+//            action()
+//            LBLoadingView.loading.dissmiss()
+//        }) { (errorMsg) in
+//            LBLoadingView.loading.dissmiss()
+//            UIAlertView(title: "提示", message: errorMsg, delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "确定").show()
+//        }
+        
+    }
+    
+    func getUserInfo(){
+        SNRequest(requestType: API.userInfo, modelType: [MyInfoModel.self]).subscribe(onNext: {[unowned self] (result) in
+            SZHUDDismiss()
+            switch result{
+            case .success(let models):
+                LBKeychain.set(models[0].phone, key: PHONE)
+                print(LBKeychain.get(PHONE))
+                LBKeychain.set(models[0].nickName, key: nickName)
+                LBKeychain.set(models[0].isMer, key: isMer)
+                LBKeychain.set(models[0].isAgent, key: IsAgent)
+                LBKeychain.set(models[0].mercId, key: MERCID)
+                guard let action = self.loginSuccessHanlder else{return}
+                action()
+                
+            case .fail(let code,let msg):
+            SZHUD(msg!, type: .error, callBack: nil)
+            default: break
+            }
+        }).disposed(by: disposeBag)
     }
     
     // footerview

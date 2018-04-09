@@ -201,7 +201,7 @@ extension LBNewsViewController{
 extension LBNewsViewController{
     // MARK: 点赞
     func thumbPraiseAction(_ model:imageListModel,_ cell:LBNewsTableViewCell,_ index:Int) {
-        guard LBKeychain.get(ISLOGIN) == LOGIN_TRUE else {
+        guard LBKeychain.get(TOKEN) != ""  else {
             showAlertView(message: "请先登录!",actionTitles: ["取消","确定"],handler: {[weak self] (action) in
                 guard let strongSelf = self else{return}
                 if action.title == "确定"{

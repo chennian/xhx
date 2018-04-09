@@ -36,7 +36,7 @@ class LBMerchantApplyBaseViewControllerTypeTwo: LBMerchantApplyBaseViewControlle
                 ],[
                     .common(.describe1(imgName: "enterpriseInfo", title: "企业信息", subtitle: "(按证书上的内容出自填写,带*为必填)")),
                     .common(.input0(title: "*商户简称：", placeholder: "该名称在支付完成页面向用户展示")),
-                    .common(.input0(title: "企业名称：", placeholder: "请输入企业名称缩")),
+                    .common(.input0(title: "企业名称：", placeholder: "请输入企业名称")),
                     .common(.input0(title: "统一社会信用代码：", placeholder: "如 00000000001234")),
                     .common(.input0(title: "营业执照有效期：", placeholder: "请输入营业执照有效期,如20220819")),
                     .common(.input3(title: "公司地址:", placeholder: "请选择省市", constraint:KSCREEN_WIDTH)),
@@ -48,7 +48,7 @@ class LBMerchantApplyBaseViewControllerTypeTwo: LBMerchantApplyBaseViewControlle
         }else{
             cellItems = [[
                 .common(.describe1(imgName: "quickOpen", title: "快捷开通", subtitle: "")),
-                .image(.images(images: [UIImage( named: "shopFrontPhoto"),UIImage( named: "businessLicense"),UIImage( named: "checkStandPic")]))
+                .image(.images(images: [UIImage( named: "shopFrontPhoto"),UIImage( named: "businessLicense"),UIImage( named: "checkStandPic"),UIImage( named: "storePic")]))
                 ],[
                     .common(.describe1(imgName: "enterpriseInfo", title: "企业信息", subtitle: "(按证书上的内容出自填写,带*为必填)")),
                     .common(.input0(title: "*商户简称：", placeholder: "该名称在支付完成页面向用户展示")),
@@ -86,7 +86,7 @@ class LBMerchantApplyBaseViewControllerTypeTwo: LBMerchantApplyBaseViewControlle
                 IndexPath(row: 8, section: 1): applyStepModel.companySecondLevel,
             ]
         }else{
-            let images = [applyStepModel.shopFrontPhotoImage?.image,applyStepModel.businessLicenseImage?.image,applyStepModel.checkStandPic?.image]
+            let images = [applyStepModel.shopFrontPhotoImage?.image,applyStepModel.businessLicenseImage?.image,applyStepModel.checkStandPic?.image,applyStepModel.storePic?.image]
             cellContentDict = [
                 IndexPath(row: 1, section: 0): images,
                 IndexPath(row: 1, section: 1): applyStepModel.merchantAbbreviation,
@@ -151,7 +151,7 @@ class LBMerchantApplyBaseViewControllerTypeTwo: LBMerchantApplyBaseViewControlle
                 return
             }
         }else{
-            guard var applyStepModel = applyStepModel, let _ = applyStepModel.shopFrontPhotoImage?.path, let _ = applyStepModel.businessLicenseImage?.path,let _ = applyStepModel.checkStandPic?.path else {
+            guard var applyStepModel = applyStepModel, let _ = applyStepModel.shopFrontPhotoImage?.path, let _ = applyStepModel.businessLicenseImage?.path,let _ = applyStepModel.checkStandPic?.path,let _ = applyStepModel.storePic?.path else {
                 showAlertView(with: "请上传照片")
                 return
                 
@@ -256,7 +256,7 @@ class LBMerchantApplyBaseViewControllerTypeTwo: LBMerchantApplyBaseViewControlle
                 imgNames = ["shopFrontPhotoImage","businessLicenseImage","checkStandPic","storePic"]
                 
             }else{
-                imgNames = ["shopFrontPhotoImage","businessLicenseImage","checkStandPic"]
+                imgNames = ["shopFrontPhotoImage","businessLicenseImage","checkStandPic","storePic"]
                 
             }
             
@@ -302,6 +302,8 @@ class LBMerchantApplyBaseViewControllerTypeTwo: LBMerchantApplyBaseViewControlle
                             strongSelf.applyStepModel?.businessLicenseImage = ApplyImage(image: image, path: path)
                         case 2:
                             strongSelf.applyStepModel?.checkStandPic = ApplyImage(image: image, path: path)
+                        case 3:
+                            strongSelf.applyStepModel?.storePic = ApplyImage(image: image, path: path)
                         default:break
                         }}
                     SZHUDDismiss()

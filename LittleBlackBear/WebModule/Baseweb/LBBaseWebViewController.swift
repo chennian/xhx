@@ -24,12 +24,12 @@ class LBBaseWebViewController: UIViewController {
 	
 	var callJavaScript:(()->())?
 	
-    let mercId:String = LBKeychain.get(CURRENT_MERC_ID)
-    let phone:String  = LBKeychain.get(PHONE_NUMBER)
+    let mercId:String = LBKeychain.get(MERCID)
+    let phone:String  = LBKeychain.get(PHONE)
     
     let signString:String = ""//LBKeychain.get(CURRENT_MERC_ID) + LBKeychain.get(PHONE_NUMBER)  + SIGN
     
-    let userName:String = LBKeychain.get(USER_NAME)
+    let userName:String = LBKeychain.get(nickName)
     let baseUrl = "http://html.xiaoheixiong.net/#/"
 
 	lazy var configuration: WKWebViewConfiguration = {

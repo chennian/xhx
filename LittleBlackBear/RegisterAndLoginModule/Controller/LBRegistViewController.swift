@@ -7,11 +7,13 @@
 //
 
 import UIKit
+import RxSwift
 
 class LBRegistViewController: LBRegistLoginBaseViewController {
     
     fileprivate var isRedingPrivate:Bool = false
     fileprivate let protocolButton = LBPrivatePolicyButtonView()
+    fileprivate let disposeBag = DisposeBag()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -139,20 +141,35 @@ class LBRegistViewController: LBRegistLoginBaseViewController {
         ]
         
         LBKeychain.set(phone, key: PHONE_NUMBER)
-        LBHttpService.LB_Request(.mobileRegister,
-                                 method: .post,
-                                 parameters: parameters,
-                                 headers: nil,
-                                 success: { [weak self] (json) in
-            guard let strongSelf = self else{return}
-            strongSelf.navigationController?.popViewController(animated: true)
-            
-            }, failure: {[weak self] (failItem) in
-                guard let strongSelf = self else{return}
-                strongSelf.showAlertView(failItem.message, "确定", nil)
-        }) {[weak self] (error) in
-            guard let strongSelf = self else{return}
-            strongSelf.showAlertView(RESPONSE_FAIL_MSG, "确定", nil)
-        }
+        
+        SNRequestBool(requestType: API.register(mobile:phone, code:msgCode , password: password)).subscribe(onNext: {[unowned self] (result) in
+            switch result{
+            case .bool(let msg):
+                SZHUD(msg, type: .success, callBack: nil)
+                self.navigationController?.popViewController(animated: true)
+                
+            case .fail(let code,let msg):
+                SZHUD(msg!, type: .error, callBack: nil)
+                
+            default:
+                break
+            }
+        }).disposed(by: disposeBag)
+        
+//        LBHttpService.LB_Request(.mobileRegister,
+//                                 method: .post,
+//                                 parameters: parameters,
+//                                 headers: nil,
+//                                 success: { [weak self] (json) in
+//            guard let strongSelf = self else{return}
+//            strongSelf.navigationController?.popViewController(animated: true)
+//
+//            }, failure: {[weak self] (failItem) in
+//                guard let strongSelf = self else{return}
+//                strongSelf.showAlertView(failItem.message, "确定", nil)
+//        }) {[weak self] (error) in
+//            guard let strongSelf = self else{return}
+//            strongSelf.showAlertView(RESPONSE_FAIL_MSG, "确定", nil)
+//        }
     }
 }

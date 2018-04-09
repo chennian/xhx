@@ -100,7 +100,7 @@ public extension Response {
         let jsonObj = jsonData[MOYA_RESULT_DATA]
         let jsonMsg = jsonData[MOYA_RESULT_MSG]
         
-        guard jsonCode.int == 000000, let mappedString = jsonObj.string else {
+        guard jsonCode == "000000", let mappedString = jsonObj.string else {
             //throw SNMoyaError.fail(code: nil, msg: jsonMsg.string)
             return SNMoyaResult.fail(code: jsonCode.stringValue, msg: jsonMsg.string)
         }

@@ -493,7 +493,7 @@ extension LBMerchantApplyBaseViewControllerTypeThree:LBMerchantUploadInfoServer{
         var parameters:[String:Any] = [
             
             "mer_id":LBKeychain.get(CURRENT_MERC_ID),  //会员号
-            "applyPhone":applyPhone,        //推荐人手机号
+            "recommend_phone":applyPhone,        //推荐人手机号
             "applyName":applyName,          //推荐人姓名
             "name" :name,                   // 负责人姓名
             "phone":account,                // 负责人手机号

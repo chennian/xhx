@@ -84,7 +84,7 @@ class LBProfileViewController: UITableViewController {
             
             guard let strongSelf = self else{return}
             
-            guard LBKeychain.get(ISLOGIN) == LOGIN_TRUE else {
+            guard LBKeychain.get(TOKEN) != "" else {
                 
                 strongSelf.showAlertView(message: "请先登录!", actionTitles: ["取消","确定"], handler: { (action) in
                     if action.title == "确定"{
@@ -141,7 +141,7 @@ class LBProfileViewController: UITableViewController {
         footerView.applyAction = {[weak self] (btn) in
             guard let strongSelf = self else { return }
             
-            guard LBKeychain.get(ISLOGIN) == LOGIN_TRUE else {
+            guard LBKeychain.get(TOKEN) != "" else {
                 
                 strongSelf.showAlertView(message: "请先登录!", actionTitles: ["取消","确定"], handler: { (action) in
                     if action.title == "确定"{
@@ -203,10 +203,11 @@ class LBProfileViewController: UITableViewController {
                             NSStringFromClass(LBMyCouponWebViewController.self),
                             
                             ]]
-        let isMerc = LBKeychain.get(ISMERC)
-        let isAgent = LBKeychain.get(ISAGENT)
+        let isMerc = LBKeychain.get(isMer)
+        let isAgent = LBKeychain.get(IsAgent)
+  
         
-        if isAgent == TRUE, isMerc == TRUE {
+        if isAgent != "0", isMerc == "1" {
             
             data.insert(["我的商家","我的代理","交易管理","我的收益",], at: 0)
             images.insert( ["my_merchant","my_agent","changeManger",
@@ -242,7 +243,7 @@ class LBProfileViewController: UITableViewController {
                 ], at: 1)
         }
         
-        if isMerc == TRUE,isAgent == FALSE {
+        if isMerc == "1",isAgent == "0" {
             
             data.insert(["收款码","我的账本","营销","流量管理",
                          "店铺管理","我的商品","店铺卡券","店铺红包"], at: 0)
@@ -349,7 +350,7 @@ extension LBProfileViewController:LBProfileTableViewCellDelegate{
     func collectionView(_ collectionView: UICollectionView, tableViewIndePath: IndexPath, didSelectItemAt indexPath: IndexPath) {
         
         let viewController = NSClassFromString(listControllers[tableViewIndePath.section][indexPath.row] as! String) as! UIViewController.Type
-        guard LBKeychain.get(ISLOGIN) == LOGIN_TRUE else {
+        guard LBKeychain.get(TOKEN) != "" else {
             
             showAlertView(message: "请先登录!", actionTitles: ["取消","确定"], handler: {[weak self] (action) in
                 guard let strongSelf = self else{return}

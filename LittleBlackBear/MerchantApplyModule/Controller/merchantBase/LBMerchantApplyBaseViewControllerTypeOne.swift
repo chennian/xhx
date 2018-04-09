@@ -7,11 +7,13 @@
 //
 
 import UIKit
+import RxSwift
 
 class LBMerchantApplyBaseViewControllerTypeOne: LBMerchantApplyBaseViewController {
     
     fileprivate let DocTypePickView = LBDocTypePickView(frame: CGRect(x: 0, y: 0, width: KSCREEN_WIDTH, height: 216))
-    
+    fileprivate let disposeBag = DisposeBag()
+
     var nextVC: UIViewController?
     var applyStepModel: ApplyTypeOneProtocol?
 	var isOtherApply:applyType = .selfApply{
@@ -34,13 +36,13 @@ class LBMerchantApplyBaseViewControllerTypeOne: LBMerchantApplyBaseViewControlle
 					
 				]
 			case .otherApply:
-				cellItems = [[.common(.describe1(imgName:"myIfonMark",title: "我的信息", subtitle: "")),
-							  .common(.input0(title: "申请人账号:", placeholder: "请输入申请人账号")),
-							  .common(.input0(title: "申请人姓名:", placeholder: "请输入申请人姓名")),
+				cellItems = [[.common(.describe1(imgName:"myIfonMark",title: "推荐人信息", subtitle: "")),
+							  .common(.input0(title: "推荐人账号:", placeholder: "请输入推荐人账号")),
+							  .common(.input0(title: "推荐人姓名:", placeholder: "请输入推荐人姓名")),
 							  ],
 							 [.common(.describe1(imgName:"merchantsInfo",title: "商户负责人信息", subtitle: "（与营业执照法人姓名相同）")),
 							  .common(.input0(title: "负责人姓名:", placeholder: "请输入负责人姓名")),
-                              .common(.input0(title: "身份证类型:", placeholder: "请选择省身份证类型")),
+                              .common(.input0(title: "身份证类型:", placeholder: "请选择身份证类型")),
 							  .common(.input0(title: "身份证号:", placeholder: "请输入负责人身份证号")),
                               .common(.input0(title: "身份证有效期:", placeholder: "请输入身份证号有效期,如20220819")),
 							  .common(.input0(title: "注册手机号:", placeholder: "请输入注册手机号")),
@@ -53,6 +55,13 @@ class LBMerchantApplyBaseViewControllerTypeOne: LBMerchantApplyBaseViewControlle
 			}
 		}
 	}
+    func showMessage(title: String, message: String) {
+        UIAlertView(title: title,
+                    message:message,
+                    delegate: nil,
+                    cancelButtonTitle: nil,
+                    otherButtonTitles: "确定").show()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 		
@@ -124,14 +133,14 @@ class LBMerchantApplyBaseViewControllerTypeOne: LBMerchantApplyBaseViewControlle
 			if let applyPhone = cellContentDict[IndexPath(row: 1, section: 0)] as? String {
 				applyStepModel?.applyPhone = applyPhone
 			}
-			if let applyPhone = cellContentDict[IndexPath(row: 2, section: 0)] as? String {
-				applyStepModel?.applyName = applyPhone
+			if let applyName = cellContentDict[IndexPath(row: 2, section: 0)] as? String {
+				applyStepModel?.applyName = applyName
 			}
             
 			if let name = cellContentDict[IndexPath(row: 1, section: 1)] as? String {
 				applyStepModel?.name = name
 			}
-            if let idcardType = cellContentDict[IndexPath(row: 2, section: 0)] as? String {
+            if let idcardType = cellContentDict[IndexPath(row: 2, section: 1)] as? String {
                 applyStepModel?.idcardType = idcardType
             }
 			if let IDNumber = cellContentDict[IndexPath(row: 3, section: 1)] as? String {
@@ -276,6 +285,7 @@ class LBMerchantApplyBaseViewControllerTypeOne: LBMerchantApplyBaseViewControlle
     }
     
     override func buttonCell(_ buttonCell: ButtonTableViewCell, nextButtonClick nextButton: UIButton) {
+        let applyPhone = cellContentDict[IndexPath(row: 1, section: 0)] as? String
 		switch isOtherApply {
 		case .otherApply:
 			// 字典转模型
@@ -362,10 +372,21 @@ class LBMerchantApplyBaseViewControllerTypeOne: LBMerchantApplyBaseViewControlle
             return
         }
         
-        navigationController?.pushViewController(vc, animated: true)
+        print(applyPhone!)
+        SNRequestBool(requestType: API.isStatus(recommend_phone:applyPhone!)).subscribe(onNext: {[unowned self] (result) in
+
+            print(result)
+            switch result{
+            case .bool(let res):
+               self.navigationController?.pushViewController(vc, animated: true)
+            print(res)
+            case .fail(let res):
+                self.showMessage(title:"温馨提示" , message: res.msg!)
+            default:
+                self.showMessage(title:"温馨提示" , message: "请求错误")
+            }
+        }).disposed(by: disposeBag)
         
     }
-    
-    
 }
 
