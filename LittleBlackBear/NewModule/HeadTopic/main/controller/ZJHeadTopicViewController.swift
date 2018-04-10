@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ZJHeadTopicViewController: SNBaseViewController {
+class ZJHeadTopicViewController: SNBaseViewController,LBPresentLoginViewControllerProtocol {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,6 +46,24 @@ class ZJHeadTopicViewController: SNBaseViewController {
         }
     }
     func rightItemClick(){
+        
+        guard LBKeychain.get(ISLOGIN) == LOGIN_TRUE else {
+            
+            showAlertView(message: "请先登录",actionTitles: ["取消","确定"],handler: {[weak self] (action ) in
+                
+                guard let strongSelf = self else {return}
+                guard action.title == "确定" else{return}
+                
+                strongSelf.presentLoginViewController({
+                    
+                }, nil)
+                
+            })
+            return
+        }
+        
+        
+        
         let vc = ViewController()//ZJHeadTopicPostViewController()
         vc.popPublic.subscribe(onNext: {[unowned self] (refres) in
             self.firstReload = true

@@ -36,9 +36,9 @@ class LBNavigationController: UINavigationController {
         UIBarButtonItem.appearance().setBackButtonTitlePositionAdjustment(UIOffsetMake(-KSCREEN_WIDTH, 0), for: .default)
         
         UINavigationBar.appearance().backIndicatorTransitionMaskImage = UIImage(named:
-            "backIcon")?.withRenderingMode(.alwaysOriginal)
+            "map_return1")?.withRenderingMode(.alwaysOriginal)
         UINavigationBar.appearance().backIndicatorImage = UIImage(named:
-            "backIcon")?.withRenderingMode(.alwaysOriginal)
+            "map_return1")?.withRenderingMode(.alwaysOriginal)
     }
 	override func pushViewController(_ viewController: UIViewController, animated: Bool) {
 		self.childViewControllers.last?.hidesBottomBarWhenPushed = true

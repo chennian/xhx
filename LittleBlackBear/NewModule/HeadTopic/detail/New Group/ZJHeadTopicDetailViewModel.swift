@@ -63,7 +63,7 @@ class ZJHeadTopicDetailViewModel: SNBaseViewModel {
     var id : String = ""
     
     let reloadPublish = PublishSubject<(section : [Int],count : Int)>()
-
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
     var topicModel : ZJHeadTopicCellModel?{
         didSet{
             
@@ -75,7 +75,7 @@ class ZJHeadTopicDetailViewModel: SNBaseViewModel {
             
             models[0] = [mainModel,spaceModel]
    
-            self.reloadPublish.onNext(([0,1],1))
+//            self.reloadPublish.onNext(([0,1],1))
 //            getData()
         }
     }
@@ -104,7 +104,7 @@ class ZJHeadTopicDetailViewModel: SNBaseViewModel {
             default:
                 models[1] = []
             }
-            reloadPublish.onNext(([1],models[1].count))
+            reloadPublish.onNext(([],models[1].count))
         }
     }
     

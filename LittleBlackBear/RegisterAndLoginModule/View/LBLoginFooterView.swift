@@ -85,7 +85,10 @@ class LBLoginFooterView: UIView {
 		addConstraint(BXLayoutConstraintMake(wechatBtn, .width, .equal,nil,.width,40))
 		addConstraint(BXLayoutConstraintMake(wechatBtn, .height, .equal,nil,.height,40))
         
-        wechatBtn.isHidden = !WXManager.isWXAppInstalled
+//        wechatBtn.isHidden = !WXManager.isWXAppInstalled
+        wechatBtn.isHidden = true
+        loginLabel.isHidden = true
+        lineView.isHidden = true
 		
 	}
     func phoneRegistAction(_ btn:UIButton) {

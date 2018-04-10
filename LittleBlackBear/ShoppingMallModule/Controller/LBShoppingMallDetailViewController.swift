@@ -16,14 +16,14 @@ class LBShoppingMallDetailViewController: UIViewController {
     fileprivate var mercInfoModel:LBHomeMerchantModel?
     fileprivate var commentItem:LBCommentListModel<commentImageListModel>?
     fileprivate var cellItem:[merChantInfoCellTye] = []
-
+    
     fileprivate var imageItems:[IndexPath:imageListModel] = [:]
     fileprivate var thumbnailView:UIImageView?
     fileprivate var photos:[String] = []
     fileprivate let shareView = BXShareView()
     
     fileprivate let tableView:UITableView = UITableView()
-
+    
     
     fileprivate lazy var rightItem:(UIView,UIButton) = {
         
@@ -33,14 +33,14 @@ class LBShoppingMallDetailViewController: UIViewController {
                                         height: 44))
         
         view.backgroundColor = UIColor.white
-
+        
         let button  = UIButton(frame: view.bounds)
         button.setTitle("关注", for: .normal)
         button.setTitle("已关注", for: .selected)
         button.titleLabel?.font = FONT_28PX
         button.setTitleColor(COLOR_e60013, for: .normal)
         button.setTitleColor(COLOR_9C9C9C, for: .selected)
-    
+        
         button.addTarget(self, action: #selector(attentionAction(_ :)), for: .touchUpInside)
         view.addSubview(button)
         
@@ -80,23 +80,23 @@ class LBShoppingMallDetailViewController: UIViewController {
         view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[tableView]-0-|", options: NSLayoutFormatOptions.alignAllCenterY, metrics: nil, views: ["tableView": tableView]))
         view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[tableView]-0-|", options: NSLayoutFormatOptions.alignAllCenterX, metrics: nil, views: ["tableView": tableView]))
         LBMerchantIfonDetailCellFactory.registerApplyTableViewCell(tableView)
-    
+        
         
     }
     
     func attentionAction(_ button:UIButton)  {
         
-        guard LBKeychain.get(TOKEN) != "" else {
+        guard LBKeychain.get(ISLOGIN) == LOGIN_TRUE else {
             
             showAlertView(message: "请先登录",actionTitles: ["取消","确定"],handler: {[weak self] (action ) in
                 
                 guard let strongSelf = self else {return}
                 guard action.title == "确定" else{return}
-
-                            strongSelf.presentLoginViewController({
-                                
-                            }, nil)
-
+                
+                strongSelf.presentLoginViewController({
+                    
+                }, nil)
+                
             })
             return
         }
@@ -108,7 +108,7 @@ class LBShoppingMallDetailViewController: UIViewController {
                                                   "mercid":LBKeychain.get(CURRENT_MERC_ID)],
                                      success: { (json) in
                                         button.isSelected = !button.isSelected
-
+                                        
             }, failure: {[weak self] (failItem) in
                 guard let strongSelf  = self else{return}
                 strongSelf.showAlertView(failItem.message, "确定", nil)
@@ -126,7 +126,7 @@ class LBShoppingMallDetailViewController: UIViewController {
                                                   "mercid":LBKeychain.get(CURRENT_MERC_ID)],
                                      success: { (json) in
                                         button.isSelected = !button.isSelected
-
+                                        
             }, failure: {[weak self] (failItem) in
                 guard let strongSelf  = self else{return}
                 strongSelf.showAlertView(failItem.message, "确定", nil)
@@ -137,8 +137,8 @@ class LBShoppingMallDetailViewController: UIViewController {
             }
         }
         
-
-      
+        
+        
     }
     
 }
@@ -177,7 +177,7 @@ extension LBShoppingMallDetailViewController:UITableViewDelegate,UITableViewData
         default:
             let cell  = LBMerchantIfonDetailCellFactory.dequeueReusableCell(withTableView: tableView, indexPath: indexPath, cellItems: cellItem)
             cell.selectionStyle = .none
-            cell.separatorInset = UIEdgeInsetsMake(0, -20, 0, 0)
+            //            cell.separatorInset = UIEdgeInsetsMake(0, -20, 0, 0)
             cell.currentIndexPath = indexPath
             return cell
         }
@@ -189,7 +189,7 @@ extension LBShoppingMallDetailViewController:UITableViewDelegate,UITableViewData
         
         switch cellItem[indexPath.row] {
         case let .images(_,models):
-			return models.count > 0 ?200.0:0
+            return models.count > 0 ?fit(504) - LL_StatusBarAndNavigationBarHeight:0
         case .mixCell(let model):
             shopName = model.merShopName
             return 120
@@ -197,7 +197,7 @@ extension LBShoppingMallDetailViewController:UITableViewDelegate,UITableViewData
             if title == "顾客须知"{
                 return model.noticeH + 60
             }
-           return model.explanH + 60
+            return model.explanH + 60
         case let .comment(model):
             var imageH:CGFloat = 0
             if model.imageList.count == 1{
@@ -226,7 +226,7 @@ extension LBShoppingMallDetailViewController:UITableViewDelegate,UITableViewData
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    
+        
         switch cellItem[indexPath.row] {
             
         case .mixCell(let model):
@@ -235,7 +235,7 @@ extension LBShoppingMallDetailViewController:UITableViewDelegate,UITableViewData
                 webView.loadRequest(URLRequest(url: URL(string:"tel://"+model.merContactTel)!))
                 view.addSubview(webView)
             }
-      
+            
         case .appraise(let model):
             
             let viewController = LBCommentListViewController()
@@ -250,7 +250,7 @@ extension LBShoppingMallDetailViewController:UITableViewDelegate,UITableViewData
                 guard let title = action.title,title != "取消" else{return}
                 LBMapNavigationManger.manger.navigationActionWithCoordinate(coordinate:coordinate,type: title)
             })
-
+            
         case .shopingCell(_):
             
             let viewController = LBStoreGoodsViewController()
@@ -266,7 +266,7 @@ extension LBShoppingMallDetailViewController:UITableViewDelegate,UITableViewData
 
 // MARK: loadData
 extension LBShoppingMallDetailViewController:LBHomeMerchantHttpServer{
- 
+    
     func requiredMercInfo(){
         let userId:String = LBKeychain.get(CURRENT_MERC_ID)
         merIntroQuery(orgCode: orgCode, mercId:mercId,userId:userId) { [weak self](model) in
@@ -278,7 +278,7 @@ extension LBShoppingMallDetailViewController:LBHomeMerchantHttpServer{
                                    .common("客户介绍",model,"merExplain"),
                                    .common("顾客须知",model,"merNotice")
             ]
-        
+            
             strongSelf.rightItem.1.isSelected =  model.favouriteStatus == 1 ?true:false
             strongSelf.loadCommentList()
             strongSelf.setupUI()
@@ -298,7 +298,7 @@ extension LBShoppingMallDetailViewController:LBCommentListPresent{
                             
                             var i = strongSelf.cellItem.count - 2
                             strongSelf.cellItem.insert(.appraise(model), at: i)
-    
+                            
                             // 插入最新三条 评价内容
                             i = strongSelf.cellItem.count - 2
                             let maxCount = i + 2
@@ -307,12 +307,12 @@ extension LBShoppingMallDetailViewController:LBCommentListPresent{
                                 strongSelf.cellItem.insert(.comment($0), at: i)
                                 i += 1
                             }
-                    
+                            
                             strongSelf.commentItem = model
                             
                             strongSelf.loadShopsGoodsData()
                             strongSelf.tableView.reloadData()
-
+                            
         }
     }
 }
@@ -322,7 +322,7 @@ extension LBShoppingMallDetailViewController:LBCommentListPresent{
 //MARK: 查询商品
 extension LBShoppingMallDetailViewController{
     
-
+    
     func loadShopsGoodsData()  {
         
         let parameters = lb_md5Parameter(parameter: ["orgcode":orgCode,
@@ -330,20 +330,20 @@ extension LBShoppingMallDetailViewController{
                                                      "pageNum":1,
                                                      "pageSize":"10"])
         LBHttpService.LB_Request(.goods, method: .get, parameters: parameters, success: {[weak self](json) in
-
+            
             guard let strongSelf = self else{return}
             let model = LBShopsGoodsModel(json: json["detail"])
             guard model.list.count > 0 else{return}
             // zj 增店铺商品
-//            strongSelf.cellItem.append(.shopingCell(model))
+            //            strongSelf.cellItem.append(.shopingCell(model))
             strongSelf.tableView.reloadData()
             
-        }, failure: { (failItem) in
+            }, failure: { (failItem) in
                 Print(failItem)
-
+                
         }) { (error) in
             Print(error)
-
+            
         }
     }
     
@@ -399,7 +399,7 @@ extension LBShoppingMallDetailViewController: PhotoBrowserDelegate {
 }
 
 extension LBShoppingMallDetailViewController:BXShareViewDelegate{
-	
+    
     func sendWXSecneSession() {
         guard let image = thumbnailView?.image,image.size.height > 0 else { return }
         let suscees = WXManager.shareManager.sendImageContent(image, WXSceneSession)

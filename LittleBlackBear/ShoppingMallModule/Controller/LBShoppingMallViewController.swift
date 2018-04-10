@@ -464,42 +464,42 @@ extension LBShoppingMallViewController:LBShoppingHttpServer{
         
         zjPostItem.removeAll()
         
-//        SNRequest(requestType: API.getTuanTuanList(mercId: "", size: 6, page: 0), modelType: [ZJHomeGroupModel.self]).subscribe(onNext: {[unowned self] (result) in
-//            switch result{
-//            case.success(let models):
-//                if self.zjPostItem.count != 0 {
-//                    self.oldGetData()
-//                }
-//                if models.count == 0 {
-//                    self.zjPostItem.append(.space(cellHight : fit(0) ,color : Color(0xf5f5f5)))
-//                    return
-//
-//                }
-//                self.zjPostItem.append(.space(cellHight : fit(20) ,color : Color(0xf5f5f5)))
-//                self.zjPostItem.append(.title("团团",""))
-//                self.zjPostItem.append(.space(cellHight : fit(30) ,color : .white))
-//                for model in models{
-//                    self.zjPostItem.append(.newGropuCoupons(model))
-//                    self.zjPostItem.append(.space(cellHight : fit(20) ,color : .white))
-//                }
-//                self.zjPostItem.append(.space(cellHight : fit(10) ,color : .white))
-//
-//            case .fail(let code,let msg):
-//                ZJLog(messagr: msg)
-//                self.oldGetData()
-//            default:
-//                break
-//            }
-//        }).disposed(by: disposeBag)
+        //        SNRequest(requestType: API.getTuanTuanList(mercId: "", size: 6, page: 0), modelType: [ZJHomeGroupModel.self]).subscribe(onNext: {[unowned self] (result) in
+        //            switch result{
+        //            case.success(let models):
+        //                if self.zjPostItem.count != 0 {
+        //                    self.oldGetData()
+        //                }
+        //                if models.count == 0 {
+        //                    self.zjPostItem.append(.space(cellHight : fit(0) ,color : Color(0xf5f5f5)))
+        //                    return
+        //
+        //                }
+        //                self.zjPostItem.append(.space(cellHight : fit(20) ,color : Color(0xf5f5f5)))
+        //                self.zjPostItem.append(.title("团团",""))
+        //                self.zjPostItem.append(.space(cellHight : fit(30) ,color : .white))
+        //                for model in models{
+        //                    self.zjPostItem.append(.newGropuCoupons(model))
+        //                    self.zjPostItem.append(.space(cellHight : fit(20) ,color : .white))
+        //                }
+        //                self.zjPostItem.append(.space(cellHight : fit(10) ,color : .white))
+        //
+        //            case .fail(let code,let msg):
+        //                ZJLog(messagr: msg)
+        //                self.oldGetData()
+        //            default:
+        //                break
+        //            }
+        //        }).disposed(by: disposeBag)
         
         //ZJHomeMiaoMiaoModel
         
         SNRequest(requestType: API.getMiaoMiaoList(mercId: "", size: 2, page: 0), modelType: [ZJHomeMiaoMiaoModel.self]).subscribe(onNext: { (result) in
             switch result{
             case.success(let models):
-//                if self.zjPostItem.count != 0 {
-//                    self.oldGetData()
-//                }
+                //                if self.zjPostItem.count != 0 {
+                //                    self.oldGetData()
+                //                }
                 if models.count == 0 {
                     self.zjPostItem.append(.space(cellHight : fit(0) ,color : Color(0xf5f5f5)))
                     return
@@ -514,7 +514,7 @@ extension LBShoppingMallViewController:LBShoppingHttpServer{
                 //                ZJLog(messagr: self.zjPostItem.count)
                 //                if self.zjPostItem.count > 2{
                 //                    self.oldGetData()
-            //                }
+                //                }
                 self.oldGetData()
             case .fail(let code,let msg):
                 ZJLog(messagr: msg)

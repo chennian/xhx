@@ -8,7 +8,7 @@
 
 import UIKit
 import SwiftyJSON
-
+import RxSwift
 /// banner模型
 // 图片数组 、活动倒计时
 struct ZJActgivityDetailBannerCellModel {
@@ -22,7 +22,7 @@ struct ZJActgivityDetailNameCellModel{
     var name : String
     var price : String
     var count : String
-
+    
 }
 ///商家信息模型
 // 头像 、商家名、地址、电话、距离、标签
@@ -33,16 +33,16 @@ struct ZJActgivityDetailMerchantCellModel {
     var phone : String
     var distance : String
     var lab : String
-
+    
 }
 /// 团团信息模型
 //结束时间、总需人数、当前人数、是否有活动
 struct ZJActgivityDetailTuantuanInfoCellModel {
-
+    
     var hasActivity : Bool = false
     
     var needPerson : String
-  
+    
 }
 enum ZJActgivityDetailCellType {
     case banner(model :ZJActgivityDetailBannerCellModel)
@@ -58,7 +58,7 @@ class ZJActgivityDetailCellModel {
         didSet{
             switch type {
             case .banner:
-                cellHeight = fit(588)
+                cellHeight = fit(504)
             case .nameAndPRice:
                 cellHeight = fit(210)
             case .space(let height ,_):
@@ -71,8 +71,8 @@ class ZJActgivityDetailCellModel {
                 //fit（130）
                 let size = countWidth(text: content, size: CGSize(width: fit(710), height: CGFloat.greatestFiniteMagnitude), font: Font(30))//countWidth(text: content, font: Font(30))
                 cellHeight = fit(130) + size.height
-//            default:
-//                cellHeight = fit(0)
+                //            default:
+                //                cellHeight = fit(0)
             }
         }
     }
@@ -82,8 +82,8 @@ class LBShopDetailsController: UIViewController {
     //秒秒接口模型ZJHomeMiaoMiaoModel  团团接口模型ZJHomeGroupModel
     var miaomiaoModel : ZJHomeMiaoMiaoModel? {
         didSet {
-            self.title = "秒秒"
-
+            //            self.title = "秒秒"
+            
             bottomButton.setTitle("立即购买", for: .normal)
             cellModel.removeAll()
             let headModel = ZJActgivityDetailCellModel()
@@ -97,7 +97,7 @@ class LBShopDetailsController: UIViewController {
             
             let merchantModel = ZJActgivityDetailCellModel()
             merchantModel.type = .merchant(model: ZJActgivityDetailMerchantCellModel.init(icon: miaomiaoModel!.mainImg, name: miaomiaoModel!.shopName, addredd: miaomiaoModel!.merAddress, phone: miaomiaoModel!.phone, distance: "5km", lab: miaomiaoModel!.merLabel))
-
+            
             let spcae = ZJActgivityDetailCellModel() ;spcae.type = .space(height: fit(20), color: Color(0xf5f5f5))
             
             cellModel = [headModel,nameAndPriceModel,spcae,descriptionModel,spcae,merchantModel,spcae]
@@ -105,10 +105,16 @@ class LBShopDetailsController: UIViewController {
             tableView.reloadData()
         }
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.navigationBar.setBackgroundImage(createImageBy(color: .white), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UINavigationController().navigationBar.shadowImage
+    }
     var tuantuanModel : ZJHomeGroupModel?{
         didSet{
-            self.title = "团团"
-
+            //            self.title = "团团"
+            
             cellModel.removeAll()
             bottomButton.setTitle("发起拼团", for: .normal)
             let headModel = ZJActgivityDetailCellModel()
@@ -135,9 +141,9 @@ class LBShopDetailsController: UIViewController {
     }
     
     var cellModel : [ZJActgivityDetailCellModel] = []
-
+    
     fileprivate let tableView:UITableView = SNBaseTableView().then{
-//          $0.backgroundColor = color_bg_gray_f5
+        //          $0.backgroundColor = color_bg_gray_f5
         $0.register(LBShopCroupSliderCell.self)
         $0.register(LBShopGoodNameCell.self)
         $0.register(LBDescriptionCell.self)
@@ -145,7 +151,7 @@ class LBShopDetailsController: UIViewController {
         $0.register(LBShopBottonCell.self)
         $0.register(LBShopGroupCell.self)
         $0.register(ZJSpaceCell.self)
-//        $0.separatorStyle = .none
+        //        $0.separatorStyle = .none
     }
     
     var cellHeight:CGFloat = 0.0
@@ -185,9 +191,24 @@ class LBShopDetailsController: UIViewController {
         
         
     }
+    let disposbag = DisposeBag()
+    
+    let backBtn = UIButton().then({
+        $0.setBackgroundImage(UIImage(named:"map_return"), for: .normal)
+    })
+    
     func setupUI() {
         
-//        self.title = "新建团团"
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backBtn)
+        
+        navigationController?.navigationBar.setBackgroundImage(createImageBy(color: UIColor.init(white: 1, alpha: 0.001)), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        
+        
+        
+        
+        
+        //        self.title = "新建团团"
         self.view.backgroundColor = UIColor.white
         self.view.addSubview(tableView)
         self.view.addSubview(bottomButton)
@@ -195,7 +216,7 @@ class LBShopDetailsController: UIViewController {
         tableView.dataSource = self
         tableView.snp.makeConstraints { (make) in
             make.left.equalToSuperview()
-            make.top.equalToSuperview()
+            make.top.equalToSuperview().offset(-LL_StatusBarAndNavigationBarHeight)
             make.bottom.equalTo(bottomButton.snp.top).snOffset(-10)
             make.right.equalToSuperview()
         }
@@ -205,6 +226,13 @@ class LBShopDetailsController: UIViewController {
             make.width.snEqualTo(700)
             make.height.snEqualTo(100)
         }
+        backBtn.addTap(self, action: #selector(backPop))
+        
+        
+        
+    }
+    @objc func backPop(){
+        self.navigationController?.popViewController(animated: true)
     }
     func  loadData(){
         let paramert:[String:String] = ["":"","":""]
@@ -229,9 +257,9 @@ class LBShopDetailsController: UIViewController {
 }
 
 extension LBShopDetailsController:UITableViewDelegate,UITableViewDataSource{
-//    func numberOfSections(in tableView: UITableView) -> Int {
-//        return 1
-//    }
+    //    func numberOfSections(in tableView: UITableView) -> Int {
+    //        return 1
+    //    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return cellModel.count
@@ -242,8 +270,8 @@ extension LBShopDetailsController:UITableViewDelegate,UITableViewDataSource{
         
         switch cellModel[indexPath.row].type {
         case .banner(let model):
-             let cell : LBShopCroupSliderCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
-             cell.model = model
+            let cell : LBShopCroupSliderCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
+            cell.model = model
             return cell
         case .nameAndPRice(let model):
             let cell : LBShopGoodNameCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
@@ -268,48 +296,49 @@ extension LBShopDetailsController:UITableViewDelegate,UITableViewDataSource{
         }
         
         
-//
-//        if indexPath.row == 0{
-//            let cell : LBShopGoodNameCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
-//            cellHeight = cell.lableHeight + 125
-//            return cell
-//
-//        }else if indexPath.row == 1{
-//            let cell : ZJSpaceCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
-//            return cell
-//
-//        }else if indexPath.row == 2{
-//            let cell : LBShopGroupCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
-//            return cell
-//
-//        }else if indexPath.row == 3{
-//             let cell : ZJSpaceCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
-//            return cell
-//
-//        }else if indexPath.row == 4{
-//             let cell : LBDescriptionCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
-//            return cell
-//
-//        }else if indexPath.row == 5{
-//            let cell : ZJSpaceCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
-//            return cell
-//
-//        }else if indexPath.row == 6{
-//            let cell :LBShopDescriptionCell  = tableView.dequeueReusableCell(forIndexPath: indexPath)
-//            return cell
-//        }else if indexPath.row == 7{
-//            let cell : ZJSpaceCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
-//            return cell
-//        }else {
-//            let cell : LBShopBottonCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
-//            cell.submitBoutton.setTitle("立即跟团", for: UIControlState.normal)
-//            return cell
-//        }
+        //
+        //        if indexPath.row == 0{
+        //            let cell : LBShopGoodNameCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
+        //            cellHeight = cell.lableHeight + 125
+        //            return cell
+        //
+        //        }else if indexPath.row == 1{
+        //            let cell : ZJSpaceCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
+        //            return cell
+        //
+        //        }else if indexPath.row == 2{
+        //            let cell : LBShopGroupCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
+        //            return cell
+        //
+        //        }else if indexPath.row == 3{
+        //             let cell : ZJSpaceCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
+        //            return cell
+        //
+        //        }else if indexPath.row == 4{
+        //             let cell : LBDescriptionCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
+        //            return cell
+        //
+        //        }else if indexPath.row == 5{
+        //            let cell : ZJSpaceCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
+        //            return cell
+        //
+        //        }else if indexPath.row == 6{
+        //            let cell :LBShopDescriptionCell  = tableView.dequeueReusableCell(forIndexPath: indexPath)
+        //            return cell
+        //        }else if indexPath.row == 7{
+        //            let cell : ZJSpaceCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
+        //            return cell
+        //        }else {
+        //            let cell : LBShopBottonCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
+        //            cell.submitBoutton.setTitle("立即跟团", for: UIControlState.normal)
+        //            return cell
+        //        }
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         //case
-
-    return cellModel[indexPath.row].cellHeight
+        
+        return cellModel[indexPath.row].cellHeight
     }
-   
+    
 }
+

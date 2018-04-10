@@ -12,20 +12,20 @@ import UIKit
 
 class LBMercInfoImageTableViewCell:UITableViewCell{
     
-	var imageUrls:[imgListModel] = []{
-		didSet{
-			guard imageUrls.count > 0 else{return}
-			headerView.imageUrls = imageUrls
-		}
-	}
-	var presentVC:UIViewController?{
-		didSet{
-			guard let vc = presentVC else { return  }
-			headerView.presentVC = vc
-		}
-		
-	}
-	
+    var imageUrls:[imgListModel] = []{
+        didSet{
+            guard imageUrls.count > 0 else{return}
+            headerView.imageUrls = imageUrls
+        }
+    }
+    var presentVC:UIViewController?{
+        didSet{
+            guard let vc = presentVC else { return  }
+            headerView.presentVC = vc
+        }
+        
+    }
+    
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupUI()
@@ -33,14 +33,17 @@ class LBMercInfoImageTableViewCell:UITableViewCell{
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-	private let headerView = LBShopDetailHeaderView()
+    private let headerView = LBShopDetailHeaderView()
     func setupUI() {
         contentView.addSubview(headerView)
-
-
+        
+        headerView.snp.makeConstraints { (make) in
+            make.size.equalToSuperview()
+            make.center.equalToSuperview()
+        }
     }
-
-
+    
+    
     
 }
 

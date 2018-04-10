@@ -66,6 +66,10 @@ class ZJHeadTopicDetailVC: SNBaseViewController {
     }
     override func bindEvent() {
         viewModel.reloadPublish.subscribe(onNext: {[unowned self] (section ,_) in
+            if section.count == 0{
+                self.tableView.reloadData()
+                return
+            }
             self.tableView.reloadSections(section, animationStyle: UITableViewRowAnimation.none)
         }).disposed(by: disposeBag)
         
