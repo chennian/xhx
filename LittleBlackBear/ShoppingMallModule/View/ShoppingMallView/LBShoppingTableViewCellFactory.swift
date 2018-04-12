@@ -63,7 +63,10 @@ class LBShoppingTableViewCellFactory {
             cell.cellType = .image(list)
             return cell
         case let .mixCell(type):
-            let cell = dequeueReusableCell(withTableView: tableView, cellClass: LBShoppingMixedCell.self)
+            
+            let cell : ZJHomeMerchantCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
+            cell.model = type
+//            let cell = dequeueReusableCell(withTableView: tableView, cellClass: LBShoppingMixedCell.self)
             cell.model = type
             return cell
 //        case .secondCoupons(let model):

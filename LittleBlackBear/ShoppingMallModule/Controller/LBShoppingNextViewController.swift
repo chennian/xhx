@@ -53,7 +53,9 @@ class LBShoppingNextViewController: UIViewController {
     fileprivate var shoppingModel:LBShoppingModel?
     fileprivate var cellItem:[shoppingCellTye] = []
     fileprivate var searchCellItem:[shoppingCellTye] = [shoppingCellTye]()
-    fileprivate let tableView = UITableView()
+    fileprivate let tableView = UITableView().then({
+        $0.register(ZJHomeMerchantCell.self)
+    })
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -106,27 +108,27 @@ extension LBShoppingNextViewController:UITableViewDelegate,UITableViewDataSource
         return  shoppingModel != nil ?cellItem.count:0
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		
-        let cell  = LBShoppingTableViewCellFactory.dequeueReusableCell(withTableView: tableView, indexPath: indexPath, cellItems: cellItem)
-        cell.selectionStyle = .none
-        cell.separatorInset = UIEdgeInsetsMake(0, -20, 0, 0)
-        cell.currentIndexPath = indexPath
+        let cell : ZJHomeMerchantCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
+    
+        switch cellItem[indexPath.row] {
+        case .mixCell(let model):
+            cell.model = model
+        default:
+            break
+        }
         return cell
+//        let cell  = LBShoppingTableViewCellFactory.dequeueReusableCell(withTableView: tableView, indexPath: indexPath, cellItems: cellItem)
+//        cell.selectionStyle = .none
+//        cell.separatorInset = UIEdgeInsetsMake(0, -20, 0, 0)
+//        cell.currentIndexPath = indexPath
+        
+        
     }
     
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 		
-        switch cellItem[indexPath.row] {
-        case .title(_):
-            return 44.0
-        case .mixCell(_):
-            return 140*AUTOSIZE_Y
-        case .button(_):
-            return 55
-        default:
-            return 0
-        }
+        return fit(495)
     }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 0.001
