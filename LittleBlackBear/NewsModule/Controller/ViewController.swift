@@ -215,7 +215,7 @@ class ViewController: UIViewController,PhotoPickerControllerDelegate, UIImagePic
         
         self.submitImages()
 
-        let time: TimeInterval = 4.0
+        let time: TimeInterval = 1.0
         SZHUD("正在发送中...", type: .loading, callBack: nil)
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + time) {
             //code
