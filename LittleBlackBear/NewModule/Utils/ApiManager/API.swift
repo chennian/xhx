@@ -19,7 +19,7 @@ let BMProvider = RxMoyaProvider<API>()
 
 enum API {
     
-    case userInfo
+    case userInfo(timestamp : String)
     
     case login(phone:String,password:String)
     
@@ -75,8 +75,8 @@ extension API: JSONMappableTargetType {
         switch self {
         case .login(let phone,let password):
             return ["X-AUTH-TOKEN":"\(phone):\(password)"]
-        case .userInfo:
-            return ["X-AUTH-TOKEN":LBKeychain.get(TOKEN)]
+        case .userInfo(let timsStamp):
+            return ["X-AUTH-TOKEN":LBKeychain.get(TOKEN),"X-AUTH-TIMESTAMP":timsStamp]
 
         default:
             return [

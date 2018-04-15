@@ -120,12 +120,16 @@ class LBLoginViewController: LBRegistLoginBaseViewController {
         let phoneNum = phone.replacingOccurrences(of: " ", with: "")
         
         //新登录
-        SNRequest(requestType: API.login(phone:phoneNum, password:password)).subscribe(onNext: {[unowned self] (result) in
+        SNRequest(requestType: API.login(phone:phoneNum, password:password),modelType: [ZJLoginModel.self]).subscribe(onNext: {[unowned self] (result) in
             switch result{
             case .success(let token):
-                LBKeychain.set(token, key: TOKEN)
-                LBKeychain.set(LOGIN_TRUE, key: ISLOGIN)
-                self.getUserInfo()
+                if token.count > 0 {
+                    
+                    LBKeychain.set(token[0].token, key: TOKEN)
+                    LBKeychain.set(LOGIN_TRUE, key: ISLOGIN)
+                    //                ZJLog(messagr: token[0].timestamp)
+                    self.getUserInfo(timeStamp : token[0].timestamp)
+                }
                 LBLoadingView.loading.dissmiss()
             case .fail(_,let msg):
                 LBLoadingView.loading.dissmiss()
@@ -134,6 +138,8 @@ class LBLoginViewController: LBRegistLoginBaseViewController {
                 break
             }
         }).disposed(by: disposeBag)
+        
+//        SNRequest(requestType: API.lomodelType: <#T##[SNSwiftyJSONAble.Protocol]#>)
         
         
         //久登录
@@ -150,8 +156,8 @@ class LBLoginViewController: LBRegistLoginBaseViewController {
         
     }
     
-    func getUserInfo(){
-        SNRequest(requestType: API.userInfo, modelType: [MyInfoModel.self]).subscribe(onNext: {[unowned self] (result) in
+    func getUserInfo(timeStamp : String){
+        SNRequest(requestType: API.userInfo(timestamp: timeStamp), modelType: [MyInfoModel.self]).subscribe(onNext: {[unowned self] (result) in
             SZHUDDismiss()
             switch result{
             case .success(let models):
@@ -169,6 +175,8 @@ class LBLoginViewController: LBRegistLoginBaseViewController {
             default: break
             }
         }).disposed(by: disposeBag)
+        
+//        SNRequestModel(requestType: API., modelType: <#T##SNSwiftyJSONAble.Protocol#>)
     }
     
     // footerview
@@ -260,4 +268,16 @@ extension LBLoginViewController:LBLoginHttpServer{
         })
     }
     
+}
+
+import SwiftyJSON
+
+class ZJLoginModel : SNSwiftyJSONAble{
+    var token : String
+    var timestamp : String
+    required init?(jsonData: JSON) {
+        token = jsonData["token"].stringValue
+        timestamp = jsonData["timestamp"].stringValue
+//        ZJLog(messagr: jsonData)
+    }
 }
