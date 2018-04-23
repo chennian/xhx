@@ -9,6 +9,9 @@
 import UIKit
 import RxSwift
 
+let LLTimeStamp = "LLTimeStamp"
+
+
 class LBLoginViewController: LBRegistLoginBaseViewController {
     
     var loginSuccessHanlder:(()->Void)?
@@ -127,8 +130,12 @@ class LBLoginViewController: LBRegistLoginBaseViewController {
                     
                     LBKeychain.set(token[0].token, key: TOKEN)
                     LBKeychain.set(LOGIN_TRUE, key: ISLOGIN)
-                    //                ZJLog(messagr: token[0].timestamp)
-                    self.getUserInfo(timeStamp : token[0].timestamp)
+                                    ZJLog(messagr: token[0].timestamp)
+                    LBKeychain.set(token[0].timestamp, key: LLTimeStamp)
+//                    LLTimeStamp = token[0].timestamp
+//                    ZJLog(messagr: token[0].timestamp)
+                    
+                    self.getUserInfo()
                 }
                 LBLoadingView.loading.dissmiss()
             case .fail(_,let msg):
@@ -156,17 +163,19 @@ class LBLoginViewController: LBRegistLoginBaseViewController {
         
     }
     
-    func getUserInfo(timeStamp : String){
-        SNRequest(requestType: API.userInfo(timestamp: timeStamp), modelType: [MyInfoModel.self]).subscribe(onNext: {[unowned self] (result) in
+    func getUserInfo(){
+        SNRequest(requestType: API.userInfo, modelType: [MyInfoModel.self]).subscribe(onNext: {[unowned self] (result) in
             SZHUDDismiss()
             switch result{
             case .success(let models):
                 LBKeychain.set(models[0].phone, key: PHONE)
                 print(LBKeychain.get(PHONE))
-                LBKeychain.set(models[0].nickName, key: nickName)
+                LBKeychain.set(models[0].nickName, key: LLNickName)
                 LBKeychain.set(models[0].isMer, key: isMer)
                 LBKeychain.set(models[0].isAgent, key: IsAgent)
                 LBKeychain.set(models[0].mercId, key: MERCID)
+                LBKeychain.set(models[0].headImg, key: HeadImg)
+//                ZJLog(messagr: models[0].headImg)
                 guard let action = self.loginSuccessHanlder else{return}
                 action()
                 
@@ -174,6 +183,7 @@ class LBLoginViewController: LBRegistLoginBaseViewController {
             SZHUD(msg!, type: .error, callBack: nil)
             default: break
             }
+            //headImg
         }).disposed(by: disposeBag)
         
 //        SNRequestModel(requestType: API., modelType: <#T##SNSwiftyJSONAble.Protocol#>)
@@ -199,6 +209,7 @@ class LBLoginViewController: LBRegistLoginBaseViewController {
         }
     }
 }
+
 extension LBLoginViewController:WXApiManagerDelegate{
     
     func wxSendAuthSucceed(_ code: String) {}

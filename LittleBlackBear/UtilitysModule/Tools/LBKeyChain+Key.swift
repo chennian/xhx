@@ -21,11 +21,12 @@ public let PHONE_NUMBER = "userPhone"
 public let USER_NAME = "userName"
 
 public let PHONE = "phone"
-public let nickName = "nickName"
+//public let nickName = "nickName"
 public let isMer = "isMer"
 public let IsAgent = "isAgent"
 public let MERCID = "mercId"
 public let TOKEN = "token"
+public let HeadImg = "HeadImg"
 
 
 public let is_merc = "is_merc"

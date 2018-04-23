@@ -9,6 +9,8 @@
 import UIKit
 import SwiftyJSON
 
+
+var LLNickName = ""
 class MyInfoModel: SNSwiftyJSONAble {
     
     /// 手机号码
@@ -26,6 +28,8 @@ class MyInfoModel: SNSwiftyJSONAble {
     /// 会员号
     var mercId : String
     
+    var headImg : String
+    
     
     required init?(jsonData: JSON) {
         
@@ -34,7 +38,8 @@ class MyInfoModel: SNSwiftyJSONAble {
         self.isMer = jsonData["isMer"].stringValue
         self.isAgent = jsonData["isAgent"].stringValue
         self.mercId = jsonData["mercId"].stringValue
-
+        self.headImg = jsonData["headImg"].stringValue
+        LLNickName = self.nickName
     }
     
     init(phone : String = "", nickName : String = "", isMer : String = "", isAgent : String = "",mercId : String = "") {
@@ -43,6 +48,7 @@ class MyInfoModel: SNSwiftyJSONAble {
         self.isMer = isMer
         self.isAgent = isAgent
         self.mercId = mercId
+        self.headImg = ""
       
     }
     

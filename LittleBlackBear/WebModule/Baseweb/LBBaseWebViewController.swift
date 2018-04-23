@@ -29,7 +29,7 @@ class LBBaseWebViewController: UIViewController {
     
     let signString:String = ""//LBKeychain.get(CURRENT_MERC_ID) + LBKeychain.get(PHONE_NUMBER)  + SIGN
     
-    let userName:String = LBKeychain.get(nickName)
+    let userName:String = LBKeychain.get(LLNickName)
     let baseUrl = "http://html.xiaoheixiong.net/#/"
 
 	lazy var configuration: WKWebViewConfiguration = {

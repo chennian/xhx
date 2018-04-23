@@ -28,7 +28,7 @@ class ViewController: UIViewController,PhotoPickerControllerDelegate, UIImagePic
     fileprivate var  lng =  LBKeychain.get(longiduteKey)
     fileprivate var  lat =  LBKeychain.get(latitudeKey)
 
-    fileprivate let mainView = UIView()
+//    fileprivate let mainView = UIView()
     
     fileprivate let nikeTextField = UITextField()
     
@@ -96,52 +96,52 @@ class ViewController: UIViewController,PhotoPickerControllerDelegate, UIImagePic
     
     func setNickView(){
         self.view.backgroundColor = ColorRGB(red: 234, green: 234, blue: 234)
-        mainView.backgroundColor = ColorRGB(red: 234, green: 234, blue: 234)
-        self.view.addSubview(mainView)
-        
-        let mainSmallView = UIView()
-        mainSmallView.backgroundColor = ColorRGB(red: 255, green: 255, blue: 255)
-        
-        nikeTextField.borderStyle = .none
-        nikeTextField.placeholder = "请设置你的昵称"
-        nikeTextField.font = Font(30)
-        nikeTextField.textColor = Color(0x313131)
-        
-        let nickLable = UILabel()
-        nickLable.font = Font(30)
-        nickLable.textColor = Color(0x313131)
-        nickLable.text = "昵称"
-        
-        
-        self.view.addSubview(mainView)
-        mainView.addSubview(mainSmallView)
-        mainSmallView.addSubview(nickLable)
-        mainSmallView.addSubview(nikeTextField)
-        
-        mainView.snp.makeConstraints { (make) in
-            make.left.equalToSuperview()
-            make.right.equalToSuperview()
-            make.top.equalToSuperview()
-            make.height.snEqualTo(140)
-        }
-        mainSmallView.snp.makeConstraints { (make) in
-            make.left.equalToSuperview()
-            make.right.equalToSuperview()
-            make.centerY.equalToSuperview()
-            make.height.snEqualTo(100)
-        }
-        
-        nickLable.snp.makeConstraints { (make) in
-            make.left.equalTo(mainSmallView.snp.left).snOffset(30)
-            make.centerY.equalToSuperview()
-            make.width.snEqualTo(80)
-        }
-        
-        nikeTextField.snp.makeConstraints { (make) in
-            make.left.equalTo(nickLable.snp.right)
-            make.centerY.equalTo(nickLable)
-            make.right.equalToSuperview().offset(fit(-100))
-        }
+//        mainView.backgroundColor = ColorRGB(red: 234, green: 234, blue: 234)
+//        self.view.addSubview(mainView)
+//
+//        let mainSmallView = UIView()
+//        mainSmallView.backgroundColor = ColorRGB(red: 255, green: 255, blue: 255)
+//
+//        nikeTextField.borderStyle = .none
+//        nikeTextField.placeholder = "请设置你的昵称"
+//        nikeTextField.font = Font(30)
+//        nikeTextField.textColor = Color(0x313131)
+//
+//        let nickLable = UILabel()
+//        nickLable.font = Font(30)
+//        nickLable.textColor = Color(0x313131)
+//        nickLable.text = "昵称"
+//
+//
+//        self.view.addSubview(mainView)
+//        mainView.addSubview(mainSmallView)
+//        mainSmallView.addSubview(nickLable)
+//        mainSmallView.addSubview(nikeTextField)
+
+//        mainView.snp.makeConstraints { (make) in
+//            make.left.equalToSuperview()
+//            make.right.equalToSuperview()
+//            make.top.equalToSuperview()
+//            make.height.snEqualTo(0)
+//        }
+//        mainSmallView.snp.makeConstraints { (make) in
+//            make.left.equalToSuperview()
+//            make.right.equalToSuperview()
+//            make.centerY.equalToSuperview()
+//            make.height.snEqualTo(100)
+//        }
+//
+//        nickLable.snp.makeConstraints { (make) in
+//            make.left.equalTo(mainSmallView.snp.left).snOffset(30)
+//            make.centerY.equalToSuperview()
+//            make.width.snEqualTo(80)
+//        }
+//
+//        nikeTextField.snp.makeConstraints { (make) in
+//            make.left.equalTo(nickLable.snp.right)
+//            make.centerY.equalTo(nickLable)
+//            make.right.equalToSuperview().offset(fit(-100))
+//        }
     
     }
     func setUpRightBar(){
@@ -193,11 +193,11 @@ class ViewController: UIViewController,PhotoPickerControllerDelegate, UIImagePic
     
     func submit(){
         
-        if nikeTextField.text == ""{
-            let alertView = UIAlertView(title: "温馨提示", message: "请输入昵称", delegate: nil, cancelButtonTitle:"确定" )
-            alertView.show()
-            return
-        }
+//        if nikeTextField.text == ""{
+//            let alertView = UIAlertView(title: "温馨提示", message: "请输入昵称", delegate: nil, cancelButtonTitle:"确定" )
+//            alertView.show()
+//            return
+//        }
 //        if NSString.hasEmoji(NSString.emoji(toUniCode: self.nikeTextField.text!)){
 //            SZHUD("昵称不能包含表情", type: .error, callBack: nil)
 //            return
@@ -236,7 +236,7 @@ class ViewController: UIViewController,PhotoPickerControllerDelegate, UIImagePic
             content = NSString.emoji(toUniCode: publishText.text)
         }
         
-        let paramert:[String:String] = ["merc_id":LBKeychain.get(CURRENT_MERC_ID),"description":content,"images":self.imagePathString,"location_desc":self.city,"lng":self.lng,"lat":self.lat,"nickName":self.nikeTextField.text!]
+        let paramert:[String:String] = ["merc_id":LBKeychain.get(CURRENT_MERC_ID),"description":content,"images":self.imagePathString,"location_desc":self.city,"lng":self.lng,"lat":self.lat,"nickName":""]
         LBHttpService.LB_Request2(.publishHead, method: .post, parameters: lb_md5Parameter(parameter: paramert), headers: nil, success: {[weak self] (json) in
             SZHUDDismiss()
             let alertView = UIAlertView(title: nil, message: "发布成功", delegate: nil, cancelButtonTitle:"确定" )
@@ -259,15 +259,15 @@ class ViewController: UIViewController,PhotoPickerControllerDelegate, UIImagePic
         publishView.snp.makeConstraints { (make) in
             make.left.equalToSuperview()
             make.right.equalToSuperview()
-            make.top.equalTo(mainView.snp.bottom)
+            make.top.equalToSuperview().snOffset(20)
             make.height.snEqualTo(270)
         }
         self.view.addSubview(self.publishText)
         self.publishText.snp.makeConstraints { (make) in
             make.left.equalToSuperview().snOffset(30)
             make.right.equalToSuperview().snOffset(-30)
-            make.top.equalTo(mainView.snp.bottom).snOffset(45)
-            make.height.snEqualTo(270)
+            make.top.equalTo(publishView).snOffset(45)
+            make.bottom.equalTo(publishView)
         }
 //        self.publishText.frame = CGRect(x: 0, y: 0, width: self.view.bounds.width, height: 100)
         publishText.layer.borderWidth = 0;
@@ -383,7 +383,8 @@ class ViewController: UIViewController,PhotoPickerControllerDelegate, UIImagePic
 //            make.top.equalTo(publishText.snp.bottom)
 //            make.height.snEqualTo(containerHeight)
 //        }
-        self.containerView.frame = CGRect(x:0, y:fit(410), width:totalWidth,  height:containerHeight)
+        self.containerView.frame = CGRect(x:0, y:fit(290), width:totalWidth,  height:containerHeight)
+        
 
     }
     

@@ -262,6 +262,7 @@
 		6F7E4B9420533CF600FBB68B /* XHStarRateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F7E4B9320533CF600FBB68B /* XHStarRateView.m */; };
 		6F7E4B962053449900FBB68B /* ZJCountDownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F7E4B952053449900FBB68B /* ZJCountDownView.swift */; };
 		6F7E4B982053569500FBB68B /* ZJHomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F7E4B972053569500FBB68B /* ZJHomeViewModel.swift */; };
+		6F8FCCD6208C67CE00045503 /* ZJModifyNickNameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8FCCD5208C67CE00045503 /* ZJModifyNickNameVC.swift */; };
 		6FAC4983205E342B009A9587 /* ZJHeadTopicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FAC4982205E342B009A9587 /* ZJHeadTopicViewController.swift */; };
 		6FAC4985205E34C8009A9587 /* ZJHeadTopicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FAC4984205E34C8009A9587 /* ZJHeadTopicCell.swift */; };
 		6FAC4987205E39A6009A9587 /* ZJHeadTopicViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FAC4986205E39A6009A9587 /* ZJHeadTopicViewModel.swift */; };
@@ -710,6 +711,7 @@
 		6F7E4B9320533CF600FBB68B /* XHStarRateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHStarRateView.m; sourceTree = "<group>"; };
 		6F7E4B952053449900FBB68B /* ZJCountDownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZJCountDownView.swift; sourceTree = "<group>"; };
 		6F7E4B972053569500FBB68B /* ZJHomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZJHomeViewModel.swift; sourceTree = "<group>"; };
+		6F8FCCD5208C67CE00045503 /* ZJModifyNickNameVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZJModifyNickNameVC.swift; sourceTree = "<group>"; };
 		6FAC4982205E342B009A9587 /* ZJHeadTopicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZJHeadTopicViewController.swift; sourceTree = "<group>"; };
 		6FAC4984205E34C8009A9587 /* ZJHeadTopicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZJHeadTopicCell.swift; sourceTree = "<group>"; };
 		6FAC4986205E39A6009A9587 /* ZJHeadTopicViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZJHeadTopicViewModel.swift; sourceTree = "<group>"; };
@@ -1570,6 +1572,7 @@
 		6F5F5899206A0E590025E6EA /* Mine */ = {
 			isa = PBXGroup;
 			children = (
+				6F8FCCD3208C679D00045503 /* ModifyNickName */,
 				6F5F58BB206C0D880025E6EA /* MyMember */,
 				6F5F58A6206BB1560025E6EA /* AccountBook */,
 				6F5F589A206A0E5F0025E6EA /* PayCode */,
@@ -1934,6 +1937,22 @@
 				6F7E4B9320533CF600FBB68B /* XHStarRateView.m */,
 			);
 			path = star;
+			sourceTree = "<group>";
+		};
+		6F8FCCD3208C679D00045503 /* ModifyNickName */ = {
+			isa = PBXGroup;
+			children = (
+				6F8FCCD4208C67A900045503 /* controller */,
+			);
+			path = ModifyNickName;
+			sourceTree = "<group>";
+		};
+		6F8FCCD4208C67A900045503 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				6F8FCCD5208C67CE00045503 /* ZJModifyNickNameVC.swift */,
+			);
+			path = controller;
 			sourceTree = "<group>";
 		};
 		6FAC497E205E33D3009A9587 /* HeadTopic */ = {
@@ -2746,7 +2765,7 @@
 				TargetAttributes = {
 					ACE720951F9DDA7000C22465 = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = GS5MNVJVED;
+						DevelopmentTeam = 9JCDX257FY;
 						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
@@ -2938,7 +2957,7 @@
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/mapapi.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -3285,6 +3304,7 @@
 				18BE750B1FC6E9D200A9F93B /* LBRegistLoginBaseViewController.swift in Sources */,
 				1818EC281FD68101006E5D8C /* LBNewsImageViewCell.swift in Sources */,
 				6F7E4B73205301D100FBB68B /* UIButton_Extension.swift in Sources */,
+				6F8FCCD6208C67CE00045503 /* ZJModifyNickNameVC.swift in Sources */,
 				18131A7E1FFF676A001A24F3 /* LBModifyLoginPassword.swift in Sources */,
 				6F404891205EA8C200609231 /* SNSwiftyJSONAble.swift in Sources */,
 				6F5F58B7206BE3E60025E6EA /* ZJMerchantAccoutBookViewModel.swift in Sources */,
@@ -3589,7 +3609,7 @@
 				CODE_SIGN_ENTITLEMENTS = LittleBlackBear/LittleBlackBear.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = GS5MNVJVED;
+				DEVELOPMENT_TEAM = 9JCDX257FY;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = LittleBlackBear/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -3599,7 +3619,7 @@
 					"$(PROJECT_DIR)/LittleBlackBear/UtilitysModule/ThidSDK/WeChatSDK",
 					"$(PROJECT_DIR)/LittleBlackBear/UtilitysModule/ThidSDK/thirdlibs",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.LittleBlackBear.app;
+				PRODUCT_BUNDLE_IDENTIFIER = com.LittleBlackBear.systems;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -3619,7 +3639,7 @@
 				CODE_SIGN_ENTITLEMENTS = LittleBlackBear/LittleBlackBear.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = GS5MNVJVED;
+				DEVELOPMENT_TEAM = 9JCDX257FY;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = LittleBlackBear/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -3629,7 +3649,7 @@
 					"$(PROJECT_DIR)/LittleBlackBear/UtilitysModule/ThidSDK/WeChatSDK",
 					"$(PROJECT_DIR)/LittleBlackBear/UtilitysModule/ThidSDK/thirdlibs",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.LittleBlackBear.app;
+				PRODUCT_BUNDLE_IDENTIFIER = com.LittleBlackBear.systems;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";

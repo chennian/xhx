@@ -20,11 +20,12 @@ class LBSettingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         querPayPassStatus()
-        setCellItem()
+        
         setupUI()
         navigationItem.title = "设置"
         
     }
+
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -36,6 +37,8 @@ class LBSettingViewController: UIViewController {
         UIApplication.shared.setStatusBarStyle(.default, animated: true)
         navigationController?.navigationBar.setBackgroundImage(UIImage.imageWithColor(COLOR_e60013), for: .default)
         UIApplication.shared.setStatusBarStyle(.lightContent, animated: true)
+        setCellItem()
+        tableView.reloadData()
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -73,7 +76,7 @@ class LBSettingViewController: UIViewController {
         let userStatus = LBKeychain.get(ISATHUENICATION)
         cellItem = [
             
-            .comm("用户基本信息"),
+            .rightLabel("用户昵称",(LBKeychain.get(LLNickName) != "" ? LBKeychain.get(LLNickName):"未设置"), COLOR_9C9C9C),
             .rightLabel("实名认证",(userStatus=="0" ?"已实名":"未实名"), COLOR_9C9C9C),
             .comm("提现卡变更"),
             .bindAcoountImage("账号绑定",["logo_wechat","call_red_icon"]),
@@ -90,7 +93,7 @@ class LBSettingViewController: UIViewController {
             
         ]
         
-        tableView.reloadData()
+        
     }
     
 }
@@ -158,8 +161,14 @@ extension LBSettingViewController:UITableViewDelegate,UITableViewDataSource{
                 }
                 navigationController?.pushViewController(viewController, animated: true)
             }
+            if text == "用户昵称"{
+                navigationController?.pushViewController(ZJModifyNickNameVC(), animated: true)
+                
+            }
             
         case let.comm(text):
+            
+            
             
             if text == "设置支付密码"{
                 let viewController = LBSetPayPasswordViewController()
@@ -170,6 +179,8 @@ extension LBSettingViewController:UITableViewDelegate,UITableViewDataSource{
                 }
                 navigationController?.pushViewController(viewController, animated: true)
             }
+            
+            
             
             if text == "修改登录密码"{
                 navigationController?.pushViewController(LBModifyLoginPassword(), animated: true)
@@ -215,6 +226,7 @@ extension LBSettingViewController:UITableViewDelegate,UITableViewDataSource{
             if text == "账号绑定"{
                 navigationController?.pushViewController(LBBindAcoountViewController(), animated: true)
             }
+            
         default:
             break
         }

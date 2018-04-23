@@ -10,7 +10,7 @@ import UIKit
 
 class LBProfileViewController: UITableViewController {
     fileprivate let reuseIdentifier = "LBProfileViewController"
-    
+    let disposeBag = DisposeBag()
     fileprivate var currentIndexPath:IndexPath?
     
     typealias PickedImageHandle = (UIImage) -> ()
@@ -45,6 +45,7 @@ class LBProfileViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
+        self.headerView.isRefreshData = true
         UIApplication.shared.setStatusBarStyle(.default, animated: true)
         navigationController?.navigationBar.setBackgroundImage(UIImage.imageWithColor(COLOR_e60013), for: .default)
         UIApplication.shared.setStatusBarStyle(.lightContent, animated: true)
@@ -97,44 +98,46 @@ class LBProfileViewController: UITableViewController {
                 })
                 return
             }
+            strongSelf.showPhotoPickerView()
             
-            strongSelf.showPhotoPickerView(finishHandel: { (image) in
+            
+//            strongSelf.showPhotoPickerView(finishHandel: { (image) in
+            
                 
-                
-                
-                imageView.image = image
-                
-                
-                let date = NSDate()
-                let dateFormatter = DateFormatter()
-                let timestamp = Int(round(date.timeIntervalSince1970))
-                dateFormatter.dateFormat = "yyyyMMdd"
-                let floderDate = dateFormatter.string(from: date as Date)
-                
-                let md5Str = "\(timestamp)"
-                let objecKey = "\((floderDate as NSString).substring(to: 4))/" + "\((floderDate as NSString).substring(from: 4))/" + "\((str: md5Str ))".md5() + ".jpg"
-                let path = frontUrl + objecKey
-                
-                let manager = DDZOssManager()
-                
-                manager.uploadImg(objectKey: objecKey, image: image.compressImage(image: image)!,imageName:"userIcon",bucketName: BucketName, endPoint: EndPoint,path:path){[weak self] (success) in
-                    if success{
-                        
-                        let parameters = lb_md5Parameter(parameter: ["mercNum":LBKeychain.get(CURRENT_MERC_ID),"headUrl":path])
-                        LBHttpService.LB_Request(.updateHeadImg, method: .post, parameters: parameters, success: { (_) in
-                            strongSelf.showAlertView("上传成功!", "确定", nil)
-                            
-                        }, failure: { (failtItem) in
-                            strongSelf.showAlertView(failtItem.message, "确定", nil)
-                        }, requestError: { (_) in
-                            strongSelf.showAlertView(RESPONSE_FAIL_MSG, "确定", nil)
-                        })
-                    }else{
-                        SZHUD("图片上传失败", type: .error, callBack: nil)
-                        return
-                    }
-                }
-            })
+//
+//                imageView.image = image
+//
+//
+//                let date = NSDate()
+//                let dateFormatter = DateFormatter()
+//                let timestamp = Int(round(date.timeIntervalSince1970))
+//                dateFormatter.dateFormat = "yyyyMMdd"
+//                let floderDate = dateFormatter.string(from: date as Date)
+//
+//                let md5Str = "\(timestamp)"
+//                let objecKey = "\((floderDate as NSString).substring(to: 4))/" + "\((floderDate as NSString).substring(from: 4))/" + "\((str: md5Str ))".md5() + ".jpg"
+//                let path = frontUrl + objecKey
+//
+////                let manager = DDZOssManager()
+//
+//                DDZOssManager.manager.uploadImg(objectKey: objecKey, image: image.compressImage(image: image)!,imageName:"userIcon",bucketName: BucketName, endPoint: EndPoint,path:path){[weak self] (success) in
+//                    if success{
+//
+//                        let parameters = lb_md5Parameter(parameter: ["mercNum":LBKeychain.get(CURRENT_MERC_ID),"headUrl":path])
+//                        LBHttpService.LB_Request(.updateHeadImg, method: .post, parameters: parameters, success: { (_) in
+//                            strongSelf.showAlertView("上传成功!", "确定", nil)
+//
+//                        }, failure: { (failtItem) in
+//                            strongSelf.showAlertView(failtItem.message, "确定", nil)
+//                        }, requestError: { (_) in
+//                            strongSelf.showAlertView(RESPONSE_FAIL_MSG, "确定", nil)
+//                        })
+//                    }else{
+//                        SZHUD("图片上传失败", type: .error, callBack: nil)
+//                        return
+//                    }
+//                }
+//            })
             
         }
         
@@ -178,6 +181,8 @@ class LBProfileViewController: UITableViewController {
             self.tableView.reloadData()
         }
         navigationController?.pushViewController(viewController, animated: true)
+        
+//        showPhotoPickerView()
         
     }
     
@@ -398,13 +403,19 @@ extension LBProfileViewController:LBMercApplyAlterViewDelegate{
 /// showPhotoPickerView
 extension LBProfileViewController {
     
-    fileprivate func showPhotoPickerView(finishHandel: @escaping PickedImageHandle) {
+    fileprivate func showPhotoPickerView() {
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         let action0 = UIAlertAction(title: "拍照", style: .default) {[weak self] (_)  in
-            self?.showImagePickerController(sourceType: .camera, finishHandel: finishHandel)
+//            self?.showImagePickerController(sourceType: .camera, finishHandel: finishHandel)
+            imagePicker.sourceType = .camera
+            self?.present(imagePicker, animated: true, completion: nil)
         }
         let action1 = UIAlertAction(title: "相册", style: .default) {[weak self] (_)  in
-            self?.showImagePickerController(sourceType: .photoLibrary, finishHandel: finishHandel)
+//            self?.showImagePickerController(sourceType: .photoLibrary, finishHandel: finishHandel)
+            imagePicker.sourceType = .photoLibrary
+            self?.present(imagePicker, animated: true, completion: nil)
         }
         let action2 = UIAlertAction(title: "取消", style: .cancel) {(_)  in
         }
@@ -413,19 +424,19 @@ extension LBProfileViewController {
         alertController.addAction(action2)
         self.present(alertController, animated: true, completion: nil)
     }
-    
-    private func showImagePickerController(sourceType: UIImagePickerControllerSourceType, finishHandel: @escaping PickedImageHandle) {
-        let imagePicker = UIImagePickerController()
-        imagePicker.delegate = self
-        imagePicker.sourceType = sourceType
-        imagePicker.allowsEditing = false
-        self.imagePickerFinishHandle = finishHandel
-        present(imagePicker, animated: true, completion: nil)
-    }
+//
+//    private func showImagePickerController(sourceType: UIImagePickerControllerSourceType, finishHandel: @escaping PickedImageHandle) {
+//        let imagePicker = UIImagePickerController()
+//        imagePicker.delegate = self
+//        imagePicker.sourceType = sourceType
+//        imagePicker.allowsEditing = false
+//        self.imagePickerFinishHandle = finishHandel
+//        present(imagePicker, animated: true, completion: nil)
+//    }
 }
 /// 上传图片
 extension LBProfileViewController{
-    
+    //没用上
     fileprivate func uploadmerchantImageInfo(image:UIImage,imgName:String,parameters: [String:Any]?=nil,success:@escaping ((String)->())){
         
         let parm = lb_md5Parameter(parameter: parameters)
@@ -446,8 +457,96 @@ extension LBProfileViewController: UIImagePickerControllerDelegate, UINavigation
         guard let image = info[UIImagePickerControllerOriginalImage] as? UIImage else {
             return
         }
-        self.imagePickerFinishHandle?(image)
-        picker.dismiss(animated: true, completion: nil)
+//        self.imagePickerFinishHandle?(image)
+        let imgurl = image.compressImage(str: LBKeychain.get(CURRENT_MERC_ID))!["url"] as! URL
+        picker.dismiss(animated: false, completion: {
+            self.uploadToOSs(img: imgurl)
+        })
+    }
+    
+    func uploadToOSs(img : URL){
+//        let date = NSDate()
+//        let dateFormatter = DateFormatter()
+//        let timestamp = Int(round(date.timeIntervalSince1970))
+//        dateFormatter.dateFormat = "yyyyMMdd"
+//        let floderDate = dateFormatter.string(from: date as Date)
+//
+//        let md5Str = "\(timestamp)"
+//        let objecKey = "\((floderDate as NSString).substring(to: 4))/" + "\((floderDate as NSString).substring(from: 4))/" + "\((str: md5Str ))".md5() + ".jpg"
+//        let path = frontUrl + objecKey
+//        DDZOssManager.manager.uploadImg(objectKey: objecKey, image: img.compressImage(image: img)!,imageName:"userIcon",bucketName: BucketName, endPoint: EndPoint,path:path){[weak self] (success) in
+//            if success{
+//
+//                ZJLog(messagr: "上传成功")
+//            }else{
+//                SZHUD("图片上传失败", type: .error, callBack: nil)
+//                return
+//            }
+//        }
+        
+        
+        
+        let manager = DDZOssManager()
+        let date = NSDate()
+        let dateFormatter = DateFormatter()
+        let timestamp = Int(round(date.timeIntervalSince1970)) + 1
+        dateFormatter.dateFormat = "yyyyMMdd"
+        let floderDate = dateFormatter.string(from: date as Date)
+        
+        let md5Str = "\(timestamp)"
+        let objecKey = "\((floderDate as NSString).substring(to: 4))/" + "\((floderDate as NSString).substring(from: 4))/" + "\((str: md5Str ))".md5() + ".jpg"
+        let path = frontUrl + objecKey
+        print(path)
+//        self.imagePathArray.append(path)
+//        let imageData = img.compressImage(image: img)!
+        
+//        manager.uploadImg(objectKey: objecKey, image: imageData,imageName:"",bucketName: BucketName, endPoint: EndPoint,path:path){[unowned self] (success) in
+//            if success{
+//                print("上传阿里云成功")
+//
+//            }else{
+////                self.imagePathArray.removeAll()
+//                SZHUD("图片上传失败", type: .error, callBack: nil)
+//            }
+//        }
+        manager.uploadImg(objectKey: objecKey, url: img, bucketName: BucketName, endPoint: EndPoint) { (success) in
+            if success{
+//                    print("上传阿里云成功")
+                LBKeychain.set(path, key: HeadImg)//.get(HeadImg)
+                self.headerView.isRefreshData = true
+    
+                
+                self.uploadUrl(url: path)
+                
+                }else{
+    //                self.imagePathArray.removeAll()
+                    SZHUD("图片上传失败", type: .error, callBack: nil)
+                }
+        }
+        
+    }
+    
+    func uploadUrl(url : String){
+//        SNSwiftyJSONAble
+   
+//        SNRequest(requestType: API.modifyHeadIcon(headUrl: url)).subscribe(onNext: { (result) in
+//            switch result{
+//            case .success:
+//                SZHUD("修改成功", type: .info, callBack: nil)
+//            case .fail(_,let msg):
+//                SZHUD(msg ?? "上传失败", type: .info, callBack: nil)
+//            default:
+//                break
+//            }
+//        }).disposed(by: self.disposeBag)
+//        Alamofire.re
+        Alamofire.request("http://transaction.xiaoheixiong.net/user/updateHeadImg", method: .post, parameters: ["headUrl" : url], headers: ["X-AUTH-TOKEN":LBKeychain.get(TOKEN),"X-AUTH-TIMESTAMP":LBKeychain.get(LLTimeStamp)]).responseJSON { (res) in
+           
+        }
+        
+        
     }
 }
+import Alamofire
+import RxSwift
 extension LBProfileViewController:LBPresentLoginViewControllerProtocol{}

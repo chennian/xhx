@@ -94,23 +94,27 @@ public extension Response {
     
     public func mapToString() throws -> SNMoyaResult<String> {
         
-        let jsonData = JSON(data: self.data)
+//        do {
+            let jsonData = try JSON(data: self.data)
+            let jsonCode = jsonData[MOYA_RESULT_CODE]
+            let jsonObj = jsonData[MOYA_RESULT_DATA]
+            let jsonMsg = jsonData[MOYA_RESULT_MSG]
+            
+            guard jsonCode == "000000", let mappedString = jsonObj.string else {
+                //throw SNMoyaError.fail(code: nil, msg: jsonMsg.string)
+                return SNMoyaResult.fail(code: jsonCode.stringValue, msg: jsonMsg.string)
+            }
+            
+            return SNMoyaResult.success(mappedString)
         
-        let jsonCode = jsonData[MOYA_RESULT_CODE]
-        let jsonObj = jsonData[MOYA_RESULT_DATA]
-        let jsonMsg = jsonData[MOYA_RESULT_MSG]
+       
         
-        guard jsonCode == "000000", let mappedString = jsonObj.string else {
-            //throw SNMoyaError.fail(code: nil, msg: jsonMsg.string)
-            return SNMoyaResult.fail(code: jsonCode.stringValue, msg: jsonMsg.string)
-        }
         
-        return SNMoyaResult.success(mappedString)
     }
     
     public func mapToNetModel() throws -> SNMoyaResult<SNNetModel> {
         
-        let jsonData = JSON(data: self.data)
+        let jsonData = try JSON(data: self.data)
         
         guard let model = SNNetModel(jsonData: jsonData) else {
             throw MoyaError.jsonMapping(self)
@@ -123,7 +127,7 @@ public extension Response {
     
     public func mapToModel<T: SNSwiftyJSONAble>() throws -> SNMoyaResult<T> {
         
-        let jsonData = JSON(data: self.data)
+        let jsonData = try JSON(data: self.data)
         
         guard let model = T(jsonData: jsonData) else {
             return SNMoyaResult.fail(code: "9999", msg: "数据错误")
@@ -133,7 +137,7 @@ public extension Response {
     }
     
     public func mapToString() throws -> SNMoyaResult<Bool> {
-        let jsonData = JSON(data: self.data)
+        let jsonData = try JSON(data: self.data)
         
         guard let model = SNNetModel(jsonData: jsonData) else {
             throw MoyaError.jsonMapping(self)
@@ -147,7 +151,7 @@ public extension Response {
     }
     
     public func mapToBool() throws -> SNMoyaResult<Bool> {
-        let jsonData = JSON(data: self.data)
+        let jsonData = try JSON(data: self.data)
         
         guard let model = SNNetModel(jsonData: jsonData) else {
             throw MoyaError.jsonMapping(self)

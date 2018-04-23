@@ -26,7 +26,7 @@ THE SOFTWARE.
 
 ## Alamofire
 
-Copyright (c) 2014-2017 Alamofire Software Foundation (http://alamofire.org/)
+Copyright (c) 2014-2018 Alamofire Software Foundation (http://alamofire.org/)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -102,7 +102,7 @@ Updated and maintained by Deusty LLC and the Apple development community.
 
 ## Crashlytics
 
-Fabric: Copyright 2017 Google, Inc. All Rights Reserved. Use of this software is subject to the terms and conditions of the Fabric Software and Services Agreement located at https://fabric.io/terms. Crashlytics Kit: Copyright 2017 Crashlytics, Inc. All Rights Reserved. Use of this software is subject to the terms and conditions of the Crashlytics Terms of Service located at http://try.crashlytics.com/terms/terms-of-service.pdf and the Crashlytics Privacy Policy located at http://try.crashlytics.com/terms/privacy-policy.pdf. OSS: http://get.fabric.io/terms/opensource.txt
+Fabric: Copyright 2018 Google, Inc. All Rights Reserved. Use of this software is subject to the terms and conditions of the Fabric Software and Services Agreement located at https://fabric.io/terms. Crashlytics Kit: Copyright 2018 Crashlytics, Inc. All Rights Reserved. Use of this software is subject to the terms and conditions of the Crashlytics Terms of Service located at http://try.crashlytics.com/terms/terms-of-service.pdf and the Crashlytics Privacy Policy located at http://try.crashlytics.com/terms/privacy-policy.pdf. OSS: http://get.fabric.io/terms/opensource.txt
 
 ## CryptoSwift
 
@@ -145,7 +145,7 @@ SOFTWARE.
 
 ## Fabric
 
-Fabric: Copyright 2017 Google, Inc. All Rights Reserved. Use of this software is subject to the terms and conditions of the Fabric Software and Services Agreement located at https://fabric.io/terms. OSS: http://get.fabric.io/terms/opensource.txt
+Fabric: Copyright 2018 Google, Inc. All Rights Reserved. Use of this software is subject to the terms and conditions of the Fabric Software and Services Agreement located at https://fabric.io/terms. OSS: http://get.fabric.io/terms/opensource.txt
 
 ## IQKeyboardManagerSwift
 
@@ -231,7 +231,7 @@ SOFTWARE.
 
 The MIT License (MIT)
 
-Copyright (c) 2017 Artsy, Ash Furrow
+Copyright (c) 2014-present Artsy, Ash Furrow
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -276,16 +276,6 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
-
-
-## PgyUpdate
-
-Copyright 2015 pgyer.com. All rights reserved.
-
-
-## Pgyer
-
-Copyright 2017 pgyer.com. All rights reserved.
 
 
 ## Result
@@ -463,7 +453,7 @@ THE SOFTWARE.
 
 The MIT License (MIT)
 
-Copyright (c) 2016 Ruoyu Fu
+Copyright (c) 2017 Ruoyu Fu
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

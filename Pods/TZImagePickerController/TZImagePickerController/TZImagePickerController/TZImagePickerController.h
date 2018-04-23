@@ -4,7 +4,7 @@
 //
 //  Created by 谭真 on 15/12/24.
 //  Copyright © 2015年 谭真. All rights reserved.
-//  version 2.0.0.9 - 2018.03.12
+//  version 2.0.1 - 2018.03.25
 //  更多信息，请前往项目的github地址：https://github.com/banchichen/TZImagePickerController
 
 /*
@@ -272,4 +272,6 @@
 @property(nonatomic, assign) BOOL allowPickingImage;
 @property (nonatomic, assign) BOOL allowPickingVideo;
 @property (strong, nonatomic) NSBundle *languageBundle;
+/// 默认是200，如果一个GIF过大，里面图片个数可能超过1000，会导致内存飙升而崩溃
+@property (assign, nonatomic) NSInteger gifPreviewMaxImagesCount;
 @end

@@ -32,7 +32,7 @@ class DDZOssManager: NSObject {
     
     ///上传图片-data上传
     func uploadImg(objectKey : String,image : Data ,imageName:String,bucketName : String,endPoint : String,path:String,result : @escaping (Bool)->()){
-        let client = OSSClient(endpoint: endPoint, credentialProvider: credential)
+        let client = OSSClient(endpoint: endPoint, credentialProvider: credential1)
         
         
         let put = OSSPutObjectRequest()
@@ -59,8 +59,20 @@ class DDZOssManager: NSObject {
     ///上传图片-URL上传
     func uploadImg(objectKey : String,url : URL ,bucketName : String,endPoint : String,result : @escaping (Bool)->()){
         
+        
+        let credential = OSSCustomSignerCredentialProvider { (contentToSign, error) -> String? in
+            let signature = OSSUtil.calBase64Sha1(withData: contentToSign, withSecret: OSSSecretKey)
+            
+            if (signature != nil) {
+                error?.pointee = nil
+            } else {
+                error?.pointee = NSError(domain: "tokenError", code: 999, userInfo: nil)//[NSError errorWithDomain:@"<your domain>" code:-1001 userInfo:@"<your error info>"];
+                return nil
+            }
+            return String(format: "OSS %@:%@", OSSSecretKey,signature!)//[NSString stringWithFormat:@"OSS %@:%@", @"<your accessKeyId>",
+        }
 
-        let client = OSSClient(endpoint: endPoint, credentialProvider: credential)
+        let client = OSSClient(endpoint: endPoint, credentialProvider: credential1)
         
 
         let put = OSSPutObjectRequest()
@@ -140,14 +152,38 @@ class DDZOssManager: NSObject {
     
 
     
-    
-    
-    private lazy var credential  : OSSPlainTextAKSKPairCredentialProvider = {
+    private lazy var credential1  : OSSPlainTextAKSKPairCredentialProvider = {
         return OSSPlainTextAKSKPairCredentialProvider(plainTextAccessKey: OSSAccessKey, secretKey: OSSSecretKey)
-    }()
+        }()
+    
+    private lazy var credential  : OSSCustomSignerCredentialProvider = {
+        return OSSCustomSignerCredentialProvider { (contentToSign, error) -> String? in
+            let signature = OSSUtil.calBase64Sha1(withData: contentToSign, withSecret: OSSSecretKey)
+            
+            if (signature != nil) {
+                error?.pointee = nil
+            } else {
+                error?.pointee = NSError(domain: "tokenError", code: 999, userInfo: nil)
+                return nil
+            }
+            return String(format: "OSS %@:%@", OSSAccessKey,signature!)//[NSString stringWithFormat:@"OSS %@:%@", @"<your accessKeyId>",
+        }
+        }()!
     
     
-    
+//    func test(){
+//        let credential = OSSCustomSignerCredentialProvider { (contentToSign, error) -> String? in
+//            let signature = OSSUtil.calBase64Sha1(withData: contentToSign, withSecret: OSSSecretKey)
+//
+//            if (signature != nil) {
+//                error?.pointee = nil
+//            } else {
+//                error?.pointee = NSError(domain: "tokenError", code: 999, userInfo: nil)//[NSError errorWithDomain:@"<your domain>" code:-1001 userInfo:@"<your error info>"];
+//                return nil
+//            }
+//            return String(format: "OSS %@:%@", OSSSecretKey,signature!)//[NSString stringWithFormat:@"OSS %@:%@", @"<your accessKeyId>",
+//        }
+//    }
 
 }
 

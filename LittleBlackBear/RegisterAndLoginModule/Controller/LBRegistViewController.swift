@@ -143,6 +143,7 @@ class LBRegistViewController: LBRegistLoginBaseViewController {
         LBKeychain.set(phone, key: PHONE_NUMBER)
         
         SNRequestBool(requestType: API.register(mobile:phone, code:msgCode , password: password)).subscribe(onNext: {[unowned self] (result) in
+            print(result)
             switch result{
             case .bool(let msg):
                 SZHUD(msg, type: .success, callBack: nil)

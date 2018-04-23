@@ -19,7 +19,7 @@ let BMProvider = RxMoyaProvider<API>()
 
 enum API {
     
-    case userInfo(timestamp : String)
+    case userInfo
     
     case login(phone:String,password:String)
     
@@ -66,7 +66,10 @@ enum API {
     
     ///代理商账本
     case serviceAccountBook(mer_id : String)
-   
+    
+    case modifyNickName(name : String)
+ 
+    case modifyHeadIcon(headUrl : String)
 }
 
 
@@ -75,8 +78,8 @@ extension API: JSONMappableTargetType {
         switch self {
         case .login(let phone,let password):
             return ["X-AUTH-TOKEN":"\(phone):\(password)"]
-        case .userInfo(let timsStamp):
-            return ["X-AUTH-TOKEN":LBKeychain.get(TOKEN),"X-AUTH-TIMESTAMP":timsStamp]
+        case .userInfo,.modifyNickName,.modifyHeadIcon:
+            return ["X-AUTH-TOKEN":LBKeychain.get(TOKEN),"X-AUTH-TIMESTAMP":LBKeychain.get(LLTimeStamp)]
 
         default:
             return [
@@ -97,7 +100,7 @@ extension API: JSONMappableTargetType {
         switch self {
         case .checkMerchantExit:
             return URL(string: "http://pay.xiaoheixiong.net/public/merInfo")!
-    case .merchantAccountBook,.getMemberList,.serviceAccountBook,.insertMerchant,.isStatus,.login,.forgetPass,.register,.userInfo:
+    case .merchantAccountBook,.getMemberList,.serviceAccountBook,.insertMerchant,.isStatus,.login,.forgetPass,.register,.userInfo,.modifyNickName:
             return URL(string: "http://transaction.xiaoheixiong.net")!
         default:
             return URL(string: "http://api.xiaoheixiong.net/")!
@@ -142,7 +145,11 @@ extension API: JSONMappableTargetType {
             return "api/getMyWalletList"
         case .deleteHeadTopic:
             return "/headline/delHeadLine"
-        
+        case .modifyNickName:
+            return "user/updateNickName"
+            
+        case .modifyHeadIcon:
+            return "user/updateHeadImg"
 //        case .checkMerchantExit:
 //            return "/public/merInfo"
         default:
@@ -274,6 +281,16 @@ extension API: JSONMappableTargetType {
             let para = [
                 "id" : id
                 ] as [String : Any]
+            return .requestParameters(parameters: para, encoding: URLEncoding.default)
+        case .modifyNickName(let name):
+            let para = [
+                "nickName" : name
+                ] as [String : Any]
+            return .requestParameters(parameters: para, encoding: URLEncoding.default)
+        case .modifyHeadIcon(let headUrl):
+            let para = [
+            "headUrl" : headUrl
+            ] as [String : Any]
             return .requestParameters(parameters: para, encoding: URLEncoding.default)
         default:
             return Task.requestPlain

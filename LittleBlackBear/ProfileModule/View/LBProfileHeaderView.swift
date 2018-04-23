@@ -18,8 +18,8 @@ class LBProfileHeaderView: UIView {
             guard isRefreshData == true else {return}
             ismerc = LBKeychain.get(isMer)
             isAgent = LBKeychain.get(IsAgent)
-            userName  = LBKeychain.get(nickName)
-            headerUrl = LBKeychain.get(USER_ICON_URL)
+            userName  = LBKeychain.get(LLNickName)
+            headerUrl = LBKeychain.get(HeadImg)
             level = LBKeychain.get(AGENT_LEVEL)
             setupUI()
             setupData()
@@ -119,13 +119,13 @@ class LBProfileHeaderView: UIView {
     
     private func setupData(){
         
-        if headerUrl.isURLFormate() {
-            iconImageView.kf.setImage(with: URL(string:headerUrl))
+        if LBKeychain.get(HeadImg).isURLFormate() {
+            iconImageView.kf.setImage(with: URL(string:LBKeychain.get(HeadImg)))
         }else{
             iconImageView.image = UIImage(named:"userIcon")
         }
         
-        nameLabel.text = userName
+        nameLabel.text = LBKeychain.get(LLNickName)//LLNickName//userName
         
         if ismerc == "0"{
             levelLabel.text = " 普通用户 "
