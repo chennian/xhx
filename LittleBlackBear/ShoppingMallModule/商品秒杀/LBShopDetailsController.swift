@@ -84,7 +84,7 @@ class LBShopDetailsController: UIViewController {
         didSet {
             //            self.title = "秒秒"
             
-            bottomButton.setTitle("立即购买", for: .normal)
+            bottomButton.setTitle("立即领取", for: .normal)
             cellModel.removeAll()
             let headModel = ZJActgivityDetailCellModel()
             headModel.type = .banner(model: ZJActgivityDetailBannerCellModel.init(imgArray:  anayliseImgs(imgs: miaomiaoModel!.detailImg), endTime: miaomiaoModel!.endTime))
@@ -138,6 +138,11 @@ class LBShopDetailsController: UIViewController {
             cellModel = [headModel,nameAndPriceModel,spcae,tuantuaninfoModel,spcae,descriptionModel,spcae,merchantModel,spcae]
             tableView.reloadData()
         }
+    }
+    
+    
+    func bottomButtonClick(){
+        
     }
     
     var cellModel : [ZJActgivityDetailCellModel] = []
@@ -229,7 +234,7 @@ class LBShopDetailsController: UIViewController {
         backBtn.addTap(self, action: #selector(backPop))
         
         
-        
+        bottomButton.addTarget(self, action: #selector(bottomButtonClick), for: .touchUpInside)
     }
     @objc func backPop(){
         self.navigationController?.popViewController(animated: true)

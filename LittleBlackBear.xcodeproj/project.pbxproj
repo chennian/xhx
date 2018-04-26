@@ -263,6 +263,7 @@
 		6F7E4B962053449900FBB68B /* ZJCountDownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F7E4B952053449900FBB68B /* ZJCountDownView.swift */; };
 		6F7E4B982053569500FBB68B /* ZJHomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F7E4B972053569500FBB68B /* ZJHomeViewModel.swift */; };
 		6F8FCCD6208C67CE00045503 /* ZJModifyNickNameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8FCCD5208C67CE00045503 /* ZJModifyNickNameVC.swift */; };
+		6F9397EB20910B2B003B3BEA /* ZJMyCouponViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9397EA20910B2B003B3BEA /* ZJMyCouponViewController.swift */; };
 		6FAC4983205E342B009A9587 /* ZJHeadTopicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FAC4982205E342B009A9587 /* ZJHeadTopicViewController.swift */; };
 		6FAC4985205E34C8009A9587 /* ZJHeadTopicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FAC4984205E34C8009A9587 /* ZJHeadTopicCell.swift */; };
 		6FAC4987205E39A6009A9587 /* ZJHeadTopicViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FAC4986205E39A6009A9587 /* ZJHeadTopicViewModel.swift */; };
@@ -712,6 +713,7 @@
 		6F7E4B952053449900FBB68B /* ZJCountDownView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZJCountDownView.swift; sourceTree = "<group>"; };
 		6F7E4B972053569500FBB68B /* ZJHomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZJHomeViewModel.swift; sourceTree = "<group>"; };
 		6F8FCCD5208C67CE00045503 /* ZJModifyNickNameVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZJModifyNickNameVC.swift; sourceTree = "<group>"; };
+		6F9397EA20910B2B003B3BEA /* ZJMyCouponViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZJMyCouponViewController.swift; sourceTree = "<group>"; };
 		6FAC4982205E342B009A9587 /* ZJHeadTopicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZJHeadTopicViewController.swift; sourceTree = "<group>"; };
 		6FAC4984205E34C8009A9587 /* ZJHeadTopicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZJHeadTopicCell.swift; sourceTree = "<group>"; };
 		6FAC4986205E39A6009A9587 /* ZJHeadTopicViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZJHeadTopicViewModel.swift; sourceTree = "<group>"; };
@@ -1496,6 +1498,24 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		6F12058620910AD400D21C65 /* MyCoupon */ = {
+			isa = PBXGroup;
+			children = (
+				6F9397EE20910BA6003B3BEA /* service */,
+				6F9397ED20910BA0003B3BEA /* view */,
+				6F12058720910AF000D21C65 /* controller */,
+			);
+			path = MyCoupon;
+			sourceTree = "<group>";
+		};
+		6F12058720910AF000D21C65 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				6F9397EA20910B2B003B3BEA /* ZJMyCouponViewController.swift */,
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
 		6F404872205E8DCE00609231 /* share */ = {
 			isa = PBXGroup;
 			children = (
@@ -1572,6 +1592,7 @@
 		6F5F5899206A0E590025E6EA /* Mine */ = {
 			isa = PBXGroup;
 			children = (
+				6F12058620910AD400D21C65 /* MyCoupon */,
 				6F8FCCD3208C679D00045503 /* ModifyNickName */,
 				6F5F58BB206C0D880025E6EA /* MyMember */,
 				6F5F58A6206BB1560025E6EA /* AccountBook */,
@@ -1953,6 +1974,20 @@
 				6F8FCCD5208C67CE00045503 /* ZJModifyNickNameVC.swift */,
 			);
 			path = controller;
+			sourceTree = "<group>";
+		};
+		6F9397ED20910BA0003B3BEA /* view */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		6F9397EE20910BA6003B3BEA /* service */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = service;
 			sourceTree = "<group>";
 		};
 		6FAC497E205E33D3009A9587 /* HeadTopic */ = {
@@ -3400,6 +3435,7 @@
 				18E2E0FB1FC2FCD30054432D /* ToolBarView.swift in Sources */,
 				18D532C5200CAE2A00389568 /* LBMapNavigationTool.swift in Sources */,
 				18D310E21FBD450B0027E3CB /* SegmentedHeadView.swift in Sources */,
+				6F9397EB20910B2B003B3BEA /* ZJMyCouponViewController.swift in Sources */,
 				182FE5882024446600600728 /* PhotoBrowserProgressView.swift in Sources */,
 				18CC8AAF1FE8ABE100784346 /* LBMyFootMarkWebViewController.swift in Sources */,
 				6F5F58BA206BE7E00025E6EA /* ZJMerchantAccoutBookModel.swift in Sources */,

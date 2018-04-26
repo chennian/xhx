@@ -39,7 +39,8 @@ class MyInfoModel: SNSwiftyJSONAble {
         self.isAgent = jsonData["isAgent"].stringValue
         self.mercId = jsonData["mercId"].stringValue
         self.headImg = jsonData["headImg"].stringValue
-        LLNickName = self.nickName
+
+        LBKeychain.set(self.nickName, key: LLNickName)
     }
     
     init(phone : String = "", nickName : String = "", isMer : String = "", isAgent : String = "",mercId : String = "") {
