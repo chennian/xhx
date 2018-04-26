@@ -502,6 +502,7 @@ extension LBShoppingMallViewController:LBShoppingHttpServer{
                 //                }
                 if models.count == 0 {
                     self.zjPostItem.append(.space(cellHight : fit(0) ,color : Color(0xf5f5f5)))
+                    self.oldGetData()
                     return
                     
                 }
