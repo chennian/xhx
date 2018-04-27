@@ -70,6 +70,11 @@ enum API {
     case modifyNickName(name : String)
  
     case modifyHeadIcon(headUrl : String)
+    
+    
+    case getConpoun(coupon_id: String)
+    
+    case getConpounList(type : String)
 }
 
 
@@ -78,7 +83,7 @@ extension API: JSONMappableTargetType {
         switch self {
         case .login(let phone,let password):
             return ["X-AUTH-TOKEN":"\(phone):\(password)"]
-        case .userInfo,.modifyNickName,.modifyHeadIcon:
+        case .userInfo,.modifyNickName,.modifyHeadIcon,.getConpoun,.getConpounList:
             return ["X-AUTH-TOKEN":LBKeychain.get(TOKEN),"X-AUTH-TIMESTAMP":LBKeychain.get(LLTimeStamp)]
 
         default:
@@ -94,14 +99,18 @@ extension API: JSONMappableTargetType {
     var responseType: SNSwiftyJSONAble.Type {
         return SNNetModel.self
     }
-    
+    /*
+     api/getcoupon   领取卡卷  参数： coupon_id（卡卷id）
+     api/getcouponList     获取卡卷列表       参数    status （  1：使用过 2：未使用  */
     
     var baseURL: URL {
         switch self {
         case .checkMerchantExit:
             return URL(string: "http://pay.xiaoheixiong.net/public/merInfo")!
-    case .merchantAccountBook,.getMemberList,.serviceAccountBook,.insertMerchant,.isStatus,.login,.forgetPass,.register,.userInfo,.modifyNickName:
+    case .merchantAccountBook,.getMemberList,.serviceAccountBook,.insertMerchant,.isStatus,.login,.forgetPass,.register,.userInfo,.modifyNickName,.getConpoun,.getMiaoMiaoList:
             return URL(string: "http://transaction.xiaoheixiong.net")!
+//        case .getConpoun:
+//            return URL(string: "http://merchant.xiaoheixiong.net/")!
         default:
             return URL(string: "http://api.xiaoheixiong.net/")!
         }
@@ -126,7 +135,7 @@ extension API: JSONMappableTargetType {
         case .getTuanTuanList:
             return "/activity/queryCoupon"
         case .getMiaoMiaoList:
-            return "/activity/queryKill"
+            return "api/getKillList"
         case .getHeadTopicList:
             return "/headline/getHeadLists"
         case .getReplatyList:
@@ -147,9 +156,12 @@ extension API: JSONMappableTargetType {
             return "/headline/delHeadLine"
         case .modifyNickName:
             return "user/updateNickName"
-            
+        case .getConpoun:
+            return "merchant/getcoupon"
         case .modifyHeadIcon:
             return "user/updateHeadImg"
+        case .getConpounList:
+            return "merchant/getcouponList"
 //        case .checkMerchantExit:
 //            return "/public/merInfo"
         default:
@@ -291,6 +303,16 @@ extension API: JSONMappableTargetType {
             let para = [
             "headUrl" : headUrl
             ] as [String : Any]
+            return .requestParameters(parameters: para, encoding: URLEncoding.default)
+        case .getConpoun(let coupon_id):
+            let para = [
+                "coupon_id" : coupon_id
+                ] as [String : Any]
+            return .requestParameters(parameters: para, encoding: URLEncoding.default)
+        case .getConpounList(let status ):
+            let para = [
+                "status " : status
+                ] as [String : Any]
             return .requestParameters(parameters: para, encoding: URLEncoding.default)
         default:
             return Task.requestPlain

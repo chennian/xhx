@@ -31,8 +31,8 @@ class LBCommentListViewController: UITableViewController {
                                                             style: .plain,
                                                             target: self,
                                                             action: #selector(clickCommentAction))
-        navigationItem.rightBarButtonItem?.setTitleTextAttributes([NSFontAttributeName:FONT_32PX,
-                                                                   NSForegroundColorAttributeName:COLOR_e60013],
+        navigationItem.rightBarButtonItem?.setTitleTextAttributes([NSAttributedStringKey.font:FONT_32PX,
+                                                                   NSAttributedStringKey.foregroundColor:COLOR_e60013],
                                                                   for: .normal)
         
         configTableView()

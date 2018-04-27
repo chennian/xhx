@@ -38,8 +38,8 @@ class LBMerchantApplyTypeViewController: UITableViewController {
           navigationController?.navigationBar.setBackgroundImage(UIImage.imageWithColor(TINT_COLOR),
                                                                  for: .any,
                                                                  barMetrics: .default)
-        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:COLOR_ffffff,
-                                                                   NSFontAttributeName:UIFont.boldSystemFont(ofSize: 16*default_scale)]
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor:COLOR_ffffff,
+                                                                   NSAttributedStringKey.font:UIFont.boldSystemFont(ofSize: 16*default_scale)]
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)

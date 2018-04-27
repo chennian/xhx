@@ -50,7 +50,7 @@ class LBPayQRCodeViewController: UIViewController {
         shareView.removeFromSuperview()
         UIApplication.shared.setStatusBarStyle(.lightContent, animated: true)
         
-        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:COLOR_ffffff,NSFontAttributeName:UIFont.boldSystemFont(ofSize: 16*default_scale)]
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor:COLOR_ffffff,NSAttributedStringKey.font:UIFont.boldSystemFont(ofSize: 16*default_scale)]
 
     }
     

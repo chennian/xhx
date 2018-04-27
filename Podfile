@@ -6,12 +6,13 @@ target 'LittleBlackBear' do
   use_frameworks!
   pod 'BaiduMapKit'#百度地图SDK
   pod 'CocoaAsyncSocket'
-  pod 'Kingfisher','3.10.4'
+  pod 'Kingfisher','~> 4.7.0'
   pod 'KeychainAccess'
   pod 'IQKeyboardManagerSwift', '5.0.0'
   pod 'CryptoSwift', '~> 0.7.0'
   pod 'SwiftyJSON'
-  pod 'SnapKit','3.2.0'
+  pod 'SnapKit', '~> 4.0.0'
+  #,'3.2.0'
   pod 'Alamofire'
   pod 'Moya/RxSwift', '~> 10.0'
   pod 'RxDataSources', '~> 3.0'
@@ -27,8 +28,8 @@ target 'LittleBlackBear' do
   # Pods for LittleBlackBear
   pod 'TZImagePickerController'
   pod 'APJTextPickerView'
-  pod 'TabPageViewController'
-  pod 'PagingMenuController'
+#  pod 'TabPageViewController'
+#  pod 'PagingMenuController'
   target 'LittleBlackBearTests' do
     inherit! :search_paths
     # Pods for testing

@@ -32,8 +32,8 @@ class LBSettingViewController: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.white,
-                                                                   NSFontAttributeName:UIFont.boldSystemFont(ofSize: 15.0)]
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor:UIColor.white,
+                                                                   NSAttributedStringKey.font:UIFont.boldSystemFont(ofSize: 15.0)]
         UIApplication.shared.setStatusBarStyle(.default, animated: true)
         navigationController?.navigationBar.setBackgroundImage(UIImage.imageWithColor(COLOR_e60013), for: .default)
         UIApplication.shared.setStatusBarStyle(.lightContent, animated: true)

@@ -189,6 +189,11 @@
 		18FFD5661FC2E09900DFF4D6 /* LBMerchantUploadInfoServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FFD5651FC2E09900DFF4D6 /* LBMerchantUploadInfoServer.swift */; };
 		25DAC5BDB053635514B73750 /* Pods_LittleBlackBearUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E28331B396323D3DB2BE7770 /* Pods_LittleBlackBearUITests.framework */; };
 		6F0A122E2060DC6000678938 /* LBShopCroupSliderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0A122D2060DC6000678938 /* LBShopCroupSliderCell.swift */; };
+		6F1B750320925EBE00E944E2 /* ZJMyCouponListHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F1B750220925EBE00E944E2 /* ZJMyCouponListHeader.swift */; };
+		6F1B750720929AE200E944E2 /* ZJGetCouponVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F1B750620929AE200E944E2 /* ZJGetCouponVC.swift */; };
+		6F1B75092092A37500E944E2 /* DDZPickerViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F1B75082092A37500E944E2 /* DDZPickerViewManager.swift */; };
+		6F1B750B2092A39A00E944E2 /* CalenderPopPresentatuinController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F1B750A2092A39A00E944E2 /* CalenderPopPresentatuinController.swift */; };
+		6F1B750F20937D0D00E944E2 /* ZJCouponDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F1B750E20937D0D00E944E2 /* ZJCouponDetailVC.swift */; };
 		6F404877205E8EE200609231 /* ZJHeadTopicShareController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F404876205E8EE200609231 /* ZJHeadTopicShareController.swift */; };
 		6F40487B205E8F2300609231 /* ZJHeadTopicShareViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F40487A205E8F2300609231 /* ZJHeadTopicShareViewModel.swift */; };
 		6F40487D205E8F5300609231 /* ZJHeadTopicContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F40487C205E8F5300609231 /* ZJHeadTopicContentView.swift */; };
@@ -264,6 +269,12 @@
 		6F7E4B982053569500FBB68B /* ZJHomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F7E4B972053569500FBB68B /* ZJHomeViewModel.swift */; };
 		6F8FCCD6208C67CE00045503 /* ZJModifyNickNameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8FCCD5208C67CE00045503 /* ZJModifyNickNameVC.swift */; };
 		6F9397EB20910B2B003B3BEA /* ZJMyCouponViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9397EA20910B2B003B3BEA /* ZJMyCouponViewController.swift */; };
+		6F9397F4209202EB003B3BEA /* ZJMineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9397F3209202EB003B3BEA /* ZJMineViewController.swift */; };
+		6F9397F62092036A003B3BEA /* ZJMineFunctionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9397F52092036A003B3BEA /* ZJMineFunctionCell.swift */; };
+		6F9397F8209207F1003B3BEA /* ZJMineViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9397F7209207F1003B3BEA /* ZJMineViewModel.swift */; };
+		6F9397FA20920E25003B3BEA /* ZJMineTableviewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9397F920920E25003B3BEA /* ZJMineTableviewHeader.swift */; };
+		6F9397FC20921E78003B3BEA /* ZJCouponCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9397FB20921E78003B3BEA /* ZJCouponCell.swift */; };
+		6F9397FE20922163003B3BEA /* ZJMyCouponViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9397FD20922163003B3BEA /* ZJMyCouponViewModel.swift */; };
 		6FAC4983205E342B009A9587 /* ZJHeadTopicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FAC4982205E342B009A9587 /* ZJHeadTopicViewController.swift */; };
 		6FAC4985205E34C8009A9587 /* ZJHeadTopicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FAC4984205E34C8009A9587 /* ZJHeadTopicCell.swift */; };
 		6FAC4987205E39A6009A9587 /* ZJHeadTopicViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FAC4986205E39A6009A9587 /* ZJHeadTopicViewModel.swift */; };
@@ -343,7 +354,6 @@
 		8EDF01BD207472C800AFDD62 /* LBMerchantDetailImgCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EDF01BC207472C800AFDD62 /* LBMerchantDetailImgCell.swift */; };
 		8EDF01BF2074741300AFDD62 /* LBMerchantAddressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EDF01BE2074741300AFDD62 /* LBMerchantAddressCell.swift */; };
 		8EDF01C220747B8F00AFDD62 /* LBMerchantApplyInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EDF01C120747B8F00AFDD62 /* LBMerchantApplyInfoController.swift */; };
-		8EDF01C420747BE600AFDD62 /* LBMerchantMainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EDF01C320747BE600AFDD62 /* LBMerchantMainController.swift */; };
 		AC0077EF1FC657F700BE0153 /* LBMercApplyAlterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0077EE1FC657F700BE0153 /* LBMercApplyAlterView.swift */; };
 		AC0077F31FC69EEA00BE0153 /* LBLogoHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0077F21FC69EEA00BE0153 /* LBLogoHeaderView.swift */; };
 		AC0077F51FC6AD0700BE0153 /* LBRegistLoginCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0077F41FC6AD0700BE0153 /* LBRegistLoginCell.swift */; };
@@ -637,6 +647,11 @@
 		38D3069020C157AF282EDB3B /* Pods-LittleBlackBearUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LittleBlackBearUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LittleBlackBearUITests/Pods-LittleBlackBearUITests.release.xcconfig"; sourceTree = "<group>"; };
 		478CE5E48AA059A3F823E755 /* Pods-LittleBlackBearTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LittleBlackBearTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LittleBlackBearTests/Pods-LittleBlackBearTests.debug.xcconfig"; sourceTree = "<group>"; };
 		6F0A122D2060DC6000678938 /* LBShopCroupSliderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBShopCroupSliderCell.swift; sourceTree = "<group>"; };
+		6F1B750220925EBE00E944E2 /* ZJMyCouponListHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZJMyCouponListHeader.swift; sourceTree = "<group>"; };
+		6F1B750620929AE200E944E2 /* ZJGetCouponVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZJGetCouponVC.swift; sourceTree = "<group>"; };
+		6F1B75082092A37500E944E2 /* DDZPickerViewManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DDZPickerViewManager.swift; sourceTree = "<group>"; };
+		6F1B750A2092A39A00E944E2 /* CalenderPopPresentatuinController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalenderPopPresentatuinController.swift; sourceTree = "<group>"; };
+		6F1B750E20937D0D00E944E2 /* ZJCouponDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZJCouponDetailVC.swift; sourceTree = "<group>"; };
 		6F404876205E8EE200609231 /* ZJHeadTopicShareController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZJHeadTopicShareController.swift; sourceTree = "<group>"; };
 		6F40487A205E8F2300609231 /* ZJHeadTopicShareViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZJHeadTopicShareViewModel.swift; sourceTree = "<group>"; };
 		6F40487C205E8F5300609231 /* ZJHeadTopicContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZJHeadTopicContentView.swift; sourceTree = "<group>"; };
@@ -714,6 +729,12 @@
 		6F7E4B972053569500FBB68B /* ZJHomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZJHomeViewModel.swift; sourceTree = "<group>"; };
 		6F8FCCD5208C67CE00045503 /* ZJModifyNickNameVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZJModifyNickNameVC.swift; sourceTree = "<group>"; };
 		6F9397EA20910B2B003B3BEA /* ZJMyCouponViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZJMyCouponViewController.swift; sourceTree = "<group>"; };
+		6F9397F3209202EB003B3BEA /* ZJMineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZJMineViewController.swift; sourceTree = "<group>"; };
+		6F9397F52092036A003B3BEA /* ZJMineFunctionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZJMineFunctionCell.swift; sourceTree = "<group>"; };
+		6F9397F7209207F1003B3BEA /* ZJMineViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZJMineViewModel.swift; sourceTree = "<group>"; };
+		6F9397F920920E25003B3BEA /* ZJMineTableviewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZJMineTableviewHeader.swift; sourceTree = "<group>"; };
+		6F9397FB20921E78003B3BEA /* ZJCouponCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZJCouponCell.swift; sourceTree = "<group>"; };
+		6F9397FD20922163003B3BEA /* ZJMyCouponViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZJMyCouponViewModel.swift; sourceTree = "<group>"; };
 		6FAC4982205E342B009A9587 /* ZJHeadTopicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZJHeadTopicViewController.swift; sourceTree = "<group>"; };
 		6FAC4984205E34C8009A9587 /* ZJHeadTopicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZJHeadTopicCell.swift; sourceTree = "<group>"; };
 		6FAC4986205E39A6009A9587 /* ZJHeadTopicViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZJHeadTopicViewModel.swift; sourceTree = "<group>"; };
@@ -795,7 +816,6 @@
 		8EDF01BC207472C800AFDD62 /* LBMerchantDetailImgCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBMerchantDetailImgCell.swift; sourceTree = "<group>"; };
 		8EDF01BE2074741300AFDD62 /* LBMerchantAddressCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBMerchantAddressCell.swift; sourceTree = "<group>"; };
 		8EDF01C120747B8F00AFDD62 /* LBMerchantApplyInfoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBMerchantApplyInfoController.swift; sourceTree = "<group>"; };
-		8EDF01C320747BE600AFDD62 /* LBMerchantMainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBMerchantMainController.swift; sourceTree = "<group>"; };
 		9028C7DFF812405594EA0177 /* Pods_LittleBlackBearTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LittleBlackBearTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC0077EE1FC657F700BE0153 /* LBMercApplyAlterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBMercApplyAlterView.swift; sourceTree = "<group>"; };
 		AC0077F21FC69EEA00BE0153 /* LBLogoHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LBLogoHeaderView.swift; sourceTree = "<group>"; };
@@ -1501,6 +1521,7 @@
 		6F12058620910AD400D21C65 /* MyCoupon */ = {
 			isa = PBXGroup;
 			children = (
+				6F1B750C20937CE200E944E2 /* Detail */,
 				6F9397EE20910BA6003B3BEA /* service */,
 				6F9397ED20910BA0003B3BEA /* view */,
 				6F12058720910AF000D21C65 /* controller */,
@@ -1512,6 +1533,38 @@
 			isa = PBXGroup;
 			children = (
 				6F9397EA20910B2B003B3BEA /* ZJMyCouponViewController.swift */,
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
+		6F1B750420929A6600E944E2 /* GetCoupon */ = {
+			isa = PBXGroup;
+			children = (
+				6F1B750520929ACA00E944E2 /* controller */,
+			);
+			path = GetCoupon;
+			sourceTree = "<group>";
+		};
+		6F1B750520929ACA00E944E2 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				6F1B750620929AE200E944E2 /* ZJGetCouponVC.swift */,
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
+		6F1B750C20937CE200E944E2 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				6F1B750D20937CE900E944E2 /* controller */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		6F1B750D20937CE900E944E2 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				6F1B750E20937D0D00E944E2 /* ZJCouponDetailVC.swift */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -1592,6 +1645,7 @@
 		6F5F5899206A0E590025E6EA /* Mine */ = {
 			isa = PBXGroup;
 			children = (
+				6F9397EF209202B3003B3BEA /* main */,
 				6F12058620910AD400D21C65 /* MyCoupon */,
 				6F8FCCD3208C679D00045503 /* ModifyNickName */,
 				6F5F58BB206C0D880025E6EA /* MyMember */,
@@ -1789,6 +1843,7 @@
 		6F7E4B222052ED1500FBB68B /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				6F1B750420929A6600E944E2 /* GetCoupon */,
 				6F7E4B7C2053024D00FBB68B /* model */,
 				6F7E4B7B2053024300FBB68B /* view */,
 				6F7E4B7A2053023B00FBB68B /* viewmodel */,
@@ -1979,6 +2034,8 @@
 		6F9397ED20910BA0003B3BEA /* view */ = {
 			isa = PBXGroup;
 			children = (
+				6F9397FB20921E78003B3BEA /* ZJCouponCell.swift */,
+				6F1B750220925EBE00E944E2 /* ZJMyCouponListHeader.swift */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -1986,6 +2043,44 @@
 		6F9397EE20910BA6003B3BEA /* service */ = {
 			isa = PBXGroup;
 			children = (
+				6F1B750A2092A39A00E944E2 /* CalenderPopPresentatuinController.swift */,
+				6F1B75082092A37500E944E2 /* DDZPickerViewManager.swift */,
+				6F9397FD20922163003B3BEA /* ZJMyCouponViewModel.swift */,
+			);
+			path = service;
+			sourceTree = "<group>";
+		};
+		6F9397EF209202B3003B3BEA /* main */ = {
+			isa = PBXGroup;
+			children = (
+				6F9397F2209202CF003B3BEA /* service */,
+				6F9397F1209202C2003B3BEA /* view */,
+				6F9397F0209202B7003B3BEA /* controller */,
+			);
+			path = main;
+			sourceTree = "<group>";
+		};
+		6F9397F0209202B7003B3BEA /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				6F9397F3209202EB003B3BEA /* ZJMineViewController.swift */,
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
+		6F9397F1209202C2003B3BEA /* view */ = {
+			isa = PBXGroup;
+			children = (
+				6F9397F52092036A003B3BEA /* ZJMineFunctionCell.swift */,
+				6F9397F920920E25003B3BEA /* ZJMineTableviewHeader.swift */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		6F9397F2209202CF003B3BEA /* service */ = {
+			isa = PBXGroup;
+			children = (
+				6F9397F7209207F1003B3BEA /* ZJMineViewModel.swift */,
 			);
 			path = service;
 			sourceTree = "<group>";
@@ -2318,7 +2413,6 @@
 		8EDF01C520747BF700AFDD62 /* 店铺管理 */ = {
 			isa = PBXGroup;
 			children = (
-				8EDF01C320747BE600AFDD62 /* LBMerchantMainController.swift */,
 			);
 			path = "店铺管理";
 			sourceTree = "<group>";
@@ -2795,13 +2889,13 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0910;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = "蘇崢";
 				TargetAttributes = {
 					ACE720951F9DDA7000C22465 = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = GS5MNVJVED;
-						LastSwiftMigration = 0830;
+						LastSwiftMigration = 0930;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Maps.iOS = {
@@ -2815,12 +2909,14 @@
 					ACE720A91F9DDA7000C22465 = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = GS5MNVJVED;
+						LastSwiftMigration = 0930;
 						ProvisioningStyle = Automatic;
 						TestTargetID = ACE720951F9DDA7000C22465;
 					};
 					ACE720B41F9DDA7000C22465 = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = GS5MNVJVED;
+						LastSwiftMigration = 0930;
 						ProvisioningStyle = Automatic;
 						TestTargetID = ACE720951F9DDA7000C22465;
 					};
@@ -3031,7 +3127,6 @@
 				"${BUILT_PRODUCTS_DIR}/KeychainAccess/KeychainAccess.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
-				"${BUILT_PRODUCTS_DIR}/PagingMenuController/PagingMenuController.framework",
 				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxDataSources/RxDataSources.framework",
@@ -3043,7 +3138,6 @@
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/TOCropViewController/TOCropViewController.framework",
 				"${BUILT_PRODUCTS_DIR}/TZImagePickerController/TZImagePickerController.framework",
-				"${BUILT_PRODUCTS_DIR}/TabPageViewController/TabPageViewController.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -3057,7 +3151,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainAccess.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PagingMenuController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxDataSources.framework",
@@ -3069,7 +3162,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TOCropViewController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TZImagePickerController.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TabPageViewController.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -3120,6 +3212,7 @@
 				18A746DE1FE8BF8000FE336B /* LBMyNewsWebViewController.swift in Sources */,
 				6F7E4B272052F69400FBB68B /* SnapKit_Extension.swift in Sources */,
 				ACF5768F1FDEDA4B00DE38F5 /* LBShoppingButtonCell.swift in Sources */,
+				6F1B750720929AE200E944E2 /* ZJGetCouponVC.swift in Sources */,
 				18B3E39F1FF61C13004646EF /* LBSetPayPasswordViewController.swift in Sources */,
 				182FF417200EECD900A68C90 /* LBShopsGoodsModel.swift in Sources */,
 				ACDE389A1FA0727C0084B362 /* LBKeychain.swift in Sources */,
@@ -3152,6 +3245,7 @@
 				8EDF01B72073AD0F00AFDD62 /* LBMerchantManagerController.swift in Sources */,
 				8E2CD0762063A26B00F7298C /* LBNewMarketCellTableViewCell.swift in Sources */,
 				18D310B31FBD39BF0027E3CB /* LBMerchantApplyTypeViewController.swift in Sources */,
+				6F9397F8209207F1003B3BEA /* ZJMineViewModel.swift in Sources */,
 				AC4CBAB4200CFA7500740235 /* LBMapNavigationViewController.swift in Sources */,
 				18F5EC0F1FCD0B64004D068A /* LBShoppingTableViewCell.swift in Sources */,
 				185DFC342027E55E00868600 /* LBCitySearchResultTableViewController.swift in Sources */,
@@ -3208,6 +3302,7 @@
 				18EAAB3F1FE1135700C2EE01 /* LBImageCollectionViewCell.swift in Sources */,
 				18EAAB2F1FE0C66A00C2EE01 /* LBShoppingMallDetailViewController.swift in Sources */,
 				ACDB58151FE917CE00928032 /* LBCacheManger.swift in Sources */,
+				6F9397F62092036A003B3BEA /* ZJMineFunctionCell.swift in Sources */,
 				AC66B2851FF32F6400B50309 /* PullToRefreshOption.swift in Sources */,
 				182160562018681D00AEC629 /* LBGameModel.swift in Sources */,
 				AC10A1B81FB432D900542BD4 /* LBStarView.swift in Sources */,
@@ -3264,6 +3359,7 @@
 				ACDE38971FA02FF50084B362 /* LBBarButtonItem.swift in Sources */,
 				18EAAB411FE113FC00C2EE01 /* LBMercInfoImageTableViewCell.swift in Sources */,
 				AC66B2861FF32F6400B50309 /* PullToRefreshView.swift in Sources */,
+				6F9397F4209202EB003B3BEA /* ZJMineViewController.swift in Sources */,
 				18CC8AB31FE8AC4300784346 /* LBMyMerchantWebViewController.swift in Sources */,
 				18131A7C1FFF1867001A24F3 /* LBBindAccountTableViewCell.swift in Sources */,
 				182FE5852024446600600728 /* PhotoBrowserDefaultPageControlDelegate.swift in Sources */,
@@ -3288,7 +3384,6 @@
 				6F404877205E8EE200609231 /* ZJHeadTopicShareController.swift in Sources */,
 				18B3E3971FF60AB9004646EF /* LBSettingPayPasswordViewController.swift in Sources */,
 				8EDF01BB20746D8D00AFDD62 /* LBMerchantMainImgCellTableViewCell.swift in Sources */,
-				8EDF01C420747BE600AFDD62 /* LBMerchantMainController.swift in Sources */,
 				18A746EF1FE8DCC200FE336B /* LBShoppingWebViewController.swift in Sources */,
 				8E6F24DF205BA19A009A4505 /* PhotoPickerConfig.swift in Sources */,
 				6F7E4B5B205300AA00FBB68B /* ZJHomeTitleCell.swift in Sources */,
@@ -3374,6 +3469,7 @@
 				6F7E4B412052FA0F00FBB68B /* DDZBasicTableVC.swift in Sources */,
 				6F5F58CC206C2A8C0025E6EA /* ZJServiceAccountHeaderView.swift in Sources */,
 				6F7E4B592053009A00FBB68B /* ZJHomeClassCell.swift in Sources */,
+				6F1B750F20937D0D00E944E2 /* ZJCouponDetailVC.swift in Sources */,
 				6F404894205EA8C200609231 /* SNMoya_ResponseMapper.swift in Sources */,
 				18A746F11FE8DD0100FE336B /* LBshoppingCouponsWebViewController.swift in Sources */,
 				8E7E9B1B2062A0980054C261 /* XYMenuView.swift in Sources */,
@@ -3382,6 +3478,7 @@
 				6F40489B205EAA3300609231 /* Observable+Response.swift in Sources */,
 				1818EC231FD64477006E5D8C /* LBProfileHeaderView.swift in Sources */,
 				8EAA5018205FEC570037F592 /* LBAddGroupActivityCell.swift in Sources */,
+				6F1B750320925EBE00E944E2 /* ZJMyCouponListHeader.swift in Sources */,
 				AC0808631FE969DE00677147 /* LBCommentFooterView.swift in Sources */,
 				AC13AC281FC449F700366766 /* NSDictionary+Log.m in Sources */,
 				188821C8200E154C00FB2D8C /* LBGoodsPresenter.swift in Sources */,
@@ -3400,6 +3497,7 @@
 				1818EC1D1FD62852006E5D8C /* LBProfileTableViewCell.swift in Sources */,
 				18131A801FFF71CB001A24F3 /* LBSettingPresenter.swift in Sources */,
 				AC0077F31FC69EEA00BE0153 /* LBLogoHeaderView.swift in Sources */,
+				6F1B75092092A37500E944E2 /* DDZPickerViewManager.swift in Sources */,
 				1817D8432010308F001241E4 /* LBStoreLeftTableViewCell.swift in Sources */,
 				18D310DE1FBD44F90027E3CB /* HeadViewCell.swift in Sources */,
 				ACDE38A31FA1B4EE0084B362 /* LBNewsViewController.swift in Sources */,
@@ -3407,6 +3505,7 @@
 				ACDE38931FA02EF30084B362 /* UIImageExtension.swift in Sources */,
 				6F5F58BE206C1A3D0025E6EA /* ZJMyMemberVC.swift in Sources */,
 				8E6F24D4205BA19A009A4505 /* PhotoCollectionViewController.swift in Sources */,
+				6F1B750B2092A39A00E944E2 /* CalenderPopPresentatuinController.swift in Sources */,
 				6F5F58AB206BB1E00025E6EA /* ZJMerchantAccountBookVC.swift in Sources */,
 				AC4CBAB3200CFA7500740235 /* LBMapNavigationBar.swift in Sources */,
 				6F7E4B472052FA0F00FBB68B /* SNBaseTableView.swift in Sources */,
@@ -3447,6 +3546,7 @@
 				6FE25D63205F720200F8954C /* ZJHeadTopicImageCell.swift in Sources */,
 				6F7E4B632053018200FBB68B /* ZJHomeMerchantCell.swift in Sources */,
 				1862C84D201AB94E00EF3C27 /* LBAbaotCompanyViewController.swift in Sources */,
+				6F9397FA20920E25003B3BEA /* ZJMineTableviewHeader.swift in Sources */,
 				1817D84020102AAE001241E4 /* LBStoreGoodsViewController.swift in Sources */,
 				181ABFA01FFE0B6900F27EDA /* LBSettingButtonCell.swift in Sources */,
 				8EAA500F205E51E70037F592 /* LBAddSeckillFieldCell.swift in Sources */,
@@ -3456,6 +3556,7 @@
 				1818F81B20073CE600837501 /* LBSecondCouponModel.swift in Sources */,
 				18CC8AAD1FE8ABAF00784346 /* LBIntegralViewWebController.swift in Sources */,
 				8E6F24DB205BA19A009A4505 /* AlbumToolbarView.swift in Sources */,
+				6F9397FE20922163003B3BEA /* ZJMyCouponViewModel.swift in Sources */,
 				6FAC4993205E3D6C009A9587 /* ZJHeadTopicCommonCell.swift in Sources */,
 				6F7E4B3E2052FA0F00FBB68B /* SNStoreSectoiniModel.swift in Sources */,
 				8E5217D12064C7AA0083B304 /* SZHUDTool.swift in Sources */,
@@ -3468,6 +3569,7 @@
 				6FAC4983205E342B009A9587 /* ZJHeadTopicViewController.swift in Sources */,
 				6FAC4985205E34C8009A9587 /* ZJHeadTopicCell.swift in Sources */,
 				18318EFA1FD14EA4006459B5 /* LBCityListTableViewCell.swift in Sources */,
+				6F9397FC20921E78003B3BEA /* ZJCouponCell.swift in Sources */,
 				6F7E4B72205301D100FBB68B /* GestureRecognizer_Extension.swift in Sources */,
 				8EDF01B92073C15E00AFDD62 /* LBMerchantTextFileCell.swift in Sources */,
 			);
@@ -3541,6 +3643,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -3548,6 +3651,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -3599,6 +3703,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -3606,6 +3711,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -3629,6 +3735,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
@@ -3655,13 +3762,14 @@
 					"$(PROJECT_DIR)/LittleBlackBear/UtilitysModule/ThidSDK/WeChatSDK",
 					"$(PROJECT_DIR)/LittleBlackBear/UtilitysModule/ThidSDK/thirdlibs",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.LittleBlackBear.app;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.LittleBlackBear.-systems";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "LittleBlackBear/LittleBlackBear-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -3685,12 +3793,13 @@
 					"$(PROJECT_DIR)/LittleBlackBear/UtilitysModule/ThidSDK/WeChatSDK",
 					"$(PROJECT_DIR)/LittleBlackBear/UtilitysModule/ThidSDK/thirdlibs",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.LittleBlackBear.app;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.LittleBlackBear.-systems";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "LittleBlackBear/LittleBlackBear-Bridging-Header.h";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -3705,7 +3814,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.YoungBlackBear.systems.LittleBlackBearTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LittleBlackBear.app/LittleBlackBear";
 			};
 			name = Debug;
@@ -3721,7 +3831,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.YoungBlackBear.systems.LittleBlackBearTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LittleBlackBear.app/LittleBlackBear";
 			};
 			name = Release;
@@ -3736,7 +3847,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.YoungBlackBear.systems.LittleBlackBearUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_TARGET_NAME = LittleBlackBear;
 			};
 			name = Debug;
@@ -3751,7 +3863,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.YoungBlackBear.systems.LittleBlackBearUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_TARGET_NAME = LittleBlackBear;
 			};
 			name = Release;

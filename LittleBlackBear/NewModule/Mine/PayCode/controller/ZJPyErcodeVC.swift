@@ -38,7 +38,7 @@ class ZJPyErcodeVC: SNBaseViewController {
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backButton)//UIBarButtonItem(title: "返回", imgName: "map_return", fontSize: fit(30), target: self, action: #selector(backUP))
 //        navigationController?.navigationBar.barStyle =
         navigationController?.navigationBar.barTintColor = .white
-        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:COLOR_ffffff,NSFontAttributeName:UIFont.boldSystemFont(ofSize: 16*default_scale)]
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor:COLOR_ffffff,NSAttributedStringKey.font:UIFont.boldSystemFont(ofSize: 16*default_scale)]
     }
     let imgIcon = UIImageView(image: UIImage(named: "store"))
     let nameLab = UILabel().then({

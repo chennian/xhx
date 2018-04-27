@@ -54,8 +54,8 @@ class SinglePhotoPreviewViewController: UIViewController,UICollectionViewDataSou
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.navigationBar.setBackgroundImage(UIImage.imageWithColor(UIColor.white), for: .default)
-        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.black,
-                                                                   NSFontAttributeName:UIFont.boldSystemFont(ofSize: 16*default_scale)]
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor:UIColor.black,
+                                                                   NSAttributedStringKey.font:UIFont.boldSystemFont(ofSize: 16*default_scale)]
         
         UIApplication.shared.setStatusBarStyle(.default, animated: true)
     }
@@ -68,7 +68,7 @@ class SinglePhotoPreviewViewController: UIViewController,UICollectionViewDataSou
         navigationController?.navigationBar.setBackgroundImage(UIImage.imageWithColor(UIColor.rgb(16, 16, 16)), for: .default)
         UIApplication.shared.setStatusBarStyle(.lightContent, animated: true)
         
-        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:COLOR_ffffff,NSFontAttributeName:UIFont.boldSystemFont(ofSize: 16*default_scale)]
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor:COLOR_ffffff,NSAttributedStringKey.font:UIFont.boldSystemFont(ofSize: 16*default_scale)]
         
         self.collectionView?.setContentOffset(CGPoint(x: CGFloat(self.currentPage) * self.view.bounds.width, y: 0), animated: false)
         self.updatePageTitle()

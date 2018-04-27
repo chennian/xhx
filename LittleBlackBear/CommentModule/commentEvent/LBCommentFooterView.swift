@@ -43,7 +43,7 @@ class LBCommentFooterView: UIView {
         titleLabel.font = FONT_30PX
         titleLabel.textColor = COLOR_999999
         let attribute = NSMutableAttributedString(string: titleLabel.text!)
-        attribute.addAttribute(NSForegroundColorAttributeName,
+        attribute.addAttribute(NSAttributedStringKey.foregroundColor,
                                value:COLOR_222222 ,
                                range:NSRange(location: 0, length: 4))
         titleLabel.attributedText = attribute

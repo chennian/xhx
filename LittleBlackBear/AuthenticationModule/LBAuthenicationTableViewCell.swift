@@ -39,7 +39,7 @@ class LBAuthenicationTableViewCell: UITableViewCell{
                 textField.placeholder = placeHolder
                 _textFieldRightConstraint?.constant = 0
                 let attribute = NSMutableAttributedString(string: text)
-                attribute.addAttributes([NSForegroundColorAttributeName:COLOR_e60013],
+                attribute.addAttributes([NSAttributedStringKey.foregroundColor:COLOR_e60013],
                                         range: NSRange(location: 0, length: 1))
                 label.attributedText = attribute
                 

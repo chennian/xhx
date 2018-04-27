@@ -113,7 +113,7 @@ struct commentImageListModel:ResponeData {
         let size = CGSize(width:KSCREEN_WIDTH-28, height: CGFloat(MAXFLOAT))
         textH = description.boundingRect(with: size,
                                          options: .usesLineFragmentOrigin,
-                                         attributes: [NSFontAttributeName: FONT_26PX],
+                                         attributes: [NSAttributedStringKey.font: FONT_26PX],
                                          context: nil).size.height
         
         let marginY:CGFloat = 10

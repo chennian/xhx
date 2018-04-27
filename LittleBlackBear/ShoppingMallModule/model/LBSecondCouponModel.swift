@@ -101,7 +101,7 @@ struct LBSecondCouponDetailMarkInfoModel:ResponeData{
         let size = CGSize(width:KSCREEN_WIDTH-28, height: CGFloat(MAXFLOAT))
        textH = markExplain.boundingRect(with: size,
                                          options: .usesLineFragmentOrigin,
-                                         attributes: [NSFontAttributeName: FONT_26PX],
+                                         attributes: [NSAttributedStringKey.font: FONT_26PX],
                                          context: nil).size.height
         }
 }

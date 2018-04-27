@@ -81,7 +81,7 @@ fileprivate func adjustSize(attribute: CGFloat) -> CGFloat {
 }
 
 func countWidth(text : String,size: CGSize = CGSize(width: CGFloat.greatestFiniteMagnitude, height: CGFloat.greatestFiniteMagnitude),font : UIFont) -> CGSize{
-    let dic = [NSFontAttributeName : font]
+    let dic = [NSAttributedStringKey.font : font]
     
     return (text as NSString).boundingRect(with: size, options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes: dic, context: nil).size
 }

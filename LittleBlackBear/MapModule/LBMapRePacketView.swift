@@ -93,9 +93,11 @@ class LBMapRePacketView: UIView {
     private func configMoneyLabel(string:String) {
         
         let attribute = NSMutableAttributedString(string: string)
-        let attributeDict:[String:Any] = [NSFontAttributeName:FONT_100PX,
-                                          NSKernAttributeName:2]
-        attribute.addAttributes(attributeDict, range: NSRange(location: 0, length: string.count-1))
+//        let attributeDict:[String:Any] = [NSAttributedStringKey.font.rawValue:FONT_100PX,
+//                                          NSAttributedStringKey.kern.rawValue:2]
+        attribute.addAttributes([NSAttributedStringKey.font:FONT_100PX,
+                                 NSAttributedStringKey.kern:2], range: NSRange(location: 0, length: string.count-1))
+    
         moneyLabel.attributedText = attribute
         
     }

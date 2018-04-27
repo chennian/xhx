@@ -82,18 +82,18 @@ class LBSecondCouponViewController: UIViewController {
     
 	func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
 		
-		let tableView = scrollView as! UITableView
-		let visibleCells = tableView.visibleCells.flatMap{String(describing: $0.classForCoder)}
-		guard let disPlayLink = disPlayLink else { return  }
-		if visibleCells.contains(String(describing:LBMoreSecondCouponCell.self)){
-			disPlayLink.isPaused = false
-			disPlayLink.frameInterval = 1
-		}else{
-			
-			if disPlayLink.isPaused == false{
-				disPlayLink.isPaused = true
-			}
-		}
+//        let tableView = scrollView as! UITableView
+//        let visibleCells = tableView.visibleCells.flatMap{String(describing: $0.classForCoder)}
+//        guard let disPlayLink = disPlayLink else { return  }
+//        if visibleCells.contains(String(describing:LBMoreSecondCouponCell.self)){
+//            disPlayLink.isPaused = false
+//            disPlayLink.frameInterval = 1
+//        }else{
+//            
+//            if disPlayLink.isPaused == false{
+//                disPlayLink.isPaused = true
+//            }
+//        }
 		
 		
 	}

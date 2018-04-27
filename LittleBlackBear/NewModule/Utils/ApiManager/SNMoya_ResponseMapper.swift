@@ -42,6 +42,7 @@ public extension Response {
     public func map<T: SNSwiftyJSONAble>(to type:[T.Type],availableCode : [String]) throws -> SNMoyaResult<[T]> {
 //        let jsonObject = try mapJSON()
         let jsonData = try JSON(data: self.data)
+        
 //        let mappedArray = JSON(jsonObject)
         SNLog(jsonData)
         let jsonCode = jsonData[MOYA_RESULT_CODE]

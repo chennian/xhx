@@ -23,8 +23,8 @@ class LBTabbarViewController: UITabBarController {
 	func configuraTabBarItem() {
 		
 		let tabBarItem = UITabBarItem.appearance()
-		tabBarItem.setTitleTextAttributes([NSForegroundColorAttributeName:COLOR_222222,NSFontAttributeName:UIFont.systemFont(ofSize: 12.0)], for: .normal)
-		tabBarItem.setTitleTextAttributes([NSForegroundColorAttributeName:COLOR_e60013,NSFontAttributeName:UIFont.systemFont(ofSize: 12.0)], for: .selected)
+		tabBarItem.setTitleTextAttributes([NSAttributedStringKey.foregroundColor:COLOR_222222,NSAttributedStringKey.font:UIFont.systemFont(ofSize: 12.0)], for: .normal)
+		tabBarItem.setTitleTextAttributes([NSAttributedStringKey.foregroundColor:COLOR_e60013,NSAttributedStringKey.font:UIFont.systemFont(ofSize: 12.0)], for: .selected)
 		
 		let tabBar = UITabBar.appearance()
 		
@@ -43,7 +43,7 @@ class LBTabbarViewController: UITabBarController {
         let mapViewController = LBMapViewController()
         
         
-        let profileViewController = LBProfileViewController()
+        let profileViewController = ZJMineViewController()//LBProfileViewController()
 
         
 		_initRootViewController(viewController: shoppingMallViewController, title: "生活圈", image: "home_range", selImage: "home_range")

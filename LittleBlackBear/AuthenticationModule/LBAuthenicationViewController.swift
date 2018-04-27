@@ -28,7 +28,7 @@ class LBAuthenicationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "实名认证"
-        view.backgroundColor = COLOR_ffffff
+        tableView.backgroundColor = Color(0xf5f5f5)//COLOR_ffffff
         setupTableView()
         textFieldKeyBoradTys = [.unknown,
                                 .numbersAndPunctuation,
@@ -37,12 +37,12 @@ class LBAuthenicationViewController: UIViewController {
                                 .phone,
                                 .unknown,
         ]
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named:"left_arrow_white")?.withRenderingMode(.alwaysOriginal),
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named:"map_return1")?.withRenderingMode(.alwaysOriginal),
                                                            style: .plain,
                                                            target: self,
                                                            action: #selector(popViewController))
     }
-    func popViewController() {
+    @objc func popViewController() {
         navigationController?.popViewController(animated: true)
     }
     

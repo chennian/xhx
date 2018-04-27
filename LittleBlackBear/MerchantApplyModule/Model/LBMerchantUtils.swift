@@ -25,7 +25,7 @@ extension UIFont {
 extension NSString {
     // 计算字符串 size
     func textSizeWith(contentSize:CGSize, font: UIFont) -> CGSize {
-        let attrs = [NSFontAttributeName: font]
+        let attrs = [NSAttributedStringKey.font: font]
         return self.boundingRect(with: contentSize, options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes: attrs, context: nil).size
     }
 }
@@ -38,7 +38,7 @@ extension UILabel {
         var location = 0
         for content in contents {
             let range = NSMakeRange(location, content.text.count)
-            attriStr.addAttribute(NSFontAttributeName, value: content.font, range: range)
+            attriStr.addAttribute(NSAttributedStringKey.font, value: content.font, range: range)
             location += content.text.count
         }
         self.attributedText = attriStr
@@ -54,9 +54,9 @@ extension UILabel {
         let textSize = text.textSizeWith(contentSize: CGSize(width: withWidth, height: CGFloat(MAXFLOAT)), font: self.font)
         let margin = (withWidth - textSize.width) / CGFloat(originText.count - 1)
         let attriStr = NSMutableAttributedString(string: originText)
-        attriStr.addAttribute(kCTKernAttributeName as String, value: margin, range:NSRange(location: 0, length: originText.count - 1))
+        attriStr.addAttribute(NSAttributedStringKey.kern, value: margin, range:NSRange(location: 0, length: originText.count - 1))
 		if text.contains("*") {
-			attriStr.addAttribute(NSForegroundColorAttributeName, value: COLOR_fc843b, range:NSRange(location: 0, length: 1))
+			attriStr.addAttribute(NSAttributedStringKey.foregroundColor, value: COLOR_fc843b, range:NSRange(location: 0, length: 1))
 		}
         self.attributedText = attriStr
     }
@@ -74,9 +74,9 @@ extension UILabel {
         let textSize = text.textSizeWith(contentSize: CGSize(width: withWidth, height: CGFloat(MAXFLOAT)), font: self.font)
         let margin = (withWidth - colon_W - textSize.width) / CGFloat((originText.count - 2))
         let attriStr = NSMutableAttributedString(string: originText)
-        attriStr.addAttribute(NSKernAttributeName, value: margin, range:NSRange(location: 0, length: originText.count - 2))
+        attriStr.addAttribute(NSAttributedStringKey.kern, value: margin, range:NSRange(location: 0, length: originText.count - 2))
 		if text.contains("*") {
-			attriStr.addAttribute(NSForegroundColorAttributeName, value: COLOR_fc843b, range:NSRange(location: 0, length: 1))
+			attriStr.addAttribute(NSAttributedStringKey.foregroundColor, value: COLOR_fc843b, range:NSRange(location: 0, length: 1))
 		}
         self.attributedText = attriStr
     }
@@ -92,7 +92,7 @@ extension UITextField {
         style.alignment = alignment
         let attriStr = NSMutableAttributedString(string: placeholder)
 
-        attriStr.addAttribute(NSParagraphStyleAttributeName, value: style, range: NSRange(location: 0, length: placeholder.count))
+        attriStr.addAttribute(NSAttributedStringKey.paragraphStyle, value: style, range: NSRange(location: 0, length: placeholder.count))
         self.attributedPlaceholder = attriStr
     }
 }

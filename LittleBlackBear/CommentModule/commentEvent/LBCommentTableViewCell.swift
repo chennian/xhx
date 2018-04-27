@@ -61,14 +61,16 @@ class LBCommentTableViewCell: UITableViewCell {
         let paregraphStyle = NSMutableParagraphStyle()
         paregraphStyle.lineSpacing = 10
     
-        let attributes = [NSFontAttributeName:FONT_36PX,
-                          NSParagraphStyleAttributeName:paregraphStyle
-            ] as [String : Any]
-        textView.typingAttributes = attributes
+        ///问题
+//        let attributes = [NSAttributedStringKey.font.rawValue:FONT_36PX,
+//                          NSAttributedStringKey.paragraphStyle:paregraphStyle
+//            ] as [String : Any]
+//        textView.typingAttributes = attributes
+//        textView.linkTextAttributes
         
-        let textAttributes = [NSKernAttributeName:1.6,
-                              NSParagraphStyleAttributeName:paregraphStyle] as [String:Any]
-        textView.attributedText = NSAttributedString(string: textView.text, attributes: textAttributes)
+//        let textAttributes = [NSAttributedStringKey.font.rawValue:1.6,
+//                              NSAttributedStringKey.paragraphStyle:paregraphStyle] as [String:Any]
+//        textView.attributedText = NSAttributedString(string: textView.text, attributes: textAttributes)
         textView.textColor = COLOR_999999
 
     }

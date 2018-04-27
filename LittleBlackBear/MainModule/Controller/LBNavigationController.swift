@@ -29,7 +29,7 @@ class LBNavigationController: UINavigationController {
     func configNavigationBar(){
         UIApplication.shared.setStatusBarStyle(.default, animated: true)
         let navigaitonBar =  UINavigationBar.appearance()
-        navigaitonBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.black,NSFontAttributeName:UIFont.boldSystemFont(ofSize: 16*default_scale)]
+        navigaitonBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor:UIColor.black,NSAttributedStringKey.font:UIFont.boldSystemFont(ofSize: 16*default_scale)]
         
         let image = UIImage.imageWithColor(COLOR_ffffff)
         navigaitonBar.setBackgroundImage(image, for: .default)
@@ -40,6 +40,10 @@ class LBNavigationController: UINavigationController {
         UINavigationBar.appearance().backIndicatorImage = UIImage(named:
             "map_return1")?.withRenderingMode(.alwaysOriginal)
     }
+    
+//    func push(vc : UIViewController, animated: Bool,lightStyle : Bool = true){
+//
+//    }
 	override func pushViewController(_ viewController: UIViewController, animated: Bool) {
 		self.childViewControllers.last?.hidesBottomBarWhenPushed = true
 		super.pushViewController(viewController, animated: animated)

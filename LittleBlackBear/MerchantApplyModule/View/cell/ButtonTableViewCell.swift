@@ -47,8 +47,8 @@ class ButtonTableViewCell: LBMerchantApplyTableViewCell, ApplyTableViewCellProto
 				let range1 = NSRange(location: 0, length: title.count)
 				let number = NSNumber(value:NSUnderlineStyle.styleSingle.rawValue)
 				let attributedStr = NSMutableAttributedString(string: title)
-				attributedStr.addAttribute(NSUnderlineStyleAttributeName, value: number, range: range1)
-				attributedStr.addAttribute(NSForegroundColorAttributeName, value: COLOR_fc843b, range: range1)
+				attributedStr.addAttribute(NSAttributedStringKey.underlineStyle, value: number, range: range1)
+				attributedStr.addAttribute(NSAttributedStringKey.foregroundColor, value: COLOR_fc843b, range: range1)
 				button.setAttributedTitle(attributedStr, for: UIControlState.normal)
 				button.tag = 1
 				mycontentView.addSubview(button)

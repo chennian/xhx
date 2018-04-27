@@ -106,7 +106,7 @@ struct imageListModel:ResponeData {
 		
 		
         let size = CGSize(width:KSCREEN_WIDTH-28, height: CGFloat(MAXFLOAT))
-        textH = description.boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: [NSFontAttributeName: FONT_26PX], context: nil).size.height+10
+        textH = description.boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: [NSAttributedStringKey.font: FONT_26PX], context: nil).size.height+10
         
         
         let row = (imageList.count > 0) ?CGFloat(Int((imageList.count-1)/3+1)):0

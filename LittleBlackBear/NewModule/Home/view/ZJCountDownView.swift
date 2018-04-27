@@ -95,7 +95,7 @@ class ZJCountDownView: SNBaseView {
         
     }
     
-    func calculateTIme(){
+    @objc func calculateTIme(){
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         let endDateOp = dateFormatter.date(from: endTime)

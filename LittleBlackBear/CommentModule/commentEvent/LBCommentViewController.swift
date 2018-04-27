@@ -33,8 +33,8 @@ class LBCommentViewController: UIViewController {
                                                             style: .plain,
                                                             target: self,
                                                             action: #selector(commitAciton))
-        navigationItem.rightBarButtonItem?.setTitleTextAttributes([NSFontAttributeName:FONT_32PX,
-                                                                   NSForegroundColorAttributeName:COLOR_e60013], for: .normal)
+        navigationItem.rightBarButtonItem?.setTitleTextAttributes([NSAttributedStringKey.font:FONT_32PX,
+                                                                   NSAttributedStringKey.foregroundColor:COLOR_e60013], for: .normal)
         
     }
     

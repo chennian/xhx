@@ -28,7 +28,7 @@ final class LBLoadingView:NSObject{
 		messageLabel.font = UIFont.boldSystemFont(ofSize: 14)
 		messageLabel.text = "加载中..."
 		messageLabel.textColor = white
-		let size  = messageLabel.text?.boundingRect(with: CGSize(width: UIScreen.main.bounds.width, height: CGFloat(MAXFLOAT)), options: .usesLineFragmentOrigin, attributes: [NSFontAttributeName: UIFont.boldSystemFont(ofSize: 14)], context: nil).size
+		let size  = messageLabel.text?.boundingRect(with: CGSize(width: UIScreen.main.bounds.width, height: CGFloat(MAXFLOAT)), options: .usesLineFragmentOrigin, attributes: [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 14)], context: nil).size
 		messageLabel.frame.origin.y = 65
 		messageLabel.frame.origin.x = (92 - (size?.width)!)*0.5
 		messageLabel.frame.size = size!

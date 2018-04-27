@@ -78,8 +78,9 @@ class ZJActgivityDetailCellModel {
     }
     var cellHeight : CGFloat = 0.0
 }
-class LBShopDetailsController: UIViewController {
+class LBShopDetailsController: UIViewController ,LBPresentLoginViewControllerProtocol{
     //秒秒接口模型ZJHomeMiaoMiaoModel  团团接口模型ZJHomeGroupModel
+    var id : String = ""
     var miaomiaoModel : ZJHomeMiaoMiaoModel? {
         didSet {
             //            self.title = "秒秒"
@@ -101,7 +102,7 @@ class LBShopDetailsController: UIViewController {
             let spcae = ZJActgivityDetailCellModel() ;spcae.type = .space(height: fit(20), color: Color(0xf5f5f5))
             
             cellModel = [headModel,nameAndPriceModel,spcae,descriptionModel,spcae,merchantModel,spcae]
-            
+            id = miaomiaoModel!.id
             tableView.reloadData()
         }
     }
@@ -110,11 +111,13 @@ class LBShopDetailsController: UIViewController {
         super.viewWillDisappear(animated)
         self.navigationController?.navigationBar.setBackgroundImage(createImageBy(color: .white), for: .default)
         self.navigationController?.navigationBar.shadowImage = UINavigationController().navigationBar.shadowImage
+        
+        
     }
     var tuantuanModel : ZJHomeGroupModel?{
         didSet{
             //            self.title = "团团"
-            
+            id = tuantuanModel!.id
             cellModel.removeAll()
             bottomButton.setTitle("发起拼团", for: .normal)
             let headModel = ZJActgivityDetailCellModel()
@@ -141,9 +144,41 @@ class LBShopDetailsController: UIViewController {
     }
     
     
-    func bottomButtonClick(){
-        
+    @objc func bottomButtonClick(){
+        if LBKeychain.get(ISLOGIN) == LOGIN_TRUE{
+            //请求接口
+            SNRequestBool(requestType: API.getConpoun(coupon_id: id)).subscribe(onNext: {[unowned self] (result) in
+                switch result{
+                case .bool:
+                    let vc = ZJGetCouponVC()
+                    vc.transitioningDelegate = self.manager
+                    vc.modalPresentationStyle = .custom
+                    self.manager.presentFrame = CGRect(x: (ScreenW - fit(578)) * 0.5, y: fit(253), width: fit(578), height: fit(640))
+                    vc.goToMyCouponList.subscribe(onNext: { () in
+                        self.navigationController?.pushViewController(ZJMyCouponViewController(), animated: true)
+                    }).disposed(by: self.disposbag)
+                    self.present(vc, animated: true, completion: nil)
+                case .fail(_,let msg):
+                    SZHUD(msg ?? "", type: .error, callBack: nil)
+                default:
+                    break
+                }
+            }).disposed(by: disposbag)
+            
+            
+        }else{
+//            prs
+            let viewController = LBLoginViewController()
+            viewController.loginSuccessHanlder = {
+
+                viewController.dismiss(animated: true, completion: nil)
+            }
+            
+            present(LBNavigationController(rootViewController:viewController), animated: true, completion: nil)
+        }
     }
+    
+    let manager = DDZPickerViewManager()
     
     var cellModel : [ZJActgivityDetailCellModel] = []
     
@@ -202,12 +237,12 @@ class LBShopDetailsController: UIViewController {
         $0.setBackgroundImage(UIImage(named:"map_return"), for: .normal)
     })
     
+    
     func setupUI() {
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backBtn)
         
-        navigationController?.navigationBar.setBackgroundImage(createImageBy(color: UIColor.init(white: 1, alpha: 0.001)), for: .default)
-        navigationController?.navigationBar.shadowImage = UIImage()
+        
         
         
         
@@ -252,11 +287,10 @@ class LBShopDetailsController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         //        loadData()
+        navigationController?.navigationBar.setBackgroundImage(createImageBy(color: UIColor.rgbColorWith(hex: 0x000000, alpha: 0.0001)), for: .default)
+        navigationController?.navigationBar.shadowImage = UIImage()
     }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+
     
     
 }

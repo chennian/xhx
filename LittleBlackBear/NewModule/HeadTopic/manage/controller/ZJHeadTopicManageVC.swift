@@ -32,19 +32,17 @@ class ZJHeadTopicManageVC: SNBaseViewController {
             firstReload = false
         }
     }
-//    func rightItemClick(){
-//        let vc = ViewController()//ZJHeadTopicPostViewController()
-//        vc.popPublic.subscribe(onNext: {[unowned self] (refres) in
-//            self.firstReload = true
-//            self.tableview.scrollToRow(at: IndexPath.init(row: 0, section: 0), at: UITableViewScrollPosition.top, animated: false)
-//        }).disposed(by: disposeBag)
-//        self.navigationController?.pushViewController(vc, animated: true)
-//    }
+
     let viewModel = ZJHeadTopicManageViewModel()
+    @objc func popViewController(){
+        navigationController?.popViewController(animated: true)
+    }
     override func setupView() {
 //        let righrItem = UIBarButtonItem(image: UIImage(named : "headline_release"), style: .done, target: self, action: #selector(rightItemClick))
 //        navigationItem.rightBarButtonItem = righrItem//UIBarButtonItem(customView: rightButton)
         
+        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named:"map_return1")?.withRenderingMode(.alwaysOriginal),style: .plain,target: self, action: #selector(popViewController))
         title = "我的头条"
         view.addSubview(tableview)
         tableview.delegate = viewModel

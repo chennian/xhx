@@ -10,13 +10,14 @@ import UIKit
 import CocoaAsyncSocket
 import Kingfisher
 import IQKeyboardManagerSwift
-
+import RxSwift
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
     var _mapManager:BMKMapManager?
     
+    let disposebag = DisposeBag()
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         window = UIWindow(frame: UIScreen.main.bounds)
@@ -24,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         configBaidumap()
 //        configJupsh(launchOptions: launchOptions)
-        
+        getUserInfo()
         PgyManager.shared().start(withAppId: PGYer_ID)
         PgyManager.shared().isFeedbackEnabled = false
         PgyUpdateManager.sharedPgy().start(withAppId: PGYer_ID)
@@ -103,6 +104,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
 //        JPUSHService.handleRemoteNotification(userInfo)
         
+    }
+    
+    
+    func getUserInfo(){
+        SNRequest(requestType: API.userInfo, modelType: [MyInfoModel.self]).subscribe(onNext: { (result) in
+            SZHUDDismiss()
+            switch result{
+            case .success(let models):
+                LBKeychain.set(models[0].phone, key: PHONE)
+//                print(LBKeychain.get(PHONE))
+                LBKeychain.set(models[0].nickName, key: LLNickName)
+                LBKeychain.set(models[0].isMer, key: isMer)
+                LBKeychain.set(models[0].isAgent, key: IsAgent)
+                LBKeychain.set(models[0].mercId, key: MERCID)
+                LBKeychain.set(models[0].headImg, key: HeadImg)
+                LBKeychain.set(LOGIN_TRUE, key: ISLOGIN)//get(ISLOGIN)  == LOGIN_TRUE
+            case .fail(_,_):
+                LBKeychain.set(LOGIN_FALSE, key: ISLOGIN)
+//                SZHUD(msg!, type: .error, callBack: nil)
+                LBKeychain.removeKeyChain()
+            default:
+                LBKeychain.set(LOGIN_FALSE, key: ISLOGIN)
+                LBKeychain.removeKeyChain()
+            }
+            //headImg
+        }).disposed(by: disposebag)
     }
     
     

@@ -149,11 +149,11 @@ open class PullToRefreshView: UIView {
             self.positionY = scrollView.contentSize.height
             return
         }
-        
-        if !(context == &kvoContext && keyPath == contentOffsetKeyPath) {
-            super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
-            return
-        }
+        ///改过的
+//        if !(context == &kvoContext && keyPath == contentOffsetKeyPath) {//
+//            super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
+//            return
+//        }
         
         // Pulling State Check
         let offsetY = scrollView.contentOffset.y

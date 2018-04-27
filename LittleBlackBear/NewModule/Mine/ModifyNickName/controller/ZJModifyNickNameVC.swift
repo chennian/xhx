@@ -13,7 +13,8 @@ class ZJModifyNickNameVC: SNBaseViewController {
     
     let btn = UIButton().then({
         $0.setTitle("保存", for: .normal)
-        $0.setTitleColor(.white, for: .normal)
+        $0.setTitleColor(Color(0x313131), for: .normal)
+        
         $0.titleLabel?.font = Font(30)
 //        $
     })
@@ -21,7 +22,7 @@ class ZJModifyNickNameVC: SNBaseViewController {
     
 
     fileprivate let nikeTextField = UITextField()
-    func saveNickName(){
+    @objc func saveNickName(){
         if nikeTextField.text! == ""{
             SZHUD("请输入昵称", type: .info, callBack: nil)
             return
@@ -41,10 +42,13 @@ class ZJModifyNickNameVC: SNBaseViewController {
             }
         }).disposed(by: disposeBag)
     }
+    @objc func popViewController(){
+        navigationController?.popViewController(animated: true)
+    }
     override func setupView() {
         
 //        navigationController.
-        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named:"map_return1")?.withRenderingMode(.alwaysOriginal),style: .plain,target: self, action: #selector(popViewController))
         btn.addTarget(self, action: #selector(saveNickName), for: .touchUpInside)
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: btn)
         title = "修改昵称"

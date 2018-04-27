@@ -46,7 +46,7 @@ extension String{
 		let str = self as NSString
 		
 		let size = CGSize(width: UIScreen.main.bounds.width, height: CGFloat(MAXFLOAT))
-		return str.boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: fontSize)], context: nil).size
+		return str.boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: fontSize)], context: nil).size
 	}
 }
 

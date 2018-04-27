@@ -298,20 +298,22 @@ LBPresentLoginViewControllerProtocol{
     /// 当用户停止滚动时才刷新UI
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         
-        let tableView = scrollView as! UITableView
-        let visibleCells = tableView.visibleCells.flatMap{String(describing: $0.classForCoder)}
+//        let tableView = scrollView as! UITableView
+//        let visibleCells = tableView.visibleCells.flatMap{String(describing: $0.classForCoder)}
         
-        if visibleCells.contains(String(describing:LBSecondCouponTableViewCell.self)){
-            
+    
+//        let describing = String(describing:LBSecondCouponTableViewCell.self)
+//        if visibleCells.contains(describing.){
+        
             //            disPlayLink!.isPaused = false
             //            disPlayLink!.frameInterval = 1
             
-        }else{
+//        }else{
             
             //            if disPlayLink!.isPaused == false{
             //                disPlayLink!.isPaused = true
             //            }
-        }
+//        }
         
         
     }

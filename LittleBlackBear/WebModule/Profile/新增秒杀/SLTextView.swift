@@ -66,9 +66,9 @@ class SLTextView: UITextView {
         }
        let attrs = NSMutableDictionary.init()
         
-        attrs.setValue(self.font, forKey: NSFontAttributeName)
+        attrs.setValue(self.font, forKey: NSAttributedStringKey.font.rawValue)
 
-        attrs.setValue(self.placeholderColor, forKey: NSForegroundColorAttributeName)
+        attrs.setValue(self.placeholderColor, forKey: NSAttributedStringKey.foregroundColor.rawValue)
         
         let x:CGFloat  = 8.0
         
@@ -80,7 +80,7 @@ class SLTextView: UITextView {
         
         let tempRect = CGRect.init(x: x, y: y, width:widht, height: height)
         
-        self.placeholder?.draw(in: tempRect, withAttributes:attrs as? [String : Any])
+//        self.placeholder?.draw(in: tempRect, withAttributes:attrs as? [String : Any])
     
     }
     required init?(coder aDecoder: NSCoder) {
