@@ -42,7 +42,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>2</string>
+	<string>5</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>wechat</string>
@@ -100,8 +100,6 @@
 	<string>相机</string>
 	<key>NSContactsUsageDescription</key>
 	<string>通讯录</string>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>小黑熊需要持续追踪您的位置以便更新附近商家</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>小黑熊需要定位以便搜索附近的商家</string>
 	<key>NSPhotoLibraryUsageDescription</key>

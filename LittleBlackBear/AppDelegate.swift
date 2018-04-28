@@ -26,11 +26,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         configBaidumap()
 //        configJupsh(launchOptions: launchOptions)
         getUserInfo()
-        PgyManager.shared().start(withAppId: PGYer_ID)
-        PgyManager.shared().isFeedbackEnabled = false
-        PgyUpdateManager.sharedPgy().start(withAppId: PGYer_ID)
-        PgyUpdateManager.sharedPgy().checkUpdate();
-        
+//        PgyManager.shared().start(withAppId: PGYer_ID)
+//        PgyManager.shared().isFeedbackEnabled = false
+//        PgyUpdateManager.sharedPgy().start(withAppId: PGYer_ID)
+//        PgyUpdateManager.sharedPgy().checkUpdate();
+//
 //[[PgyManager sharedPgyManager] setEnableFeedback:NO];
         
         SZLocationManager.shareUserInfonManager.startUpLocation()

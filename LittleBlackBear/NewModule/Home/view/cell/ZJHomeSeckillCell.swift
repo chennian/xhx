@@ -78,7 +78,10 @@ class ZJSeckillSubView : SNBaseView{
         $0.isEnabled = false
 //        $0.titleEdgeInsets = UIEdgeInsetsMake(0,2,0,0)
     } // 店铺名称
-    private let imgView = UIImageView()//主图
+    private let imgView = UIImageView().then({
+        $0.contentMode = .scaleAspectFill
+        $0.clipsToBounds = true
+    })//主图
     
     private let couponTitleLabel = UILabel().then{
         $0.textColor = Color(0x313131)

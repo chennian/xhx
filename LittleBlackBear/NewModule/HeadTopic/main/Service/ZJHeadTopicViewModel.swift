@@ -64,12 +64,14 @@ class ZJHeadTopicViewModel: SNBaseViewModel {
     }
     
     func setLike(id : String,btn : UIButton){
+        SZHUD("", type: .loading, callBack: nil)
         
         ZJLog(messagr: id)
         ZJLog(messagr: LBKeychain.get(CURRENT_MERC_ID))
 //        if btn.isSelected =
         ZJLog(messagr: btn.isSelected ? "1" : "0")
         SNRequestBool(requestType: API.setLike(mercId: LBKeychain.get(CURRENT_MERC_ID), headlineId: id, state: btn.isSelected ? "0" : "1")).subscribe(onNext: { (reseult) in
+            SZHUDDismiss()
             switch reseult{
             case .bool(_):
                 var Count : Int
