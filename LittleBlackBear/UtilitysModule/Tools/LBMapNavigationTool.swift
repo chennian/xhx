@@ -85,6 +85,7 @@ final class LBMapNavigationManger {
 		let end = BMKPlanNode()
 		end.pt = coordinate
 		parameter.endPoint = end
+        parameter.startPoint = end
 		parameter.appScheme = "baidumapsdk://mapsdk.baidu.com"
 		BMKNavigation.openBaiduMapNavigation(parameter)
 		

@@ -24,7 +24,7 @@ class ViewController: UIViewController,PhotoPickerControllerDelegate, UIImagePic
     var imagePathString:String = ""
     var locationSwitch = UISwitch()
     
-    fileprivate var  city = LBKeychain.get(LOCATION_CITY_KEY)  + LBKeychain.get(locationSubLocalKey) + LBKeychain.get(locationAareKey)
+    fileprivate var  city = LBKeychain.get("CITY")  + LBKeychain.get(locationSubLocalKey) + LBKeychain.get(locationAareKey)
     fileprivate var  lng =  LBKeychain.get(longiduteKey)
     fileprivate var  lat =  LBKeychain.get(latitudeKey)
 

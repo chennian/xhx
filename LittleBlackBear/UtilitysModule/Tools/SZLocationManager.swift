@@ -56,6 +56,8 @@ extension SZLocationManager:CLLocationManagerDelegate{
 			guard ((placemar?.count) != nil) else {return}
 			let placemark:CLPlacemark = (placemar?.first)!
 			var city = placemark.locality
+            LBKeychain.set(city!, key:"CITY")
+
             let subLocality = placemark.subLocality
 			let are  = placemark.thoroughfare
 			if city == nil {

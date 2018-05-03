@@ -114,6 +114,11 @@ class LBShopDetailsController: UIViewController ,LBPresentLoginViewControllerPro
         
         
     }
+    
+//    viewwi
+    
+    
+    
     var tuantuanModel : ZJHomeGroupModel?{
         didSet{
             //            self.title = "团团"
