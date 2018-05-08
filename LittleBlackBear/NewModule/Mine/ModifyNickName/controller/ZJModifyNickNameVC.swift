@@ -16,6 +16,7 @@ class ZJModifyNickNameVC: SNBaseViewController {
         $0.setTitleColor(Color(0x313131), for: .normal)
         
         $0.titleLabel?.font = Font(30)
+        $0.sizeToFit()
 //        $
     })
     
@@ -31,7 +32,6 @@ class ZJModifyNickNameVC: SNBaseViewController {
         SNRequestBool(requestType: API.modifyNickName(name: nikeTextField.text!)).subscribe(onNext: {[unowned self] (result) in
             switch result{
             case .bool(_):
-//                LLNickName = self.nikeTextField.text!
                 LBKeychain.set(self.nikeTextField.text!, key: LLNickName)
                 SZHUD("修改成功", type: .info, callBack: nil)
                 self.navigationController?.popViewController(animated: true)

@@ -2894,7 +2894,7 @@
 				TargetAttributes = {
 					ACE720951F9DDA7000C22465 = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = GS5MNVJVED;
+						DevelopmentTeam = 9JCDX257FY;
 						LastSwiftMigration = 0930;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
@@ -3752,7 +3752,7 @@
 				CODE_SIGN_ENTITLEMENTS = LittleBlackBear/LittleBlackBear.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = GS5MNVJVED;
+				DEVELOPMENT_TEAM = 9JCDX257FY;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = LittleBlackBear/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -3762,7 +3762,7 @@
 					"$(PROJECT_DIR)/LittleBlackBear/UtilitysModule/ThidSDK/WeChatSDK",
 					"$(PROJECT_DIR)/LittleBlackBear/UtilitysModule/ThidSDK/thirdlibs",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.LittleBlackBear.app;
+				PRODUCT_BUNDLE_IDENTIFIER = com.LittleBlackBear.systems;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -3783,7 +3783,7 @@
 				CODE_SIGN_ENTITLEMENTS = LittleBlackBear/LittleBlackBear.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = GS5MNVJVED;
+				DEVELOPMENT_TEAM = 9JCDX257FY;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = LittleBlackBear/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -3793,7 +3793,7 @@
 					"$(PROJECT_DIR)/LittleBlackBear/UtilitysModule/ThidSDK/WeChatSDK",
 					"$(PROJECT_DIR)/LittleBlackBear/UtilitysModule/ThidSDK/thirdlibs",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.LittleBlackBear.app;
+				PRODUCT_BUNDLE_IDENTIFIER = com.LittleBlackBear.systems;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
