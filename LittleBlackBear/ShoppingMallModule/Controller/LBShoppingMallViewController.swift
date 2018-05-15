@@ -643,6 +643,7 @@ class ZJperfectShopModel : SNSwiftyJSONAble{
     var longitude : String
     var add_time : String
     var distance : String
+    var banner : String
     required init?(jsonData: JSON) {
         shop_id = jsonData["shop_id"].stringValue
         category = jsonData["category"].stringValue
@@ -653,7 +654,7 @@ class ZJperfectShopModel : SNSwiftyJSONAble{
         latitude = jsonData["latitude"].stringValue
         longitude = jsonData["longitude"].stringValue
         add_time = jsonData["add_time"].stringValue
-        
+        banner = jsonData["banner"].stringValue
         
         let currentLocation = CLLocation(latitude: (LBKeychain.get(latitudeKey) as NSString).doubleValue, longitude: (LBKeychain.get(longiduteKey) as NSString).doubleValue )
         let targetLocation = CLLocation(latitude: (latitude as NSString).doubleValue, longitude:(longitude as NSString).doubleValue)

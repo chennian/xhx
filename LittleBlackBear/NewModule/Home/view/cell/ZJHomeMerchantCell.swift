@@ -34,7 +34,7 @@ class ZJHomeMerchantCell: SNBaseTableViewCell {
             //                configMerchantClass(model)
             //            popularityBtn.setTitle("人气76", for: .disabled)
             if model!.logo.isURLFormate() == true {
-                imgV.kf.setImage(with: URL(string:model!.logo))
+                imgV.kf.setImage(with: URL(string:model!.banner))
             }
             
 //            var currentLocation = CLLocation(latitude: 52.104526, longitude: 51.111151)

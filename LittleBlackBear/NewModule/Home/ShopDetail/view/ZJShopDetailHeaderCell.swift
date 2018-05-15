@@ -17,7 +17,7 @@ class ZJShopDetailHeaderCell: SNBaseTableViewCell {
     let funcPub = PublishSubject<ZJShopDetailFuntionType>()
     var model : ZJShopDetailInfoModel?{
         didSet{
-            sdCircleImageView.imageURLStringsGroup = model!.banner
+            sdCircleImageView.imageURLStringsGroup = model!.detail
             shopIcon.kf.setImage(with: URL(string: model!.logo), placeholder: createImageBy(color: Color(0xf5f5f5)))
             shopName.text = model!.shopName
 //            model!.distance

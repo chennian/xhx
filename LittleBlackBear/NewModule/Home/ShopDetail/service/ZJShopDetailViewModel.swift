@@ -357,7 +357,7 @@ class ZJShopGoodsModel : SNSwiftyJSONAble{
 
 class ZJShopDetailInfoModel :SNSwiftyJSONAble{
 
-    var banner : [String]
+    var detail : [String]
     var logo : String
     var shopName : String
     var tab : String
@@ -368,8 +368,9 @@ class ZJShopDetailInfoModel :SNSwiftyJSONAble{
     var shop_introduce : String
     var evaluateCount : String
     var distance  : String
+    
     required init?(jsonData: JSON) {
-        banner = []
+        detail = []
         
         logo = jsonData["logo"].stringValue
         shopName = jsonData["shopName"].stringValue
@@ -384,7 +385,7 @@ class ZJShopDetailInfoModel :SNSwiftyJSONAble{
         let currentLocation = CLLocation(latitude: (LBKeychain.get(latitudeKey) as NSString).doubleValue, longitude: (LBKeychain.get(longiduteKey) as NSString).doubleValue )
         let targetLocation = CLLocation(latitude: (latitude as NSString).doubleValue, longitude:(longitude as NSString).doubleValue)
         distance = String(format: "%.2f", currentLocation.distance(from: targetLocation) / 1000.0)
-        banner = self.anayliseImgs(imgs: jsonData["banner"].stringValue)
+        detail = self.anayliseImgs(imgs: jsonData["detail"].stringValue)
     }
     
     func anayliseImgs(imgs : String) -> [String]{
