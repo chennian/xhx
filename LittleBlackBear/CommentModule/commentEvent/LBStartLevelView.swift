@@ -42,27 +42,28 @@ class LBStartLevelView: UIView {
     }
     
     override func draw(_ rect: CGRect) {
-        let norImage = #imageLiteral(resourceName: "start_nor")
-        let selImage = #imageLiteral(resourceName: "start_sel")
+        let norImage = #imageLiteral(resourceName: "home_star2")//UIImage()
+        let selImage = #imageLiteral(resourceName: "home_star1")//UIImage(named: "home_star1")
         
         let context:CGContext = UIGraphicsGetCurrentContext()!
         let defaultMargin = spacing == 0 ?6:spacing
 
         for i in 0..<5 {
             let image = (i<index) ? selImage:norImage
-            let x = i==0 ? spacing:CGFloat(i)*(defaultMargin+16*AUTOSIZE_X)+defaultMargin
-            let rect = CGRect(x: x, y: spacing, width: 16*AUTOSIZE_X, height: 15*AUTOSIZE_Y)
-            drawImage(context: context, image: image.cgImage!, rect: rect)
+            let x = i==0 ? spacing:CGFloat(i)*(defaultMargin+fit(25))+defaultMargin
+            let rect = CGRect(x: x, y: 0, width: fit(25), height: 15*AUTOSIZE_Y)
+            drawImage(context: context, image: image.cgImage , rect: rect)
         }
     }
     
-    private func drawImage(context:CGContext,image:CGImage,rect:CGRect){
+    private func drawImage(context:CGContext,image:CGImage?,rect:CGRect){
+        if image == nil {return}
         context.saveGState()
         context.translateBy(x: rect.origin.x, y: rect.origin.y)
         context.translateBy(x: 0, y: rect.size.height)
         context.scaleBy(x: 1.0, y: -1.0)
         context.translateBy(x: -rect.origin.x, y: -rect.origin.y)
-        context.draw(image, in: rect)
+        context.draw(image!, in: rect)
         context.restoreGState()
     }
     
@@ -75,6 +76,7 @@ class LBStartLevelView: UIView {
                 index -= 1
             }
 
+            startCount = index
             setNeedsDisplay()
         }
         guard let action = selectCompletHandler else { return  }

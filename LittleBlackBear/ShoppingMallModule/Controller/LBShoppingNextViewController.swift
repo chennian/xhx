@@ -111,7 +111,7 @@ extension LBShoppingNextViewController:UITableViewDelegate,UITableViewDataSource
         let cell : ZJHomeMerchantCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
     
         switch cellItem[indexPath.row] {
-        case .mixCell(let model):
+        case .shopCell(let model):
             cell.model = model
         default:
             break
@@ -143,8 +143,8 @@ extension LBShoppingNextViewController:UITableViewDelegate,UITableViewDataSource
             loadData(paramert:paramert!)
         case let .mixCell(model):
             let viewController = LBShoppingMallDetailViewController()
-            viewController.orgCode = model.orgcode
-            viewController.mercId = model.mercId
+//            viewController.orgCode = model.orgcode
+            viewController.mercId = model.id//shop_id
             navigationController?.pushViewController(viewController, animated: true)
         default:
             break

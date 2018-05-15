@@ -8,7 +8,7 @@
 
 import Foundation
 import CoreLocation
-
+import RxSwift
 class SZLocationManager:NSObject{
 	
 	fileprivate static let sharedInstance = SZLocationManager()
@@ -17,10 +17,13 @@ class SZLocationManager:NSObject{
 		let locationManager = CLLocationManager()
 		locationManager.delegate = self
 		locationManager.distanceFilter = 1000.0
-		locationManager.startUpdatingLocation()
+//        locationManager.startUpdatingLocation()
 		locationManager.desiredAccuracy = kCLLocationAccuracyBest
 		return locationManager
 	}()
+    
+    
+    var getLoaction : Variable<(CLLocationDegrees,CLLocationDegrees)> =  Variable((0.00,0.00))
     
 	func startUpLocation(){
      
@@ -37,17 +40,27 @@ class SZLocationManager:NSObject{
 	
 }
 extension SZLocationManager:CLLocationManagerDelegate{
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        ZJLog(messagr: error)
+    }
 	
 	public func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
 		
+        locationManager.stopUpdatingLocation()
 		let location = locations.first
 		let coordinate:CLLocationCoordinate2D = (location?.coordinate)!
 		let longidute = coordinate.longitude
+        
 		let latitude  = coordinate.latitude
+        
+        
 		LBKeychain.set("\(longidute)", key: longiduteKey)
 		LBKeychain.set("\(latitude)", key: latitudeKey)
-        Print(latitude)
-        Print(longidute)
+        
+        
+//        Print(latitude)
+//        Print(longidute)
 		let geocoder:CLGeocoder = CLGeocoder()
 		geocoder.reverseGeocodeLocation((location)!) { (placemar, error) ->Void in
 			if error != nil{
@@ -68,6 +81,8 @@ extension SZLocationManager:CLLocationManagerDelegate{
                 LBKeychain.set("\(114.047870066526)", key: longiduteKey)
                 LBKeychain.set("\(22.6008299566074)", key: latitudeKey)
             }
+            
+            
             LBKeychain.set(city!, key: LOCATION_CITY_KEY)
 			Print("\(String(describing: city))-\(String(describing: are))")
 			guard are != nil  else {return}
@@ -75,6 +90,7 @@ extension SZLocationManager:CLLocationManagerDelegate{
             guard subLocality != nil else {return}
             LBKeychain.set(subLocality!, key: locationSubLocalKey)
 
+            self.getLoaction.value = (latitude,longidute)
 		}
 		
 	}

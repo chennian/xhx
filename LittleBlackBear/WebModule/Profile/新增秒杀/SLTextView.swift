@@ -11,11 +11,11 @@ import UIKit
 class SLTextView: UITextView {
 
     
-   @IBInspectable   public var placeholder:NSString?
+   @IBInspectable   public var placeholder:NSString = ""
     
-   @IBInspectable public var placeholderColor:UIColor? = UIColor.black
+   @IBInspectable public var placeholderColor:UIColor = UIColor.black
     
-   @IBInspectable public var  placeholderFont:UIFont?
+   @IBInspectable public var  placeholderFont:UIFont = Font(32)
     
     override  var text: String! {
     
@@ -80,6 +80,8 @@ class SLTextView: UITextView {
         
         let tempRect = CGRect.init(x: x, y: y, width:widht, height: height)
         
+        self.placeholder.draw(in: tempRect, withAttributes: [NSAttributedStringKey.font : self.placeholderFont,
+                                                              NSAttributedStringKey.foregroundColor : self.placeholderColor])
 //        self.placeholder?.draw(in: tempRect, withAttributes:attrs as? [String : Any])
     
     }

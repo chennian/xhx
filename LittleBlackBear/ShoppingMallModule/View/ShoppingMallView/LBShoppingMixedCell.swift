@@ -14,16 +14,15 @@ class LBShoppingMixedCell: SNBaseTableViewCell {
         didSet{
             switch cellType {
             case let .mixCell(model):
-                titleLabel.text = model.merShortName
-                distanceLabel.text = "人均 ¥12/人 | " + "距离" + model.distance
-//                configMerLevel(model)
-//                configMerchantClass(model)
-                popularityBtn.setTitle("人气76", for: .disabled)
-                if model.mainImgUrl.isURLFormate() == true {
-                    imgView.kf.setImage(with: URL(string:model.mainImgUrl))
-                }
-                titleLabel.text = model.labelName
-//                setupUI()
+//                titleLabel.text = model.merShortName
+//                distanceLabel.text = "人均 ¥12/人 | " + "距离" + model.distance
+//
+//                popularityBtn.setTitle("人气76", for: .disabled)
+//                if model.mainImgUrl.isURLFormate() == true {
+//                    imgView.kf.setImage(with: URL(string:model.mainImgUrl))
+//                }
+//                titleLabel.text = model.labelName
+
                 scoreLab.text = "4.5"
             default:
                 break

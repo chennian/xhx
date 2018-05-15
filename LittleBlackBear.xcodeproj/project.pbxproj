@@ -229,6 +229,8 @@
 		6F5F58CC206C2A8C0025E6EA /* ZJServiceAccountHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5F58CB206C2A8C0025E6EA /* ZJServiceAccountHeaderView.swift */; };
 		6F6898612064EE2400108B54 /* ZJSinglePhotoPreviewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6898602064EE2400108B54 /* ZJSinglePhotoPreviewVC.swift */; };
 		6F69FA3B20776B5E00DF2C01 /* NSObject+Emoji.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F69FA3A20776B5E00DF2C01 /* NSObject+Emoji.m */; };
+		6F7A19E220A567CF00903655 /* ZJGoodListSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F7A19E120A567CF00903655 /* ZJGoodListSectionHeader.swift */; };
+		6F7A19E420A568B300903655 /* ZJGoodListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F7A19E320A568B300903655 /* ZJGoodListViewModel.swift */; };
 		6F7E4B252052F38600FBB68B /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F7E4B242052F38600FBB68B /* Common.swift */; };
 		6F7E4B272052F69400FBB68B /* SnapKit_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F7E4B262052F69400FBB68B /* SnapKit_Extension.swift */; };
 		6F7E4B3E2052FA0F00FBB68B /* SNStoreSectoiniModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F7E4B2A2052FA0F00FBB68B /* SNStoreSectoiniModel.swift */; };
@@ -287,6 +289,26 @@
 		6FAC499B205E4BFC009A9587 /* ZJHeadTopicInputBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FAC499A205E4BFC009A9587 /* ZJHeadTopicInputBar.swift */; };
 		6FAC91EC20678518003B98D8 /* ZJHeadTopicManageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FAC91EB20678518003B98D8 /* ZJHeadTopicManageVC.swift */; };
 		6FAC91F120678564003B98D8 /* ZJHeadTopicManageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FAC91F020678564003B98D8 /* ZJHeadTopicManageViewModel.swift */; };
+		6FBA3D9620A4595D00B0074F /* ZJShopDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FBA3D9520A4595D00B0074F /* ZJShopDetailVC.swift */; };
+		6FBA3D9820A45ACA00B0074F /* ZJShopDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FBA3D9720A45ACA00B0074F /* ZJShopDetailViewModel.swift */; };
+		6FBA3D9A20A45F2D00B0074F /* ZJShopDetailHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FBA3D9920A45F2D00B0074F /* ZJShopDetailHeaderCell.swift */; };
+		6FBA3D9C20A4676900B0074F /* ZJShopDetailGroupTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FBA3D9B20A4676900B0074F /* ZJShopDetailGroupTitleCell.swift */; };
+		6FBA3D9E20A46AB400B0074F /* ZJShopDetailGoodsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FBA3D9D20A46AB400B0074F /* ZJShopDetailGoodsCell.swift */; };
+		6FBA3DA020A471D000B0074F /* ZJShopDetailCommonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FBA3D9F20A471D000B0074F /* ZJShopDetailCommonCell.swift */; };
+		6FBA3DA220A4774800B0074F /* ZJShopDetailDecriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FBA3DA120A4774800B0074F /* ZJShopDetailDecriptionCell.swift */; };
+		6FBA3DA820A49A6000B0074F /* ZJGoodListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FBA3DA720A49A6000B0074F /* ZJGoodListViewController.swift */; };
+		6FBA3DAA20A49A9C00B0074F /* ZJGoodListHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FBA3DA920A49A9C00B0074F /* ZJGoodListHeaderView.swift */; };
+		6FC0574020A9FCC800DDA7EC /* ZJCommonListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC0573F20A9FCC800DDA7EC /* ZJCommonListVC.swift */; };
+		6FC0574420A9FE6500DDA7EC /* ZJCommonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC0574320A9FE6500DDA7EC /* ZJCommonCell.swift */; };
+		6FC0574620A9FEA600DDA7EC /* ZJCommonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC0574520A9FEA600DDA7EC /* ZJCommonViewModel.swift */; };
+		6FC0574C20AA7C0D00DDA7EC /* ZJPublishCommonVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC0574B20AA7C0D00DDA7EC /* ZJPublishCommonVC.swift */; };
+		6FC0574F20AA975F00DDA7EC /* ZJSearchShopByCateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC0574E20AA975F00DDA7EC /* ZJSearchShopByCateVC.swift */; };
+		6FCCC14120A6B86200F77DD2 /* UINavigationController+Cloudox.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FCCC14020A6B86200F77DD2 /* UINavigationController+Cloudox.m */; };
+		6FCCC14520A6B8B800F77DD2 /* UIViewController+Cloudox.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FCCC14420A6B8B800F77DD2 /* UIViewController+Cloudox.m */; };
+		6FCCC14720A6BED800F77DD2 /* ZJShopDetailKillCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FCCC14620A6BED800F77DD2 /* ZJShopDetailKillCell.swift */; };
+		6FCCC14B20A6F6B300F77DD2 /* ZJMiaoMiaoListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FCCC14A20A6F6B300F77DD2 /* ZJMiaoMiaoListVC.swift */; };
+		6FCCC14E20A6F71D00F77DD2 /* ZJMiaomiaoCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FCCC14D20A6F71D00F77DD2 /* ZJMiaomiaoCollectionCell.swift */; };
+		6FCCC15120A6F96600F77DD2 /* ZJMiaomiaoListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FCCC15020A6F96600F77DD2 /* ZJMiaomiaoListViewModel.swift */; };
 		6FE25D5B205F5EEE00F8954C /* ZJHeadTopicPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FE25D5A205F5EEE00F8954C /* ZJHeadTopicPostViewController.swift */; };
 		6FE25D5D205F677F00F8954C /* ZJPostHeadTopicMulityImagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FE25D5C205F677F00F8954C /* ZJPostHeadTopicMulityImagesView.swift */; };
 		6FE25D63205F720200F8954C /* ZJHeadTopicImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FE25D62205F720200F8954C /* ZJHeadTopicImageCell.swift */; };
@@ -688,6 +710,8 @@
 		6F6898602064EE2400108B54 /* ZJSinglePhotoPreviewVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZJSinglePhotoPreviewVC.swift; sourceTree = "<group>"; };
 		6F69FA3920776B5E00DF2C01 /* NSObject+Emoji.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+Emoji.h"; sourceTree = "<group>"; };
 		6F69FA3A20776B5E00DF2C01 /* NSObject+Emoji.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Emoji.m"; sourceTree = "<group>"; };
+		6F7A19E120A567CF00903655 /* ZJGoodListSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZJGoodListSectionHeader.swift; sourceTree = "<group>"; };
+		6F7A19E320A568B300903655 /* ZJGoodListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZJGoodListViewModel.swift; sourceTree = "<group>"; };
 		6F7E4B242052F38600FBB68B /* Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 		6F7E4B262052F69400FBB68B /* SnapKit_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapKit_Extension.swift; sourceTree = "<group>"; };
 		6F7E4B2A2052FA0F00FBB68B /* SNStoreSectoiniModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SNStoreSectoiniModel.swift; sourceTree = "<group>"; };
@@ -747,6 +771,28 @@
 		6FAC499A205E4BFC009A9587 /* ZJHeadTopicInputBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZJHeadTopicInputBar.swift; sourceTree = "<group>"; };
 		6FAC91EB20678518003B98D8 /* ZJHeadTopicManageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZJHeadTopicManageVC.swift; sourceTree = "<group>"; };
 		6FAC91F020678564003B98D8 /* ZJHeadTopicManageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZJHeadTopicManageViewModel.swift; sourceTree = "<group>"; };
+		6FBA3D9520A4595D00B0074F /* ZJShopDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZJShopDetailVC.swift; sourceTree = "<group>"; };
+		6FBA3D9720A45ACA00B0074F /* ZJShopDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZJShopDetailViewModel.swift; sourceTree = "<group>"; };
+		6FBA3D9920A45F2D00B0074F /* ZJShopDetailHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZJShopDetailHeaderCell.swift; sourceTree = "<group>"; };
+		6FBA3D9B20A4676900B0074F /* ZJShopDetailGroupTitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZJShopDetailGroupTitleCell.swift; sourceTree = "<group>"; };
+		6FBA3D9D20A46AB400B0074F /* ZJShopDetailGoodsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZJShopDetailGoodsCell.swift; sourceTree = "<group>"; };
+		6FBA3D9F20A471D000B0074F /* ZJShopDetailCommonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZJShopDetailCommonCell.swift; sourceTree = "<group>"; };
+		6FBA3DA120A4774800B0074F /* ZJShopDetailDecriptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZJShopDetailDecriptionCell.swift; sourceTree = "<group>"; };
+		6FBA3DA720A49A6000B0074F /* ZJGoodListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZJGoodListViewController.swift; sourceTree = "<group>"; };
+		6FBA3DA920A49A9C00B0074F /* ZJGoodListHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZJGoodListHeaderView.swift; sourceTree = "<group>"; };
+		6FC0573F20A9FCC800DDA7EC /* ZJCommonListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZJCommonListVC.swift; sourceTree = "<group>"; };
+		6FC0574320A9FE6500DDA7EC /* ZJCommonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZJCommonCell.swift; sourceTree = "<group>"; };
+		6FC0574520A9FEA600DDA7EC /* ZJCommonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZJCommonViewModel.swift; sourceTree = "<group>"; };
+		6FC0574B20AA7C0D00DDA7EC /* ZJPublishCommonVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZJPublishCommonVC.swift; sourceTree = "<group>"; };
+		6FC0574E20AA975F00DDA7EC /* ZJSearchShopByCateVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZJSearchShopByCateVC.swift; sourceTree = "<group>"; };
+		6FCCC13F20A6B86200F77DD2 /* UINavigationController+Cloudox.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+Cloudox.h"; sourceTree = "<group>"; };
+		6FCCC14020A6B86200F77DD2 /* UINavigationController+Cloudox.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+Cloudox.m"; sourceTree = "<group>"; };
+		6FCCC14320A6B8B800F77DD2 /* UIViewController+Cloudox.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Cloudox.h"; sourceTree = "<group>"; };
+		6FCCC14420A6B8B800F77DD2 /* UIViewController+Cloudox.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Cloudox.m"; sourceTree = "<group>"; };
+		6FCCC14620A6BED800F77DD2 /* ZJShopDetailKillCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZJShopDetailKillCell.swift; sourceTree = "<group>"; };
+		6FCCC14A20A6F6B300F77DD2 /* ZJMiaoMiaoListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZJMiaoMiaoListVC.swift; sourceTree = "<group>"; };
+		6FCCC14D20A6F71D00F77DD2 /* ZJMiaomiaoCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZJMiaomiaoCollectionCell.swift; sourceTree = "<group>"; };
+		6FCCC15020A6F96600F77DD2 /* ZJMiaomiaoListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZJMiaomiaoListViewModel.swift; sourceTree = "<group>"; };
 		6FE25D5A205F5EEE00F8954C /* ZJHeadTopicPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZJHeadTopicPostViewController.swift; sourceTree = "<group>"; };
 		6FE25D5C205F677F00F8954C /* ZJPostHeadTopicMulityImagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZJPostHeadTopicMulityImagesView.swift; sourceTree = "<group>"; };
 		6FE25D62205F720200F8954C /* ZJHeadTopicImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZJHeadTopicImageCell.swift; sourceTree = "<group>"; };
@@ -1569,6 +1615,55 @@
 			path = controller;
 			sourceTree = "<group>";
 		};
+		6F30276B20A458EC008D5840 /* ShopDetail */ = {
+			isa = PBXGroup;
+			children = (
+				6FC0574720AA068B00DDA7EC /* PublishCommon */,
+				6FC0573D20A9FC9D00DDA7EC /* Common */,
+				6F30276F20A45906008D5840 /* model */,
+				6F30276E20A45900008D5840 /* service */,
+				6F30276D20A458FC008D5840 /* view */,
+				6F30276C20A458F7008D5840 /* controller */,
+			);
+			path = ShopDetail;
+			sourceTree = "<group>";
+		};
+		6F30276C20A458F7008D5840 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				6FBA3D9520A4595D00B0074F /* ZJShopDetailVC.swift */,
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
+		6F30276D20A458FC008D5840 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				6FBA3D9920A45F2D00B0074F /* ZJShopDetailHeaderCell.swift */,
+				6FBA3D9B20A4676900B0074F /* ZJShopDetailGroupTitleCell.swift */,
+				6FBA3D9D20A46AB400B0074F /* ZJShopDetailGoodsCell.swift */,
+				6FBA3D9F20A471D000B0074F /* ZJShopDetailCommonCell.swift */,
+				6FBA3DA120A4774800B0074F /* ZJShopDetailDecriptionCell.swift */,
+				6FCCC14620A6BED800F77DD2 /* ZJShopDetailKillCell.swift */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		6F30276E20A45900008D5840 /* service */ = {
+			isa = PBXGroup;
+			children = (
+				6FBA3D9720A45ACA00B0074F /* ZJShopDetailViewModel.swift */,
+			);
+			path = service;
+			sourceTree = "<group>";
+		};
+		6F30276F20A45906008D5840 /* model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
 		6F404872205E8DCE00609231 /* share */ = {
 			isa = PBXGroup;
 			children = (
@@ -1843,8 +1938,10 @@
 		6F7E4B222052ED1500FBB68B /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				6FCCC14820A6F68E00F77DD2 /* miaomiaoList */,
+				6FBA3DA320A47E0800B0074F /* goodList */,
+				6F30276B20A458EC008D5840 /* ShopDetail */,
 				6F1B750420929A6600E944E2 /* GetCoupon */,
-				6F7E4B7C2053024D00FBB68B /* model */,
 				6F7E4B7B2053024300FBB68B /* view */,
 				6F7E4B7A2053023B00FBB68B /* viewmodel */,
 				6F7E4B792053022900FBB68B /* controller */,
@@ -1865,6 +1962,7 @@
 		6F7E4B282052FA0F00FBB68B /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				6FCCC14220A6B88100F77DD2 /* alphaNavi */,
 				6F7E4B64205301D100FBB68B /* UI */,
 				6F7E4B292052FA0F00FBB68B /* ViewModels */,
 				6F7E4B2D2052FA0F00FBB68B /* ViewControllers */,
@@ -1987,13 +2085,6 @@
 				6F7E4B952053449900FBB68B /* ZJCountDownView.swift */,
 			);
 			path = view;
-			sourceTree = "<group>";
-		};
-		6F7E4B7C2053024D00FBB68B /* model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = model;
 			sourceTree = "<group>";
 		};
 		6F7E4B7D2053028200FBB68B /* Utils */ = {
@@ -2185,6 +2276,160 @@
 			isa = PBXGroup;
 			children = (
 				6FAC91F020678564003B98D8 /* ZJHeadTopicManageViewModel.swift */,
+			);
+			path = service;
+			sourceTree = "<group>";
+		};
+		6FBA3DA320A47E0800B0074F /* goodList */ = {
+			isa = PBXGroup;
+			children = (
+				6FBA3DA620A47E1900B0074F /* service */,
+				6FBA3DA520A47E1200B0074F /* view */,
+				6FBA3DA420A47E0D00B0074F /* controller */,
+			);
+			path = goodList;
+			sourceTree = "<group>";
+		};
+		6FBA3DA420A47E0D00B0074F /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				6FBA3DA720A49A6000B0074F /* ZJGoodListViewController.swift */,
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
+		6FBA3DA520A47E1200B0074F /* view */ = {
+			isa = PBXGroup;
+			children = (
+				6FBA3DA920A49A9C00B0074F /* ZJGoodListHeaderView.swift */,
+				6F7A19E120A567CF00903655 /* ZJGoodListSectionHeader.swift */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		6FBA3DA620A47E1900B0074F /* service */ = {
+			isa = PBXGroup;
+			children = (
+				6F7A19E320A568B300903655 /* ZJGoodListViewModel.swift */,
+			);
+			path = service;
+			sourceTree = "<group>";
+		};
+		6FC0573D20A9FC9D00DDA7EC /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				6FC0574220A9FDD500DDA7EC /* view */,
+				6FC0574120A9FDCD00DDA7EC /* service */,
+				6FC0573E20A9FCA800DDA7EC /* controller */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		6FC0573E20A9FCA800DDA7EC /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				6FC0573F20A9FCC800DDA7EC /* ZJCommonListVC.swift */,
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
+		6FC0574120A9FDCD00DDA7EC /* service */ = {
+			isa = PBXGroup;
+			children = (
+				6FC0574520A9FEA600DDA7EC /* ZJCommonViewModel.swift */,
+			);
+			path = service;
+			sourceTree = "<group>";
+		};
+		6FC0574220A9FDD500DDA7EC /* view */ = {
+			isa = PBXGroup;
+			children = (
+				6FC0574320A9FE6500DDA7EC /* ZJCommonCell.swift */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		6FC0574720AA068B00DDA7EC /* PublishCommon */ = {
+			isa = PBXGroup;
+			children = (
+				6FC0574A20AA06A000DDA7EC /* service */,
+				6FC0574920AA069B00DDA7EC /* view */,
+				6FC0574820AA069500DDA7EC /* controller */,
+			);
+			path = PublishCommon;
+			sourceTree = "<group>";
+		};
+		6FC0574820AA069500DDA7EC /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				6FC0574B20AA7C0D00DDA7EC /* ZJPublishCommonVC.swift */,
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
+		6FC0574920AA069B00DDA7EC /* view */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		6FC0574A20AA06A000DDA7EC /* service */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = service;
+			sourceTree = "<group>";
+		};
+		6FC0574D20AA973600DDA7EC /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				6FC0574E20AA975F00DDA7EC /* ZJSearchShopByCateVC.swift */,
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
+		6FCCC14220A6B88100F77DD2 /* alphaNavi */ = {
+			isa = PBXGroup;
+			children = (
+				6FCCC13F20A6B86200F77DD2 /* UINavigationController+Cloudox.h */,
+				6FCCC14020A6B86200F77DD2 /* UINavigationController+Cloudox.m */,
+				6FCCC14320A6B8B800F77DD2 /* UIViewController+Cloudox.h */,
+				6FCCC14420A6B8B800F77DD2 /* UIViewController+Cloudox.m */,
+			);
+			path = alphaNavi;
+			sourceTree = "<group>";
+		};
+		6FCCC14820A6F68E00F77DD2 /* miaomiaoList */ = {
+			isa = PBXGroup;
+			children = (
+				6FCCC14F20A6F94300F77DD2 /* service */,
+				6FCCC14C20A6F6F700F77DD2 /* view */,
+				6FCCC14920A6F69700F77DD2 /* controller */,
+			);
+			path = miaomiaoList;
+			sourceTree = "<group>";
+		};
+		6FCCC14920A6F69700F77DD2 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				6FCCC14A20A6F6B300F77DD2 /* ZJMiaoMiaoListVC.swift */,
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
+		6FCCC14C20A6F6F700F77DD2 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				6FCCC14D20A6F71D00F77DD2 /* ZJMiaomiaoCollectionCell.swift */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		6FCCC14F20A6F94300F77DD2 /* service */ = {
+			isa = PBXGroup;
+			children = (
+				6FCCC15020A6F96600F77DD2 /* ZJMiaomiaoListViewModel.swift */,
 			);
 			path = service;
 			sourceTree = "<group>";
@@ -2579,6 +2824,7 @@
 		ACDE38741FA01D000084B362 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				6FC0574D20AA973600DDA7EC /* New Group */,
 				ACDE38A01FA1B4770084B362 /* LBShoppingMallViewController.swift */,
 				18EAAB2C1FE0B95700C2EE01 /* LBShoppingNextViewController.swift */,
 				ACA55A9A20275405006A7E25 /* LBShopSearchResultViewController.swift */,
@@ -3175,6 +3421,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6FCCC15120A6F96600F77DD2 /* ZJMiaomiaoListViewModel.swift in Sources */,
 				ACDE38911FA02E540084B362 /* LBColor.swift in Sources */,
 				ACD1A2381FC72C65002E6793 /* LBForgotPasswordViewController.swift in Sources */,
 				AC4CBAB6200CFA7500740235 /* LBMapPulseLayer.swift in Sources */,
@@ -3182,12 +3429,14 @@
 				6FAC4997205E4143009A9587 /* ZJHeadTopicDetailViewModel.swift in Sources */,
 				1842A7171FF1EE8200B809F1 /* UIAlertViewController.swift in Sources */,
 				18745B271FBD68280002EE66 /* LBMerchantApplyBaseViewControllerTypeThree.swift in Sources */,
+				6FCCC14520A6B8B800F77DD2 /* UIViewController+Cloudox.m in Sources */,
 				18131A821FFF7A39001A24F3 /* LBModifyPayPasswordViewController.swift in Sources */,
 				18A746EB1FE8DC6D00FE336B /* LBMerchantIncomWebViewController.swift in Sources */,
 				AC9816D31FF38A070080E413 /* LBWXLoginModel.swift in Sources */,
 				6F7E4B4A2052FA0F00FBB68B /* SNTableCellContent.swift in Sources */,
 				AC13AC261FC4335A00366766 /* LBCityPickerView.swift in Sources */,
 				6F7E4B462052FA0F00FBB68B /* SNBaseView.swift in Sources */,
+				6FBA3D9620A4595D00B0074F /* ZJShopDetailVC.swift in Sources */,
 				ACDE38A11FA1B4770084B362 /* LBShoppingMallViewController.swift in Sources */,
 				8E6F24DD205BA19A009A4505 /* UICollectionView+Extension.swift in Sources */,
 				8EDF01BD207472C800AFDD62 /* LBMerchantDetailImgCell.swift in Sources */,
@@ -3263,6 +3512,7 @@
 				AC0077F51FC6AD0700BE0153 /* LBRegistLoginCell.swift in Sources */,
 				1813280120062471003833B3 /* LBSecondCouponViewController.swift in Sources */,
 				18318EE81FD0E6C3006459B5 /* LBLocationView.swift in Sources */,
+				6FBA3D9E20A46AB400B0074F /* ZJShopDetailGoodsCell.swift in Sources */,
 				18CEA6982019C7A9003E99E7 /* LBPrivatePolicyView.swift in Sources */,
 				18CEA69A2019C832003E99E7 /* LBPrivatePolicyViewController.swift in Sources */,
 				18B3E38F1FF5D9B4004646EF /* LBBindPhoneViewController.swift in Sources */,
@@ -3271,12 +3521,15 @@
 				6F7E4B432052FA0F00FBB68B /* BMAlertController.swift in Sources */,
 				8EAA500E205E51E70037F592 /* LBAddSeckillActivityCell.swift in Sources */,
 				6FAC499B205E4BFC009A9587 /* ZJHeadTopicInputBar.swift in Sources */,
+				6FBA3D9A20A45F2D00B0074F /* ZJShopDetailHeaderCell.swift in Sources */,
 				6F7E4B962053449900FBB68B /* ZJCountDownView.swift in Sources */,
 				6FE25D5D205F677F00F8954C /* ZJPostHeadTopicMulityImagesView.swift in Sources */,
 				6FE25D5B205F5EEE00F8954C /* ZJHeadTopicPostViewController.swift in Sources */,
 				8E6F24D3205BA19A009A4505 /* PhotoPreviewViewController.swift in Sources */,
 				18EE5F5F1FE26D8700948167 /* LBProfileRightItemView.swift in Sources */,
 				6F404882205E947E00609231 /* ZJHeadTopicCellModel.swift in Sources */,
+				6FBA3DA020A471D000B0074F /* ZJShopDetailCommonCell.swift in Sources */,
+				6FBA3DAA20A49A9C00B0074F /* ZJGoodListHeaderView.swift in Sources */,
 				18BE750D1FC6F2A000A9F93B /* LBLoginViewController.swift in Sources */,
 				1813BC961FFDBDB10049146A /* LBUserInfoPresenter.swift in Sources */,
 				1813BC981FFDC3F10049146A /* LBModifyBankCardViewController.swift in Sources */,
@@ -3286,6 +3539,7 @@
 				ACF576931FDEE10800DE38F5 /* LBShoppingMixedCell.swift in Sources */,
 				186AF67D2021CC0C006F8BF4 /* LBPrivatePolicyButtonView.swift in Sources */,
 				6F7E4B612053013400FBB68B /* ZJHomeGroupCell.swift in Sources */,
+				6FBA3D9820A45ACA00B0074F /* ZJShopDetailViewModel.swift in Sources */,
 				6F7E4B4B2052FA0F00FBB68B /* SNContentGet.swift in Sources */,
 				ACE720C81F9DDA9E00C22465 /* LBConst.swift in Sources */,
 				8E6F24D8205BA19A009A4505 /* PhotoImageManager.swift in Sources */,
@@ -3298,15 +3552,18 @@
 				8EAA4FEB205DB8AA0037F592 /* MQGradientProgressView.m in Sources */,
 				182FE58A2024446600600728 /* ScaleAnimatorCoordinator.swift in Sources */,
 				8E6F24F6205BC9AE009A4505 /* ViewController.swift in Sources */,
+				6FCCC14B20A6F6B300F77DD2 /* ZJMiaoMiaoListVC.swift in Sources */,
 				1837F34920048B9E00C54BD5 /* BXSaveImageManager.swift in Sources */,
 				18EAAB3F1FE1135700C2EE01 /* LBImageCollectionViewCell.swift in Sources */,
 				18EAAB2F1FE0C66A00C2EE01 /* LBShoppingMallDetailViewController.swift in Sources */,
 				ACDB58151FE917CE00928032 /* LBCacheManger.swift in Sources */,
+				6FC0574F20AA975F00DDA7EC /* ZJSearchShopByCateVC.swift in Sources */,
 				6F9397F62092036A003B3BEA /* ZJMineFunctionCell.swift in Sources */,
 				AC66B2851FF32F6400B50309 /* PullToRefreshOption.swift in Sources */,
 				182160562018681D00AEC629 /* LBGameModel.swift in Sources */,
 				AC10A1B81FB432D900542BD4 /* LBStarView.swift in Sources */,
 				1821605420181CBF00AEC629 /* LBGameCouponView.swift in Sources */,
+				6F7A19E220A567CF00903655 /* ZJGoodListSectionHeader.swift in Sources */,
 				18745B1F1FBD65590002EE66 /* LBMerchantUtils.swift in Sources */,
 				6F7E4B5D205300C500FBB68B /* ZJSpaceCell.swift in Sources */,
 				AC0077F91FC6D16400BE0153 /* LBRegistLoginTableViewCellFactory.swift in Sources */,
@@ -3315,6 +3572,7 @@
 				AC2328751FC1CCE2000B8865 /* LBEncryptFunction.swift in Sources */,
 				1813BC941FFDBCFB0049146A /* LBUserInfoViewController.swift in Sources */,
 				18A746E01FE8BFA900FE336B /* LBMyIcomeWebViewController.swift in Sources */,
+				6FCCC14120A6B86200F77DD2 /* UINavigationController+Cloudox.m in Sources */,
 				18D310D61FBD44CA0027E3CB /* CustomHeadView.swift in Sources */,
 				183D6E951FF4A2F500278452 /* LBCommentListViewController.swift in Sources */,
 				6F7E4B9420533CF600FBB68B /* XHStarRateView.m in Sources */,
@@ -3327,6 +3585,7 @@
 				1837F3452004676200C54BD5 /* LBShareRQCodeViewController.swift in Sources */,
 				8E5217CC2064C75B0083B304 /* ZJHeadTopicToolHeader.swift in Sources */,
 				AC1413F0202203B000D64599 /* LBPhotoNineSpaceContentView.swift in Sources */,
+				6FBA3DA820A49A6000B0074F /* ZJGoodListViewController.swift in Sources */,
 				1863BB561FE3CD10005F0650 /* LBKeyChain+Key.swift in Sources */,
 				AC4CBAB1200CFA7500740235 /* LBMapDistrictSearch.swift in Sources */,
 				6F7E4B3F2052FA0F00FBB68B /* SNBaseViewModel.swift in Sources */,
@@ -3362,6 +3621,7 @@
 				6F9397F4209202EB003B3BEA /* ZJMineViewController.swift in Sources */,
 				18CC8AB31FE8AC4300784346 /* LBMyMerchantWebViewController.swift in Sources */,
 				18131A7C1FFF1867001A24F3 /* LBBindAccountTableViewCell.swift in Sources */,
+				6FC0574C20AA7C0D00DDA7EC /* ZJPublishCommonVC.swift in Sources */,
 				182FE5852024446600600728 /* PhotoBrowserDefaultPageControlDelegate.swift in Sources */,
 				ACA55A9B20275405006A7E25 /* LBShopSearchResultViewController.swift in Sources */,
 				AC4CBAB0200CFA7500740235 /* LBBaiduMapAPI.mm in Sources */,
@@ -3380,6 +3640,7 @@
 				6F404893205EA8C200609231 /* API.swift in Sources */,
 				6F404895205EA8C200609231 /* SNMoyaResult.swift in Sources */,
 				18B6781D1FFE325E00F8C7CF /* SMSButton.swift in Sources */,
+				6FC0574020A9FCC800DDA7EC /* ZJCommonListVC.swift in Sources */,
 				182FE5892024446600600728 /* ScaleAnimator.swift in Sources */,
 				6F404877205E8EE200609231 /* ZJHeadTopicShareController.swift in Sources */,
 				18B3E3971FF60AB9004646EF /* LBSettingPayPasswordViewController.swift in Sources */,
@@ -3392,6 +3653,7 @@
 				ACDE38881FA02D030084B362 /* LBNavigationController.swift in Sources */,
 				AC08085F1FE9692F00677147 /* LBCommentViewController.swift in Sources */,
 				181ABFA11FFE0B6900F27EDA /* LBSettingTableViewCellFactory.swift in Sources */,
+				6FC0574620A9FEA600DDA7EC /* ZJCommonViewModel.swift in Sources */,
 				18B3E3941FF5DF66004646EF /* LBAuthenicationTableViewCell.swift in Sources */,
 				18E2E0F91FC2FC8A0054432D /* BXDatePickView.swift in Sources */,
 				ACF97BDF2003AB8200352BA4 /* Date+Extension.swift in Sources */,
@@ -3450,10 +3712,12 @@
 				18E31E7E20174B13008D6653 /* LBGameBoxView.swift in Sources */,
 				18CC8AA71FE8AA6700784346 /* LBMyCouponWebViewController.swift in Sources */,
 				18D310DF1FBD44F90027E3CB /* ImageTableViewCell.swift in Sources */,
+				6FCCC14720A6BED800F77DD2 /* ZJShopDetailKillCell.swift in Sources */,
 				1824164C2008A28F00F5124C /* LBExchangeWebViewController.swift in Sources */,
 				8E479859205D0D170018F6B4 /* LBNewMarketHead.swift in Sources */,
 				AC1ABE0F1FC7CC4B00C3E153 /* SZLocationManager.swift in Sources */,
 				AC0808611FE969C500677147 /* LBCommentHeaderView.swift in Sources */,
+				6FBA3D9C20A4676900B0074F /* ZJShopDetailGroupTitleCell.swift in Sources */,
 				6FAC91EC20678518003B98D8 /* ZJHeadTopicManageVC.swift in Sources */,
 				18B6781B1FFE2D2A00F8C7CF /* LBFindPayPassswordViewController.swift in Sources */,
 				1837F34B20048D6A00C54BD5 /* BXShareView.swift in Sources */,
@@ -3488,6 +3752,7 @@
 				18EAAB391FE0D64D00C2EE01 /* LBCustomerCell.swift in Sources */,
 				18D310D71FBD44CA0027E3CB /* CommonTableViewCell.swift in Sources */,
 				18745B301FBD6C910002EE66 /* LBMerchantApplyPickerView.swift in Sources */,
+				6FCCC14E20A6F71D00F77DD2 /* ZJMiaomiaoCollectionCell.swift in Sources */,
 				AC4CBAB8200CFA7500740235 /* LBMapViewController.swift in Sources */,
 				182FE5842024446600600728 /* PhotoBrowserCell.swift in Sources */,
 				1817D845201035C2001241E4 /* LBStoreRightTableViewCell.swift in Sources */,
@@ -3495,6 +3760,7 @@
 				AC0E69C31FC487D800408F12 /* LBMerchantApplyFinishViewController.swift in Sources */,
 				8EDF01C220747B8F00AFDD62 /* LBMerchantApplyInfoController.swift in Sources */,
 				1818EC1D1FD62852006E5D8C /* LBProfileTableViewCell.swift in Sources */,
+				6F7A19E420A568B300903655 /* ZJGoodListViewModel.swift in Sources */,
 				18131A801FFF71CB001A24F3 /* LBSettingPresenter.swift in Sources */,
 				AC0077F31FC69EEA00BE0153 /* LBLogoHeaderView.swift in Sources */,
 				6F1B75092092A37500E944E2 /* DDZPickerViewManager.swift in Sources */,
@@ -3536,6 +3802,7 @@
 				18D310E21FBD450B0027E3CB /* SegmentedHeadView.swift in Sources */,
 				6F9397EB20910B2B003B3BEA /* ZJMyCouponViewController.swift in Sources */,
 				182FE5882024446600600728 /* PhotoBrowserProgressView.swift in Sources */,
+				6FC0574420A9FE6500DDA7EC /* ZJCommonCell.swift in Sources */,
 				18CC8AAF1FE8ABE100784346 /* LBMyFootMarkWebViewController.swift in Sources */,
 				6F5F58BA206BE7E00025E6EA /* ZJMerchantAccoutBookModel.swift in Sources */,
 				18745B341FBD6D4A0002EE66 /* LBMerchantApplyTableViewCellFactory.swift in Sources */,
@@ -3571,6 +3838,7 @@
 				18318EFA1FD14EA4006459B5 /* LBCityListTableViewCell.swift in Sources */,
 				6F9397FC20921E78003B3BEA /* ZJCouponCell.swift in Sources */,
 				6F7E4B72205301D100FBB68B /* GestureRecognizer_Extension.swift in Sources */,
+				6FBA3DA220A4774800B0074F /* ZJShopDetailDecriptionCell.swift in Sources */,
 				8EDF01B92073C15E00AFDD62 /* LBMerchantTextFileCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

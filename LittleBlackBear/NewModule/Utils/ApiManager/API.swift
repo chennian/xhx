@@ -75,6 +75,21 @@ enum API {
     case getConpoun(coupon_id: String)
     
     case getConpounList(type : String)
+    
+    case getPerfectShop(page: String)
+    
+    case shopDetail(shopId : String)
+    
+    case goodsList(shopId : String)
+    
+    case getMiaomiaoList(shopId : String)
+    
+    case getCommonList(shopId : String)
+    
+    case publishCommon(shopId : String,description : String,images : String,grade : String)
+    
+
+    case getShopByCate(name : String)
 }
 
 
@@ -83,9 +98,10 @@ extension API: JSONMappableTargetType {
         switch self {
         case .login(let phone,let password):
             return ["X-AUTH-TOKEN":"\(phone):\(password)"]
-        case .userInfo,.modifyNickName,.modifyHeadIcon,.getConpoun,.getConpounList:
+        case .userInfo,.modifyNickName,.modifyHeadIcon,.getConpoun,.getConpounList,.publishCommon:
             return ["X-AUTH-TOKEN":LBKeychain.get(TOKEN),"X-AUTH-TIMESTAMP":LBKeychain.get(LLTimeStamp)]
 
+        
         default:
             return [
                 "Content-Type": "application/x-www-form-urlencoded;charset=utf-8"
@@ -107,10 +123,13 @@ extension API: JSONMappableTargetType {
         switch self {
         case .checkMerchantExit:
             return URL(string: "http://pay.xiaoheixiong.net/public/merInfo")!
-    case .merchantAccountBook,.getMemberList,.serviceAccountBook,.insertMerchant,.isStatus,.login,.forgetPass,.register,.userInfo,.modifyNickName,.getConpoun,.getMiaoMiaoList:
+    case .merchantAccountBook,.getMemberList,.serviceAccountBook,.insertMerchant,.isStatus,.login,.forgetPass,.register,.userInfo,.modifyNickName,.getConpoun,.getMiaoMiaoList,.getPerfectShop,.shopDetail,.goodsList,.getMiaomiaoList,.getCommonList,.publishCommon,.getShopByCate:
             return URL(string: "http://transaction.xiaoheixiong.net")!
 //        case .getConpoun:
 //            return URL(string: "http://merchant.xiaoheixiong.net/")!
+            
+//        case .getPerfectShop,.shopDetail,.goodsList,.getMiaomiaoList:
+//            return URL(string: "http://192.168.0.3:8014/")!
         default:
             return URL(string: "http://api.xiaoheixiong.net/")!
         }
@@ -162,8 +181,22 @@ extension API: JSONMappableTargetType {
             return "user/updateHeadImg"
         case .getConpounList:
             return "merchant/getcouponList"
+        case .getPerfectShop:
+            return "api/perfectStore"
+        case .shopDetail:
+            return "api/merchantStoreInfo"
+        case .goodsList:
+            return "api/storeGoods"
+        case .getMiaomiaoList:
+            return "api/getKillListByShop"
 //        case .checkMerchantExit:
 //            return "/public/merInfo"
+        case .getCommonList:
+            return "api/storeReply"
+        case .publishCommon:
+            return "user/evaluate"
+        case .getShopByCate:
+            return "api/cateMerchantStore"
         default:
             return ""
         }
@@ -314,228 +347,49 @@ extension API: JSONMappableTargetType {
                 "status " : status
                 ] as [String : Any]
             return .requestParameters(parameters: para, encoding: URLEncoding.default)
+        case .getPerfectShop(let page):
+            let para = [
+                "page" : page
+                ] as [String : Any]
+            return .requestParameters(parameters: para, encoding: URLEncoding.default)
+        case .shopDetail(let shopId):
+            let para = [
+                "shopId" : shopId
+                ] as [String : Any]
+            return .requestParameters(parameters: para, encoding: URLEncoding.default)
+        case .goodsList(let shopId):
+            let para = [
+                "shopId" : shopId
+                ] as [String : Any]
+            return .requestParameters(parameters: para, encoding: URLEncoding.default)
+        case .getMiaomiaoList(let shopId):
+            let para = [
+                "shopId" : shopId
+                ] as [String : Any]
+            return .requestParameters(parameters: para, encoding: URLEncoding.default)
+        case .getCommonList(let shopId):
+            let para = [
+                "shopId" : shopId
+                ] as [String : Any]
+            return .requestParameters(parameters: para, encoding: URLEncoding.default)
+        case .publishCommon(let shopId,let description,let images,let grade):
+            let para = [
+                "shopId" : shopId,
+                "description" : description,
+                "images" : images,
+                "grade" : grade
+                ] as [String : Any]
+            return .requestParameters(parameters: para, encoding: URLEncoding.default)
+        case .getShopByCate(let id):
+            let para = [
+                "cateName" : id,
+                "page" : "1"
+                ] as [String : Any]
+            return .requestParameters(parameters: para, encoding: URLEncoding.default)
         default:
             return Task.requestPlain
         }
-//        switch self {
-//        case .getForgetPwdPhoneCode(let mobile):
-//            let para = [
-//                "mobile" : mobile
-//            ]
-//            return .requestParameters(parameters: para, encoding: URLEncoding.default)
-//        case .verifyCode(let mobile,let code,let vtype):
-//            let para = [
-//                "mobile" : mobile,
-//                "code" : code,
-//                "vtype" : vtype
-//            ]
-//            return .requestParameters(parameters: para, encoding: URLEncoding.default)
-//        case .setNewLoginPwd(let mobile,let code,let password):
-//            let para = [
-//                "mobile" : mobile,
-//                "code" : code,
-//                "password" : password
-//            ]
-//            return .requestParameters(parameters: para, encoding: URLEncoding.default)
-//        case .registerSendSMS(let mobile):
-//            let para = [
-//                "mobile" : mobile
-//            ]
-//            return .requestParameters(parameters: para, encoding: URLEncoding.default)
-//        case .registerUserDoRegister(let vcode,let  mobile ,let  password ,let  referer ):
-//            let para = [
-//                "mobile" : mobile,
-//                "vcode" : vcode,
-//                "password" : password,
-//                "referer" : referer
-//            ]
-//            return .requestParameters(parameters: para, encoding: URLEncoding.default)
-//        case .modifyNickName(let nickname):
-//            let para = [
-//                "nickname" : nickname
-//            ]
-//            return .requestParameters(parameters: para, encoding: URLEncoding.default)
-//        case .modifyHeadIcon(let headpic):
-//            let para = [
-//                "headpic" : headpic
-//            ]
-//            return .requestParameters(parameters: para, encoding: URLEncoding.default)
-//        case .getPayPwdPhoneCode(let mobile):
-//            let para = [
-//                "mobile" : mobile
-//            ]
-//            return .requestParameters(parameters: para, encoding: URLEncoding.default)
-//        case .setPayPwd(let mobile,let password,let code):
-//            let para = [
-//                "mobile" : mobile,
-//                "code" : code,
-//                "password" : password
-//            ]
-//            return .requestParameters(parameters: para, encoding: URLEncoding.default)
-//        case .addNewAddress(let model):
-//            let para = model.makeDic()
-//            return .requestParameters(parameters: para, encoding: URLEncoding.default)
-//        case .deleteAddress(let addr_id):
-//            let para = [
-//                "addr_id" : addr_id
-//            ]
-//            return .requestParameters(parameters: para, encoding: URLEncoding.default)
-//        case .setDefaultAddress(let addr_id):
-//            let para = [
-//                "addr_id" : addr_id
-//            ]
-//            return .requestParameters(parameters: para, encoding: URLEncoding.default)
-//        case .editAddress(let model):
-//            let para = model.makeDic()
-//            return .requestParameters(parameters: para, encoding: URLEncoding.default)
-//        case .getAuthMessage(let mobile):
-//            let para = [
-//                "mobile" : mobile
-//            ]
-//            return .requestParameters(parameters: para, encoding: URLEncoding.default)
-//        case .submitAuthInformation(let model):
-//            return .requestParameters(parameters: model.makeDic(type: .auth), encoding: URLEncoding.default)
-//        case .moifyAuthInformation(let model):
-//            return .requestParameters(parameters: model.makeDic(type: .auth), encoding: URLEncoding.default)
-//        case .deleteShoppingCartList(let shopcartId):
-//            let para = [
-//                "shopcartId" : shopcartId
-//            ]
-//            return .requestParameters(parameters: para, encoding: URLEncoding.default)
-//        case .addIntoShoppingCartList(let goods_attr_id,let number,let type):
-//            let para = [
-//                "goods_attr_id" : goods_attr_id,
-//                "number" : number,
-//                "type" : type
-//            ]
-//            return .requestParameters(parameters: para, encoding: URLEncoding.default)
-//        case .deleteCollection(let goods_id):
-//            let para = [
-//                "goods_id" : goods_id
-//            ]
-//            return .requestParameters(parameters: para, encoding: URLEncoding.default)
-//        case .addIntoCollection(let goods_id):
-//            let para = [
-//                "goods_id" : goods_id
-//            ]
-//            return .requestParameters(parameters: para, encoding: URLEncoding.default)
-//        case .transferReturn(let mobile,let money,let verifySecret):
-//            let para = [
-//                "mobile" : mobile,
-//                "money": money,
-//                "verifySecret" : verifySecret
-//            ]
-//            return .requestParameters(parameters: para, encoding: URLEncoding.default)
-//        case .uploadOrder(let money,let banknumber,let realname,let pic):
-//            let para = [
-//                "money" : money,
-//                "banknumber": banknumber,
-//                "realname" : realname,
-//                "pic" : pic
-//            ]
-//            return .requestParameters(parameters: para, encoding: URLEncoding.default)
-//        case .goodsDetail(let goods_id):
-//            let para = [
-//                "goods_id" : goods_id
-//            ]
-//            return .requestParameters(parameters: para, encoding: URLEncoding.default)
-//        case .planPageInfo(let activity_id):
-//            let para = [
-//                "activity_id" : activity_id
-//            ]
-//            return .requestParameters(parameters: para, encoding: URLEncoding.default)
-//        case .reinvest(let money,let verifySecret):
-//            let para = [
-//                "verifySecret" : verifySecret,
-//                "money" : money
-//            ]
-//            return .requestParameters(parameters: para, encoding: URLEncoding.default)
-//        case .getGoodsListBy(let classId):
-//            let para = [
-//                "classId" : classId
-//            ]
-//            return .requestParameters(parameters: para, encoding: URLEncoding.default)
-//        case .searchGoods(let name):
-//            let para = [
-//                "name" : name
-//            ]
-//            return .requestParameters(parameters: para, encoding: URLEncoding.default)
-//        case .verifySecret(let verifySecret):
-//            let para = [
-//                "verifySecret" : verifySecret
-//            ]
-//            return .requestParameters(parameters: para, encoding: URLEncoding.default)
-//        case .modifyBankCard(let model):
-//            return .requestParameters(parameters: model.makeDic(type: .modifyBind), encoding: URLEncoding.default)
-//        case .orderList(let type):
-//            let para = [
-//                "status" : type
-//            ]
-//            return .requestParameters(parameters: para, encoding: URLEncoding.default)
-//        case .createOrder(let goods_attr_id,let queryId,let addr_id):
-//            let para = [
-//                "goods_attr_id" : goods_attr_id,
-//                "queryId" : queryId,
-//                "addr_id" : addr_id
-//            ]
-//            return .requestParameters(parameters: para, encoding: URLEncoding.default)
-//        case .sunmitOrder(let addr_id,let goods_attr_id,let queryId,let type,let pay_method,let use_consumption):
-//            let para = [
-//                "goods_attr_id" : goods_attr_id,
-//                "queryId" : queryId,
-//                "addr_id" : addr_id,
-//                "type" : type,
-//                "pay_method" : pay_method,
-//                "use_consumption" : use_consumption
-//            ]
-//            return .requestParameters(parameters: para, encoding: URLEncoding.default)
-//        case .orderDetail(let order_sn):
-//            let para = [
-//                "order_sn" : order_sn
-//            ]
-//            return .requestParameters(parameters: para, encoding: URLEncoding.default)
-//        case .submitPlan(let activity_id):
-//            let para = [
-//                "activity_id" : activity_id
-//            ]
-//            return .requestParameters(parameters: para, encoding: URLEncoding.default)
-//        case .getPlanPayInfo(let activity_id,let pay_method):
-//            let para = [
-//                "activity_id" : activity_id,
-//                "pay_method" : pay_method
-//            ]
-//            return .requestParameters(parameters: para, encoding: URLEncoding.default)
-//        case .readMessage(let id):
-//            let para = [
-//                "id" : id
-//            ]
-//            return .requestParameters(parameters: para, encoding: URLEncoding.default)
-//        case .certainReceived(let order_sn):
-//            let para = [
-//                "order_sn" : order_sn
-//            ]
-//            return .requestParameters(parameters: para, encoding: URLEncoding.default)
-//        case .cancelOrder(let order_sn):
-//            let para = [
-//                "order_sn" : order_sn
-//            ]
-//            return .requestParameters(parameters: para, encoding: URLEncoding.default)
-//        case .jiyoumeiWIthdraw(let money,let verifySecret):
-//            let para = [
-//                "money" : money,
-//                "verifySecret" : verifySecret
-//            ]
-//            return .requestParameters(parameters: para, encoding: URLEncoding.default)
-//        case .storeWithdraw(let money,let verifySecret):
-//            let para = [
-//                "money" : money,
-//                "verifySecret" : verifySecret
-//            ]
-//            return .requestParameters(parameters: para, encoding: URLEncoding.default)
-//        default:
-//            return Task.requestPlain
-//        }
-        
+
         
     }
     

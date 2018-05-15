@@ -33,6 +33,8 @@ struct ZJActgivityDetailMerchantCellModel {
     var phone : String
     var distance : String
     var lab : String
+    var latitude : String
+    var longitude : String
     
 }
 /// 团团信息模型
@@ -64,7 +66,7 @@ class ZJActgivityDetailCellModel {
             case .space(let height ,_):
                 cellHeight = height
             case .merchant:
-                cellHeight = fit(230)
+                cellHeight = fit(181)
             case .tuantuan(let model):
                 cellHeight = model.hasActivity ? fit(235) : fit(192)
             case .description(let content):
@@ -97,7 +99,7 @@ class LBShopDetailsController: UIViewController ,LBPresentLoginViewControllerPro
             descriptionModel.type = .description(content:  miaomiaoModel!.description)
             
             let merchantModel = ZJActgivityDetailCellModel()
-            merchantModel.type = .merchant(model: ZJActgivityDetailMerchantCellModel.init(icon: miaomiaoModel!.mainImg, name: miaomiaoModel!.shopName, addredd: miaomiaoModel!.merAddress, phone: miaomiaoModel!.phone, distance: "5km", lab: miaomiaoModel!.merLabel))
+            merchantModel.type = .merchant(model: ZJActgivityDetailMerchantCellModel.init(icon: miaomiaoModel!.mainImg, name: miaomiaoModel!.shopName, addredd: miaomiaoModel!.merAddress, phone: miaomiaoModel!.phone, distance: miaomiaoModel!.distance, lab: miaomiaoModel!.merLabel, latitude: miaomiaoModel!.latitude,longitude: miaomiaoModel!.longitude))
             
             let spcae = ZJActgivityDetailCellModel() ;spcae.type = .space(height: fit(20), color: Color(0xf5f5f5))
             
@@ -109,6 +111,7 @@ class LBShopDetailsController: UIViewController ,LBPresentLoginViewControllerPro
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        self.navigationController?.navigationBar.isTranslucent = false
         self.navigationController?.navigationBar.setBackgroundImage(createImageBy(color: .white), for: .default)
         self.navigationController?.navigationBar.shadowImage = UINavigationController().navigationBar.shadowImage
         
@@ -138,7 +141,7 @@ class LBShopDetailsController: UIViewController ,LBPresentLoginViewControllerPro
             descriptionModel.type = .description(content:  tuantuanModel!.description)
             
             let merchantModel = ZJActgivityDetailCellModel()
-            merchantModel.type = .merchant(model: ZJActgivityDetailMerchantCellModel.init(icon: tuantuanModel!.mainImg, name: tuantuanModel!.shopName, addredd: tuantuanModel!.merAddress, phone: tuantuanModel!.phone, distance: "5km", lab: tuantuanModel!.merLabel))
+            merchantModel.type = .merchant(model: ZJActgivityDetailMerchantCellModel.init(icon: tuantuanModel!.mainImg, name: tuantuanModel!.shopName, addredd: tuantuanModel!.merAddress, phone: tuantuanModel!.phone, distance: "5km", lab: tuantuanModel!.merLabel, latitude: miaomiaoModel!.latitude,longitude: miaomiaoModel!.longitude))
             
             
             let spcae = ZJActgivityDetailCellModel() ;spcae.type = .space(height: fit(20), color: Color(0xf5f5f5))
@@ -292,12 +295,21 @@ class LBShopDetailsController: UIViewController ,LBPresentLoginViewControllerPro
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         //        loadData()
+        navigationController?.navigationBar.isTranslucent = true
+        
         navigationController?.navigationBar.setBackgroundImage(createImageBy(color: UIColor.rgbColorWith(hex: 0x000000, alpha: 0.0001)), for: .default)
         navigationController?.navigationBar.shadowImage = UIImage()
     }
 
     
-    
+    func cellfuntion(type : ZJShopDetailFuntionType){
+        switch type{
+        case .naiv(let lat,let lng):
+            break
+        case .tele(let phone):
+            break
+        }
+    }
 }
 
 extension LBShopDetailsController:UITableViewDelegate,UITableViewDataSource{
@@ -332,6 +344,9 @@ extension LBShopDetailsController:UITableViewDelegate,UITableViewDataSource{
         case .merchant(let model):
             let cell : LBShopDescriptionCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
             cell.model = model
+            cell.funcPub.subscribe(onNext: { (type) in
+                self.cellfuntion(type: type)
+            }).disposed(by: cell.disposeBag)
             return cell
         case .description(let content):
             let cell : LBDescriptionCell = tableView.dequeueReusableCell(forIndexPath: indexPath)

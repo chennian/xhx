@@ -29,7 +29,7 @@ class LBShoppingMallViewController: UIViewController {
     // CADisplayLink
     //    fileprivate var disPlayLink:CADisplayLink?
     
-    
+    var fistRun = true
     fileprivate let tableView:UITableView = UITableView().then{
         $0.backgroundColor = color_bg_gray_f5
         $0.register(ZJSpaceCell.self)
@@ -43,25 +43,36 @@ class LBShoppingMallViewController: UIViewController {
     //    fileprivate let headerView = LBShoppingHeaderView()
     fileprivate lazy var searchBar = LBShoppingSearchBar()
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.groupTableViewBackground
+//        SZLocationManager.shareUserInfonManager.startUpLocation()
         
-        loadData()
-        tableView.addPullRefresh {[unowned self ] in
-            SZLocationManager.shareUserInfonManager.startUpLocation()
-            guard self.pageNum < self.pages else{
-                self.tableView.stopPullRefreshEver()
-                return
-            }
-            self.cellItem.removeAll()
-            self.loadData()
-        }
+        self.loadfirstData()
+//        SZLocationManager.shareUserInfonManager.getLoaction.asObservable().skip(1).subscribe(onNext: { (lat,lng) in
+//            self.loadfirstData()
+//        }).disposed(by: disposeBag)
+        
+//        tableView.addPullRefresh {[unowned self ] in
+//            guard self.pageNum < self.pages else{
+//                self.tableView.stopPullRefreshEver()
+//                return
+//            }
+//            self.cellItem.removeAll()
+//            self.loadData()
+//        }
+        
+        
+        
     }
+    
+    
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+//        loadData()
         //        disPlayLink = CADisplayLink(target: self,
         //                                        selector: #selector(mainCalculateTimer(_ :)))
         //        disPlayLink!.add(to: RunLoop.current, forMode:.commonModes)
@@ -81,10 +92,7 @@ class LBShoppingMallViewController: UIViewController {
         //        }
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        
-    }
+
     
     fileprivate func setupUI() {
         
@@ -123,7 +131,7 @@ class LBShoppingMallViewController: UIViewController {
             // 切换城市重新赋值
             strongSelf.pages = 1
             strongSelf.pageNum = 1
-            strongSelf.cellItem.removeAll()
+//            strongSelf.cellItem.removeAll()
             
             let viewController = LBCityListViewController()
             viewController.selectCity  = { city in
@@ -192,29 +200,33 @@ class LBShoppingMallViewController: UIViewController {
     }
     
     func didSelectClass(merid : String ,id : String,name : String){
-        let viewController = LBShoppingNextViewController()
-        viewController.title = name//shoppingModel?.catas[indexPath.row].subCataName
-        viewController.paramert = ["city":city,
-                                   "pageSize":10,
-                                   "mercId":merid,
-                                   "subCataId":id,
-                                   "lat":lat,
-                                   "lng":lng]
+//        let viewController = LBShoppingNextViewController()
+//        viewController.title = name//shoppingModel?.catas[indexPath.row].subCataName
+//        viewController.paramert = ["city":city,
+//                                   "pageSize":10,
+//                                   "mercId":merid,
+//                                   "subCataId":id,
+//                                   "lat":lat,
+//                                   "lng":lng]
         
-        navigationController?.pushViewController(viewController, animated: true)
+        let vc = ZJSearchShopByCateVC()
+        vc.cate = name
+        navigationController?.pushViewController(vc, animated: true)
     }
-    func didSelectMiaoMiao(id : String){
-        let viewController = LBSecondCouponDetailViewController()
-        viewController.markId = id
-        viewController.getCouponSuccessAction = {[weak self] in
-            guard let strongSelf = self else{return}
-            strongSelf.loadData()
-        }
-        navigationController?.pushViewController(viewController, animated: true)
-    }
+//    func didSelectMiaoMiao(id : String){
+//        let viewController = LBSecondCouponDetailViewController()
+//        viewController.markId = id
+//        viewController.getCouponSuccessAction = {[weak self] in
+//            guard let strongSelf = self else{return}
+//            strongSelf.loadData()
+//        }
+//        navigationController?.pushViewController(viewController, animated: true)
+//    }
+    
+    
     func didSelecteMore(name : String){
         if name == "秒秒"||name == "团团"{
-            
+
             let viewController = LBSecondCouponViewController()
             viewController.title = name
             viewController.city = city
@@ -222,7 +234,7 @@ class LBShoppingMallViewController: UIViewController {
         }else{
             guard pageNum < pages else{return}
             pageNum += 1
-            loadData()
+//            loadData()
         }
     }
     
@@ -246,8 +258,9 @@ LBPresentLoginViewControllerProtocol{
         //        cell.currentIndexPath = indexPath
         //
         //        return cell
+//        ZJLog(messagr: cellItem)
         switch cellItem[indexPath.row] {
-            
+        
         case let .title(text,_):
             let cell : LBShoppingLabelCell = tableView.dequeueReusableCell(forIndexPath: indexPath)//= dequeueReusableCell(withTableView: tableView, cellClass: LBShoppingLabelCell.self)
             cell.title_text = text
@@ -259,10 +272,14 @@ LBPresentLoginViewControllerProtocol{
             let cell : LBShoppingImageCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
             cell.cellType = .image(list)
             return cell
-        case let .mixCell(type):
+        case .shopCell(let type):
             let cell : ZJHomeMerchantCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
             cell.model = type
             return cell
+//        case let .mixCell(type):
+//            let cell : ZJHomeMerchantCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
+//            cell.model = type
+//            return cell
         case .newMiaomiaoCoupons(let models ):
             let cell : ZJHomeSeckillCell = tableView.dequeueReusableCell(forIndexPath: indexPath)//ZJHomeSeckillCell
             cell.models = models
@@ -322,7 +339,7 @@ LBPresentLoginViewControllerProtocol{
         guard indexPath.row < cellItem.count else {return 0}
         switch cellItem[indexPath.row] {
             
-        case .mixCell(_):
+        case .shopCell:
             return fit(495)//adjustSizeWithUiDesign(attribute: 600, UiDesignWidth: 1080)//fit(312)
         case .title(_):
             return fit(90)
@@ -360,11 +377,11 @@ LBPresentLoginViewControllerProtocol{
         guard indexPath.row < cellItem.count else {return }
         
         switch cellItem[indexPath.row] {
-        case let .mixCell(model):
+        case let .shopCell(model):
             
-            let viewController = LBShoppingMallDetailViewController()
-            viewController.orgCode = model.orgcode
-            viewController.mercId = model.mercId
+            let viewController = ZJShopDetailVC()
+//            viewController.orgCode = model.orgcode
+            viewController.shopid = model.shop_id
             navigationController?.pushViewController(viewController, animated: true)
             
             //        case .secondCoupons(let model):
@@ -445,56 +462,30 @@ extension LBShoppingMallViewController:LBShoppingHeaderViewDelegate{
     }
     
     
+    
 }
 /// 首次数据加载失败时，点击重新加载数据
 extension LBShoppingMallViewController{
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super.touchesBegan(touches, with: event)
-        for touch in touches {
-            if touch.view == self.view {
-                loadData()
-                setupUI()
-                configSearchView()
-            }
-        }
-    }
+//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        super.touchesBegan(touches, with: event)
+//        for touch in touches {
+//            if touch.view == self.view {
+//                loadData()
+//                setupUI()
+//                configSearchView()
+//            }
+//        }
+//    }
 }
 // MARK: loadData
 extension LBShoppingMallViewController:LBShoppingHttpServer{
     
-    func loadData()  {
+    func loadfirstData()  {
         
+        if !fistRun{ return }
+        fistRun = false
         zjPostItem.removeAll()
-        
-        //        SNRequest(requestType: API.getTuanTuanList(mercId: "", size: 6, page: 0), modelType: [ZJHomeGroupModel.self]).subscribe(onNext: {[unowned self] (result) in
-        //            switch result{
-        //            case.success(let models):
-        //                if self.zjPostItem.count != 0 {
-        //                    self.oldGetData()
-        //                }
-        //                if models.count == 0 {
-        //                    self.zjPostItem.append(.space(cellHight : fit(0) ,color : Color(0xf5f5f5)))
-        //                    return
-        //
-        //                }
-        //                self.zjPostItem.append(.space(cellHight : fit(20) ,color : Color(0xf5f5f5)))
-        //                self.zjPostItem.append(.title("团团",""))
-        //                self.zjPostItem.append(.space(cellHight : fit(30) ,color : .white))
-        //                for model in models{
-        //                    self.zjPostItem.append(.newGropuCoupons(model))
-        //                    self.zjPostItem.append(.space(cellHight : fit(20) ,color : .white))
-        //                }
-        //                self.zjPostItem.append(.space(cellHight : fit(10) ,color : .white))
-        //
-        //            case .fail(let code,let msg):
-        //                ZJLog(messagr: msg)
-        //                self.oldGetData()
-        //            default:
-        //                break
-        //            }
-        //        }).disposed(by: disposeBag)
-        
-        //ZJHomeMiaoMiaoModel
+    
         
         SNRequest(requestType: API.getMiaoMiaoList(mercId: "", size: 2, page: 0), modelType: [ZJHomeMiaoMiaoModel.self]).subscribe(onNext: { (result) in
             switch result{
@@ -519,11 +510,12 @@ extension LBShoppingMallViewController:LBShoppingHttpServer{
                 //                    self.oldGetData()
                 //                }
                 self.oldGetData()
-            case .fail(let code,let msg):
+            case .fail(_,let msg):
                 ZJLog(messagr: msg)
                 self.oldGetData()
             default:
-                break
+//                break
+                self.oldGetData()
             }
         }).disposed(by: disposeBag)
         
@@ -556,17 +548,48 @@ extension LBShoppingMallViewController:LBShoppingHttpServer{
                                 //                                ZJLog(messagr: self?.cellItem)
                                 strongSelf.configSearchView()
                                 strongSelf.setupUI()
-                                
-                                strongSelf.tableView.reloadData()
-                                //            strongSelf.headerView.reloadData()
-                                strongSelf.tableView.stopPullRefreshEver()
+                                strongSelf.getPerfectShop()
+//                             getPerfectShop()
                                 
         }) {[weak self] in
             
             guard let strongSelf  = self else{return}
+            strongSelf.getPerfectShop()
             strongSelf.tableView.stopPullRefreshEver()
             
         }
+        
+    }
+    
+    
+    func getPerfectShop(){
+        SNRequest(requestType: API.getPerfectShop(page: "1"), modelType: [ZJperfectShopModel.self]).subscribe(onNext: { (res) in
+            switch res{
+            case .success(let models):
+//                let shops = models.map({ (mode) -> shoppingCellTye in
+//                    let type = shoppingCellTye.shopCell(mode)//mixCell(mode)
+//                    return type
+//                })
+//                self.cellItem.append(contentsOf: shops)
+
+                models.forEach({ (mode) in
+                    let type = shoppingCellTye.shopCell(mode)//mixCell(mode)
+                    self.cellItem.append(type)
+                })
+                
+                self.tableView.reloadData()
+                //            strongSelf.headerView.reloadData()
+//                self.tableView.stopPullRefreshEver()
+            case .fail:
+                SZHUD("商家列表获取失败", type: .error, callBack: nil)
+            default:
+                break
+            }
+        }).disposed(by: disposeBag)
+//        Alamofire.request("http://tang11ers.tpddns.cn:8014/api/perfectStore", method: .post, parameters: ["page":"1"], encoding: URLEncoding.default, headers: nil).response { (res) in
+//            ZJLog(messagr: res)
+//        }
+        
     }
     
     /// 定时器
@@ -596,3 +619,47 @@ extension LBShoppingMallViewController:LBShoppingHttpServer{
 
 
 
+/*
+ "shop_id": "135",
+ "category": null,
+ "shopName": "我在",
+ "phone": null,
+ "logo": null,
+ "tab": null,
+ "latitude": null,
+ "longitude": null,
+ "add_time": "2018-05-09 07:55:45"
+ */
+
+import SwiftyJSON
+class ZJperfectShopModel : SNSwiftyJSONAble{
+    var shop_id : String
+    var category : String
+    var shopName : String
+    var phone : String
+    var logo : String
+    var tab : String
+    var latitude : String
+    var longitude : String
+    var add_time : String
+    var distance : String
+    required init?(jsonData: JSON) {
+        shop_id = jsonData["shop_id"].stringValue
+        category = jsonData["category"].stringValue
+        shopName = jsonData["shopName"].stringValue
+        phone = jsonData["shop_phoned"].stringValue
+        logo = jsonData["logo"].stringValue
+        tab = jsonData["tab"].stringValue
+        latitude = jsonData["latitude"].stringValue
+        longitude = jsonData["longitude"].stringValue
+        add_time = jsonData["add_time"].stringValue
+        
+        
+        let currentLocation = CLLocation(latitude: (LBKeychain.get(latitudeKey) as NSString).doubleValue, longitude: (LBKeychain.get(longiduteKey) as NSString).doubleValue )
+        let targetLocation = CLLocation(latitude: (latitude as NSString).doubleValue, longitude:(longitude as NSString).doubleValue)
+        distance = String(format: "%.2f", currentLocation.distance(from: targetLocation) / 1000.0)//currentLocation.distance(from: targetLocation)
+        
+    }
+}
+
+import Alamofire

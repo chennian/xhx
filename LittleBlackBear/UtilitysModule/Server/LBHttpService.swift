@@ -16,8 +16,8 @@ class LBHttpService{
             return
         }
         LBHttpManager.request(fullUrl, method: method, parameters: lb_md5Parameter(parameter: parameters), headers: headers, success: { (json) in
-            Print(parameters)
-            Print(json)
+//            Print(parameters)
+//            Print(json)
             let model = LBResponseModel(json: json)
             guard model.code == RESPONSE_SUCCESS_CODE else{
                 let failModel = LBFailModel(status:false, code: json["RSPCOD"].stringValue,message: json["RSPMSG"].stringValue)

@@ -247,6 +247,12 @@ struct ZJHomeMiaoMiaoModel : SNSwiftyJSONAble {
     var orgcode : String
     var merAddress : String
     var description : String
+    var shopId : String
+    var add_time : String
+//    var shopName : String
+    var longitude : String
+    var latitude : String
+    var distance : String
     init?(jsonData: JSON) {
         self.id = jsonData["id"].stringValue
         self.name = jsonData["name"].stringValue
@@ -267,7 +273,17 @@ struct ZJHomeMiaoMiaoModel : SNSwiftyJSONAble {
         self.orgcode = jsonData["orgcode"].stringValue
         self.merAddress = jsonData["merAddress"].stringValue
         self.description = jsonData["description"].stringValue
+        self.shopId = jsonData["shopId"].stringValue
+        self.add_time = jsonData["add_time"].stringValue
+        self.longitude = jsonData["longitude"].stringValue
+        self.latitude = jsonData["latitude"].stringValue
         
+        distance = ""
+        if self.longitude != "" && self.latitude != ""{
+            let currentLocation = CLLocation(latitude: (LBKeychain.get(latitudeKey) as NSString).doubleValue, longitude: (LBKeychain.get(longiduteKey) as NSString).doubleValue )
+            let targetLocation = CLLocation(latitude: (latitude as NSString).doubleValue, longitude:(longitude as NSString).doubleValue)
+            distance = String(format: "%.2f", currentLocation.distance(from: targetLocation) / 1000.0)
+        }
     }
     /*
      "id": 6,
@@ -523,14 +539,14 @@ extension LBShoppingHttpServer where Self:LBShoppingMallViewController{
                 别的数据全部原样返回
                 所以建立一个temp装 已有的.mixCell(_)
              **/
-            var tempCellItem:[shoppingCellTye] = []
-            strongSelf.cellItem.forEach{
-                switch $0{
-                case .mixCell(_):
-                    tempCellItem.append($0)
-                default:break
-                }
-            }
+//            var tempCellItem:[shoppingCellTye] = []
+//            strongSelf.cellItem.forEach{
+//                switch $0{
+//                case .mixCell(_):
+//                    tempCellItem.append($0)
+//                default:break
+//                }
+//            }
             
       
             
@@ -553,49 +569,33 @@ extension LBShoppingHttpServer where Self:LBShoppingMallViewController{
 //                strongSelf.cellItem.append(contentsOf: strongSelf.zjPostItem)
 //            }
             strongSelf.cellItem.append(contentsOf: strongSelf.zjPostItem)
-       /*
-             // 秒秒 卡券
-             if model.merMarkList.count > 0{
-             strongSelf.cellItem.append(.title("秒秒",""))
-             //                model.merMarkList.forEach{
-             //                    strongSelf.cellItem.append(.secondCoupons($0))
-             //                }
-             strongSelf.cellItem.append(.newSecondCoupons(model.merMarkList))
-             //                strongSelf.cellItem.append(.button("查看更多","秒秒"))
+
+            strongSelf.cellItem.append(.space(cellHight : fit(20) ,color : Color(0xf5f5f5)))
+            
+            /*
+             if model.merInfos.count > 0{
+             strongSelf.cellItem.append(.title(model.belongPlateName,""))
+             model.merInfos.forEach{
+             // append分页数据
+             tempCellItem.append(.mixCell($0))
              }
-             strongSelf.cellItem.append(.space)
-             // 团团 卡券
-             if model.groupCouponList.count > 0{
-             strongSelf.cellItem.append(.title("团团",""))
-             model.groupCouponList.forEach{
-             strongSelf.cellItem.append(.groupCoupons($0))
+             // 再把tempCellItem所有数据->cellItem
+             tempCellItem.forEach{
+             switch $0{
+             case .mixCell(_):
+             strongSelf.cellItem.append($0)
+             default:break
              }
-             //                strongSelf.cellItem.append(.button("查看更多","团团"))
+             }
+             // 清空tempCellItem
+             tempCellItem.removeAll()
              }
              */
-            strongSelf.cellItem.append(.space(cellHight : fit(20) ,color : Color(0xf5f5f5)))
             // 专属推荐、优优商家
-            if model.merInfos.count > 0{
-                strongSelf.cellItem.append(.title(model.belongPlateName,""))
-                model.merInfos.forEach{
-                    // append分页数据
-                    tempCellItem.append(.mixCell($0))
-                }
-                // 再把tempCellItem所有数据->cellItem
-                tempCellItem.forEach{
-                    switch $0{
-                    case .mixCell(_):
-                        strongSelf.cellItem.append($0)
-                    default:break
-                    }
-                }
-                // 清空tempCellItem
-                tempCellItem.removeAll()
-                //                strongSelf.cellItem.append(.button("查看更多",model.belongPlateName))
-            }
-            strongSelf.cellItem.append(.space(cellHight : fit(20) ,color : Color(0xf5f5f5)))
+//            strongSelf.cellItem.append(.space(cellHight : fit(20) ,color : Color(0xf5f5f5)))
             LBLoadingView.loading.dissmiss()
             compeletionHandler(model)
+            
             
         }, failure: { (failItem) in
             SZHUD("请求数据失败", type: .error, callBack: nil)

@@ -13,6 +13,9 @@ enum shoppingCellTye {
     case title(String,String)
 	/// 复杂 cell
     case mixCell(LBMerInfosModel)
+    
+    
+    case shopCell(ZJperfectShopModel)
 	/// banner图
     case image([String])
     /// 团团
@@ -62,13 +65,13 @@ class LBShoppingTableViewCellFactory {
             let cell = dequeueReusableCell(withTableView: tableView, cellClass: LBShoppingImageCell.self)
             cell.cellType = .image(list)
             return cell
-        case let .mixCell(type):
-            
-            let cell : ZJHomeMerchantCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
-            cell.model = type
+//        case let .mixCell(type):
+//
+//            let cell : ZJHomeMerchantCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
+//            cell.model = type
 //            let cell = dequeueReusableCell(withTableView: tableView, cellClass: LBShoppingMixedCell.self)
-            cell.model = type
-            return cell
+//            cell.model = type
+//            return cell
 //        case .secondCoupons(let model):
 //            let cell = dequeueReusableCell(withTableView: tableView, cellClass: LBSecondCouponTableViewCell.self)
 //            cell.secondCouponModel = model
@@ -107,10 +110,10 @@ class LBShoppingTableViewCellFactory {
             let cell = dequeueReusableCell(withTableView: tableView, cellClass: LBShoppingButtonCell.self)
 //            cell.cellType = .button(type,text)
             return cell
-        case let.mixCell(type):
-            let cell = dequeueReusableCell(withTableView: tableView, cellClass: LBShoppingMixedCell.self)
-            cell.cellType = .mixCell(type)
-            return cell
+//        case let.mixCell(type):
+//            let cell = dequeueReusableCell(withTableView: tableView, cellClass: LBShoppingMixedCell.self)
+//            cell.cellType = .mixCell(type)
+//            return cell
         case .secondCoupons(let model):
             let cell = dequeueReusableCell(withTableView: tableView, cellClass: LBSecondCouponTableViewCell.self)
             cell.secondCouponModel = model

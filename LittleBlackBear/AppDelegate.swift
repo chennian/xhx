@@ -34,7 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //[[PgyManager sharedPgyManager] setEnableFeedback:NO];
         
         SZLocationManager.shareUserInfonManager.startUpLocation()
-        WXManager.shareManager.registWeChat()
+//        WXManager.shareManager.registWeChat()
         
         IQKeyboardManager.sharedManager().enable = true
         

@@ -68,7 +68,7 @@ class ZJSeckillSubView : SNBaseView{
             //            calculationCurrentTime(model!.validEndDate + " " + "23:59:59")
             price.text = "¥\(model.price)"
             nameBtn.setTitle(model.shopName, for: .disabled)
-            countDownView.setRemainTime(endTime: model.endTime + " " + "23:59:59" )
+            countDownView.setRemainTime(endTime: model.endTime)
         }
     }
     private let nameBtn = UIButton().then{

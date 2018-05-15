@@ -25,34 +25,28 @@ class ZJHomeMerchantCell: SNBaseTableViewCell {
 //        }
 //    }
     
-    var model:LBMerInfosModel?{
+    var model:ZJperfectShopModel?{
         didSet{
             guard model != nil else {return}
-            name.text = model!.merShortName
-            tipLab.text = "| " +  model!.merTypeLabel//"距离" + model!.distance
+            name.text = model!.shopName
+            tipLab.text = "| " +  model!.tab//"距离" + model!.distance
             //                configMerLevel(model)
             //                configMerchantClass(model)
             //            popularityBtn.setTitle("人气76", for: .disabled)
-            if model!.mainImgUrl.isURLFormate() == true {
-                imgV.kf.setImage(with: URL(string:model!.mainImgUrl))
+            if model!.logo.isURLFormate() == true {
+                imgV.kf.setImage(with: URL(string:model!.logo))
             }
             
-            distanceLab.text = "距离" + model!.distance
-//            merLabe.text = model!.labelName
-//            if merLabe.text == "" {
-//                merLabe.isHidden = true
-//            }
-//            let width = countWidth(text: model!.labelName, font: Font(24)).width + fit(28)
-//            merLabe.snp.remakeConstraints { (make) in
-//                make.bottom.equalToSuperview().snOffset(-42)
-//                make.left.equalTo(titleLabel)
-//                make.height.snEqualTo(36)
-//                make.width.equalTo(width)
-//            }
-//            starView?.currentScore = 4.5
-//            scoreLab.text = "4.5"
+//            var currentLocation = CLLocation(latitude: 52.104526, longitude: 51.111151)
+//            var targetLocation = CLLocation(latitude: (model!.latitude as NSString).doubleValue, longitude:(model!.longitude as NSString).doubleValue)
+//            var distance:CLLocationDistance = currentLocation.distance(from: targetLocation)
+            
+            distanceLab.text = "距离" + model!.distance + "km"
+            //距离计算
         }
     }
+    
+    
     let cover = UIView().then{
         $0.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.36)
     }

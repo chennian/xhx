@@ -104,8 +104,8 @@ extension LBShopSearchResultViewController:UITableViewDelegate,UITableViewDataSo
 		case let .mixCell(model):
 			
 			let viewController = LBShoppingMallDetailViewController()
-			viewController.orgCode = model.orgcode
-			viewController.mercId = model.mercId
+            viewController.orgCode = model.orgcode
+            viewController.mercId = model.id
 			presentingViewController?.navigationController?.pushViewController(viewController, animated: true)
 
 		default:

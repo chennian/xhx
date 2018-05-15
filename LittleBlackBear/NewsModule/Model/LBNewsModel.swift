@@ -187,7 +187,7 @@ extension LBNewsHttpServer where Self:LBNewsViewController{
     
     func getGameCoupon(success:@escaping ((LBGameModel)->()),fail:@escaping (()->())){
         
-        SZLocationManager.shareUserInfonManager.startUpLocation()
+//        SZLocationManager.shareUserInfonManager.startUpLocation()
         let lat:String = LBKeychain.get(latitudeKey)
         let lng:String = LBKeychain.get(longiduteKey)
         let mercId:String = LBKeychain.get(CURRENT_MERC_ID)
@@ -264,7 +264,7 @@ extension LBNewsHttpServer where Self:LBMyNewsViewController{
     
     func getGameCoupon(success:@escaping ((LBGameModel)->()),fail:@escaping (()->())){
         
-        SZLocationManager.shareUserInfonManager.startUpLocation()
+//        SZLocationManager.shareUserInfonManager.startUpLocation()
         let lat:String = LBKeychain.get(latitudeKey)
         let lng:String = LBKeychain.get(longiduteKey)
         let mercId:String = LBKeychain.get(CURRENT_MERC_ID)

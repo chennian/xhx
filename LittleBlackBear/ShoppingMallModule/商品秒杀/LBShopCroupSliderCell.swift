@@ -16,7 +16,7 @@ class LBShopCroupSliderCell: SNBaseTableViewCell {
             sdScrollBanner.imageURLStringsGroup = model!.imgArray
             //            if model!.endTime
             sdScrollBanner.bannerImageViewContentMode = .scaleAspectFill
-            countDownView.setRemainTime(endTime: model!.endTime! + " " + "23:59:59" )
+            countDownView.setRemainTime(endTime: model!.endTime!)
         }
     }
     

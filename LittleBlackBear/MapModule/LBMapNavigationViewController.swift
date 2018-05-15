@@ -50,7 +50,7 @@ extension LBMapNavigationViewController{
     }
   
     func webNavigation() {
-        SZLocationManager.shareUserInfonManager.startUpLocation()
+//        SZLocationManager.shareUserInfonManager.startUpLocation()
         let latitude = LBKeychain.get(latitudeKey)
         let logintude = LBKeychain.get(longiduteKey)
         let parameter = BMKNaviPara()
